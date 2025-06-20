@@ -1,0 +1,23 @@
+<script src="{{ 'component-klaviyo-form.js' | asset_url }}" defer></script>
+
+<klaviyo-form>
+  <form class="mx-auto">
+    <div class="input__secondary w-full js-email-input-wrapper">
+      <input
+        required
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+      >
+
+
+      <div class="success hidden js-email-success">
+        You're signed up!
+      </div>
+      <button type="submit">
+        Sign Up
+      </button>
+    </div>
+    <div class="text-2xs tracking-widest js-email-error hidden text-brown mt-2.5 font-sans"></div>
+  </form>
+</klaviyo-form>

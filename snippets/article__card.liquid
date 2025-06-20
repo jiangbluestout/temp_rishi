@@ -1,0 +1,35 @@
+<a href="{{ article.url }}" class="group">
+  {% if article.image != blank %}
+    <img
+      class="mb-4 rounded overflow-hidden md:mb-5 w-full object-cover"
+      src="{{ article.image | image_url: width: 800 }}"
+      width=""
+      height=""
+      style="height: {{ image_height }}px"
+      alt="{{ article.image.alt }}"
+      style="object-position: {{ article.image.presentation.focal_point }};"
+      loading="lazy"
+    >
+  {% else %}
+    <div class="mb-4 rounded w-full aspect-square flex items-center justify-center" style="background-color: {{ article.metafields.custom.card_background_color }}">
+      <span class="text-white para-lg text-center max-w-[120px] 2xl:max-w-[200px]">{{ article.metafields.custom.card_image_text }}</span>
+    </div>
+  {% endif %}
+  <div class="flex flex-row gap-2.5 justify-between">
+    <div class="max-w-[85%]">
+      <h2 class="text-base leading-1.2 tracking-4pc mb-3 md:mb-5">
+        {{ article.title }}
+      </h2>
+      {% unless hide_excerpt %}
+        <div class="text-dark text-opacity-60 text-sm leading-1.5 tracking-4pc line-clamp-2 overflow-ellipsis">
+          {{ article.excerpt | strip_html }}
+        </div>
+      {% endunless %}
+    </div>
+    <div class="{% unless static_arrow %} md:opacity-0 group-hover:opacity-100 {% endunless %} transition-all duration-200 transform md:-translate-x-1 group-hover:translate-x-0">
+      <svg width="22" height="13" viewBox="0 0 22 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M15.6538 1L20.5 6.5M20.5 6.5L15.6538 12M20.5 6.5H0" stroke="black"/>
+      </svg>
+    </div>
+  </div>
+</a>

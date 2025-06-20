@@ -1,0 +1,128 @@
+<style>
+    .collection-list-image-with-title_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    .collection-list-image-with-title_lists {
+        display: flex;
+        align-items: flex-start;
+        gap: 30px;
+    }
+    .collection-list-image-with-title_item img {
+        width: 100%;
+        height: 79px;
+        border-radius: 4px;
+    }
+    .collection-list-image-with-title_item p{
+        font-size: 13px;
+        color: #283645;
+        text-align: center;
+        margin-top: 14px;
+        line-height: 19px;
+    }
+    .collection-list-image-with-title_item {
+        width: 100%;
+        max-width: 88px;
+    }
+
+    @media only screen and (max-width: 1023px) {
+        .collection-list-image-with-title {
+            width: 100%;
+            overflow: scroll;
+            scrollbar-width: none; /* For Firefox */
+            -ms-overflow-style: none;  /* For IE and Edge */
+        }
+        .elemcollection-list-image-with-title::-webkit-scrollbar {
+            display: none; /* For Chrome, Safari and Opera */
+        }
+        .collection-list-image-with-title_container {
+            width: 945px;
+            justify-content: flex-start;
+            padding-left: 15px;
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .collection-list-image-with-title_item {
+            max-width: 78px;
+        }
+        .collection-list-image-with-title_item img {
+            height: 78px;
+        }
+        .collection-list-image-with-title_lists {
+            gap: 15px;
+        }
+        .collection-list-image-with-title_container {
+            width: 760px;
+        }
+    }
+</style>
+
+<section class="collection-list-image-with-title">
+    <div class="collection-list-image-with-title_container">
+        <ul class="collection-list-image-with-title_lists">
+            {% for collection in section.settings.collection_list %}
+                <li class="collection-list-image-with-title_item">
+                    <a href="{{ collection.url }}">
+                        <img src="{{ collection.featured_image | img_url }}" />
+                        <p>{{ collection.title }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            {% comment %} <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Best Sellers</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Loose Leaf Teas</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Sachet Tea Bags</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Herbal Teas</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Matcha Tea</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Green Tea</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Black Tea</p>
+            </li>
+            <li class="collection-list-image-with-title_item">
+                <img src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Rishi-PDP-Carousel-FSTB-TurmericGinger_800x.jpg?v=1709670596" />
+                <p>Chai Tea</p>
+            </li> {% endcomment %}
+        </ul>
+    </div>
+</section>
+{% schema %}
+    {
+      "name": "Collection List Mini",
+      "tag": "section",
+      "class": "section-collection-list-mini",
+      "settings": [
+        {
+            "type": "collection_list",
+            "id": "collection_list",
+            "label": "Collections",
+            "limit": 8
+        }
+    ],
+    "presets": [
+        {
+        "name": "Collection List Mini"
+        }
+    ]
+    }
+{% endschema %}
+    

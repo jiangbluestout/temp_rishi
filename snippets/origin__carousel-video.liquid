@@ -1,0 +1,37 @@
+<div
+  class="rounded-b-4 lg:rounded-4 bg-green/10 keen-slider__slide w-full relative"
+  x-data="{
+    muted: true,
+    toggleMute() {
+      this.muted = !this.muted;
+    }
+  }"
+>
+  {% assign url = '' %}
+  {% for source in item.sources %}
+    {% if source.format == 'mp4' %}
+      {% assign url = source.url %}
+    {% endif %}
+  {% endfor %}
+  <video
+    class="inset-0 w-full h-full object-cover rounded-b-4 lg:rounded-4"
+    src="{{ url }}"
+    x-ref="video"
+    :muted="muted"
+    x-intersect:enter="$nextTick(() => { $refs.video.classList.add('active'); $refs.video.play(); })"
+    x-intersect:leave="$refs.video.pause()"
+    loop
+  ></video>
+  <button
+    id="mute"
+    aria-label="mute button"
+    class="z-20 absolute bottom-5 left-5 bg-light rounded-4 transition-opacity duration-200"
+    :class="muted ? 'opacity-50' : 'opacity-100'"
+    @click="toggleMute"
+  >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-opacity duration-200" :class="muted ? 'opacity-50' : 'opacity-100' ">
+      <path d="M10.9375 14.7273H7.5625C7.41332 14.7273 7.27024 14.6698 7.16475 14.5675C7.05926 14.4652 7 14.3265 7 14.1818V9.81818C7 9.67352 7.05926 9.53478 7.16475 9.43249C7.27024 9.33019 7.41332 9.27273 7.5625 9.27273H10.9375L16 6V18L10.9375 14.7273Z" stroke="#A88667" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M11 10V14" stroke="#A88667" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>

@@ -1,0 +1,54 @@
+{% if data != blank %}
+  <button-slider
+    data-slider-options='{
+      "breakpoints": {
+        "(max-width: 768px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "1.2", "spacing": 0 }
+        },
+        "(min-width: 768px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": false,
+          "slides": { "perView": "3", "spacing": 0 }
+        }
+      }
+    }'
+  >
+    <section
+      class="md:section-p-x pb-16 md:pb-30"
+      x-data="{ fadeIn: false }"
+      x-intersect.threshold.10="fadeIn = true"
+      :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+    >
+      <div class="keen-slider flex overflow-x-hidden md:justify-center {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight {% endif %}">
+        {% if data.image_one %}
+          {% render 'article__image-grid-image',
+            image_url: data.image_one.value,
+            image_caption: data.image_one_caption,
+            cta_text: data.image_one_cta_text,
+            cta_link: data.image_one_cta_link
+          %}
+        {% endif %}
+        {% if data.image_two %}
+          {% render 'article__image-grid-image',
+            image_url: data.image_two.value,
+            image_caption: data.image_two_caption,
+            cta_text: data.image_two_cta_text,
+            cta_link: data.image_two_cta_link
+          %}
+        {% endif %}
+        {% if data.image_three %}
+          {% render 'article__image-grid-image',
+            image_url: data.image_three.value,
+            image_caption: data.image_three_caption,
+            cta_text: data.image_three_cta_text,
+            cta_link: data.image_three_cta_link
+          %}
+        {% endif %}
+      </div>
+    </section>
+  </button-slider>
+{% endif %}

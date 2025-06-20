@@ -1,0 +1,96 @@
+{% assign url_parts = request.path | split: '/tagged/' %}
+{% assign current_tag = url_parts | last | remove: 'category-' %}
+
+{% for block in section.blocks %}
+  {% if block.settings.category_tag == current_tag %}
+    <script>
+      document.addEventListener('alpine:init', () => {
+        Alpine.store('main').activeBlogCategoryTag = '{{ block.settings.category_tag }}'
+        Alpine.store('main').activeBlogHeroImage = '{{ block.settings.hero_image | json }}' !== 'null' ? '{{ block.settings.hero_image | img_url: "800x" }}' : null
+      })
+    </script>
+  {% endif%}
+{% endfor%}
+
+{% unless request.path contains '/tagged/' %}
+  <section
+    class="pb-18 lg:pb-25"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div class="section-p-x">
+      <h4 class="font-serif font-100 text-3xl md:text-5xl leading-1.1 pb-6">{{ section.settings.heading }}</h4>
+    </div>
+    <div class="border-t border-dark/10 pt-4 overflow-x-scroll pb-3">
+      <div class="pl-3 md:pl-5 flex gap-x-3 flex-nowrap">
+        {% for block in section.blocks %}
+          <a href="{{ blog.url }}/tagged/{{ block.settings.category_tag | handleize }}">
+            <div class="min-w-[150px] lg:min-w-[300px] 2xl:min-w-[400px] relative {% if forloop.last %} pr-3 md:pr-5 {% endif %} group">
+                {% render 'image',
+                    image_desktop: block.settings.image,
+                    width_desktop: '600x',
+                    width_mobile: '400x',
+                    ratio_desktop: '50%',
+                    ratio_mobile: '50%',
+                    image_classes: 'rounded-4 w-full',
+                %}
+                <div class="w-full h-full bg-black/5 absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-200"></div>
+            </div>
+            <p class="para-2xs pt-3">{{ block.settings.category_label }}</p>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endunless %}
+
+{% schema %}
+  {
+    "name": "Blog | Category Menu",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "category",
+        "name": "Category",
+        "settings": [
+          {
+            "type": "text",
+            "id": "category_label",
+            "label": "Category Label",
+            "info": "This is the label that will be displayed on the menu"
+          },
+          {
+            "type": "text",
+            "id": "category_tag",
+            "label": "Category Tag",
+            "info": "This must match the exact category tag used in the blog post"
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "hero_image",
+            "label": "Hero Image",
+            "info": "This image will be used as the hero image if the journal is filtered by this category"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog | Category Menu",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

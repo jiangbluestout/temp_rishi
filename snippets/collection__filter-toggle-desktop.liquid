@@ -1,0 +1,16 @@
+<div class="relative w-50">
+  <div class="flex gap-2 items-center">
+    <button
+      type="button"
+      class="flex items-center para-sm leading-none px-6 py-1.5 transition-all duration-200 rounded-49"
+      :class="{'bg-dark text-white': filtersOpen }"
+      disabled
+    >
+      Filters
+      {% comment %} <div class="transform transition-all duration-150 ml-2" :class="{ 'rotate-180': filtersOpen }">
+        {% render 'svg__chevron-down', class: 'text-brown' %}
+      </div> {% endcomment %}
+    </button>
+    <button x-show="filterCount > 0" x-transition @click.prevent="handleClearFilters" class="flex items-center para-sm leading-none px-3 py-1.5 transition-all duration-200 rounded-49 bg-light">Clear</button>
+  </div>
+</div>

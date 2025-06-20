@@ -1,0 +1,51 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "disabled": true,
+      "settings": {}
+    },
+    "components": {
+      "type": "article__components",
+      "settings": {}
+    },
+    "c9f7999b-34fd-4fd6-b32f-616de8399b77": {
+      "type": "component__html-block",
+      "settings": {
+        "html": "<center> <div id=\"app\"> <iframe src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0645\/3788\/6970\/files\/Rishi_LookBook_2022_Vol3-compressed.pdf\" width=\"500\" height=\"700\"><\/iframe>\n<\/div>\n<\/center>",
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841": {
+      "type": "article__related-articles",
+      "settings": {
+        "heading": "Similar Articles To Explore",
+        "button_text": "View All",
+        "padding_bottom": "medium"
+      }
+    },
+    "a1e3e04e-322c-41cb-80ce-4a6b5dd7b8ec": {
+      "type": "component__cta-panel",
+      "settings": {
+        "heading": "Become a Wholesale Partner",
+        "superscript": "Interested in Selling Rishi Tea?",
+        "text_color": "#ffffff",
+        "button_text": "Apply Now",
+        "button_link": "shopify:\/\/pages\/wholesale",
+        "button_color": "button__primary white",
+        "background_color": "#a88667",
+        "full_width": false,
+        "flip_orientation": false,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "components",
+    "c9f7999b-34fd-4fd6-b32f-616de8399b77",
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841",
+    "a1e3e04e-322c-41cb-80ce-4a6b5dd7b8ec"
+  ]
+}

@@ -1,0 +1,194 @@
+{% assign padding_bottom = data.padding_bottom | downcase %}
+{% assign origin = product.metafields.custom.origin.value %}
+
+{% if padding_bottom == blank %}
+  {% assign padding_bottom = 'small' %}
+{% endif %}
+
+<section
+  class="flex flex-col lg:grid lg:grid-cols-12 w-full px-3 lg:px-6 transition-opacity duration-[1100ms] ease section-p-b {{ padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="{% if data.image == blank %} col-span-12 {% else %} lg:col-span-7 {% endif %} flex flex-col">
+    <div class="lg:flex flex-col w-full">
+      {% if data.eyebrow %}
+        <h6 id="about-product" class="para-2xs mb-3">{{ data.eyebrow }}</h6>
+      {% endif %}
+      {% if data.body_text %}
+        <p class="font-serif text-xl lg:text-3xl tracking-4pc leading-1.5 font-100 mb-8 lg:mb-[56px]">
+          {{ data.body_text | newline_to_br }}
+        </p>
+      {% endif %}
+      <div class="hidden lg:flex w-full">
+        {% if origin %}
+          <div class="flex flex-col w-1/2">
+            <h6 class="para-2xs mb-3">Origin</h6>
+            <p class="heading-xs pb-7">{{ origin.name }}</p>
+            {% if product.metafields.custom.cultivar
+              or product.metafields.custom.harvest
+              or product.metafields.custom.elevation
+            %}
+              <div class="border-t border-dark/25 w-full md:w-2/3">
+                {% if product.metafields.custom.cultivar %}
+                  <div class="border-b border-dark/25 py-3 grid grid-cols-2">
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">Cultivar</p>
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.cultivar }}</p>
+                  </div>
+                {% endif %}
+                {% if product.metafields.custom.harvest %}
+                  <div class="border-b border-dark/25 py-3 grid grid-cols-2">
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">Harvest</p>
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.harvest }}</p>
+                  </div>
+                {% endif %}
+                {% if product.metafields.custom.elevation %}
+                  <div class="border-b border-dark/25 py-3 grid grid-cols-2">
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">Elevation</p>
+                    <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.elevation }}</p>
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+
+            
+          </div>
+        {% endif %}
+        {% if product.metafields.custom.ingredients_list or product.metafields.custom.certifications.value %}
+          <div class="flex flex-col w-1/2">
+            <h6 class="para-2xs mb-3">Ingredients</h6>
+            {% if product.metafields.custom.ingredients_list %}
+              <p class="inline heading-xs mb-5">
+                {{ product.metafields.custom.ingredients_list }}
+              </p>
+            {% endif %}
+
+            {% if product.metafields.custom.ingredients_precautions != blank %}
+              <p class="precautions__wrapper">{{ product.metafields.custom.ingredients_precautions }}</p>
+              <style>
+                p.precautions__wrapper {
+                    margin: 20px 0 40px 0;
+                    color: #535E6A;
+                }
+              </style>
+            {% endif %}
+            
+            {% if product.metafields.custom.certifications %}
+              <div class="flex gap-3 p-[14px] bg-light w-fit rounded-4">
+                {% for icon in product.metafields.custom.certifications.value %}
+                  <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}">
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+       <div class="volume-dimension-material-volume__wrapper"> 
+          {% if product.metafields.custom.volume != blank %}
+            <div class="volume-dimension-material-volume__item">
+              <h6  class="para-2xs mb-3">Volume</h6>
+              <p class="heading-xs pb-7">{{ product.metafields.custom.volume }}</p>
+            </div>
+          {% endif %}
+        {% if product.metafields.custom.dimensions != blank %}
+          <div class="volume-dimension-material-volume__item">
+            <h6 class="para-2xs mb-3">Dimensions</h6>
+            <p class="heading-xs pb-7">{{ product.metafields.custom.dimensions }}</p>
+          </div>
+        {% endif %}
+          {% if product.metafields.custom.materials != blank %}
+            <div class="volume-dimension-material-volume__item">
+              <h6 class="para-2xs mb-3">Material</h6>
+              <p class="heading-xs pb-7">{{ product.metafields.custom.materials }}</p>
+            </div>
+          {% endif %}
+          {% if product.metafields.custom.care != blank %}
+            <div class="volume-dimension-material-volume__item">
+              <h6 class="para-2xs mb-3">Care</h6>
+              <p class="heading-xs pb-7">{{ product.metafields.custom.care }}</p>
+            </div>
+        {% endif %}
+         <style>
+           .volume-dimension-material-volume__wrapper {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+         </style>
+        </div>
+    </div>
+  </div>
+  {% if data.image %}
+    <div class="lg:col-start-9 lg:col-span-4">
+      <div>
+        {%
+          render 'image',
+          image_desktop: data.image,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          ratio_desktop: '130%',
+          ratio_mobile: '130%',
+          lazy: true,
+          image_classes: 'rounded-4',
+        %}
+      </div>
+    </div>
+  {% endif %}
+  {% if origin.name or product.metafields.custom.ingredients_list or product.metafields.custom.certifications.value %}
+    <div  class="lg:hidden flex flex-col w-full mt-[36px]">
+      {% if product.metafields.custom.ingredients_list %}
+        <h6 id="product-ingredients-mobile" class="para-2xs mb-3">Ingredients</h6>
+        <p class="inline heading-xs mb-5">
+          {{ product.metafields.custom.ingredients_list }}
+        </p>
+      {% endif %}
+
+      {% if product.metafields.custom.ingredients_precautions != blank %}
+        <p class="precautions__wrapper">{{ product.metafields.custom.ingredients_precautions }}</p>
+        <style>
+          p.precautions__wrapper {
+              margin: 20px 0 40px 0;
+              color: #535E6A;
+          }
+        </style>
+      {% endif %}
+      
+      {% if product.metafields.custom.certifications.value %}
+        <div class="flex gap-3 p-[14px] bg-light w-fit rounded-4 mb-5">
+          {% for icon in product.metafields.custom.certifications.value %}
+            <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}">
+          {% endfor %}
+        </div>
+      {% endif %}
+      {% if origin.name %}
+        <h6 id="product-origin-mobile" class="para-2xs mb-3">Origin</h6>
+        <p class="font-serif text-xl leading-1.3 tracking-[0.4px] font-100">{{ origin.name }}</p>
+        {% if product.metafields.custom.cultivar
+          or product.metafields.custom.harvest
+          or product.metafields.custom.elevation
+        %}
+          <div class="border-t border-dark/25 w-full md:w-2/3 mt-6">
+            {% if product.metafields.custom.cultivar %}
+              <div class="border-b border-dark/25 py-3 grid grid-cols-[.9fr_1.1fr]">
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">Cultivar</p>
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.cultivar }}</p>
+              </div>
+            {% endif %}
+            {% if product.metafields.custom.harvest %}
+              <div class="border-b border-dark/25 py-3 grid grid-cols-[.8fr_1.2fr]">
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">Harvest</p>
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.harvest }}</p>
+              </div>
+            {% endif %}
+            {% if product.metafields.custom.elevation %}
+              <div class="border-b border-dark/25 py-3 grid grid-cols-[.8fr_1.2fr]">
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">Elevation</p>
+                <p class="text-sm font-400 leading-1.5 tracking-4pc">{{ product.metafields.custom.elevation }}</p>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+</section>

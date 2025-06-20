@@ -1,0 +1,33 @@
+<div class="feature-video-container relative section-p-x" id="video-player-{{ section.id }}" data-id="{{ section.id }}"
+  x-data="{
+    isPlaying: false,
+    hasPlayed: false,
+    handlePlayClick() {
+      this.hasPlayed = true;
+      this.isPlaying = true;
+      this.$refs.player.contentWindow.postMessage(JSON.stringify(
+        { event: 'command', func: 'playVideo' }), 'https://www.youtube.com')
+    },
+    handlePauseClick() {
+      this.isPlaying= false;
+      this.$refs.player.contentWindow.postMessage(JSON.stringify(
+        { event: 'command', func: 'pauseVideo' }), 'https://www.youtube.com')
+    }
+  }"
+
+>
+  <div class="feature-video-container-inner aspect-video rounded-10 relative">
+    {% if youtube_id != blank %}
+      <div class="h-full rounded-4 overflow-hidden">
+        <iframe
+          id="youtube-player"
+          x-ref="player"
+          src="https://www.youtube.com/embed/{{ youtube_id }}?&autoplay=0&controls=1&playsinline=1&modestbranding=1&loop=1&enablejsapi=1&playlist={{ youtube_id }}"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    {% endif %}
+  </div>
+</div>

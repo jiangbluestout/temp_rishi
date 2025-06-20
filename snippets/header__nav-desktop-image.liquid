@@ -1,0 +1,17 @@
+{% if link.object.featured_image %}
+  {% if teaware_menu == true %}
+    <div
+      x-show="hoverLinkHandle == '{{ link.handle }}'"
+      x-transition.opacity.duration.300ms
+      class="aspect-square w-full 2xl:w-fit h-full absolute top-0 right-0 bg-contain bg-right bg-no-repeat rounded-4"
+      style="background-image: url('{{ link.object.featured_image | image_url: width: 500, height: 500 }}')"
+    ></div>
+  {% else %}
+    <div
+      x-show="hoverLinkHandle == '{{ link.handle }}'"
+      x-transition.opacity.duration.300ms
+      class="aspect-square w-full absolute bottom-5 right-0 bg-contain bg-right bg-no-repeat rounded-4"
+      style="background-image: url('{{ link.object.featured_image | image_url: width: 500, height: 500 }}')"
+    ></div>
+  {% endif %}
+{% endif %}

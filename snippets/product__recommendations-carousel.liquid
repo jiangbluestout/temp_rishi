@@ -1,0 +1,125 @@
+{% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{% assign elevate_control_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+    {% assign testVariation = key[0] %}
+    {% assign testVariationData = key[1] %}
+       {% if testVariation == '0' %}
+          {% if elevate_control_ids != '' %}
+            {% assign elevate_control_ids = elevate_control_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+          {% endif %}
+          {% assign elevate_control_ids = elevate_control_ids | append: testVariationData.id %} <!-- Append the control ID -->
+      {% elsif testVariation != 'data' %}
+        {% if elevate_variant_ids != '' %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+        {% endif %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+
+
+
+{% if recommendations != blank %}
+  <button-slider
+    data-slider-options='{
+      "breakpoints": {
+        "(max-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "1.2", "spacing": 0 }
+        },
+        "(min-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": true,
+          "slides": { "perView": "3.8", "spacing": 0 }
+        }
+      }
+    }'
+  >
+    <section
+      class="product-recommendations section-p-b transition-opacity duration-[1100ms] ease pb-[140px]"
+      x-data="{ fadeIn: false }"
+      x-intersect.threshold.10="fadeIn = true"
+      :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+    >
+      <div
+        class="relative"
+      >
+        <div class="section-p-x flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11">
+          <h3 class="heading-sm text-center md:text-left pb-10 md:pb-0">{% if data.heading == blank %}Often Bought Together{% else %}{{ data.heading }}{% endif %}</h3>
+        </div>
+        <div class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab">
+          <section
+              x-ref="slides"
+              x-cloak
+              class="flex"
+          >
+            {% for recommendedProduct in recommendations.products %}
+
+             {% assign string_product_id = recommendedProduct.id | append: '' %} 
+                {% if elevate_variant_ids contains string_product_id %}
+                  {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                {% endif %}
+                
+                {% assign is_control_product_id = false %}
+                {% if elevate_control_ids contains string_product_id %}
+                  {% assign is_control_product_id = true %}
+                {% endif %}
+              
+              <div class="keen-slider__slide min-w-[75%] md:min-w-[33.3%]{% if is_control_product_id %} eab-test-{{ recommendedProduct.id }}{% endif %}"
+              >
+                <div class="ml-3 md:ml-5">
+                  {% render 'product__card', product: recommendedProduct, classes: '' %}
+                </div>
+              </div>
+
+            {% for val in elevate_tests %}
+                  {% assign testID = val[0] %}
+                  {%- assign testData = val[1] -%}
+                  {% if testID == 'settings' or testData.data.isLive == false %}
+                    {% continue %}
+                  {% endif %}
+                  {% assign control_product_id = testData["0"].id %}
+
+                  {% if string_product_id == control_product_id %}
+                    {% for key in testData %}
+                      {% assign testVariation = key[0] %}
+                      {% if testVariation == 'data' or testVariation == '0' %}
+                        {% continue %}
+                      {% endif %}
+                      
+                      {% assign testVariationData = key[1] %}
+                      {% assign product_data = all_products[testVariationData.handle] %}
+                       <div style="display: none;" class="keen-slider__slide min-w-[75%] md:min-w-[33.3%] eab-test-{{ product_data.id }}"
+                        >
+                          <div class="ml-3 md:ml-5">
+                            {% render 'product__card', product: product_data, classes: '' %}
+                          </div>
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              
+            {% endfor %}
+          </section>
+          <button class="slider-btn hidden"></button>
+          <button class="slider-btn lg:hidden w-fit absolute top-[calc(50%-53px)] right-2.5 opacity-90">
+            <span>{% render 'svg__oval', classes: 'fill-white' %}</span>
+            <span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">{% render 'svg__arrow-right' %}</span>
+          </button>
+        </div>
+      </div>
+    </section>
+  </button-slider>
+{% endif %}

@@ -1,0 +1,47 @@
+<div
+  class="hidden lg:block fixed w-full px-3 pb-3 bottom-0 left-0 right-0 z-10 transform transition-all duration-300 ease-in-out"
+  x-data
+  x-cloak
+  :class="{
+    'translate-y-0': showStickyAtc && !$store.main.footerInView,
+    'translate-y-full': !showStickyAtc || $store.main.footerInView,
+  }"
+>
+  <div class="min-h-[72px] w-full flex rounded-4">
+    <div class="flex flex-1 bg-light p-2">
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+          <div class="flex items-center justify-center w-full">
+            <label class="para-sm mr-7 text-dark/75">{{ option.name }}:</label>
+            <div class="flex flex-wrap gap-x-2">
+              {%
+                render 'product__option-selector'
+                product: product,
+                activeVariant: activeVariant,
+                optionIndex: optionIndex,
+                option: option,
+              %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endunless %}
+    </div>
+    <div class="flex flex-1 xl:flex-initial 2xl:flex-1">
+      <button
+        class="button__atc sticky mobile w-full"
+        x-data="{
+          handleClick() {
+            const button = document.querySelector('#gift-card-atc');
+            button.click()
+          }
+        }"
+        @click="handleClick()"
+      >
+        <span
+          x-text="(reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order') && reactiveData.activeVariant?.inventoryPolicy !== 'continue' ? 'Sold Out' : (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ? 'Pre Order&nbsp;&nbsp;•&nbsp;&nbsp;' : 'Add to cart&nbsp;&nbsp;•&nbsp;&nbsp;'"></span></span>
+        <span x-show="reactiveData.activeVariant?.inventory > 0 || reactiveData.activeVariant?.oosStatus === 'Pre Order' || reactiveData.activeVariant?.inventoryPolicy === 'continue'" x-price="reactiveData.activeVariant?.variantPrice" class="skio-product-price"></span>
+      </button>
+    </div>
+  </div>
+</div>

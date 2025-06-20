@@ -1,0 +1,19 @@
+{% for value in option.values %}
+  {% assign all_variants_in_option = product.variants | where: optionIndex, value %}
+  {% assign available_variants_in_option = all_variants_in_option | where: "available", true %}
+
+  {% if available_variants_in_option.size == 0 %}
+    {% assign isOptionAvailable = false %}
+  {% else %}
+    {% assign isOptionAvailable = true %}
+  {% endif %}
+
+	<button
+    type="button"
+    :class="isOptionValueSelected('{{ optionIndex }}', '{{ value }}') ? 'active' : ''"
+		class="color-swatch color-swatch--{{ color }}"
+    title="{{ value }}"
+    @click="onOptionChanged('{{ optionIndex }}', '{{ value }}')"
+	>
+	</button>
+{% endfor %}

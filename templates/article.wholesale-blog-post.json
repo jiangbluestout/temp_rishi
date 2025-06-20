@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {}
+    },
+    "components": {
+      "type": "article__components",
+      "settings": {}
+    },
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841": {
+      "type": "article__related-articles",
+      "settings": {
+        "heading": "Similar Articles To Explore",
+        "button_text": "View All",
+        "padding_bottom": "medium"
+      }
+    },
+    "208ba086-5002-4ae9-9060-d5830ee31691": {
+      "type": "component__cta-panel",
+      "settings": {
+        "heading": "Become a Wholesale Partner",
+        "superscript": "Interested in Selling Rishi Tea?",
+        "text_color": "#FFFFFF",
+        "button_text": "Apply Now",
+        "button_link": "shopify:\/\/pages\/wholesale",
+        "button_color": "button__primary white",
+        "background_color": "#A88667",
+        "full_width": false,
+        "flip_orientation": false,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "components",
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841",
+    "208ba086-5002-4ae9-9060-d5830ee31691"
+  ]
+}

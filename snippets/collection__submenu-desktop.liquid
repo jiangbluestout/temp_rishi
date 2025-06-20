@@ -1,0 +1,21 @@
+{% assign current_handle = collection.handle %}
+
+<nav aria-label="{{ parent_collection.metafields.custom.submenu_label }} Navigation Menu" class="hidden xl:flex flex-col items-center">
+  <h3 class="pb-4 opacity-60 para-xs">{{ submenu_label }}</h3>
+  <ul class="flex items-center justify-center gap-2">
+    {% for link in submenu.links %}
+      {% assign link_handle = link.url | split: '/' | last %}
+      <li>
+        <a
+          href="{{ link.url }}"
+          class="button__tab py-3 px-4 para-md font-400 whitespace-nowrap transition-all duration-200{% if current_handle == link_handle %} active opacity-100 {% else %} opacity-75 hover:opacity-100 {% endif %}"
+          x-data="{ hovered: false }"
+          x-on:mouseover="hovered = true"
+          x-on:mouseleave="hovered = false"
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

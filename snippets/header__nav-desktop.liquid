@@ -1,0 +1,412 @@
+<div class="header-nav__wrapper flex-1 hidden tablet:flex flex-col h-full">
+  <div class="flex items-center px-4 lg:px-9">
+    <div class="flex-1 flex gap-4 lg:gap-7">
+      {% if section.settings.tea_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          type="button"
+          @mouseover="openedDesktopMenu = 'tea'; openedDesktopSubMenu = '{{ section.settings.tea_menu.links[0].handle }}'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'tea' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+        >
+          <a href="https://rishi-tea.com/collections/all-products">Shop</a>
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+      {% endif %}
+      {% if section.settings.teaware_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          @mouseover="openedDesktopMenu = 'teaware'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'teaware' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+          type="button"
+        >
+          Teaware
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+      {% endif %}
+      {% if section.settings.discover_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          @mouseover="openedDesktopMenu = 'discover'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'discover' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+          type="button"
+        >
+          Discover
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+      {% endif %}
+      {% if section.settings.left_link_label != blank %}
+        <a
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 hover:bg-dark hover:text-white"
+          href="{{ section.settings.left_link_url }}"
+        >
+          {{ section.settings.left_link_label }}
+        </a>
+      {% endif %}
+    </div>
+
+    <div class="py-3">
+      <a
+        class="text-current"
+        href="/"
+      >
+        <span class="sr-only">Rishi Tea - Home</span>
+        {% render 'svg__header-logo', classes: 'max-h-[44px]' %}
+      </a>
+    </div>
+
+    <div class="flex-1 flex justify-end text-left gap-4 lg:gap-3">
+      <div class="hidden relative w-full xl:block" style="top: -1px;">
+        {% render 'header__search' %}
+      </div>
+      {% comment %} <button
+        class="uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+        :class="$store.main.isSearchOpen ? 'bg-dark text-white' : 'bg-transparent text-current'"
+        type="button"
+        @click="$store.main.setSearchOpen(!$store.main.isSearchOpen)"
+        x-text="$store.main.isSearchOpen ? 'Close' : 'Search'"
+      ></button> {% endcomment %}
+      {% if customer %}
+        <a
+          class="uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 flex items-center"
+          href="/a/account/login"
+        >
+        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3554_100)">
+        <path d="M11.5003 22.4118C17.5266 22.4118 22.4118 17.5266 22.4118 11.5003C22.4118 5.47409 17.5266 0.588867 11.5003 0.588867C5.47409 0.588867 0.588867 5.47409 0.588867 11.5003C0.588867 17.5266 5.47409 22.4118 11.5003 22.4118Z" stroke="#283645" stroke-width="1.25" stroke-miterlimit="10"/>
+        <path d="M19.1325 19.2445C19.1325 17.6751 16.8063 16.2738 14.2373 15.7786C14.2373 15.7786 13.247 15.6105 13.7422 14.6109C14.2373 13.8635 14.6483 12.948 14.6483 12.6958C14.6483 12.6958 15.4704 11.9578 15.5545 10.9582C15.6386 9.96791 15.3957 9.89317 15.3957 9.89317C15.7227 8.81884 15.8815 4.57758 13.1443 5.0727C12.892 4.61494 12.0793 4.23192 11.1544 4.24126C10.2296 4.25061 9.17391 4.66165 8.51063 5.82006C7.84735 7.06255 7.6792 8.632 8.17432 9.95857C8.09024 10.0426 8.02485 9.87449 7.94077 10.4537C7.85669 11.0329 8.18366 11.855 8.4359 12.266C8.51998 12.4342 8.76287 12.5183 8.84695 12.6771C8.84695 12.6771 9.00576 13.6767 9.82786 14.6669C9.99601 15.4143 9.25799 15.8347 9.25799 15.8347C6.68894 16.3298 4.22266 18.0581 4.22266 19.6275" stroke="#283645" stroke-width="1.25" stroke-miterlimit="10"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_3554_100">
+        <rect width="23" height="23" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        
+        </a>
+      {% else %}
+        <a
+          class="uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 flex items-center"
+          href="/a/account/login"
+        >
+        <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3554_100)">
+        <path d="M11.5003 22.4118C17.5266 22.4118 22.4118 17.5266 22.4118 11.5003C22.4118 5.47409 17.5266 0.588867 11.5003 0.588867C5.47409 0.588867 0.588867 5.47409 0.588867 11.5003C0.588867 17.5266 5.47409 22.4118 11.5003 22.4118Z" stroke="#283645" stroke-width="1.25" stroke-miterlimit="10"/>
+        <path d="M19.1325 19.2445C19.1325 17.6751 16.8063 16.2738 14.2373 15.7786C14.2373 15.7786 13.247 15.6105 13.7422 14.6109C14.2373 13.8635 14.6483 12.948 14.6483 12.6958C14.6483 12.6958 15.4704 11.9578 15.5545 10.9582C15.6386 9.96791 15.3957 9.89317 15.3957 9.89317C15.7227 8.81884 15.8815 4.57758 13.1443 5.0727C12.892 4.61494 12.0793 4.23192 11.1544 4.24126C10.2296 4.25061 9.17391 4.66165 8.51063 5.82006C7.84735 7.06255 7.6792 8.632 8.17432 9.95857C8.09024 10.0426 8.02485 9.87449 7.94077 10.4537C7.85669 11.0329 8.18366 11.855 8.4359 12.266C8.51998 12.4342 8.76287 12.5183 8.84695 12.6771C8.84695 12.6771 9.00576 13.6767 9.82786 14.6669C9.99601 15.4143 9.25799 15.8347 9.25799 15.8347C6.68894 16.3298 4.22266 18.0581 4.22266 19.6275" stroke="#283645" stroke-width="1.25" stroke-miterlimit="10"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_3554_100">
+        <rect width="23" height="23" fill="white"/>
+        </clipPath>
+        </defs>
+        </svg>
+        
+        </a>
+      {% endif %}
+      <button
+        class="text-sm tracking-2pc uppercase whitespace-nowrap flex flex-nowrap items-center gap-2"
+        @click="$store.main.setMiniCartOpen(true)"
+        type="button"
+      >
+        <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_3554_97)">
+          <path d="M6.54199 10.5073V4.57052C6.54199 2.38847 8.31093 0.609406 10.4949 0.609406C12.6789 0.609406 14.4479 2.37864 14.4479 4.57052V10.5073" stroke="#283645" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17.6305 22.3903C19.1523 22.3903 20.3876 21.1519 20.3876 19.6284C20.3876 19.4908 20.3778 19.3433 20.358 19.2057L18.7175 8.50188C18.5495 7.37154 17.581 6.5459 16.4446 6.5459H4.57587C3.4394 6.5459 2.47093 7.38137 2.30293 8.50188L0.66246 19.2156C0.642695 19.3532 0.632812 19.4908 0.632812 19.6382C0.632812 21.1617 1.86811 22.3903 3.38999 22.3903H17.6502H17.6305Z" stroke="#283645" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_3554_97">
+          <rect width="21" height="23" fill="white"/>
+          </clipPath>
+          </defs>
+        </svg>
+        <span
+          x-cloak
+          class="border border-brown rounded-[100%] p-1 tracking-none block"
+          id="cart-item-count"
+          x-text="$store.main.cart?.item_count"
+        ></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<div class="hidden md:block">
+  <div
+    class="bg-light text-dark rounded absolute top-full w-full mt-px"
+    @mouseleave="openedDesktopMenu = null; $store.main.setDesktopHeaderOpened(false);"
+    x-transition.scale.origin.top.opacity.duration.300ms
+    x-show="$store.main.isNavOpen"
+    x-cloak
+    x-data="{ hoverLinkHandle: null }"
+  >
+    <div
+      x-show="openedDesktopMenu == 'tea'"
+      class="px-8 py-2 grid grid-cols-2 xl:grid-cols-[1fr_1.5fr_.5fr] 2xl:grid-cols-[1fr_1.3fr_.7fr] gap-6 header__desktop-menu relative"
+    >
+      <div class="flex flex-col gap-4 border-r border-r-brown border-opacity-50 py-6 pr-6 submenu-items-wrapper">
+        {% for l1_link in section.settings.tea_menu.links %}
+          {% if l1_link.links.size > 0 %}
+            <button
+              @mouseover="openedDesktopSubMenu = '{{ l1_link.handle }}'; hoverLinkHandle = null;"
+              class="font-serif font-100 text-6xl tracking-2pc text-left transition-colors text-dark submenu-hover-btn"
+              :class="openedDesktopSubMenu == '{{ l1_link.handle }}' ? 'text-opacity-100 italic' : 'text-opacity-50'"
+            >
+              <a class="main-menu__parent" href="{{ l1_link.url }}">{{ l1_link.title }}</a>
+              <div
+                class="text-brown transform -rotate-90 inline-block float-right h-full transition-opacity"
+                :class="openedDesktopSubMenu == '{{ l1_link.handle }}' ? 'opacity-100' : 'opacity-0'"
+              >
+                {% render 'svg__chevron-down' %}
+              </div>
+            </button>
+          {% elsif l1_link.links.size == 0 %}
+            <a
+              href="{{ l1_link.url }}"
+              class="main-menu__parent font-serif font-100 text-6xl tracking-2pc text-left transition-colors text-dark hover:italic text-opacity-50 hover:text-opacity-100 {% if forloop.last %} pt-10 {% endif %}"
+              @mouseover="openedDesktopSubMenu = null; hoverLinkHandle = '{{ l1_link.handle }}';"
+            >
+              {{ l1_link.title }}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="relative h-full ss">
+        {% for l1_link in section.settings.tea_menu.links %}
+          {% assign cols = 1 %}
+          {% if l1_link.links.size > 6 %}
+            {% assign cols = 2 %}
+          {% endif %}
+
+          {% if l1_link.levels == 1 %}
+            <div
+              x-show="openedDesktopSubMenu == '{{ l1_link.handle }}'"
+              x-transition.opacity.duration.300ms
+              class="grid grid-cols-1 submenu-child-items {% if cols == 2 %} xl:grid-cols-2 {% endif %} gap-3 py-6 absolute left-0 top-0 max-h-full overflow-auto w-full"
+            >
+              {% for l2_link in l1_link.links %}
+                <a
+                  href="{{ l2_link.url }}"
+                  class="font-serif font-100 text-6xl tracking-2pc text-left hover:italic whitespace-nowrap"
+                  @mouseover="hoverLinkHandle = '{{ l2_link.handle }}'"
+                >
+                  {{ l2_link.title }}
+                </a>
+              {% endfor %}
+            </div>
+          {% elsif l1_link.levels == 2 %}
+            <div
+              class="py-6 w-full flex submenu-child-items flex-col gap-5 h-full absolute left-0 top-0 max-h-full overflow-auto"
+              x-show="openedDesktopSubMenu == '{{ l1_link.handle }}'"
+              x-transition.opacity.duration.300ms
+            >
+              <div class="flex flex-col xl:flex-row gap-5 w-full flex-1">
+                {% for l2_link in l1_link.links %}
+                  {% if l2_link.links.size > 0 %}
+                    <div class="flex-1">
+                      <div class="tracking-4pc text-dark text-opacity-40 mb-4 text-base">
+                        {{ l2_link.title }}
+                      </div>
+                      <div class="flex flex-col gap-3">
+                        {% for l3_link in l2_link.links %}
+                          <a
+                            href="{{ l3_link.url }}"
+                            class="font-serif font-100 text-6xl tracking-2pc text-left hover:italic"
+                            @mouseover="hoverLinkHandle = '{{ l3_link.handle }}'"
+                          >
+                            {{ l3_link.title }}
+                          </a>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+
+              <div>
+                {% for l2_link in l1_link.links %}
+                  {% if l2_link.links.size == 0 %}
+                    <a
+                      href="{{ l2_link.url }}"
+                      class="font-serif font-100 text-6xl tracking-2pc text-left hover:italic"
+                      @mouseover="hoverLinkHandle = '{{ l2_link.handle }}'"
+                    >
+                      {{ l2_link.title }}
+                    </a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="relative hidden items-start justify-end py-6 xl:flex">
+        <div>
+          <a class="text-[14px]" href="{{ settings.nav_featured_collection.url }}" style="font-weight: 500;">
+            <img class="mb-[14px] object-cover max-w-[256px] h-[256px]" src="{{settings.nav_featured_collection.image.src | image_url: width: 256}}" alt="">
+            {{ settings.nav_featured_collection.title }}
+          </a>
+        </div>
+        {% comment %} {% for l1_link in section.settings.tea_menu.links %}
+          {% render 'header__nav-desktop-image', link: l1_link %}
+
+          {% for l2_link in l1_link.links %}
+            {% render 'header__nav-desktop-image', link: l2_link %}
+
+            {% for l3_link in l2_link.links %}
+              {% render 'header__nav-desktop-image', link: l3_link %}
+            {% endfor %}
+          {% endfor %}
+        {% endfor %} {% endcomment %}
+      </div>
+    </div>
+    {% if section.settings.teaware_menu != blank %}
+      <div
+        x-show="openedDesktopMenu == 'teaware'"
+        class="p-8 grid grid-cols-3 gap-6 header__desktop-menu"
+      >
+        <div class="col-span-2">
+          <div class="grid lg:grid-cols-3 gap-5 w-full">
+            {% for l1_link in section.settings.teaware_menu.links %}
+              {% if l1_link.links.size > 0 %}
+                <div>
+                  <div class="tracking-4pc text-dark text-opacity-40 mb-4 text-base">
+                    {{ l1_link.title }}
+                  </div>
+                  <div class="flex flex-col gap-3">
+                    {% for l2_link in l1_link.links %}
+                      <a
+                        href="{{ l2_link.url }}"
+                        class="font-serif font-100 text-6xl tracking-2pc text-left hover:italic"
+                        @mouseover="hoverLinkHandle = '{{ l2_link.handle }}'"
+                      >
+                        {{ l2_link.title }}
+                      </a>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="mt-20">
+            {% for l1_link in section.settings.teaware_menu.links %}
+              {% if l1_link.links.size == 0 %}
+                <a
+                  href="{{ l1_link.url }}"
+                  class="font-serif font-100 text-6xl tracking-2pc text-left transition-colors text-dark hover:italic"
+                  @mouseover="hoverLinkHandle = '{{ l1_link.handle }}'"
+                >
+                  {{ l1_link.title }}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="relative h-full w-full">
+          {% for l1_link in section.settings.teaware_menu.links %}
+            {% render 'header__nav-desktop-image', link: l1_link, teaware_menu: true %}
+
+            {% for l2_link in l1_link.links %}
+              {% render 'header__nav-desktop-image', link: l2_link, teaware_menu: true %}
+
+              {% for l3_link in l2_link.links %}
+                {% render 'header__nav-desktop-image', link: l3_link, teaware_menu: true %}
+              {% endfor %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <div
+      x-show="openedDesktopMenu == 'discover'"
+      class="px-8 py-2 grid grid-cols-3 gap-6 header__desktop-menu"
+    >
+      <div class="flex flex-col gap-6 border-r border-r-brown border-opacity-50 py-6 pr-6">
+        <div class="w-full">
+          {% for l1_link in section.settings.discover_menu.links %}
+            {% if l1_link.links.size > 0 %}
+              <div>
+                <div class="tracking-4pc text-dark text-opacity-40 mb-4 text-base">
+                  {{ l1_link.title }}
+                </div>
+                <div class="flex flex-col gap-3">
+                  {% for l2_link in l1_link.links %}
+                    <a
+                      href="{{ l2_link.url }}"
+                      class="font-serif font-100 text-6xl tracking-2pc text-left hover:italic"
+                      @mouseover="hoverLinkHandle = '{{ l2_link.handle }}'"
+                    >
+                      {{ l2_link.title }}
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+
+        <div class="mt-20">
+          {% for l1_link in section.settings.discover_menu.links %}
+            {% if l1_link.links.size == 0 %}
+              <a
+                href="{{ l1_link.url }}"
+                class="font-serif font-100 text-6xl tracking-2pc text-left transition-colors text-dark hover:italic"
+                @mouseover="hoverLinkHandle = '{{ l1_link.handle }}'"
+              >
+                {{ l1_link.title }}
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="col-span-2 flex flex-col lg:flex-row justify-between">
+        <div class="py-6">
+          <div class="tracking-4pc text-dark text-opacity-40 mb-4 text-base">
+            {{ section.settings.discover_heading_left }}
+          </div>
+
+          <div>
+            {% for block in section.blocks %}
+              <div class="w-64 mr-4 inline-block">
+                {% render 'header__nav-article-card', article: block.settings.article, blog_title: block.settings.blog_title, optional_url: block.settings.url %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        {% if section.settings.discover_article %}
+          <div class="py-6">
+            <div class="w-64 inline-block text-left">
+              <div class="tracking-4pc text-dark text-opacity-40 mb-4 text-base">
+                {{ section.settings.discover_heading_right }}
+              </div>
+
+              <div class="w-64">
+                {% render 'header__nav-article-card', article: section.settings.discover_article, blog_title: section.settings.discover_blog_title, optional_url: section.settings.discover_url %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .header-nav__wrapper button.bg-dark.text-white {
+    background-color: #283645;
+}
+
+</style>

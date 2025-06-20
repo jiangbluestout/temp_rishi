@@ -1,0 +1,135 @@
+{% comment %} {% style %}
+  .badge {
+    background-color: #f0f0f0;
+    color: #283645bf;
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 300;
+    white-space: nowrap; /* Prevent text from wrapping */
+    user-select: none; /* Prevent text selection */
+  }
+  .product-badges {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 #eee; /* For Firefox */
+    corsur: grab; /* Change cursor to indicate draggable area */
+    cursor: -webkit-grab; /* For Safari */
+    padding-bottom: 10px;
+  }
+
+  .product-badges::-webkit-scrollbar {
+    height: 8px; /* Height of the scrollbar */
+  }
+
+  .product-badges::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 4px; /* Rounded corners */
+  }
+
+  .product-badges::-webkit-scrollbar-track {
+    background: #eee; /* Color of the scrollbar track */
+  }
+
+  @medoa screen and (max-width: 768px) {
+    .product-badges::-webkit-scrollbar {
+      display: none;
+    }
+  }
+{% endstyle %} {% endcomment %}
+<div class="mb-4 lg:mb-0">
+  <span class="hidden lg:flex">{% render 'junip-product-summary', product: product %}</span>
+  <div class="pdp-title flex items-end justify-between gap-8 mt-4 lg:mt-0" id="collection-banner-top-padding">
+    <div class="heading-lg">{{ product.title }}</div>
+    {% if product.compare_at_price > product.price %}
+        <div class="sale-product-wrapper">
+          <span class="actual__price compare-price-strikethrough">{{ product.compare_at_price | money }}</span>
+          <span class="sale__price para-lg md:para-md text-dark/75 skio-product-price" x-price="reactiveData.activeVariant?.variantPrice"></span>
+        </div>
+      {% else %}
+        {% if product.price == 0 %}
+          <div class="para-lg md:para-md text-dark/75">Free</div>
+        {% else %}
+          <div class="para-lg md:para-md text-dark/75 skio-product-price" x-price="reactiveData.activeVariant?.variantPrice"></div>
+        {% endif %}
+      {% endif %}
+  </div>
+  {% if product.metafields.custom.subheading %}
+    <div class="text-dark/75 leading-[21px] para-sm mt-2 lg:mt-4 mb-2.5 lg:mb-0">{{ product.metafields.custom.subheading }}</div>
+  {% endif %}
+  <!-- <div class="product-badges" id="{%if id != blank %}{{ id }}{% endif %}">
+    {%- if product.metafields.custom.subheading -%}
+      <span class="badge">{{ product.metafields.custom.subheading.value }}</span>
+    {%- endif -%}
+  
+    {%- if product.tags contains 'organic' -%}
+      <span class="badge">Certified Organic</span>
+    {%- endif -%}
+  
+    <span class="badge">Direct Trade</span>
+  
+    {%- if product.tags contains 'caffeine:low' -%}
+      <span class="badge">Low Caffeine</span>
+    {%- elsif product.tags contains 'caffeine:none' -%}
+      <span class="badge">Caffeine Free</span>
+    {%- elsif product.tags contains 'caffeine:medium' -%}
+      <span class="badge">Medium Caffeine</span>
+    {%- elsif product.tags contains 'caffeine:high' -%}
+      <span class="badge">High Caffeine</span>
+    {%- endif -%}
+  </div> -->
+
+  {%- if section.settings.buy_box_testimonials != blank -%}
+    <div class="text-dark/75 leading-[21px] para-sm mt-2 lg:mt-4 mb-2.5 lg:mb-0">{{ section.settings.buy_box_testimonials }}</div>
+  {%- endif -%}
+
+  <span class="lg:hidden">{% render 'junip-product-summary', product: product %}</span>
+</div>
+
+<script>
+  {% if id != blank %}
+    document.addEventListener('DOMContentLoaded', function () {
+      const productBadges = document.querySelector('#product-badges');
+    
+      if (productBadges) {
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+    
+        // Mouse down event
+        productBadges.addEventListener('mousedown', (e) => {
+          isDown = true;
+          productBadges.classList.add('active');
+          startX = e.pageX - productBadges.offsetLeft;
+          scrollLeft = productBadges.scrollLeft;
+        });
+    
+        // Mouse leave event
+        productBadges.addEventListener('mouseleave', () => {
+          isDown = false;
+          productBadges.classList.remove('active');
+        });
+    
+        // Mouse up event
+        productBadges.addEventListener('mouseup', () => {
+          isDown = false;
+          productBadges.classList.remove('active');
+        });
+    
+        // Mouse move event
+        productBadges.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - productBadges.offsetLeft;
+          const walk = (x - startX) * 2; // Adjust scroll speed
+          productBadges.scrollLeft = scrollLeft - walk;
+        });
+      } else {
+        console.error('Element .product-badges not found in the DOM.');
+      }
+    });
+  {% endif %}
+</script>

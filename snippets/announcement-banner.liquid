@@ -1,0 +1,111 @@
+{% assign banner_background_color = section.settings.announcement_banner_background_color %}
+{% assign is_collection_or_blog = false %}
+
+{% if template == 'collection' or template == 'blog' %}
+  {% assign banner_text_color = '#F7F5F0' %}
+  {% assign banner_background_color = 'rgba(255, 255, 255, 0.1)' %}
+  {% assign is_collection_or_blog = true %}
+{% endif %}
+
+{% style %}
+  @media only screen and (max-width:1280px) {
+    .announcement-banner > div {
+      color: #fff;
+    }
+    .announcement-banner > div.mobile--text-dark {
+      color: #283645;
+    }
+  }
+{% endstyle %}
+
+<div
+  class="announcement-banner banner rounded overflow-hidden"
+  :class="$store.main.showBanner ? 'enabled' : 'disabled'"
+  x-data="{
+    getHeaderHeight() {
+      const header = document.querySelector('.header');
+      document.documentElement.style.setProperty('--header-height', header.getBoundingClientRect().height + 3 + 'px');
+    },
+  }"
+  x-init="$nextTick(() => getHeaderHeight())"
+>
+  <div
+    class="min-h-[30px] flex items-center justify-center text-center relative transition-all duration-100
+      {% if is_collection_or_blog %}
+        {% if collection.metafields.custom.text_color == 'Dark' %} mobile--text-dark {% endif %}
+        text-dark
+      {% endif %}
+      "
+    :class="$store.main.transparentHeader | {{ is_collection_or_blog | json }} ? 'rounded-b group-hover:rounded-b-none' : ''"
+    style="background-color: {{ banner_background_color }}; {% unless is_collection_or_blog %}color: {{ section.settings.announcement_banner_text_color }};{% endunless %}"
+    x-data="{
+      handleInit() {
+        this.$watch('$store.main.isNavScrolled', (value) => {
+          if (!value) {
+            $el.classList.remove('rounded-b');
+          }
+        });
+        this.$watch('$store.main.isScrolled', (value) => {
+          if ({{ is_collection_or_blog | json }}) {
+            if (!value) {
+              $el.classList.add('rounded-b');
+            }
+          }
+        });
+      }
+    }"
+    x-init="handleInit()"
+  >
+    <div class="banner-text">
+      {% comment %} CRO: Announcement Banner Message {% endcomment %}
+      {% if template.name == "index" %}
+        {{ section.settings.announcement_banner_text_home }}
+      {% else %}
+        {% if section.settings.announcement_banner_text_mobile == blank %}
+          {{ section.settings.announcement_banner_text }}
+        {% else %}
+          <div class="banner-text__desktop">
+            {{ section.settings.announcement_banner_text }}
+          </div>
+          <div class="banner-text__mobile">
+            {{ section.settings.announcement_banner_text_mobile }}
+          </div>
+          <style>
+            .banner-text__mobile{
+              display: none;
+            }
+            @media(max-width: 768px){
+                .banner-text__desktop{
+                display: none;
+              }
+                .banner-text__mobile{
+                display: block;
+              }
+            }
+          </style>
+        {% endif %}
+      {% endif %}
+    </div>
+    <button
+      @click="closeBanner"
+      class="p-2 absolute right-0.5 opacity-70 hover:opacity-100 transition-all duration-200
+        {% if is_collection_or_blog %}
+          {% if collection.metafields.custom.text_color == 'Dark' %} stroke-dark {% else %} stroke-white {% endif %} group-hover:stroke-dark
+        {% endif %}
+      "
+      {% unless is_collection_or_blog %}style="stroke: {{ section.settings.announcement_banner_text_color }};"{% endunless %}
+      >
+      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="inherit">
+        <g clip-path="url(#clip0_3012_1961)">
+          <path d="M7.8125 2.1875L2.1875 7.8125" stroke="inherit" stroke-linecap="square" stroke-linejoin="round"/>
+          <path d="M7.8125 7.8125L2.1875 2.1875" stroke="inherit" stroke-linecap="square" stroke-linejoin="round"/>
+        </g>
+        <defs>
+          <clipPath id="clip0_3012_1961">
+            <rect width="10" height="10" fill="white"/>
+          </clipPath>
+        </defs>
+      </svg>
+    </button>
+  </div>
+</div>

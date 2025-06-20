@@ -1,0 +1,757 @@
+{
+  "sections": {
+    "e7f3b678-ff0f-440d-ba0c-dcec0f03d643": {
+      "type": "component__hero-full-width",
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 768px) {.section-height-screen {min-height: auto; }}"
+      ],
+      "settings": {
+        "asset_type": "video",
+        "video_desktop": "shopify:\/\/files\/videos\/Homepage Origins Video Desktop (compressed).mp4",
+        "video_mobile": "shopify:\/\/files\/videos\/Homepage Origins Video Mobile (compressed).mp4",
+        "hide_for_abtest": false,
+        "heading": "Direct Trade Organic Teas from Off the Beaten Path",
+        "superscript": "DISCOVER",
+        "text_color": "#ffffff",
+        "button_text": "Explore Our Teas",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_color": "button__primary white",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_hero_dual_image_split_db64Jk": {
+      "type": "component__hero-dual-image-split",
+      "disabled": true,
+      "settings": {
+        "champion": "unset",
+        "variant": "button",
+        "image_one": "shopify:\/\/shop_images\/Screenshot_2024-09-24_at_9.30.58_AM_2.jpg",
+        "image_two": "shopify:\/\/shop_images\/image_25.jpg",
+        "banner_heading_1": "<h1>TEA IS FOR<\/h1>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 52,
+        "banner_heading_2": "<h1><strong>CELEBRATING<\/strong><\/h1>",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 52,
+        "banner_superscript": "<p>WINTERTIME TEAS<\/p>",
+        "text_one_size": 12,
+        "banner_superscript_two": "<p>Raise a cup to the vibrant flavors and uplifting rituals that make each moment worth savoring. Discover teas that bring joy to any celebration.<\/p>",
+        "text_two_size": 14,
+        "text_color": "#233747",
+        "button_text": "SHOP WINTER TEAS",
+        "button_text_size": 12,
+        "button_link": "shopify:\/\/collections\/winter-teas",
+        "button_colors": "rgba(0,0,0,0)",
+        "button_border_image": "shopify:\/\/shop_images\/gold_dd540477-98cd-4c1c-a288-c75688640179.jpg",
+        "button_border_color": "#ffffff",
+        "button_color": "button__primary",
+        "background_color": "rgba(0,0,0,0)",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "collection_list_image_title_AQQRLe": {
+      "type": "collection_list_image_title",
+      "disabled": true,
+      "custom_css": [
+        ".section-collection-list-mini {display: none;}",
+        "@media only screen and (max-width: 1024px) {.section-collection-list-mini {display: block; margin-top: 150px; margin-bottom: 15px; }}",
+        "@media only screen and (max-width: 1023px) {.section-collection-list-mini {display: block; margin-top: 120px; margin-bottom: 15px; }}",
+        "@media only screen and (max-width: 767px) {.section-collection-list-mini {margin-top: 83px; }}"
+      ],
+      "settings": {
+        "collection_list": [
+          "best-sellers",
+          "loose-leaf-teas",
+          "sachet-tea-bags",
+          "herbal-tea-botanicals",
+          "matcha-tea",
+          "green-tea",
+          "black-tea",
+          "chai-tea"
+        ]
+      }
+    },
+    "component_hero_full_width_J4cdfg": {
+      "type": "component__hero-full-width",
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Summer-Solstice-Sale-2025-Homepage-Hero-Desktop.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Summer-Solstice-Sale-2025-Homepage-Hero-Mobile.jpg",
+        "hide_for_abtest": false,
+        "heading": "",
+        "superscript": "",
+        "text_color": "#f5f4ed",
+        "button_text": "Shop the Sale",
+        "button_link": "shopify:\/\/pages\/shop-the-sale",
+        "button_color": "button__primary white filled",
+        "cta_orientation": "center",
+        "cta_orientation_vertical": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_hero_full_width_J4cUJi": {
+      "type": "component__hero-full-width",
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Desktop.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Mobile.png",
+        "hide_for_abtest": true,
+        "heading": "Embrace spring days with fresh tea rituals",
+        "superscript": "",
+        "text_color": "#ffffff",
+        "button_text": "Explore Garden Direct",
+        "button_link": "shopify:\/\/collections\/garden-direct-teas",
+        "button_color": "button__primary dark filled",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_rte_block_9Q4dm3": {
+      "type": "component__rte-block",
+      "custom_css": [
+        ".section-rich-text-block,h1 {display: block !important;}"
+      ],
+      "settings": {
+        "rich_text": "<p><\/p><p><\/p><h6>WELCOME TO THE RISHI TEA ShOP<\/h6><h4>Purveyor Of Direct Trade, Organic Teas<\/h4><h4>From <em>Off The Beaten Path<\/em><\/h4>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-center",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "cw_customizable_slider_nw9jmD": {
+      "type": "cw-customizable-slider",
+      "blocks": {
+        "collection_F3GqiC": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/sachet-tea-bags",
+            "collection_image": "shopify:\/\/shop_images\/img_1.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Sachets",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        },
+        "collection_dVmXbY": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/matcha-tea",
+            "collection_image": "shopify:\/\/shop_images\/Matcha-Capp-scaled_800x_9d63c56e-fee2-4fc8-ab24-254cfe3bd9b4.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Matcha",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        },
+        "collection_3j4TA9": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/loose-leaf-teas",
+            "collection_image": "shopify:\/\/shop_images\/img.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Loose Leaf",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        }
+      },
+      "block_order": [
+        "collection_F3GqiC",
+        "collection_dVmXbY",
+        "collection_3j4TA9"
+      ],
+      "settings": {
+        "hide_header": true,
+        "champion": "old",
+        "button_image": "shopify:\/\/shop_images\/ico.svg",
+        "header": "",
+        "font_color": "#eeeeee",
+        "background_color": "#ffffff",
+        "padding_bottom": "none"
+      }
+    },
+    "81ee1ae6-36ca-42a8-8908-33148343c630": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 48,
+        "height_mobile": 48
+      }
+    },
+    "992506f1-88b2-4e35-b148-7867d6799e2f": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_wApdkq": {
+          "type": "collection",
+          "settings": {
+            "title": "Best Sellers",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        },
+        "8129c81d-7050-4a5c-ba0b-46f072a287c8": {
+          "type": "collection",
+          "settings": {
+            "title": "New",
+            "desc": "",
+            "collection": "new-arrivals",
+            "products": []
+          }
+        },
+        "collection_iAqxXw": {
+          "type": "collection",
+          "settings": {
+            "title": "Iced Teas",
+            "desc": "",
+            "collection": "iced-teas",
+            "products": []
+          }
+        },
+        "26a79029-7de0-4be8-ba98-1a7c594673dc": {
+          "type": "collection",
+          "settings": {
+            "title": "Caffeine Free",
+            "desc": "",
+            "collection": "caffeine-free",
+            "products": []
+          }
+        },
+        "collection_kXtajN": {
+          "type": "collection",
+          "settings": {
+            "title": "Gifts",
+            "desc": "",
+            "collection": "all-gifts",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_wApdkq",
+        "8129c81d-7050-4a5c-ba0b-46f072a287c8",
+        "collection_iAqxXw",
+        "26a79029-7de0-4be8-ba98-1a7c594673dc",
+        "collection_kXtajN"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Featured Selections",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "407c80a0-dedd-4c04-8f5d-8b86055f4fa9": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "cw_customizable_slider_VFTNQz": {
+      "type": "cw-customizable-slider",
+      "blocks": {
+        "collection_7YVFJ9": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/sachet-tea-bags",
+            "collection_image": "shopify:\/\/shop_images\/img_1.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Sachets",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        },
+        "collection_hYPEUA": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/matcha-tea",
+            "collection_image": "shopify:\/\/shop_images\/Matcha-Capp-scaled_800x_9d63c56e-fee2-4fc8-ab24-254cfe3bd9b4.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Matcha",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        },
+        "collection_XTY4xt": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#ffffff",
+            "collection_item": "shopify:\/\/collections\/loose-leaf-teas",
+            "collection_image": "shopify:\/\/shop_images\/img.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Shop All Loose Leaf",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#283645"
+          }
+        }
+      },
+      "block_order": [
+        "collection_7YVFJ9",
+        "collection_hYPEUA",
+        "collection_XTY4xt"
+      ],
+      "settings": {
+        "hide_header": true,
+        "champion": "new",
+        "button_image": "shopify:\/\/shop_images\/ico.svg",
+        "header": "",
+        "font_color": "#eeeeee",
+        "background_color": "#ffffff",
+        "padding_bottom": "none"
+      }
+    },
+    "b2fbbec4-ddb3-4276-997c-12fecb27e3fb": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h5>Begin Your Tea Journey with Rishi<\/h5>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "6aaeb117-5f5f-4911-88c5-c76fbc53bb81": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "7c37b8ef-d626-49b3-b4ea-0706a3b1f362": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Certified-Organic.jpg",
+            "title": "Certified Organic",
+            "copy": "<p>Organic teas are healthier for the planet and people who grow, craft and enjoy steeping them. That's why over 95% of Rishi's ingredients are <a href=\"https:\/\/rishi-tea.com\/collections\/organic-teas\">certified organic<\/a>.<\/p>"
+          }
+        },
+        "766be9b1-4655-4d4d-b734-686ecea4bc84": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Direct-Trade_e338b2a1-8afa-40d1-a5fc-f56d43ed0c26.jpg",
+            "title": "Direct Trade",
+            "copy": "<p>Ethically sourced directly from artisan tea and botanical farmers around the world. Our <a href=\"https:\/\/rishi-tea.com\/blogs\/journal\/direct-trade-tea-botanicals\">deep relationships<\/a> are the foundation of the authentic tea experiences you can expect from Rishi.<\/p>"
+          }
+        },
+        "5566922e-8a88-4cf1-ac5a-6226801150f7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Beautiful-Ingredients.jpg",
+            "title": "Beautiful Ingredients",
+            "copy": "<p>Rishi teas are inspired by equal parts: ancient herbal medicinal traditions and modern culinary innovation. Discover <a href=\"https:\/\/rishi-tea.com\/collections\/new-arrivals\">new teas<\/a> and botanicals in exciting, fresh and artfully crafted blends.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "7c37b8ef-d626-49b3-b4ea-0706a3b1f362",
+        "766be9b1-4655-4d4d-b734-686ecea4bc84",
+        "5566922e-8a88-4cf1-ac5a-6226801150f7"
+      ],
+      "custom_css": [
+        "p a {text-decoration: underline;}"
+      ],
+      "settings": {
+        "full_width": false,
+        "padding_bottom": "small"
+      }
+    },
+    "rebuy_carousel_hHrnKn": {
+      "type": "rebuy-carousel",
+      "settings": {
+        "widget_indentifier": "146850",
+        "widget_collection_link": "https:\/\/rishi-tea.com\/collections\/best-sellers"
+      }
+    },
+    "001249ba-cc6a-46e4-9a39-19f4aac697cb": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "04bedae4-9c1a-4306-8913-1ba31bce6b8d": {
+      "type": "component__reviews-carousel",
+      "blocks": {
+        "f952e430-80e6-4322-9db7-2c93447bf629": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is by far the best Earl Grey tea I have had. I drink a lot of tea and only drink Rishi Earl Grey. You will love the flavor. \"<\/p>",
+            "attribution": "Marshall",
+            "rating": "5",
+            "product": "organic-earl-grey-supreme-black-tea"
+          }
+        },
+        "review_P6BcFq": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is my everyday matcha for lattes and I've ordered it several times already. Excellent quality for lattes; it is smooth and delicious with a vibrant color. It is a game changer. Highly recommend this product.\"<\/p>",
+            "attribution": "Anne",
+            "rating": "5",
+            "product": "organic-barista-matcha"
+          }
+        },
+        "249c0e3f-8413-44be-96fd-ee7df1d79622": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I love this tea - the richness of it is amazing, and it relaxes me with the ginger and turmeric. Such a winner :)\"<\/p>",
+            "attribution": "Kayla",
+            "rating": "5",
+            "product": "organic-turmeric-ginger-teabag-sachets"
+          }
+        },
+        "1f8adec0-7cbf-43c9-a898-a14e3dd293fa": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I don't believe there is a better green tea you can get in a bag. The evidence is in the bright, even, grassy green color this tea makes.\"<\/p>",
+            "attribution": "JD",
+            "rating": "5",
+            "product": "organic-matcha-super-green-teabag-sachets-50-count"
+          }
+        },
+        "e64b062a-f681-4aac-a32f-a1a763b20a4c": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is seriously the BEST chai concentrate out there. It's incredible and has such a great spice. I'll never go back to another brand.\"<\/p>",
+            "attribution": "Courtney",
+            "rating": "5",
+            "product": "organic-masala-chai-concentrate"
+          }
+        },
+        "c7b252f2-e60e-4724-844d-825aebe9bc2c": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This tea is absolutely amazing! I feel immediate uplifting effects after consuming. Rishi has the best quality tea that I have found on any shelf thus far.\"<\/p>",
+            "attribution": "Tia",
+            "rating": "5",
+            "product": "organic-blueberry-hibiscus-teabag-sachets-50-count"
+          }
+        },
+        "b0967017-f28c-40f7-93fe-02e1ab4edb8e": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is my first tasting of oolong tea and I'm in love! It's flavor is delicate yet robust and floral. Absolutely delicious, my new favorite tea.\"<\/p>",
+            "attribution": "Amber",
+            "rating": "5",
+            "product": "iron-goddess-of-mercy-oolong-tea"
+          }
+        },
+        "73eeeff0-19e5-402f-83c1-18f5c0a8c9ae": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"Delicious and satisfying. It's delicate enough to drink without doctoring but also bold enough to hold up to cream and honey. An absolute delight.\"<\/p>",
+            "attribution": "Star",
+            "rating": "5",
+            "product": "organic-golden-yunnan-black-tea"
+          }
+        }
+      },
+      "block_order": [
+        "f952e430-80e6-4322-9db7-2c93447bf629",
+        "review_P6BcFq",
+        "249c0e3f-8413-44be-96fd-ee7df1d79622",
+        "1f8adec0-7cbf-43c9-a898-a14e3dd293fa",
+        "e64b062a-f681-4aac-a32f-a1a763b20a4c",
+        "c7b252f2-e60e-4724-844d-825aebe9bc2c",
+        "b0967017-f28c-40f7-93fe-02e1ab4edb8e",
+        "73eeeff0-19e5-402f-83c1-18f5c0a8c9ae"
+      ],
+      "settings": {
+        "superscript": "Reviews",
+        "header": "What Rishi Tea Drinkers \n          Are Saying",
+        "background_color": "#33432e",
+        "padding_bottom": "none",
+        "button_text": "Shop Now",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_color": "button__primary white"
+      }
+    },
+    "fb0e1f0e-aa48-45bf-b7f3-49e756fe3e00": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "component_product_carousel_tabs_GWMM7m": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_4GekjK": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "summer-teas",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_4GekjK"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Summer Teas",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "78058d83-57f9-458d-81af-60aa6f80b002": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 68,
+        "height_mobile": 60
+      }
+    },
+    "b247de15-4a6f-49a2-9867-a3f191be9969": {
+      "type": "component__collection-list",
+      "blocks": {
+        "27c66018-b58b-4965-be7f-0d46ed1d631c": {
+          "type": "collection",
+          "settings": {
+            "collection": "black-tea",
+            "description": "<p>\"Black Tea,\" as it's called in the West, is known as <em>Hong Cha <\/em>or \"Red Tea\" in Asia due to the reddish pigments that are produced when the tea leaves are rolled and <em>oxidized<\/em>.<\/p>",
+            "alt_title": "Black & Red",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Black_Tea.jpg",
+            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-EnglishBreakfast-Infusion.jpg"
+          }
+        },
+        "a2a819dc-8ae2-4715-b07a-cb9730f0b83f": {
+          "type": "collection",
+          "settings": {
+            "collection": "herbal-tea-botanicals",
+            "description": "<p>Premium <em>botanicals<\/em> including roots, fruits, flowers, seeds, barks, stems and <em>leaves<\/em> sourced from organic farms around the world. Rishi's Botanical blends are inspired by our travels and passion for <em>herbalism<\/em> and the <em>culinary arts<\/em>.<\/p>",
+            "alt_title": "Botanical",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Botanical_Herbal_Tea.jpg"
+          }
+        },
+        "9adaef89-0fbb-4715-bd47-118a8940924f": {
+          "type": "collection",
+          "settings": {
+            "collection": "chai-tea",
+            "description": "<p>Masala Chai, or \"mixed-spices tea\" originated in India and is traditionally prepared by <em>simmering<\/em> tea and spices in water, milk to create a <em>rich<\/em>, <em>comforting <\/em>cup sweetened to taste.<\/p>",
+            "alt_title": "",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Warming_Spicy_Teas.jpg",
+            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-SpicyMasalaChai-Infusion.jpg"
+          }
+        },
+        "7c95e0f3-748a-42fc-93a5-89f4a99ee823": {
+          "type": "collection",
+          "settings": {
+            "collection": "green-tea",
+            "description": "<p>The <em>least oxidized<\/em> of all tea types, Green Tea is crafted with the application of heat in a step called <em>Sha Qing <\/em>or \"firing\" which halts the enzyme that causes oxidation and locks in the green leaf color.<\/p>",
+            "alt_title": "Green",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Green_Tea.jpg",
+            "tea_image": "shopify:\/\/shop_images\/original_250e364c110adf66dd710850da86e12b1440x1150_ac484d3e-75ed-4bd2-a327-f2ec6b05b2a7.png"
+          }
+        },
+        "96b63b10-ee97-4fa5-9d2d-8021eafc2920": {
+          "type": "collection",
+          "settings": {
+            "collection": "matcha-tea",
+            "description": "<p>Matcha is the <em>shade grown<\/em>, <em>stone ground <\/em>green tea powder of Japan. Matcha is special in that the entire tea leaf is consumed, giving <em>clean energy<\/em> balanced with a <em>sense of focus<\/em> attributed to the amino acid L-theanine.<\/p>",
+            "alt_title": "Matcha",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Matcha_Tea.jpg",
+            "tea_image": "shopify:\/\/shop_images\/ma30-rp_tsujisans-matcha-asahi-looseleaf.jpg"
+          }
+        },
+        "288108ae-e9d9-4b40-88e1-aeecc059f8d6": {
+          "type": "collection",
+          "settings": {
+            "collection": "oolong-tea",
+            "description": "<p>Oolong Teas are “semi-oxidized\" through <em>artisanal crafting<\/em> techniques, and are highly sought-after by tea connoisseurs for their wonderfully <em>complex aromatic <\/em>profiles.<\/p>",
+            "alt_title": "Oolong",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-IronGoddessofMercy-LS-1.jpg",
+            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-IronGoddessofMercy-Infusion.jpg"
+          }
+        },
+        "2f872845-1b15-4c18-96ab-48c97d99dfdc": {
+          "type": "collection",
+          "settings": {
+            "collection": "puer-tea",
+            "description": "<p>Dark Teas undergo special kinds of <em>fermentation <\/em>resulting in <em>beneficial transformations<\/em> of tea leaf polyphenols and robust, pungent flavors. The most popular style, Pu'er Tea, is produced with sun-dried green tea grown from <em>ancient heirloom<\/em> broad leaf tea trees.<\/p>",
+            "alt_title": "Pu'er & Dark",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Puer_Tea.jpg",
+            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-GoldenYunnan-Infusion.jpg"
+          }
+        },
+        "ce5ba475-a8b9-4ee5-880a-604d5f4e0cc4": {
+          "type": "collection",
+          "settings": {
+            "collection": "white-tea",
+            "description": "<p>Picked in small batches exclusively in the early spring, White Teas are coated in s<em>ilvery-white<\/em> trichomes. Known as the <em>Scholar's Tea, <\/em>white teas inspire with fresh energy and <em>sweetness<\/em> of spring.<\/p>",
+            "alt_title": "White",
+            "lifestyle_image": "shopify:\/\/shop_images\/Collection_White_Tea.jpg",
+            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-Ginger-Infusion.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "27c66018-b58b-4965-be7f-0d46ed1d631c",
+        "a2a819dc-8ae2-4715-b07a-cb9730f0b83f",
+        "9adaef89-0fbb-4715-bd47-118a8940924f",
+        "7c95e0f3-748a-42fc-93a5-89f4a99ee823",
+        "96b63b10-ee97-4fa5-9d2d-8021eafc2920",
+        "288108ae-e9d9-4b40-88e1-aeecc059f8d6",
+        "2f872845-1b15-4c18-96ab-48c97d99dfdc",
+        "ce5ba475-a8b9-4ee5-880a-604d5f4e0cc4"
+      ],
+      "settings": {
+        "variant": "arrow",
+        "header": "Explore our Teas",
+        "background_color": "#283645",
+        "text_color": "#ffffff",
+        "accent_color": "light",
+        "padding_bottom": "none"
+      }
+    },
+    "dac5db11-a012-4d09-a3e8-fe102fa6b90a": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 48,
+        "height_mobile": 48
+      }
+    },
+    "2f2ee58e-6845-4366-ab4b-627ef97588a4": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "bf7ab947-3a54-4dce-b1a3-5a5e004c929c": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "garden-direct-teas",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "bf7ab947-3a54-4dce-b1a3-5a5e004c929c"
+      ],
+      "settings": {
+        "layout": "panel",
+        "heading": "Garden Direct Teas",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "Seasonal single origin selections",
+        "panel_desc": "<p>Our Garden Direct Teas are the most exquisite teas available in our store. We carefully curate the highest quality examples of these limited edition teas, reflecting the unique environment and terroir of the regions these teas are sourced from.<\/p>",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "4b3e8dc7-bbe3-474e-ad67-a03f219d6a19": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 80,
+        "height_mobile": 68
+      }
+    },
+    "483942f5-4e3b-4696-aa11-150e85349c57": {
+      "type": "component__image-text-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Joush_Junlge_Tea_Plant.jpg",
+        "richtext": "<p>               Rishi is guided by a natural spirit of exploration – selecting, importing and making the world's highest quality teas and botanicals, all while cultivating a wellspring of story, education and inspiration for our growing community of curious tea drinkers.<\/p>",
+        "image_caption": "<p><em>Our founder & CEO Joshua Kaiser hiking in Southern Mexico's Tamazunchale region where our organic vanilla is grown in wild jungle forest gardens.<\/em><\/p>",
+        "btn_label": "Discover the Rishi Story",
+        "btn_url": "https:\/\/rishi-tea.com\/pages\/about",
+        "flip_orientation": false,
+        "padding_bottom": "small"
+      }
+    },
+    "4d78a388-89fb-4a5b-854e-ec917372d012": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "https:\/\/www.instagram.com\/rishitea\/",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "e7f3b678-ff0f-440d-ba0c-dcec0f03d643",
+    "component_hero_dual_image_split_db64Jk",
+    "collection_list_image_title_AQQRLe",
+    "component_hero_full_width_J4cdfg",
+    "component_hero_full_width_J4cUJi",
+    "component_rte_block_9Q4dm3",
+    "cw_customizable_slider_nw9jmD",
+    "81ee1ae6-36ca-42a8-8908-33148343c630",
+    "992506f1-88b2-4e35-b148-7867d6799e2f",
+    "407c80a0-dedd-4c04-8f5d-8b86055f4fa9",
+    "cw_customizable_slider_VFTNQz",
+    "b2fbbec4-ddb3-4276-997c-12fecb27e3fb",
+    "6aaeb117-5f5f-4911-88c5-c76fbc53bb81",
+    "rebuy_carousel_hHrnKn",
+    "001249ba-cc6a-46e4-9a39-19f4aac697cb",
+    "04bedae4-9c1a-4306-8913-1ba31bce6b8d",
+    "fb0e1f0e-aa48-45bf-b7f3-49e756fe3e00",
+    "component_product_carousel_tabs_GWMM7m",
+    "78058d83-57f9-458d-81af-60aa6f80b002",
+    "b247de15-4a6f-49a2-9867-a3f191be9969",
+    "dac5db11-a012-4d09-a3e8-fe102fa6b90a",
+    "2f2ee58e-6845-4366-ab4b-627ef97588a4",
+    "4b3e8dc7-bbe3-474e-ad67-a03f219d6a19",
+    "483942f5-4e3b-4696-aa11-150e85349c57",
+    "4d78a388-89fb-4a5b-854e-ec917372d012"
+  ]
+}

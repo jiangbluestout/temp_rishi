@@ -1,0 +1,181 @@
+{
+  "sections": {
+    "hero": {
+      "type": "product-hero",
+      "settings": {
+        "title": "",
+        "buy_box_testimonials": "{{ product.metafields.custom.buy_box_testerminal | metafield_tag }}"
+      }
+    },
+    "b7eb4e20-756b-4540-a297-512ac3f1996f": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h2>How Tea Club Works<\/h2>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-center",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "d20d5147-f28a-4e8d-bedb-e5e7b55a9e0f": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "19aaa2ff-3944-470c-b770-70cd81a34214": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Tea_Club_Step_1.jpg",
+            "title": "Select Tea Type",
+            "copy": "<p>Pick between our curated categories of <a href=\"https:\/\/rishi-tea.com\/collections\/herbal-tea-botanicals\" title=\"https:\/\/rishi-tea.com\/collections\/herbal-tea-botanicals\">Caffeine-Free Botanical<\/a> teas, Light teas, Dark teas, or Rishi Favorites, a mix of different tea types.<\/p>"
+          }
+        },
+        "d1e3ab4f-f84b-4aab-afd3-c96bee70c74c": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Tea_Club_Step_2.jpg",
+            "title": "Select Length",
+            "copy": "<p>Choose how often to receive your Tea Club subscription — every 3 months or 6 months.<\/p>"
+          }
+        },
+        "1ba77210-361a-431b-b6cd-802afc509a50": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Tea_Club_Step_3.jpg",
+            "title": "Select Recipient",
+            "copy": "<p>Add the subscription to your cart to purchase it for yourself, or insert your recipient’s email address to gift the subscription to your favorite tea lover!<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "19aaa2ff-3944-470c-b770-70cd81a34214",
+        "d1e3ab4f-f84b-4aab-afd3-c96bee70c74c",
+        "1ba77210-361a-431b-b6cd-802afc509a50"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "small"
+      }
+    },
+    "components": {
+      "type": "product__sections",
+      "custom_css": [
+        "p a {text-decoration: underline;}",
+        "@media (min-width: 768px) {.rte.indent h2:first-child {padding-left: 120px; }}",
+        ".rte.indent h2:first-child {padding-left: 60px;}",
+        "@media (min-width: 768px) {.rte.indent h2 {font-size: 52px !important; line-height: 1; letter-spacing: 0.01em; }}",
+        ".rte.indent h2 {font-family: ivypresto-headline, ui-serif, serif; flex-wrap: wrap; font-weight: 100; line-height: 1.2; font-size: 28px;}"
+      ],
+      "settings": {
+        "collection": "best-sellers",
+        "no_reviews_text": "Customer Reviews"
+      }
+    },
+    "7b1c2f60-e83a-450a-a36a-c2f4e0178aa2": {
+      "type": "faq-alpha",
+      "blocks": {
+        "9e97d6a1-b456-46f3-bd21-ea3d232f7f0f": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I gift Rishi Tea Club?",
+            "answer": "<p>This subscription makes a great gift! After selecting the tea type and duration, you have the option to add your gift recipient’s email address, and a personalized message that welcomes them to the Rishi Tea subscription. During checkout, you will need to enter the gift recipient’s shipping address before completing your purchase for the teas of the month to be sent to the proper address.<\/p>"
+          }
+        },
+        "6457f857-c853-4226-b494-53e285897e92": {
+          "type": "faq",
+          "settings": {
+            "title": "Can I select or know the teas I will receive?",
+            "answer": "<p>The teas in this selection are specially curated for the club, so each month will be a surprise delivery of tea within the tea type program you select. Based on your selected tea category, you will receive either Botanical Teas, Light Teas, Dark Teas, or a wide selection of Rishi Favorites. Tea selections may be subject to change, but we guarantee that each month you’re subscribed will be a different, unique tea.<\/p>"
+          }
+        },
+        "d9246940-de86-4598-ab0c-b40e8acd0595": {
+          "type": "faq",
+          "settings": {
+            "title": "How much tea will I receive each month?",
+            "answer": "<p>Our monthly deliveries are often 1\/4 pound (4 oz) of tea, but may be in smaller 50-100g packages of our most precious premium teas. The number of servings per bag can vary depending on the size of the bag and the amount of tea used for each serving. In general, we recommend <a href=\"https:\/\/rishi-tea.com\/collections\/loose-leaf-teas\">Rishi Loose Leaf Teas<\/a> be measured at 1 tablespoon (4-5g) per 8 ounces of water. A quarter pound bag typically yields about 20 – 30 servings. One of the joys of loose leaf tea is that you can re-infuse the tea leaves multiple times during each brewing session. Check the label and product description online for specific brewing tips for each category and type of tea.<\/p>"
+          }
+        },
+        "6b3d34f1-bcac-4ebb-9ff9-450b6b2ed75f": {
+          "type": "faq",
+          "settings": {
+            "title": "Do monthly tea subscriptions auto-renew?",
+            "answer": "<p>No, this subscription is pre-paid and does not auto-renew. If you would like to continue receiving Tea Club orders after your subscription period has ended, you must purchase a new subscription.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9e97d6a1-b456-46f3-bd21-ea3d232f7f0f",
+        "6457f857-c853-4226-b494-53e285897e92",
+        "d9246940-de86-4598-ab0c-b40e8acd0595",
+        "6b3d34f1-bcac-4ebb-9ff9-450b6b2ed75f"
+      ],
+      "custom_css": [
+        "p a {text-decoration: underline;}"
+      ],
+      "settings": {
+        "category": "FAQs"
+      }
+    },
+    "bc3e4e33-c387-43c5-aa8f-50e86eac6fe1": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "2ab45b75-d1df-47ae-a73b-cb7eed71ad9a": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h3>Rishi Tea Club Terms<\/h3><p><\/p><h6>All Rishi Tea Club subscriptions are prepaid and do not auto-renew after the subscribed months are complete. Tea selection is based on availability and is subject to change without notice. No returns or exchanges. Rishi Tea Club is only available to domestic US addresses at this time, and discounts do not apply. If purchasing as a gift, please select your recipient's shipping address at checkout and order any additional products for yourself on a separate order.<\/h6>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "abf9b0f8-9225-4274-96d6-8275e072b299": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "504fb1de-d5d5-446b-9f1e-12b08c2b7e63": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "all-gifts",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "504fb1de-d5d5-446b-9f1e-12b08c2b7e63"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "All Tea Gifts",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "medium",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "b7eb4e20-756b-4540-a297-512ac3f1996f",
+    "d20d5147-f28a-4e8d-bedb-e5e7b55a9e0f",
+    "components",
+    "7b1c2f60-e83a-450a-a36a-c2f4e0178aa2",
+    "bc3e4e33-c387-43c5-aa8f-50e86eac6fe1",
+    "2ab45b75-d1df-47ae-a73b-cb7eed71ad9a",
+    "abf9b0f8-9225-4274-96d6-8275e072b299"
+  ]
+}

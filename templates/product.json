@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "product-hero",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "title": "",
+        "buy_box_testimonials": "{{ product.metafields.custom.buy_box_testerminal | metafield_tag }}"
+      }
+    },
+    "components": {
+      "type": "product__sections",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "collection": "best-sellers",
+        "no_reviews_text": "Customer Reviews"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "components"
+  ]
+}

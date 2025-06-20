@@ -1,0 +1,62 @@
+{% if product.metafields.custom.product_redirect_url %}
+  <script>
+      window.location.href = "{{ product.metafields.custom.product_redirect_url }}";
+  </script>
+{% endif %}
+
+{% unless activeVariant %}
+  {% assign activeVariant = product.selected_or_first_available_variant %}
+{% endunless %}
+
+{%- capture productCardVariants -%}
+  {%- render 'product__hydrate-variants', product: product, activeVariant: activeVariant -%}
+{%- endcapture -%}
+
+<div
+  class="grid grid-cols-6 lg:grid-cols-12 lg:gap-5 pb-16 md:pb-30"
+  x-init="$store.main.setHeaderColors('#FFF', ''); $watch('$store.main.isScrolled', value => value ? $store.main.setHeaderColors('#F7F5F0') : $store.main.setHeaderColors('#FFF'))"
+  x-data="productForm({{ productCardVariants | strip }}, {{ activeVariant.id }}, true)"
+>
+  <div class="col-span-6 lg:section-p-x">
+    {% render 'product__image-gallery-b', product: product %}
+  </div>
+  <div
+    class="col-span-6 section-p-x"
+    x-data="{
+      showStickyAtc: false,
+    }"
+    x-cloak
+  >
+    {%- if product.gift_card? -%}
+      {% render 'product__form-gift-card', product: product %}
+      {% render 'product__sticky-atc-giftcard', product: product %}
+      {% render 'product__sticky-atc-giftcard-mobile', product: product %}
+    {% else %}
+      <h1 style="display:none;">{{ product.title }}</h1>
+      {% render 'product__form', product: product, section: section %}
+      {% render 'product__sticky-atc', product: product %}
+      {% render 'product__sticky-atc-mobile', product: product %}
+    {%- endif -%}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Product | Hero",
+  "tag": "section",
+  "class": "section-product-hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "richtext",
+      "label": "Buy Box Testimonials",
+      "id": "buy_box_testimonials"
+    }
+  ]
+}
+{% endschema %}

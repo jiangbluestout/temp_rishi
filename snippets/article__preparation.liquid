@@ -1,0 +1,52 @@
+<section class="section-p-x section-p-b medium">
+  <div class="section-container tight">
+    {% if data.heading != blank and data.description != blank %}
+      <div
+        class="grid md:grid-cols-8 gap-x-3 md:border-y border-dark/25"
+        x-data="{ fadeIn: false }"
+        x-intersect.threshold.10="fadeIn = true"
+        :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+      >
+        <div class="md:hidden pb-4">
+          {% if data.image != blank %}
+            <img
+              class="rounded-4"
+              src="{{ data.image | img_url: '800x' }}"
+              alt="{{ data.image.alt }}"
+              loading="lazy"
+              draggable="false"
+            />
+            {% assign caption = data.image_caption | metafield_tag %}
+            {% render 'image-caption', caption: caption, classes: 'text-right' %}
+          {% endif %}
+        </div>
+        <div class="md:col-span-3 md:pt-14 px-2 pb-12">
+          {% if data.heading != blank %}
+            <div class="font-serif font-100 text-xl leading-1.2 tracking-4pc pb-5 md:pb-6 pr-[10%] md:pr-[10%]">{{ data.heading | metafield_tag }}</div>
+          {% endif %}
+          {% if data.description != blank %}
+            <div class="rte prep para-sm">{{ data.description | metafield_tag }}</div>
+          {% endif %}
+        </div>
+        <div class="hidden md:flex flex-col md:col-span-5 py-12 items-end">
+          {% if data.image != blank %}
+              <img
+                class="rounded-4 w-fit max-h-[480px] xl:max-h-[550px]"
+                src="{{ data.image | img_url: '1500x' }}"
+                alt="{{ data.image.alt }}"
+                loading="lazy"
+                draggable="false"
+              />
+              {% assign caption = data.image_caption | metafield_tag %}
+              {% render 'image-caption', caption: caption, classes: 'text-right' %}
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <div class="w-full border-b border-dark/25"></div>
+    {% endif %}
+    {% for step in data.steps.value %}
+      {% render 'article__preparation-step', data: step, index: forloop.index %}
+    {% endfor  %}
+  </div>
+</section>

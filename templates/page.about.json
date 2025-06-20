@@ -1,0 +1,258 @@
+{
+  "sections": {
+    "26fc1e35-2d3a-423f-9734-53c177623983": {
+      "type": "component__hero-dual-image-split",
+      "settings": {
+        "champion": "unset",
+        "variant": "icon",
+        "image_one": "shopify:\/\/shop_images\/Rishi-About-Banner.jpg",
+        "icon": "shopify:\/\/shop_images\/Group_13.png",
+        "banner_heading_1": "<p>rishi•i \/ ’riSHē noun<\/p>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 52,
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 52,
+        "banner_superscript": "",
+        "text_one_size": 12,
+        "banner_superscript_two": "<p>Sanskrit: One who is a seer, sage or seeker of truth.<\/p>",
+        "text_two_size": 16,
+        "text_color": "#ffffff",
+        "button_text": "",
+        "button_text_size": 12,
+        "button_link": "",
+        "button_colors": "#000000",
+        "button_border_color": "#fff",
+        "button_color": "button__primary white",
+        "background_color": "#283645",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "aa6a2c1d-758f-496f-87d4-8ff34a946dc6": {
+      "type": "component__image-rte-split",
+      "custom_css": [
+        "p a {text-decoration: underline;}"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-About-Joshua_6912d2f0-9b9e-4f84-b780-7bbb59d93a39.jpg",
+        "richtext": "<h6>About Us<\/h6><p>Rishi Tea was founded on the commitment to set the standard for quality and expand the awareness of exceptional tea and its rich, inspirational tradition. <\/p><p><\/p><p>We offer <a href=\"\/collections\/garden-direct-teas\" target=\"_blank\" title=\"Garden Direct\">premium tea<\/a> and botanicals imported directly from growers across the world and draw inspiration from ancient artisanal practices that use organic cultivation techniques as well as modern culinary innovation. We are the vanguard practitioners of tea and botanical arts.<\/p>",
+        "flip_orientation": false,
+        "horizontal_gap_size": "large",
+        "padding_bottom": "medium"
+      }
+    },
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h2>        Direct trade source of <em>organic<\/em>, <em>premium<\/em> teas and botanicals. We are selectors, importers and makers.<\/h2>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "section-container",
+        "alignment": "text-left",
+        "padding_right": 5,
+        "padding_left": 15,
+        "padding_bottom": "medium"
+      }
+    },
+    "bad094d8-9eb2-463b-955f-a2032d0a0d11": {
+      "type": "component__staggered-images-and-text",
+      "settings": {
+        "image_large": "shopify:\/\/shop_images\/ChiangdaoCarousel.jpg",
+        "image_small": "shopify:\/\/shop_images\/230624_Ruby_Oolong_28572.jpg",
+        "richtext": "<h6>Guided By Purpose<\/h6><p>Our commitment to sustainability is a core part of our mission that stems from the organic tea gardens where our teas and botanicals are harvested. Our firsthand experience in many tea-growing regions led to our heightened awareness of the dire need for social responsibility. <\/p><p><br\/>Rishi Tea was among the first to earn organic certification under the USDA’s Natural Organic Program in November of 2002.<\/p>",
+        "padding_bottom": "medium"
+      }
+    },
+    "4b9aaa3c-30d8-42d2-9343-467bba0ef4af": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "ce1f6275-4806-48a3-8023-0d3d18bc524d": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Organic_2.jpg",
+            "title": "Organic",
+            "copy": "<p>We believe that organic certified teas and herbs, grown without the use of agrochemicals like pesticides and fertilizers, are generally healthier for the environment, farmers and tea drinkers alike. We support growers who cultivate ecologically sustainable gardens in remote locations around the world.<\/p>"
+          }
+        },
+        "b8dc025b-ba69-4231-a1a9-7c7a5d3a5dd1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Direct-Trade.jpg",
+            "title": "Direct Trade",
+            "copy": "<p>Our practice of Direct Trade is not just a romance story or marketing gimmick: it is the very foundation of our quality control program. Our travel and hands-on work with farmers allows us to verify where, when and how our organic teas are grown and to offer traceability on each lot back to the farm<\/p>"
+          }
+        },
+        "c01bdd54-e20b-460d-b7a5-2e2b0428882c": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Culinary-Inspired.jpg",
+            "title": "Culinary Inspired",
+            "copy": "<p>Tea was originally a food and medicine long before it became a steeped beverage. It is only natural that our tea practice draws inspiration from numerous disciplines, including third wave coffee, cocktail mixology, sommeliers’ oenology, botanical apothecary, and the traditional culinary arts from global food cultures.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "ce1f6275-4806-48a3-8023-0d3d18bc524d",
+        "b8dc025b-ba69-4231-a1a9-7c7a5d3a5dd1",
+        "c01bdd54-e20b-460d-b7a5-2e2b0428882c"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "b77fa8aa-1f7d-48be-8a38-eea880dc7197": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-About-Joshua.jpg",
+        "richtext": "<h6>Our Beginnings<\/h6><h5>Rishi Tea began in 1997 when Joshua Kaiser, founder and tea buyer, recognized that the traditional handcrafted teas he grew so fond of during his travels in Asia were rarely available elsewhere. <\/h5><h5><br\/>Joshua felt that North American consumers would embrace artisan tea as they did single origin coffee and fine varietal wine. We travel thousands of miles each year to the diverse points of origin where our teas are harvested, maintaining the personal relationships we have developed over the years with farmers and artisans whose families have been making traditional teas for generations.<\/h5>",
+        "flip_orientation": false,
+        "horizontal_gap_size": "small",
+        "padding_bottom": "medium"
+      }
+    },
+    "a942707d-77f3-4b07-a78e-f543f23545f4": {
+      "type": "component__collection-list",
+      "blocks": {
+        "77446d96-c877-499d-9f36-2a83229ff9c2": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>We are a team devoted to traveling the most remote regions of the world to source and study tea and botanicals of rarefied quality and provenance. Our selection sets the standard.<\/p>",
+            "alt_title": "Selector",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-About-Selector.jpg"
+          }
+        },
+        "ea8bba9b-a4e6-4167-93e5-ddf8820104c0": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>We are a pioneer of the organic tea and botanicals which we import on a direct trade basis from artisan growers and specialist producers. Our global supply chain and enduring relationships are our core strengths.<\/p>",
+            "alt_title": "Importer",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-Importer.jpg"
+          }
+        },
+        "d565d8ef-8ee7-40b8-8c67-40711b868537": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>We make artful botanical products inspired by equal parts ancient herbal tradition and modern culinary innovation. By sharing our passion for the botanical and culinary arts we aim to be a wellspring of inspiration for your tea life.<\/p>",
+            "alt_title": "Maker",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-Maker-2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "77446d96-c877-499d-9f36-2a83229ff9c2",
+        "ea8bba9b-a4e6-4167-93e5-ddf8820104c0",
+        "d565d8ef-8ee7-40b8-8c67-40711b868537"
+      ],
+      "settings": {
+        "variant": "italic",
+        "header": "The Rishi Pillars",
+        "background_color": "#f7f5f0",
+        "text_color": "#283645",
+        "accent_color": "dark",
+        "padding_bottom": "medium"
+      }
+    },
+    "307aeb03-7608-4b7f-bbee-4173329fa7d1": {
+      "type": "component__large-newsletter-signup",
+      "settings": {
+        "heading": "Sign up For the Latest Stories and Recipes from Our Travels",
+        "padding_bottom": "medium"
+      }
+    },
+    "0534a73a-7ed1-4ebc-903a-0ec3816ba994": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "c41917b7-c03f-49fa-af52-90480c59c760": {
+          "type": "collection",
+          "settings": {
+            "collection": "clean-green-teas",
+            "overlay_color": "#ac9268",
+            "alt_title": "Healing",
+            "superscript": "Lorem Ipsum",
+            "count_label": "Teas"
+          }
+        },
+        "82a38e4a-49bc-49d6-a789-f867dc453faf": {
+          "type": "collection",
+          "settings": {
+            "collection": "green-tea",
+            "overlay_color": "#ac9268",
+            "alt_title": "Energizing",
+            "superscript": "Lorem Ipsum",
+            "count_label": "Teas"
+          }
+        },
+        "8b005783-ccce-44fa-9685-d0c20cab1a3c": {
+          "type": "collection",
+          "settings": {
+            "collection": "chai-tea",
+            "overlay_color": "#ac9268",
+            "alt_title": "Calming",
+            "superscript": "Lorem Ipsum",
+            "count_label": "Teas"
+          }
+        }
+      },
+      "block_order": [
+        "c41917b7-c03f-49fa-af52-90480c59c760",
+        "82a38e4a-49bc-49d6-a789-f867dc453faf",
+        "8b005783-ccce-44fa-9685-d0c20cab1a3c"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "<p>Discover <\/p><p><em>       Your <\/em>Tea<\/p>",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
+      }
+    },
+    "d824a171-c9bb-45f9-a028-f45129b63657": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "2607f95c-564f-4260-803a-314650812a17": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "2607f95c-564f-4260-803a-314650812a17"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Shop Best Sellers",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "medium",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "26fc1e35-2d3a-423f-9734-53c177623983",
+    "aa6a2c1d-758f-496f-87d4-8ff34a946dc6",
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2",
+    "bad094d8-9eb2-463b-955f-a2032d0a0d11",
+    "4b9aaa3c-30d8-42d2-9343-467bba0ef4af",
+    "b77fa8aa-1f7d-48be-8a38-eea880dc7197",
+    "a942707d-77f3-4b07-a78e-f543f23545f4",
+    "307aeb03-7608-4b7f-bbee-4173329fa7d1",
+    "0534a73a-7ed1-4ebc-903a-0ec3816ba994",
+    "d824a171-c9bb-45f9-a028-f45129b63657"
+  ]
+}

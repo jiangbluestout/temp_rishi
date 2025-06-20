@@ -1,0 +1,154 @@
+{
+  "sections": {
+    "10d01019-7768-4e65-977c-0709c2eb7683": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "Direct Trade",
+        "description": "",
+        "background_color": "#225446",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "312ff7f9-f022-4c27-af87-b2d9f0383ead": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 32,
+        "height_mobile": 0
+      }
+    },
+    "aa6a2c1d-758f-496f-87d4-8ff34a946dc6": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Origin_Tea_Farm_About_Picking.jpg",
+        "richtext": "<h6><\/h6><p><\/p><p><\/p><p>At Rishi Tea & Botanicals we set our own progressive standards for ethical trade and direct sourcing. Like wine, many teas come from heritage gardens with a storied legacy. This is not like purchasing a bulk commodity on the international market. Less than 2% of the global tea production meets the quality and the provenance that we import.<\/p><p><\/p><p>The farmers we work with are able to fetch a premium price and recognize that in following elevated agricultural and production standards they will receive a long-term, committed partnership from us. <\/p><p><\/p><p><\/p>",
+        "flip_orientation": false,
+        "horizontal_gap_size": "large",
+        "padding_bottom": "none"
+      }
+    },
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h2>        Our teas and botanicals are the result of these <em>authentic<\/em>, <em>trusting<\/em> partnerships built up over years of renewed business together<\/h2><h2><\/h2><h2><\/h2>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "section-container",
+        "alignment": "text-left",
+        "padding_right": 5,
+        "padding_left": 10,
+        "padding_bottom": "none"
+      }
+    },
+    "bad094d8-9eb2-463b-955f-a2032d0a0d11": {
+      "type": "component__staggered-images-and-text",
+      "settings": {
+        "image_large": "shopify:\/\/shop_images\/YunnanLilyBlackCarousel3.jpg",
+        "image_small": "shopify:\/\/shop_images\/Shan_Bai_Cha_Carousel_2_2.jpg",
+        "richtext": "<h6>WHY DIRECT TRADE?<\/h6><h6><\/h6><p>Throughout the year, our buyers travel to origin to meet with farmers, taste the fresh crop and work together in the fields. In some cases, we collaborate to create new styles of tea. By cutting out the middlemen we can leave 100% of the price paid for crops on the table of the growers who worked to bring that product to us.<\/p>",
+        "padding_bottom": "medium"
+      }
+    },
+    "25c0b952-2167-4493-9ddf-8ca0b0360305": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/WhitePeonyKingTeaCakeCarousel1.jpg",
+        "richtext": "<h6>DIRECT TRADE IMPACTS<\/h6><h6><\/h6><h5>1. Supports organic agriculture in heritage tea regions<\/h5><h5>2. Connects hundreds of small families to the organic tea market in the USA through Rishi supply chain and network<\/h5><h5>3. Imparts major support for developing tea origins of Thailand and Laos<\/h5><h5>4. Grants our audience access to Gran Cru, top quality teas and premium botanicals made by famous artisans<\/h5><h5>5. Consumers get the freshest taste and knowledge of origin and harvest<\/h5>",
+        "flip_orientation": true,
+        "horizontal_gap_size": "small",
+        "padding_bottom": "small"
+      }
+    },
+    "9f9d393f-cde1-4828-8883-8923e84abed5": {
+      "type": "component__rte-block",
+      "disabled": true,
+      "settings": {
+        "rich_text": "<h6>Our Commitment to Direct Trade<\/h6><p><\/p><p>We pay 5-10x the commodity prices for our teas and herbs to incentivize growers to focus their efforts on sustainable harvests of amazing organic quality. We recognize that high grade teas and herbs can only come from farmers that are passionate about their crops. By paying farmers equitable and beyond sustainable prices for their hard work and dedication to quality we ensure the best and freshest teas and herbs.<\/p><p>We help co-ops and farmers all over the world export according to USDA food safety and GMP (Good Manufacturing Practices) regulations so they can join our network and supply chain. By doing this we get the best products from remote areas that don’t typically have access to the food safety inspection and certifications needed to supply us in the USA. This dynamic and mutually beneficial relationship is what makes every offering, from loose leaf blends and chai concentrates to Sparkling Botanicals, the absolute pinnacle of quality and innovation.<\/p>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "medium"
+      }
+    },
+    "d5aae411-51b0-4de2-86b3-b9f6572ed352": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Direct-Trade-3_fb745607-7c19-40a5-bdf6-a20c86eb5d29.jpg",
+        "richtext": "<h6>Our Commitment to Direct Trade<\/h6><p><\/p><p>We pay 5-10x the commodity prices for our teas and herbs to incentivize growers to focus their efforts on sustainable harvests of amazing organic quality. We recognize that high grade teas and herbs can only come from farmers that are passionate about their crops. By paying farmers equitable and beyond sustainable prices for their hard work and dedication to quality we ensure the best and freshest teas and herbs.<\/p><p>We help co-ops and farmers all over the world export according to USDA food safety and GMP (Good Manufacturing Practices) regulations so they can join our network and supply chain. By doing this we get the best products from remote areas that don’t typically have access to the food safety inspection and certifications needed to supply us in the USA. This dynamic and mutually beneficial relationship is what makes every offering, from loose leaf blends and chai concentrates to Sparkling Botanicals, the absolute pinnacle of quality and innovation.<\/p>",
+        "flip_orientation": false,
+        "horizontal_gap_size": "large",
+        "padding_bottom": "medium"
+      }
+    },
+    "15acb6cf-2aca-4770-956c-b8a3a342a884": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "40df5ce5-3f7b-4268-b450-c390965f749c": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "garden-direct-teas",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "40df5ce5-3f7b-4268-b450-c390965f749c"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Shop Seasonal Garden Direct",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
+      }
+    },
+    "d824a171-c9bb-45f9-a028-f45129b63657": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "2607f95c-564f-4260-803a-314650812a17": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "2607f95c-564f-4260-803a-314650812a17"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Shop Best Sellers",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small"
+      }
+    },
+    "307aeb03-7608-4b7f-bbee-4173329fa7d1": {
+      "type": "component__large-newsletter-signup",
+      "disabled": true,
+      "settings": {
+        "heading": "Sign up For the Latest Stories and Recipes from Our Travels",
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "10d01019-7768-4e65-977c-0709c2eb7683",
+    "312ff7f9-f022-4c27-af87-b2d9f0383ead",
+    "aa6a2c1d-758f-496f-87d4-8ff34a946dc6",
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2",
+    "bad094d8-9eb2-463b-955f-a2032d0a0d11",
+    "25c0b952-2167-4493-9ddf-8ca0b0360305",
+    "9f9d393f-cde1-4828-8883-8923e84abed5",
+    "d5aae411-51b0-4de2-86b3-b9f6572ed352",
+    "15acb6cf-2aca-4770-956c-b8a3a342a884",
+    "d824a171-c9bb-45f9-a028-f45129b63657",
+    "307aeb03-7608-4b7f-bbee-4173329fa7d1"
+  ]
+}

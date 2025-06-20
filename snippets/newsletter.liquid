@@ -1,0 +1,30 @@
+<script src="{{ 'component-klaviyo-form.js' | asset_url }}" defer></script>
+
+<klaviyo-form>
+  <form x-data="{ active: false }" @click="active = true" @click.outside="active = false" class="max-w-md relative {% if center %} mx-auto {% endif %}">
+    <div class="{% if is_alt %} input__newsletter {% else %} input__primary {% endif %} w-full js-email-input-wrapper" :class="active && 'active'">
+      <input
+        required
+        type="email"
+        name="email"
+        placeholder="Enter Email"
+        class=""
+      >
+      {% if is_alt %}
+        <button class="submit" type="submit">
+          <svg width="21" height="8" viewBox="0 0 21 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.3536 4.35356C20.5488 4.15829 20.5488 3.84171 20.3536 3.64645L17.1716 0.464469C16.9763 0.269207 16.6597 0.269207 16.4645 0.464469C16.2692 0.659731 16.2692 0.976314 16.4645 1.17158L19.2929 4L16.4645 6.82843C16.2692 7.02369 16.2692 7.34027 16.4645 7.53554C16.6597 7.7308 16.9763 7.7308 17.1716 7.53554L20.3536 4.35356ZM-8.74228e-08 4.5L20 4.5L20 3.5L8.74228e-08 3.5L-8.74228e-08 4.5Z" fill="#A88667"/>
+          </svg>
+        </button>
+      {% else %}
+        <button class="submit" type="submit">
+          <svg xmlns="http://www.w3.org/2000/svg" width="21" height="12" viewBox="0 0 21 12" fill="none">
+            <path d="M20.5303 6.53033C20.8232 6.23744 20.8232 5.76256 20.5303 5.46967L15.7574 0.696699C15.4645 0.403806 14.9896 0.403806 14.6967 0.696699C14.4038 0.989593 14.4038 1.46447 14.6967 1.75736L18.9393 6L14.6967 10.2426C14.4038 10.5355 14.4038 11.0104 14.6967 11.3033C14.9896 11.5962 15.4645 11.5962 15.7574 11.3033L20.5303 6.53033ZM0 6.75L20 6.75V5.25L0 5.25L0 6.75Z" fill="#A88667"/>
+          </svg>
+        </button>
+      {% endif %}
+      </button>
+    </div>
+    <div class="js-email-error hidden absolute bottom-[-28px] uppercase font-sans text-[12px] tracking-[0.96px] font-[500] text-[#AF4F18] opacity-75">There was an error</div>
+  </form>
+</klaviyo-form>

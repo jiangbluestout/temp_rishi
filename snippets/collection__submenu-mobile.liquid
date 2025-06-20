@@ -1,0 +1,36 @@
+{% assign current_handle = collection.handle %}
+
+{% if submenu.links != blank %}
+  <nav aria-label="{{ parent_collection.metafields.custom.submenu_label }} Navigation Menu" class="flex xl:hidden flex-col items-start md:items-center py-1">
+    <h3 class="sr-only">{{ submenu_label }}</h3>
+    <h3 class="pb-2 opacity-60 para-xs hidden md:block" aria-hidden="true">{{ submenu_label }}</h3>
+    <div class="fade-right short w-full">
+      <div class="section-p-x max-w-[100vw] overflow-x-scroll">
+        <ul class="flex items-center justify-start md:justify-center py-1 md:py-1 mb-1">
+          {% for link in submenu.links %}
+            {% assign link_handle = link.url | split: '/' | last %}
+            <li
+              x-data="{
+                scrollIntoView() {
+                  $el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }"
+              {% if current_handle == link_handle %}
+                x-init="$nextTick(() => scrollIntoView())"
+              {% endif %}
+            >
+              <a
+                href="{{ link.url }}"
+                class="button__tab py-3 px-4 para-md font-400 whitespace-nowrap {% if current_handle == link_handle %} active {% endif %} {% if forloop.last %} mr-10 {% endif %}"
+              >
+                {{ link.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% else %}
+ <div class="h-4 lg:h-5 xl:hidden"></div>
+{% endif %}

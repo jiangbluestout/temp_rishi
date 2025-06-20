@@ -1,0 +1,44 @@
+{% render 'simple-header',
+  heading: section.settings.heading,
+  description: section.settings.description,
+  background_color: section.settings.background_color,
+  header_text_color: section.settings.header_text_color
+%}
+
+{% schema %}
+{
+  "name": "Simple Header",
+  "class": "section-simple-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "info": "Size formatting is disabled for this field."
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#283645"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Simple Header",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

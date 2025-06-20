@@ -1,0 +1,132 @@
+{% if product.metafields.custom.bottom_faqs != blank %}
+
+<section
+  x-data="{
+    fadeIn: false,
+
+  }"
+  x-intersect="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  class="transition-opacity duration-[1100ms] ease section-p-b medium"
+>
+  <div class="faq-cont rte page section-container">
+    {{ product.metafields.custom.bottom_faqs | metafield_tag }}
+  </div>
+  
+</section>
+
+{% endif %}
+
+<style>
+  .junip-no-reviews div:nth-child(1)::after {
+    content: "{{ section.settings.no_reviews_text }}";
+    font-family: ivypresto-headline;
+    font-size: 48px;
+    font-weight: 100;
+    line-height: 100%; /* 48px */
+    letter-spacing: 0.48px;
+    text-transform: capitalize;
+    display: block;
+    padding: 12px 12px 48px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .faq-cont h3{
+    margin-bottom: 20px;
+    
+  }
+  .faq-cont{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .metafield-rich_text_field h4  {
+    padding: 25px 0 !important;
+    border-bottom: 1px solid #28364526;
+   position: relative; 
+    padding-right: 15px;
+  }
+  .metafield-rich_text_field h4:after  {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -3px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-width: 4.3px 3.5px 0 3.5px;
+    border-color: #A88667 transparent transparent transparent;
+    border-style: solid;
+  }
+  .metafield-rich_text_field h4.active:after  {
+     
+border-width: 0 3.5px 4.3px 3.5px;
+border-color: transparent transparent #A88667 transparent;
+ 
+  }
+.metafield-rich_text_field h4.active {
+    border-bottom: 1px solid #fff;
+}
+
+.metafield-rich_text_field p.content_show {
+  transition: max-height 0.3s ease-out;
+  border-bottom: 1px solid #28364526;
+  padding-bottom: 10px !important;
+  display: block;
+}
+
+.metafield-rich_text_field p.content_hide, .metafield-rich_text_field p {
+    transition: max-height 0.3s ease-out;
+    overflow: hidden;
+    max-height: 0;
+   padding: 0 !important;
+}
+</style>
+
+<section
+  x-data="{
+    fadeIn: false,
+
+  }"
+  x-intersect="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  class="transition-opacity duration-[1100ms] ease section-p-b medium"
+>
+  {% render 'junip-product-review', product: product %}
+</section>
+  <script>
+ document.querySelectorAll('.metafield-rich_text_field h4').forEach(header => {
+    header.style.cursor = 'pointer'; // Makes h4 elements clickable
+
+    header.addEventListener('click', function() {
+        const content = this.nextElementSibling; // The paragraph following the h4
+
+        // Toggle the clicked content visibility and classes
+        if (content.classList.contains('content_show')) {
+            content.classList.remove('content_show');
+            content.classList.add('content_hide');
+            content.style.maxHeight = '0';
+            this.classList.remove('active'); // Remove active class from h4
+        } else {
+            // Hide all other open contents
+            document.querySelectorAll('.metafield-rich_text_field p').forEach(p => {
+                p.classList.remove('content_show');
+                p.classList.add('content_hide');
+                p.style.maxHeight = '0';
+            });
+
+            // Remove active class from all h4s
+            document.querySelectorAll('.metafield-rich_text_field h4').forEach(h => h.classList.remove('active'));
+
+            // Show the clicked content
+            content.classList.remove('content_hide');
+            content.classList.add('content_show');
+            content.style.maxHeight = content.scrollHeight + 'px';
+            this.classList.add('active'); // Add active class to clicked h4
+        }
+    });
+});
+
+
+  </script>
+  

@@ -1,0 +1,6 @@
+<section>
+  {% for component in article.metafields.custom.components.value %}
+    {% assign type = component.system.type %}
+    {% render 'article__component-switch', type: type, data: component %}
+  {% endfor %}
+</section>

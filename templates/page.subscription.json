@@ -1,0 +1,431 @@
+{
+  "sections": {
+    "030dbd8c-ec68-4541-8249-26010c973f65": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "Subscriptions",
+        "description": "<p>Save time and money with our convenient subscription offerings. With Subscribe to Save, it's easy to get your favorite teas delivered to your door exactly when you want them.<\/p>",
+        "background_color": "#87513b",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "23d1a91d-e0e2-4e8e-bd65-8f33d4667e78": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5><\/h5><h5>Rishi subscribers get the very best we have to offer. Join our community of curious tea drinkers and get your picks delivered on your schedule - and start, modify or cancel your subscription at any time.<\/h5><h5><\/h5><h6><\/h6>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 15,
+        "padding_left": 5,
+        "padding_bottom": "none"
+      }
+    },
+    "87ea5653-7175-47e3-a412-d53fb4ab4fe1": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 28,
+        "height_mobile": 160
+      }
+    },
+    "ed7de83c-0158-4d15-b0ee-732228ba15af": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-EnglishBreakfast-LS-1.jpg",
+        "richtext": "<h6><\/h6><h6><\/h6><h6><\/h6><h6><\/h6><h6><\/h6><h6>SUBSCRIBE TO SAVE<\/h6><h2>Subscriber Benefits<\/h2><h2><\/h2><h5>✓ 10% off every recurring order<\/h5><h5>✓ Choose any combo of subscription products<\/h5><h5>✓ Free teaser sample with your first subscription order<\/h5><h5>✓ Early access to new product launches<\/h5><h5>✓ Early access to  sales and promotions<\/h5><h5>✓ Exclusive subscriber-only offers and invites<\/h5><h5>✓ Make changes or cancel any time<\/h5>",
+        "flip_orientation": true,
+        "horizontal_gap_size": "small",
+        "padding_bottom": "none"
+      }
+    },
+    "cd2f2453-d557-4cc7-ace3-1d572bdf6e52": {
+      "type": "component__hero-dual-image-split",
+      "disabled": true,
+      "settings": {
+        "variant": "button",
+        "image_one": "shopify:\/\/shop_images\/Collection_Best_Sellers.jpg",
+        "image_two": "shopify:\/\/shop_images\/Subscriber_Benefits_Checklist.jpg",
+        "text_color": "rgba(0,0,0,0)",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "button__primary",
+        "background_color": "#87513b",
+        "flip_orientation": true,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "db04bd7a-786d-4132-b87e-ae923663d00d": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 20,
+        "height_mobile": 48
+      }
+    },
+    "9ea2793a-8834-41f4-89cf-69fba474f3bf": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 92,
+        "height_mobile": 160
+      }
+    },
+    "674d6827-7d63-4df7-9cdc-c54b49f94276": {
+      "type": "component__html-block",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "html": "<h6>How it Works<\/h6><br>",
+        "full_width": true,
+        "padding_bottom": "none"
+      }
+    },
+    "da34866f-6765-4b0e-b30b-26b94f015e15": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "ebdbac85-b73f-47eb-9ef6-c5f1abdfe9cb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-DragonWell-LS-2.jpg",
+            "title": "Standard Subscribe To Save",
+            "copy": "<h5>✓ 10% off every recurring order<\/h5><h5>✓ Choose any combo of subscription products<\/h5><h5>✓ Free teaser sample with every order<\/h5><h5>✓ Early access to new product launches<\/h5><h5>✓ Early access to  sales and promotions<\/h5><h5>✓ Exclusive subscriber-only offers and invites<\/h5><h5>✓ Make changes or cancel any time<\/h5>"
+          }
+        },
+        "435f5cf2-01d6-4166-899d-13733c2ea1bb": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-Gd-NewCitrusPeelPuer.jpg",
+            "title": "Build Your Own Bundle",
+            "copy": "<h5>✓ 15% off every recurring order<\/h5><h5>✓ Choose 3 or more subscription products<\/h5><h5>✓ Free standard shipping and teaser sample with every order<\/h5><h5>✓ Early access to new product launches<\/h5><h5>✓ Early access to  sales and promotions<\/h5><h5>✓ Exclusive subscriber-only offers and invites<\/h5><h5>✓ Edit your bundle or cancel any time<\/h5>"
+          }
+        },
+        "520cde47-6cca-42aa-a89d-222c1ad3cbc1": {
+          "type": "column",
+          "settings": {
+            "title": "Tea Club Monthly Subscription",
+            "copy": "<h5>✓ Curated monthly box including tea and tasting notes<\/h5><h5>✓ Choose from 3, 6, or 12-month subscriptions<\/h5><h5>✓ Free teaser sample with every order<\/h5><h5>✓ Early access to new product launches<\/h5><h5>✓ Early access to  sales and promotions<\/h5><h5>✓ Exclusive subscriber-only offers and invites<\/h5><h5>✓ Does not auto-renew, makes a great gift<\/h5>"
+          }
+        }
+      },
+      "block_order": [
+        "ebdbac85-b73f-47eb-9ef6-c5f1abdfe9cb",
+        "435f5cf2-01d6-4166-899d-13733c2ea1bb",
+        "520cde47-6cca-42aa-a89d-222c1ad3cbc1"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "9563f446-1782-4268-b909-d69991e73abe": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "56b0cf1f-9895-496a-9e56-4c44d78cff38": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Subscription_Step_1.jpg",
+            "title": "SELECT PRODUCTS & FREQUENCY",
+            "copy": "<p>Choose Subscribe & Save and your preferred frequency, available on most products<\/p>"
+          }
+        },
+        "83725a98-35c0-482b-a12b-42d4ab414918": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Subscription_Step_2.jpg",
+            "title": "GET NOTIFIED BEFORE EACH SHIPMENT",
+            "copy": "<p>Review, revise, and skip orders with ease<\/p>"
+          }
+        },
+        "988cff43-9d1d-4efb-b292-99f1c5a65ae6": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Subscription_Step_3.jpg",
+            "title": "ADJUST AS NEEDED",
+            "copy": "<p>Change your quantities, subscribed products, frequency or cancel anytime<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "56b0cf1f-9895-496a-9e56-4c44d78cff38",
+        "83725a98-35c0-482b-a12b-42d4ab414918",
+        "988cff43-9d1d-4efb-b292-99f1c5a65ae6"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "none"
+      }
+    },
+    "c1f4795d-f29f-45e3-bb74-a5b311ffa3df": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 48
+      }
+    },
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "5497d035-df5b-4a1b-b1d0-55134db4d908": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_9_3e539d60-7fe8-4c4d-8de1-56e687534a2c.png",
+            "icon_active": "shopify:\/\/shop_images\/Group_9_907d983f-ade8-4157-b949-f88d283b80a8.png",
+            "category": "Subscription FAQ"
+          }
+        },
+        "2b5d4136-22b1-47e4-a8e6-c0579bfda722": {
+          "type": "faq",
+          "settings": {
+            "category": "Subscription FAQ",
+            "title": "What benefits do I receive as a subscriber?",
+            "answer": "<p>In addition to 10% off every subscription product and the convenience of tea delivered straight to your home at the frequency of your choice, Rishi subscribers get a free Teaser sample with every order and early access to product releases and sitewide sales.<\/p>"
+          }
+        },
+        "176c974d-ceb9-4e6a-b7e4-6a1b244f4163": {
+          "type": "faq",
+          "settings": {
+            "category": "Subscription FAQ",
+            "title": "How do I make changes to my subscription?",
+            "answer": "<p>You can log into your account to make adjustments to your subscription at any time! <\/p><p><\/p><p>Just log in here or click \"Account\" in the navigation of this website and enter the email address associated with your subscription. You'll receive a code to your email inbox and will be able to log in to see your current subscriptions and previous orders. <\/p><p><\/p><p>From there, you'll have lots of different options to modify your subscription, such as swap products, change frequency, adjust your billing or shipping informations, or even gift your next shipment to a friend!<\/p>"
+          }
+        },
+        "037fe1b6-161e-4bd6-b27f-b177c268bfd5": {
+          "type": "faq",
+          "settings": {
+            "category": "Subscription FAQ",
+            "title": "What if I forget about my subscription?",
+            "answer": "<p>We will send an email before your subscription order is shipped so you can update your products, preferences or delay the shipment if you need to.<\/p>"
+          }
+        },
+        "b2cd1bc3-6b1a-4e4d-b8e0-0446a08b0d2e": {
+          "type": "faq",
+          "settings": {
+            "category": "Subscription FAQ",
+            "title": "How do I pause or cancel my subscription?",
+            "answer": "<p>If you'd like to pause your subscription, you have two options: skip your entire order or push back your order date to a later day.<\/p><p><\/p><p>You can use the quick links \"Skip\" or \"Next Order Date\" located underneath your active subscriptions to make these changes.<\/p><p><\/p><p>If you need to cancel your subscription, you can use the quick link \"More\" to access \"Cancel.\"<\/p><p><\/p>"
+          }
+        },
+        "c635f69d-2212-4922-83a0-1c97eb8ca965": {
+          "type": "faq",
+          "settings": {
+            "category": "Subscription FAQ",
+            "title": "Do you ship subscriptions to Canada?",
+            "answer": "<p>Yes! We do ship Canadian orders via Delivery Duty Paid (DDP) shipping through FedEx. Duties and fees are collecting during checkout and added to recurring orders.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "5497d035-df5b-4a1b-b1d0-55134db4d908",
+        "2b5d4136-22b1-47e4-a8e6-c0579bfda722",
+        "176c974d-ceb9-4e6a-b7e4-6a1b244f4163",
+        "037fe1b6-161e-4bd6-b27f-b177c268bfd5",
+        "b2cd1bc3-6b1a-4e4d-b8e0-0446a08b0d2e",
+        "c635f69d-2212-4922-83a0-1c97eb8ca965"
+      ],
+      "settings": {}
+    },
+    "e72d33fc-f085-40de-a181-31bf8b78ce3f": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "146026dd-6b4b-4014-bde6-22e4cfef8b6f": {
+          "type": "collection",
+          "settings": {
+            "title": "Subscription Favorites",
+            "collection": "best-sellers",
+            "products": [
+              "organic-earl-grey-supreme-black-tea",
+              "organic-teahouse-ceremonial-matcha",
+              "organic-jasmine-green-tea",
+              "organic-english-breakfast-teabag-sachets-50-count",
+              "organic-turmeric-ginger-herbal-tea",
+              "organic-masala-chai-black-tea",
+              "organic-matcha-super-green-teabag-sachets-50-count",
+              "organic-english-breakfast-black-tea",
+              "organic-barista-matcha",
+              "organic-jasmine-green-teabag-sachets-50-count",
+              "organic-matcha-super-green-tea",
+              "organic-turmeric-ginger-teabag-sachets-50-count"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "146026dd-6b4b-4014-bde6-22e4cfef8b6f"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Shop Subscriber Favorites",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "c368c4fe-743d-43ee-881b-108b4fbf0216": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 48,
+        "height_mobile": 48
+      }
+    },
+    "843d8b9b-ac02-455c-8fdb-562c227529a5": {
+      "type": "component__reviews-carousel",
+      "blocks": {
+        "8620f712-c6f7-4e2e-9a63-5a910ff255ec": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I've been drinking Rishi Tea for 15 years - have tried many different companies and imported teas, but I always return to Rishi for high quality and consistency.<\/p>",
+            "attribution": "Barbara",
+            "rating": "5",
+            "product": ""
+          }
+        },
+        "f6756a93-d6db-4f0d-974a-de31dca1b73c": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is the best darn tea. Unbelievable quality and fantastic flavor\"<\/p>",
+            "attribution": "Glen",
+            "rating": "5",
+            "product": ""
+          }
+        },
+        "3e64eac1-9438-4bfc-91be-fcfc57bb3b21": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"A lot of places out there to get your tea, but this is the one company I trust. They seem to take where they source from very seriously.<\/p>",
+            "attribution": "Kristopher",
+            "rating": "5",
+            "product": ""
+          }
+        },
+        "fa0c5aac-3bda-438c-af66-ee7039f470e0": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"RISHI teas are the best in the USA. Worth every penny$$$. This company is THE professional standard. Thank you RISHI!\"<\/p>",
+            "attribution": "Charlie",
+            "rating": "5",
+            "product": ""
+          }
+        },
+        "49600e76-f9b5-41bf-b48b-c577dab4df49": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"As a regular customer for a number of years, we continue to be extremely pleased with the quality, packaging, quick delivery and ease of ordering Rishi tea.\"<\/p>",
+            "attribution": "Kathleen",
+            "rating": "5",
+            "product": ""
+          }
+        },
+        "dfc93784-c851-4c1c-88ab-3ce214639439": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I have been around the block with other brands, but Rishi's website is where I am able to buy the freshest, best tasting tea.\"<\/p>",
+            "attribution": "Conrad",
+            "rating": "5",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "8620f712-c6f7-4e2e-9a63-5a910ff255ec",
+        "f6756a93-d6db-4f0d-974a-de31dca1b73c",
+        "3e64eac1-9438-4bfc-91be-fcfc57bb3b21",
+        "fa0c5aac-3bda-438c-af66-ee7039f470e0",
+        "49600e76-f9b5-41bf-b48b-c577dab4df49",
+        "dfc93784-c851-4c1c-88ab-3ce214639439"
+      ],
+      "settings": {
+        "superscript": "Reviews",
+        "header": "What Rishis Are Saying",
+        "background_color": "#33432e",
+        "padding_bottom": "small",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_color": "button__primary brown"
+      }
+    },
+    "b4d0d205-8d95-4c70-8a1b-36abec6b0e65": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "02747b54-9bb4-4051-99c5-4f5a67943645": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "03a1c714-0be9-4bc3-9792-5a6b45cd8361": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "51e3d7e0-037e-4865-9c66-a161e6c2e3b2": {
+          "type": "collection",
+          "settings": {
+            "title": "Powder",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "159d5379-0bb0-4b15-b407-c57937aa9df5": {
+          "type": "collection",
+          "settings": {
+            "title": "Sparkling",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "02747b54-9bb4-4051-99c5-4f5a67943645",
+        "03a1c714-0be9-4bc3-9792-5a6b45cd8361",
+        "51e3d7e0-037e-4865-9c66-a161e6c2e3b2",
+        "159d5379-0bb0-4b15-b407-c57937aa9df5"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Format",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "030dbd8c-ec68-4541-8249-26010c973f65",
+    "23d1a91d-e0e2-4e8e-bd65-8f33d4667e78",
+    "87ea5653-7175-47e3-a412-d53fb4ab4fe1",
+    "ed7de83c-0158-4d15-b0ee-732228ba15af",
+    "cd2f2453-d557-4cc7-ace3-1d572bdf6e52",
+    "db04bd7a-786d-4132-b87e-ae923663d00d",
+    "9ea2793a-8834-41f4-89cf-69fba474f3bf",
+    "674d6827-7d63-4df7-9cdc-c54b49f94276",
+    "da34866f-6765-4b0e-b30b-26b94f015e15",
+    "9563f446-1782-4268-b909-d69991e73abe",
+    "c1f4795d-f29f-45e3-bb74-a5b311ffa3df",
+    "main",
+    "e72d33fc-f085-40de-a181-31bf8b78ce3f",
+    "c368c4fe-743d-43ee-881b-108b4fbf0216",
+    "843d8b9b-ac02-455c-8fdb-562c227529a5",
+    "b4d0d205-8d95-4c70-8a1b-36abec6b0e65"
+  ]
+}

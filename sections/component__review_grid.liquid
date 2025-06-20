@@ -1,0 +1,199 @@
+{% style %}
+  .review-card {
+    min-height: 150px;
+    height: 100%;
+    background-color: #FBF9F7;
+  }
+  .review-card .review-title {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 150%;
+    letter-spacing: 8%;
+    text-transform: uppercase;
+    color: #283645;
+  }
+  .review-card .review-content {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 4%;
+  }
+  .review-card strong {
+    font-weight: 500;
+  }
+  #shopify-section-{{ section.id }} .section-heading {
+    font-weight: 100;
+    font-size: 48px;
+    leading-trim: Cap height;
+    line-height: 120%;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: ivypresto-headline,ui-serif,serif;
+  }
+  #shopify-section-{{ section.id }} .section-description {
+    font-weight: 200;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0;
+    text-align: center;
+    opacity: 0.8;
+  }
+  @media screen and (max-width: 768px) {
+    #shopify-section-{{ section.id }} .row-gap-20 {
+      row-gap: 20px;
+    }
+    #shopify-section-{{ section.id }} .section-heading {
+      font-size: 32px;
+    }
+  }
+
+{% endstyle %}
+
+
+<section
+  class="section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div style="background-color: {{ section.settings.background_color }}">
+    <div class="py-6 px-6 md:py-12 md:px-12 container overflow-x-hidden container mx-auto">
+      <div class="flex justify-between items-center pb-11">
+        <div class="text-white text-center w-full">
+          <h4 class="text-xs tracking-8pc leading-1.5 font-500 uppercase font-sans pb-2.5 md:pb-3">{{ section.settings.subheading }}</h4>
+          <h3 class="section-heading">{{ section.settings.header }}</h3>
+          <p class="para-sm md:text-sm pt-2 section-description">{{ section.settings.description }}</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-12 cursor-grab row-gap-20" x-ref="slides">
+        {% for block in section.blocks %}
+          <div class="col-span-12 md:col-span-4 bg-light rounded-4 px-5 mx-3 mb-3 pt-6 pb-3.5 md:py-4 review-card">
+            <div class="">
+              <p class="review-title mb-2">{{ block.settings.title }}</p>
+              <blockquote class="review-content">{{ block.settings.quote }}</blockquote>
+            </div>
+            {% if block.settings.product != blank %}
+              {% render 'product__card-mini', product: block.settings.product, classes: "md:w-fit" %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Reviews Grid",
+    "settings": [
+      {
+        "type": "inline_richtext",
+        "id": "header",
+        "label": "Heading",
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "description",
+        "default": "Reviews Lorem Ipsum Headline Here"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#33432E"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "button_color",
+        "label": "Button Color",
+        "options": [
+          {
+            "value": "button__primary",
+            "label": "Dark"
+          },
+          {
+            "value": "button__primary white",
+            "label": "Light"
+          },
+          {
+            "value": "button__primary brown",
+            "label": "Brown"
+          }
+        ],
+        "default": "button__primary brown"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "review",
+        "name": "Review",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Certified Organic",
+          },
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Quote",
+            "info": "Size formatting is disabled for this field."
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product",
+            "info": "The product associated with this review."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Reviews Grid",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

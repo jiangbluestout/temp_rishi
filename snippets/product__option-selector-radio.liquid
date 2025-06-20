@@ -1,0 +1,45 @@
+{% for value in option.values %}
+  {% assign all_variants_in_option = product.variants | where: optionIndex, value %}
+  {% assign available_variants_in_option = all_variants_in_option | where: "available", true %}
+
+  {% assign tooltip = shop.metaobjects.tooltip.values | where: "name", value | first %}
+  {% assign variantSpecificTooltip = product.metafields.custom.variant_specific_tooltips.value | where: "name", value | first %}
+  {% if variantSpecificTooltip %}
+    {% assign tooltip = variantSpecificTooltip %}
+  {% endif %}
+
+  {% if available_variants_in_option.size == 0 %}
+    {% assign isOptionAvailable = false %}
+  {% else %}
+    {% assign isOptionAvailable = true %}
+  {% endif %}
+
+  <div class="relative group items-center justify-center group">
+    <button
+      type="button"
+      class="product__option-selector-radio text-base leading-none tracking-2pc flex items-center {% unless isOptionAvailable %}line-through{% endunless %}"
+      @click="onOptionChanged('{{ optionIndex }}', `{{ value }}`)"
+    >
+      <div
+        class="w-4 h-4 border-dark border transition-all duration-150 rounded-full mr-3"
+        :class="{
+          'bg-dark': isOptionValueSelected('{{ optionIndex }}', `{{ value }}`),
+          'bg-white': !isOptionValueSelected('{{ optionIndex }}', `{{ value }}`),
+        }"
+      >
+      </div>
+      {{ value }}
+    </button>
+
+    {% assign last = false %}
+
+    {% if forloop.last %}
+      {% assign last = true %}
+    {% endif %}
+
+    {% if tooltip %}
+      {% render 'tooltip', tooltip: tooltip, last: last %}
+    {% endif %}
+
+  </div>
+{% endfor %}

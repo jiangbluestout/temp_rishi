@@ -1,0 +1,37 @@
+<div class="w-full section-p-x section-p-b medium" style="animation: fadeIn 600ms ease-in-out">
+  <div class="section-container flex flex-col gap-y-18 md:flex-row pt-12 md:pt-20 ">
+    <div class="flex flex-col md:w-1/2">
+      <div class="rte page md:max-w-[400px]">{{ page.content }}</div>
+    </div>
+    <div class="flex justify-start text-sm md:w-1/2">
+      <div class="xl:w-2/3">
+        {% if section.settings.form_headiner %}
+        {% endif %}
+        <h2 class="para-xs pb-3 pl-3">{{ section.settings.form_heading }}</h2>
+        {% if section.settings.html %}
+          {{ section.settings.html }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form Heading",
+      "default": "General Enquiries"
+    },
+    {
+      "type": "html",
+      "id": "html",
+      "label": "HTML"
+    }
+  ]
+}
+{% endschema %}

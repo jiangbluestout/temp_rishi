@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "page__origin",
+      "settings": {
+        "title": "Rishi Origins Map",
+        "copy": "Zoom in and out to see the breadth of our tea & botanical origins, and select a pin to learn more."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

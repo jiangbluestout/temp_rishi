@@ -1,0 +1,79 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_split_section_Vpdp7n": {
+      "type": "image-split-section",
+      "settings": {
+        "background_color": "#283645",
+        "text_color": "#ffffff",
+        "title": "A New Curated Tea, Each Month",
+        "title_heading": "h1",
+        "copy": "Join the Rishi Tea Club and receive monthly deliveries of our finest curated tea selections. Rishi hand selects a new tea each month and ships directly to your (or your gift recipient's) doorstep - plus, it comes with a free glass teapot in your first shipment! Simply choose from your preferred tea type and subscription duration, and you'll be on your way to an exciting exploration for the palate.",
+        "image": "shopify:\/\/shop_images\/Monthly_Tea_Club_Large_CTA_A_1.jpg",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/all"
+      }
+    },
+    "press_reviews_awigdQ": {
+      "type": "press-reviews",
+      "blocks": {
+        "review_A73rgg": {
+          "type": "review",
+          "settings": {
+            "heading": "Serious Eats",
+            "logo": "shopify:\/\/shop_images\/Vector_5.svg",
+            "header": "What they’re saying",
+            "content": "The layered ingredients <i>pop with strong flavor,<\/i> but are ultimately light and refreshing. <i>Unlike anything on the market.<\/i>"
+          }
+        },
+        "review_jB6JVN": {
+          "type": "review",
+          "settings": {
+            "heading": "Food & Wine",
+            "logo": "shopify:\/\/shop_images\/Vector_6.svg",
+            "header": "What they’re saying",
+            "content": "\"Black Tea,\" as it's called in the West, is known as Hong Cha or \"Red Tea\" in Asia due to the reddish pigments that are produced when the tea leaves are rolled and oxidized."
+          }
+        },
+        "review_HDrqXh": {
+          "type": "review",
+          "settings": {
+            "heading": "RollingStone",
+            "logo": "shopify:\/\/shop_images\/Vector_7.svg",
+            "header": "What they’re saying",
+            "content": "\"Black Tea,\" as it's called in the West, is known as Hong Cha or \"Red Tea\" in Asia due to the reddish pigments that are produced when the tea leaves are rolled and oxidized."
+          }
+        },
+        "review_xrimiy": {
+          "type": "review",
+          "settings": {
+            "heading": "Barrons",
+            "logo": "shopify:\/\/shop_images\/Vector_8.svg",
+            "header": "What they’re saying",
+            "content": "\"Black Tea,\" as it's called in the West, is known as Hong Cha or \"Red Tea\" in Asia due to the reddish pigments that are produced when the tea leaves are rolled and oxidized."
+          }
+        }
+      },
+      "block_order": [
+        "review_A73rgg",
+        "review_jB6JVN",
+        "review_HDrqXh",
+        "review_xrimiy"
+      ],
+      "settings": {
+        "pt": 3,
+        "pb": 2,
+        "section_class": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_split_section_Vpdp7n",
+    "press_reviews_awigdQ"
+  ]
+}

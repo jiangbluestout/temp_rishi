@@ -1,0 +1,112 @@
+{
+  "current": {
+    "klaviyo_list_id": "VGu4Mt",
+    "favicon": "shopify:\/\/shop_images\/Rishi-Favicon_1.png",
+    "nav_featured_collection": "summer-teas",
+    "sections": {
+      "header": {
+        "type": "header",
+        "blocks": {
+          "792734d3-1aff-4de0-b2c1-a322efb1ffe3": {
+            "type": "recipe",
+            "settings": {
+              "article": "journal\/what-is-shincha-discover-japans-first-harvest-green-tea-of-the-year",
+              "blog_title": "",
+              "url": ""
+            }
+          },
+          "fb6f63f2-aab3-42d5-a30a-22d960ca2b8e": {
+            "type": "recipe",
+            "settings": {
+              "article": "journal\/garden-direct-spring-harvest-field-report",
+              "blog_title": "",
+              "url": ""
+            }
+          }
+        },
+        "block_order": [
+          "792734d3-1aff-4de0-b2c1-a322efb1ffe3",
+          "fb6f63f2-aab3-42d5-a30a-22d960ca2b8e"
+        ],
+        "custom_css": [
+          ".announcement-banner .banner-text {min-height: 17px;}"
+        ],
+        "settings": {
+          "transparent_header": false,
+          "tea_menu": "tea-menu",
+          "teaware_menu": "",
+          "discover_menu": "discover-menu",
+          "left_link_label": "Tea Club",
+          "left_link_url": "shopify:\/\/products\/monthly-tea-club",
+          "mobile_additional_link_1": "Best Sellers",
+          "mobile_additional_link_url_1": "shopify:\/\/collections\/best-sellers",
+          "mobile_additional_link_2": "New Arrivals",
+          "mobile_additional_link_url_2": "shopify:\/\/collections\/new-arrivals",
+          "discover_article": "journal\/why-water-temperature-is-important-when-brewing-tea",
+          "discover_heading_right": "New to Tea? Start Here",
+          "discover_heading_left": "Origins & Travel",
+          "discover_blog_title": "Tea Education",
+          "discover_url": "https:\/\/rishi-tea.com\/blogs\/journal\/why-water-temperature-is-important-when-brewing-tea",
+          "show_announcement_banner": true,
+          "announcement_banner_background_color": "#5d6342",
+          "announcement_banner_text_color": "#f5f4ed",
+          "announcement_banner_text": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_home": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_mobile": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "customer_phone": "Hours:",
+          "customer_copy": "M-F 9AM-5PM CST",
+          "footer_menu": "footer-menu",
+          "footer_legal_menu": "bf-footer-legal"
+        }
+      },
+      "custom-hello-bar": {
+        "type": "custom-hello-bar",
+        "settings": {
+          "desktop_text": "<p>Love is in the air! Shop Valentine's Day gifts by 2\/6: <a href=\"\/collections\/valentines-day\" title=\"Valentine's Day\">Shop Now<\/a><\/p>",
+          "mobile_text": "<p>Love is in the air! Shop Valentine's Day gifts by 2\/6: <a href=\"\/collections\/valentines-day\" title=\"Valentine's Day\">Shop Now<\/a><\/p>",
+          "background_color": "#722015",
+          "padding": 0,
+          "margin": 0
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "855628211100114053": {
+        "type": "shopify:\/\/apps\/klaviyo-email-marketing-sms\/blocks\/klaviyo-onsite-embed\/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "17174303574952363282": {
+        "type": "shopify:\/\/apps\/fondue-cashback-promotions\/blocks\/caseback-embed\/dcfd972d-99c5-4526-b55b-2d76e990dec8",
+        "disabled": false,
+        "settings": {}
+      },
+      "10641372206048101839": {
+        "type": "shopify:\/\/apps\/rebuy-personalization-engine\/blocks\/rebuy-global-embed\/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+        "disabled": false,
+        "settings": {}
+      },
+      "7691699742713193646": {
+        "type": "shopify:\/\/apps\/sliderule-google-analytics-4\/blocks\/sliderule-analytics\/9960d9af-5e49-44da-a5b8-aade858d4324",
+        "disabled": false,
+        "settings": {}
+      },
+      "1291562577487733835": {
+        "type": "shopify:\/\/apps\/black-crow-ai-that-delivers\/blocks\/blackcrow_ai_script\/3e73f597-cb71-47a1-8a06-0c931482ecd2",
+        "disabled": false,
+        "settings": {}
+      },
+      "1877152918344802950": {
+        "type": "shopify:\/\/apps\/intelligems-a-b-testing\/blocks\/intelligems-script\/fa83b64c-0c77-4c0c-b4b2-b94b42f5ef19",
+        "disabled": true,
+        "settings": {}
+      }
+    }
+  }
+}

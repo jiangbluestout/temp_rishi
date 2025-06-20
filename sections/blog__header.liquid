@@ -1,0 +1,112 @@
+{% assign url_parts = request.path | split: '/tagged/' %}
+{% assign url_tag  = url_parts | last %}
+{% assign url_tag_parts = url_tag | split: '-' %}
+{% assign tag_category = url_tag_parts | first | append: '-' %}
+{% assign current_tag = url_tag | remove: tag_category | replace: '-', ' & ' | replace: '_', ' ' %}
+
+
+<template x-if="$store.main.activeBlogHeroImage">
+  <section
+    class="section-p-x pb-8 min-h-[342px] flex items-end pt-[var(--nav-height)] mb-10 md:mb-9"
+    :class="$store.main.transparentHeader ? 'mt-[30px]' : ''"
+    style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.header_text_color }};"
+    x-data
+    x-cloak
+    x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('{{ section.settings.background_color }}', '{{ section.settings.header_text_color }}');"
+  >
+    <div class="grid md:grid-cols-12 gap-6 md:gap-5 w-full" id="collection-banner-top-padding">
+      <div class="md:col-span-8 flex flex-col justify-end">
+        <div class="flex" style="animation: fadeIn 400ms ease-in-out">
+          {% if blog.title != blank %}
+            <a href="{{ blog.url }}">
+              <h2 class="heading-lg opacity-50 whitespace-nowrap">{{ blog.title }}</h2>
+            </a>
+            <span class="px-4 heading-lg opacity-50">/</span>
+          {% endif %}
+          <h1 class="heading-lg whitespace-nowrap capitalize">{{ current_tag }}</h1>
+        </div>
+        {% if blog.metafields.custom.header_description != blank %}
+          <div class="opacity-80 text-sm leading-1.5 tracking-2pc pt-5 md:pt-6 md:max-w-[37.5%]" style="animation: fadeIn80 600ms ease-in-out">{{ blog.metafields.custom.header_description | metafield_tag  }}</div>
+        {% endif %}
+      </div>
+      <div class="md:col-span-4 flex items-end" style="animation: fadeIn 800ms ease-in-out">
+        <div class="relative pt-[68%] w-full overflow-hidden rounded-4">
+          <img class="w-full h-auto absolute inset-0 object-cover rounded-4" :src="$store.main.activeBlogHeroImage" alt="{{ blog.title }} hero image">
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<template x-if="!$store.main.activeBlogHeroImage">
+  {% if request.path contains '/tagged/' %}
+    <section
+        class="section-p-x pb-8 min-h-[240px] pt-[var(--nav-height)] h-fit flex items-end mb-10 md:mb-9"
+        style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.header_text_color }};"
+        x-data
+        x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('{{ section.settings.background_color }}', '{{ section.settings.header_text_color }}');"
+      >
+      <div class="grid md:grid-cols-12 gap-5 w-full"  id="collection-banner-top-padding">
+        <div class="md:col-span-8 flex items-end" style="animation: fadeIn 400ms ease-in-out">
+          <a href="{{ blog.url }}" class="heading-lg opacity-50">{{ blog.title }} / </a>
+          <h1 class="heading-lg pl-2 capitalize">{{ current_tag }}</h1>
+        </div>
+        <div class="md:col-span-4 flex items-end justify-end md:pt-10" style="animation: fadeIn 800ms ease-in-out">
+          <div class="opacity-80 para-sm leading-1.5">{{ blog.metafields.custom.header_description | metafield_tag }}</div>
+        </div>
+      </div>
+    </section>
+  {% else %}
+    <section
+        class="section-p-x pb-8 min-h-[240px] pt-[var(--nav-height)] h-fit flex items-end mb-10 md:mb-9"
+        style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.header_text_color }};"
+        x-data
+        x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('{{ section.settings.background_color }}', '{{ section.settings.header_text_color }}');"
+      >
+      <div class="grid md:grid-cols-12 gap-5 w-full">
+        <div class="md:col-span-8 flex items-end" style="animation: fadeIn 400ms ease-in-out">
+          <h1 class="heading-lg">{{ blog.title }}</h1>
+        </div>
+        <div class="md:col-span-4 flex items-end justify-end md:pt-10" style="animation: fadeIn 800ms ease-in-out">
+          <div class="opacity-80 para-sm leading-1.5">{{ blog.metafields.custom.header_description | metafield_tag }}</div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+</template>
+
+
+
+
+{% schema %}
+{
+  "name": "Blog Header",
+  "class": "section-blog-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Optional image field"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#283645"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header Text Color",
+      "default": "#ffffff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blog Header",
+      "category": "Blog"
+    }
+  ]
+}
+{% endschema %}

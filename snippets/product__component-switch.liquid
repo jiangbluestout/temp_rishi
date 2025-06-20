@@ -1,0 +1,23 @@
+
+{% case type %}
+  {% when 'rich_text_heading' %}
+    {% render 'product__rich-text-heading', data: data %}
+  {% when 'text_image_split' %}
+    {% render 'product__text-image-split', data: data %}
+  {% when 'ingredients' %}
+    {% render 'product__ingredients', data: data %}
+  {% when 'caffeine_info' %}
+    {% render 'product__caffeine_info' %}
+  {% when 'prep' %}
+    {% render 'product__prep', data: data %}
+  {% when '3_up_cross_sell' %}
+    {% render 'product__3-up-cross-sell', data: data %}
+  {% when 'reviews' %}
+    {% render 'product__reviews' %}
+  {% when 'recommendation_carousel' %}
+    {% render 'product__recommendations', data: data %}
+  {% when 'origin' %}
+    {% render 'product__origin', data: data %}
+  {% else %}
+  <span></span>
+{% endcase %}

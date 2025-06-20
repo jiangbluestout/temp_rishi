@@ -1,0 +1,119 @@
+{% assign tags = '' %}
+
+{% for tag in article.tags %}
+  {% assign current_tag_parts = tag | split: ':' %}
+  {% assign current_tag_label = current_tag_parts | first %}
+  {% assign current_tag_value = current_tag_parts | last | replace: '-', ' & ' %}
+  {% assign current_tag_value = current_tag_value | replace: '_', ' ' %}
+  {% assign tags = tags | append: current_tag_value | append: ',' %}
+{% endfor %}
+
+{% assign tags = tags | split: ',' %}
+
+<div
+  class="pt-10 grid grid-cols-12 xl:gap-x-25"
+  id="collection-banner-top-padding"
+  style="animation: fadeIn 500ms ease-in-out;"
+  x-data='{
+    tags: {{ article.tags | json }},
+    tagDict: null,
+    generateTagDict() {
+      this.tagDict = this.tags.reduce((acc, tag) => {
+        let formattedTag = tag.replace(`:`, `-`);
+        const parts = tag.split(`:`);
+        let index;
+        parts.length > 1 ? index = 1 : index = 0;
+        const value = parts[index].replace(/-/g, ` `).replace(/_/g, ` `);
+
+        acc.push({
+          label: value,
+          tag: formattedTag
+        });
+
+        return acc;
+      }, []);
+    },
+    getText(text, index) {
+      if (index < this.tagDict.length - 1) {
+        return text + `, `;
+      } else {
+        return text;
+      }
+    }
+  }'
+  x-init="generateTagDict()"
+>
+  <div class="col-span-12 lg:col-span-5 flex flex-col justify-between">
+    <div class="">
+      {% if article.metafields.custom.category %}
+        <p class="para-2xs pb-2 md:pb-3">
+          <a href="{{ blog.url }}">
+          {{ blog.title }}
+          </a>
+          <span>/</span>
+          <a href="{% if article.metafields.custom.category == "Tea Education" %}
+            https://rishi-tea.com/blogs/journal/tagged/education
+         {% elsif article.metafields.custom.category == "RECIPES" %}
+            https://rishi-tea.com/blogs/journal/tagged/recipes
+         {% elsif article.metafields.custom.category == "Origins & Travel" %}
+            https://rishi-tea.com/blogs/journal/tagged/origins_and_travel
+         {% else %}
+            https://rishi-tea.com/blogs/journal/tagged/how_to
+         {% endif %}">
+            {{ article.metafields.custom.category }}
+        </a>
+        </p>
+      {% endif %}
+      <div class="lg:hidden pb-8">
+        {% render 'image',
+          image_desktop: article.image,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          image_classes: 'rounded-4',
+        %}
+      </div>
+      <h1 class="font-sans text-3xl md:text-5xl leading-1.3 tracking-4pc pb-4 md:pb-8">{{ article.title }}</h1>
+      <div class="para-sm leading-1.5 opacity-80 pb-12 expert-style">{{ article.excerpt }}</div>
+    </div>
+    <style>
+      .expert-style a{
+        text-decoration: underline;
+      }
+    </style>
+    <div class="lg:w-3/5">
+      <div class="grid grid-cols-2 lg:grid-cols-3 border-b border-dark/25 py-2.5">
+        <p class="col-span-1 para-3xs opacity-75">Date:</p>
+        <p class="lg:col-span-2 text-sm leading-1.5 tracking-4pc">{{ article.published_at | date: "%B %d, %Y" }}</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-3 border-b border-dark/25 py-2.5">
+        <p class="col-span-1 para-3xs opacity-75">Author:</p>
+        <p class="lg:col-span-2 text-sm leading-1.5 tracking-4pc">{{ article.author }}</p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-3 border-b border-dark/25 py-2.5">
+        <p class="col-span-1 para-3xs opacity-75">Tags:</p>
+        <div class="lg:col-span-2 flex flex-wrap text-sm leading-1.5 tracking-4pc">
+          <template x-for="(tag, index) in tagDict">
+            <a :href="'/blogs/{{ blog.handle }}/tagged/' + tag.tag" class="inline-block mr-2 capitalize hover:underline" x-text="getText(tag.label, index)"></a>
+          </template>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-3 py-2.5">
+        <p class="col-span-1 para-3xs opacity-75">Share:</p>
+        <div class="lg:col-span-2 text-sm leading-1.5 tracking-4pc flex gap-x-2 underline">
+          <a :href="'mailto:?body=' + encodeURIComponent(window.location.href)" target="_blank" rel="noopener noreferrer">Email</a>
+          <a :href="'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href)" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-span-7 hidden lg:flex justify-end w-full">
+    <div class="">
+      {% render 'image',
+        image_desktop: article.image,
+        width_desktop: '1000x',
+        width_mobile: '800x',
+        image_classes: 'rounded-4 max-h-[610px] 2xl:max-h-[630px]',
+      %}
+    </div>
+  </div>
+</div>

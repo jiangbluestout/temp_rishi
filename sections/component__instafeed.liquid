@@ -1,0 +1,70 @@
+<section
+  class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <a href="{{ section.settings.link }}" target="_blank">
+    <div class="flex flex-col md:flex-row md:items-end gap-3">
+      <p class="text-brown para-xs md:pb-.5">{{ section.settings.handle}}</p>
+      <h4 class="heading-sm">{{ section.settings.heading }}</h4>
+    </div>
+  </a>
+  <div id="insta-feed"></div>
+</section>
+
+{% schema %}
+  {
+    "name": "Instafeed",
+    "settings": [
+      {
+        "type": "text",
+        "id": "handle",
+        "label": "Instagram Handle"
+      },
+      {
+        "type": "url",
+        "id": "link",
+        "label": "Instagram Link"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Follow Along On Our Journey"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instafeed",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}
+

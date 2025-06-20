@@ -1,0 +1,92 @@
+<section
+  class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="relative flex gap-3 flex-col md:flex-row">
+    <div class="md:w-1/2 h-fit">
+      {% render 'image',
+        image_desktop: section.settings.image_large,
+        image_mobile: section.settings.image_large,
+        width_desktop: '1000x',
+        width_mobile: '800x',
+        ratio_desktop: '100%',
+        ratio_mobile: '100%',
+        lazy: true,
+        image_classes: 'rounded-4',
+      %}
+    </div>
+    <div class="md:w-1/2 h-full">
+      <div class="w-1/2">
+        {% render 'image',
+          image_desktop: section.settings.image_small,
+          image_mobile: section.settings.image_small,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          ratio_desktop: '125%',
+          ratio_mobile: '125%',
+          lazy: true,
+          image_classes: 'rounded-4',
+        %}
+      </div>
+      <div class="rte component md:w-5/6 pt-12 md:ml-auto md:pt-[8.5vw]">{{ section.settings.richtext }}</div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Staggered Images + Text",
+  "class": "section-staggered-images-text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_large",
+      "label": "Image Large",
+      "info": "Aspect Ratio 1:1 / Min Width: 1500px / JPG"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_small",
+      "label": "Image Small",
+      "info": "Aspect Ratio 3:4 / Min Width: 1000px / JPG"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Text"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Staggered Images + Text"
+    }
+  ]
+}
+{% endschema %}

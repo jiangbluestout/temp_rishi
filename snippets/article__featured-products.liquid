@@ -1,0 +1,51 @@
+{% assign products = data.collection.value %}
+
+{% if products == blank %}
+  {% assign products = data.products.value %}
+{% endif %}
+
+<button-slider
+  data-slider-options='{
+    "breakpoints": {
+      "(max-width: 768px)": {
+        "mode": "snap",
+        "rtl": false,
+        "loop": true,
+        "slides": { "perView": "1.2", "spacing": 0 }
+      },
+      "(min-width: 768px)": {
+        "mode": "snap",
+        "rtl": false,
+        "loop": false,
+        "slides": { "perView": "3", "spacing": 24 }
+      }
+    }
+  }'
+>
+  <section
+    class="md:section-p-x pb-16 md:pb-25"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div class="section-container tight">
+      {% if data.heading != blank %}
+        <h4 class="px-3 heading-sm text-center pb-12">{{ data.heading}}</h4>
+      {% endif %}
+      <div class="keen-slider overflow-x-hidden flex pb-9 md:pb-12">
+        {% for product in products %}
+          <div class="md:flex-1 keen-slider__slide hover:cursor-grab">
+            <div class="ml-3 md:ml-0">
+              {% render 'product__card', product: product %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      {% if data.button_text != blank %}
+        <div class="flex justify-center pt-10">
+          <a href="{{ data.button_link }}" class="button__primary">{{ data.button_text }}</a>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+</button-slider>

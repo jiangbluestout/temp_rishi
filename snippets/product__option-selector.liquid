@@ -1,0 +1,113 @@
+{% for value in option.values %}
+  {% assign all_variants_in_option = product.variants | where: optionIndex, value %}
+  {% assign available_variants_in_option = all_variants_in_option | where: 'available', true %}
+
+  {% assign tooltip = shop.metaobjects.tooltip.values | where: 'name', value | first %}
+  {% for variantTooltip in product.metafields.custom.variant_specific_tooltips.value %}
+    {% assign strippedVariantTooltip = variantTooltip.name | strip %}
+    {% if strippedVariantTooltip == value %}
+      {% assign variantSpecificTooltip = variantTooltip %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if variantSpecificTooltip %}
+    {% assign tooltip = variantSpecificTooltip %}
+  {% endif %}
+
+  {% assign tooltip1 = shop.metaobjects.variant_specific_cost_per_serving.values | where: 'title', value | first %}
+  {% for variantTooltip1 in product.metafields.custom.cost_per_serving.value %}
+    {% assign strippedVariantTooltip1 = variantTooltip1.title | strip %}
+    {% if strippedVariantTooltip1 == value %}
+      {% assign variantSpecificTooltip1 = variantTooltip1 %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+
+  {% if variantSpecificTooltip1 %}
+    {% assign tooltip1 = variantSpecificTooltip1 %}
+  {% endif %}
+
+  {% if available_variants_in_option.size == 0 %}
+    {% assign isOptionAvailable = false %}
+  {% else %}
+    {% assign isOptionAvailable = true %}
+  {% endif %}
+
+  <div class="relative group w-1/3 md:w-fit items-center justify-center">
+    <button
+      type="button"
+      :class="
+        {
+          'brown-border-only': isOptionValueSelected('{{ optionIndex }}', `{{ value }}`),
+          'no-border': !isOptionValueSelected('{{ optionIndex }}', `{{ value }}`),
+        }
+      "
+      class="button__variant-selector mx-auto medium flex items-center index-btn {% unless isOptionAvailable %}line-through{% endunless %}"
+      @click="onOptionChanged('{{ optionIndex }}', `{{ value }}`)"
+    >
+      <div>{{ value }}</div>
+
+      <!-- Use inline style to control visibility based on isOptionValueSelected method -->
+      {% if tooltip1s %}
+        <div
+          class="product-serving-meta"
+          :style="{ display: isOptionValueSelected('{{ optionIndex }}', `{{ value }}`) ? 'block' : 'none' }"
+        >
+          <span>${{ tooltip1.cost }} / Serving</span>
+        </div>
+      {% endif %}
+    </button>
+
+    {% assign last = false %}
+
+    {% if forloop.last %}
+      {% assign last = true %}
+    {% endif %}
+
+    {% if tooltip %}
+      <div class="tooltip__wrapper">
+        <div class='product-tooltip product-tooltip-new' :style="{ display: isOptionValueSelected('{{ optionIndex }}', `{{ value }}`) ? 'block' : 'none' }">
+          {{ tooltip.tip }}
+        </div>
+        <!-- <div class='product-tooltip-old absolute bottom-[-22px] {% if last %} left-0 {% else %} left-14 {% endif %} hidden lg:flex justify-center items-center para-xs tracking-2pc font-[400] normal-case text-dark/75 border bg-white w-max h-[31px] px-2.5 border-brown/50 rounded-4 shadow-tooltip z-[-1] opacity-0 transition-opacity duration-[400ms] ease-in-out group-hover:opacity-100 group-hover:z-[100] group-hover:duration-[600ms]'>
+          {{ tooltip.tip }}
+        </div>  -->
+      </div>
+    {% endif %}
+  </div>
+{% endfor %}
+
+<style>
+    .button__variant-selector{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .product-serving-meta {
+    font-size: 12px;
+    color: grey;
+}
+
+.button__variant-selector{
+padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.product-tooltip {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #A88567;
+}
+
+/* .button__variant-selector.medium {
+    height: 55px;
+}
+ */
+@media(max-width: 768px){
+    .product-serving-meta {
+    font-size: 10px;
+}
+}
+</style>

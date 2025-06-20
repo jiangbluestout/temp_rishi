@@ -1,0 +1,29 @@
+<section>
+    {% for component in product.metafields.custom.sections.value %}
+        {% assign type = component.system.type %}
+        {% render 'product__component-switch', type: type, data: component %}
+    {% endfor %}
+</section>
+
+
+{% schema %}
+{
+  "name": "Product | Sections",
+  "tag": "section",
+  "class": "section-product-sections",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Default Recommendations Collection",
+      "info": "This collection will be used to show recommendations when no collection is selected in Recommendations Carousel metaobject"
+    },
+    {
+      "type": "textarea",
+      "id": "no_reviews_text",
+      "label": "No Reviews Text",
+      "default": "Lorem Customer Reviews Headline Here"
+    }
+  ]
+}
+{% endschema %}

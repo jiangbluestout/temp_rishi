@@ -1,0 +1,99 @@
+{
+  "sections": {
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6": {
+      "type": "component__simple-header",
+      "custom_css": [],
+      "settings": {
+        "heading": "Ambassadors",
+        "description": "",
+        "background_color": "#886360",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "settings": {
+        "form_heading": "Influencer & Ambassador Form",
+        "html": "<div class=\"cs-form-parent-warp\" data-key=\"78e7463c-9700-41da-b184-e00c54834681\"><\/div> <script src=\"https:\/\/ecf.cirkleinc.com\/public\/frontend\/js\/form-builder-helper-v2.js\" defer><\/script>"
+      }
+    },
+    "fda6a610-8dfd-4d45-a062-eeefcc4babef": {
+      "type": "component__collection-list",
+      "blocks": {
+        "51f82493-afa7-4804-bea9-b0a7669f75b9": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>Customized discount code and links to share with your audience<\/p><p><\/p>",
+            "alt_title": "Custom Codes",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-MasalaChai-1_f113f1e2-53e4-42d1-9599-2287aa402119.jpg"
+          }
+        },
+        "acf34385-36db-48f4-b4d7-2bfc48998ef5": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>Receive competitive commissions and monthly payments<\/p>",
+            "alt_title": "Paid Commissions",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-SweetThaiPowder_1.jpg"
+          }
+        },
+        "8e69471a-80dc-48a6-a328-ee6cb0f3ca9f": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>Be the first to know about new product launches, programs, and invites to private events<\/p>",
+            "alt_title": "Early Access",
+            "lifestyle_image": "shopify:\/\/shop_images\/230624_Ruby_Oolong_28572.jpg"
+          }
+        },
+        "14f3bed2-28cc-4585-8298-9883fdad2ced": {
+          "type": "collection",
+          "settings": {
+            "collection": "",
+            "description": "<p>Make connections and grow your network with other thought leaders<\/p>",
+            "alt_title": "Community Connections",
+            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-BaristaMatcha.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "51f82493-afa7-4804-bea9-b0a7669f75b9",
+        "acf34385-36db-48f4-b4d7-2bfc48998ef5",
+        "8e69471a-80dc-48a6-a328-ee6cb0f3ca9f",
+        "14f3bed2-28cc-4585-8298-9883fdad2ced"
+      ],
+      "settings": {
+        "variant": "italic",
+        "header": "AMBASSADOR BENEFITS",
+        "background_color": "#283645",
+        "text_color": "#a88667",
+        "accent_color": "light",
+        "padding_bottom": "medium"
+      }
+    },
+    "a4bfbd92-26de-4df6-81fa-0da9358297df": {
+      "type": "component__large-newsletter-signup",
+      "settings": {
+        "heading": "Sign up For the Latest Stories and Recipes from Our Travels",
+        "padding_bottom": "medium"
+      }
+    },
+    "527a3193-0278-4c18-9cf2-bc3929739f32": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6",
+    "main",
+    "fda6a610-8dfd-4d45-a062-eeefcc4babef",
+    "a4bfbd92-26de-4df6-81fa-0da9358297df",
+    "527a3193-0278-4c18-9cf2-bc3929739f32"
+  ]
+}

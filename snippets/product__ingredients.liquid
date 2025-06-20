@@ -1,0 +1,30 @@
+{% if data.ingredients.value %}
+  <section
+    class="px-2 lg:px-6 transition-opacity duration-[1100ms] ease section-p-b medium"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <hr class="text-brown/50 h-[1px] mb-[14px] lg:mb-5">
+    <h3 id="product-ingredients" class="para-2xs pb-4 md:pb-12">Ingredients</h3>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-[14px] lg:gap-5 w-full px-[4px] lg:px-0">
+      {% for ingredient in data.ingredients.value %}
+        <div class="col-span-1 grid grid-cols-6 gap-3 lg:gap-5">
+          <div class="col-span-2 relative pt-[100%]">
+            <img class="absolute inset-0 w-full h-full object-cover rounded-4" src="{{ ingredient.image | img_url: "1000x" }}">
+          </div>
+          <div class="col-span-4 xl:col-span-3 flex flex-col justify-between pl-1 lg:pl-0">
+            <div>
+              <h6 class="heading-xs mb-2.5 lg:mb-3">{{ ingredient.name }}</h6>
+              <div class="text-dark/75">
+                <span class="font-sans text-[10px] lg:text-xs leading-1.5 tracking-[0.48px] lg:tracking-8pc font-500 uppercase mr-2">Origin</span>
+                <span class="para-sm">{{ ingredient.origin.value.name }}</span>
+              </div>
+            </div>
+            <p class="para-sm leading-1.5 text-dark/75 hidden lg:flex">{{ ingredient.description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

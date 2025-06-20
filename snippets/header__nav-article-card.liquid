@@ -1,0 +1,24 @@
+{% assign url = article.url %}
+
+{% if optional_url %}
+  {% assign url = optional_url %}
+{% endif %}
+
+<a
+  class="inline-block w-full"
+  href="{{ url }}"
+>
+  <img
+    class="aspect-square w-full mb-3 object-cover object-center"
+    src="{{ article.image | image_url: width: 500 }}"
+    width="{{ article.image.width }}"
+    height="{{ article.image.height }}"
+    loading="lazy"
+  >
+  <div class="tracking-4pc text-dark text-opacity-40 mb-1 text-sm">
+    {{ blog_title }}
+  </div>
+  <div class="leading-1.5 text-md tracking-0.3pc">
+    {{ article.title }}
+  </div>
+</a>

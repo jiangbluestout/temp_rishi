@@ -1,0 +1,31 @@
+<section
+  class="section-p-x section-p-b medium"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div
+    class="section-container tight w-full rounded-t-4 lg:rounded-4 flex flex-col lg:flex-row justify-between {% if data.text_button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+    style="background-color: {{ data.background_color | default: '#A88667' }};"
+  >
+    <div class="lg:w-[41.5%] flex flex-col justify-between px-6 py-8 md:p-9">
+      {% if data.heading != blank %}
+        <h2 class="text-8xl font-serif font-100 tracking-1pc leading-none md:pr-[20%] pb-25">{{ data.heading | metafield_tag }}</h2>
+      {% endif %}
+      {% if data.copy != blank %}
+        <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end md:pr-[20%] pt-8">{{ data.copy | metafield_tag }}</div>
+      {% endif %}
+    </div>
+    <div class="lg:w-[58.5%] flex items-center justify-center relative">
+      {% if data.image %}
+        <img
+          src="{{ data.image | img_url: '1000x' }}"
+          class="w-full h-full object-cover rounded-b-4 rounded-tr-none lg:rounded-r-4 lg:rounded-l-none"
+        />
+      {% endif %}
+      {% if data.button_text %}
+        <a href="{{ data.button_link }}" class="button__primary absolute lg:block whitespace-nowrap z-10 {% unless data.button_color  == 'Dark' %} white {% endunless %}">{{ data.button_text }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,124 @@
+{% if section.settings.category != blank %}
+
+{% capture categories %}{% for block in section.blocks %}{{ block.settings.category }},{% endfor %}{% endcapture %}
+{% assign categories = categories | split: ',' | uniq %}
+
+<section
+  class="w-full section-p-b none section-p-x  animate-fade-in rte page"
+  style="animation: fadeIn 500ms ease-in-out"
+  x-cloak
+  x-data="{
+    activeCategory: '{{ categories[0] | handleize }}',
+    changeCategory(category) {
+      function handleize(str) {
+        return str
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric characters with hyphens
+          .replace(/^-+|-+$/g, ''); // Remove any leading or trailing hyphens
+      }
+      const el = window.innerWidth < 768 ? document.getElementById(handleize(category)) : document.getElementById(category);
+      const top = window.innerWidth < 768 ? 129 : 182;
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const elementPosition = el.getBoundingClientRect().top + scrollPosition;
+      window.scrollTo({top: elementPosition - top, scrollBehavior: 'smooth' })
+    },
+    icons: {
+      {% for block in section.blocks %}
+        {% if block.type == 'icon' %}
+          '{{ block.settings.category | handleize }}': '{{ block.settings.icon | img_url: '100x' }}',
+        {% endif %}
+      {% endfor %}
+    },
+    iconsActive: {
+      {% for block in section.blocks %}
+        {% if block.type == 'icon' %}
+          '{{ block.settings.category | handleize }}': '{{ block.settings.icon_active | img_url: '100x' }}',
+        {% endif %}
+      {% endfor %}
+    },
+  }"
+>
+ 
+  <div class="section-container">
+    {% if section.settings.category != blank %}
+      <h3 class="faq-copy-title">
+        {{ section.settings.category }}
+      </h3>
+    {% endif %}
+    <div class="flex flex-col">
+          
+          <div class="" x-init="$nextTick(() => checkChildren($el))">
+            {% for block in section.blocks %}
+              {% if block.settings.title != blank %}
+                {% if block.type == 'faq' %}
+                    <div
+                      class="border-b border-dark border-opacity-[15%]"
+                      x-data="{ open: false }"
+                    >
+                      <div class="">
+                        <button
+                          class="py-4 flex justify-between items-center w-full font-500 text-left"
+                          @click="open = !open"
+                          @keydown.space.prevent="open = !open"
+                          :aria-expanded="open ? 'true' : 'false'"
+                          aria-label="Toggle FAQ"
+                        >
+                          <h4 class="pr-6 para-sm md:leading-1.5">{{ block.settings.title }}</h4>
+                          <span class="block transform transition-all duration-200" :class="{ 'rotate-180': open }">{% render 'svg__chevron-down', class: "text-brown" %}</span>
+                        </button>
+                        <div
+                          x-show="open"
+                          x-collapse
+                        >
+                          <div class="rte page  md:pt-2 pb-9 md:pb-12 pr-15 para-sm leading-1.5">
+                            {{ block.settings.answer | newline_to_br }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+  </div>
+</section>
+{% endif %}
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "section-faq-category",
+  "settings": [
+    {
+      "type": "text",
+      "id": "category",
+      "label": "FAQ Title"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "FAQ Alpha",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Alpha"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,42 @@
+<div class="bg-green rounded-b-4 lg:rounded-4 text-white relative">
+  <div class="min-h-[50px]">
+    <h6 class="para-2xs pt-0.5 absolute top-5 left-4 lg:left-8">Region Details</h6>
+    {% if data.region.value.map %}
+      <div>
+        <img src="{{ data.region.value.map_image | img_url: '800x' }}" alt="{{ data.region.value.title }} map image">
+      </div>
+    {% endif %}
+  </div>
+  <div class="px-4 lg:px-8 pt-5 pb-6 lg:pb-11">
+    {% if data.coordinates %}
+      <div class="grid grid-cols-2 py-3 gap-3 border-t border-b border-white/25 text-sm font-400 leading-1.5 tracking-4pc">
+        <p>Region</p>
+        <p>{{ data.coordinates }}</p>
+      </div>
+    {% endif %}
+    {% if data.tea_or_ingredient.value != 'Ingredient' and elevation %}
+      <div class="grid grid-cols-2 py-3 gap-3 border-b border-white/25 text-sm font-400 leading-1.5 tracking-4pc">
+        <p>Elevation</p>
+        <p>{{ elevation }}</p>
+      </div>
+    {% endif %}
+    {% if data.harvest %}
+      <div class="grid grid-cols-2 py-3 gap-3 border-b border-white/25 text-sm font-400 leading-1.5 tracking-4pc">
+        <p>Harvest</p>
+        <p>{{ data.harvest }}</p>
+      </div>
+    {% endif %}
+    {% if data.tea_or_ingredient.value == 'Tea' and cultivar %}
+      <div class="grid grid-cols-2 py-3 gap-3 border-b border-white/25 text-sm font-400 leading-1.5 tracking-4pc">
+        <p>Cultivar</p>
+        <p>{{ cultivar }}</p>
+      </div>
+    {% endif %}
+    {% if data.tea_or_ingredient.value == 'Ingredient' and data.lexicon %}
+      <div class="grid grid-cols-2 py-3 gap-3 border-b border-white/25 text-sm font-400 leading-1.5 tracking-4pc">
+        <p>Lexicon</p>
+        <p>{{ data.lexicon }}</p>
+      </div>
+    {% endif %}
+  </div>
+</div>

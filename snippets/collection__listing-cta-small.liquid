@@ -1,0 +1,56 @@
+<div
+  class="relative hidden lg:flex flex-col justify-space-evenly rounded-4 gap-1 pt-5 px-5 pb-9 p-7 xl:p-9 ml-[0px] xl:ml-[5%] h-full {% if text_button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+  style="background-color: {{ background_color | default: '#7D794D' }}"
+  :style="{ maxHeight: (imageHeight + 50) + 'px' }"
+>
+  <!-- if background image is enabled, display it is the background -->
+   {% if image != blank and use_background_image == true %}
+    <img
+      src="{{ image | img_url: '2000x' }}"
+      class="w-full h-full object-cover lg:absolute lg:inset-0 rounded-4"
+    />
+  {% endif %}
+  <div class="flex gap-6">
+    {% if illustration != blank %}
+      <img class="max-w-[50px] xl:max-w-[64px] z-10" src="{{ illustration | img_url: '200x'}}" alt="{{ illustration.alt }}">
+    {% endif %}
+    {% if title != blank %}
+      <h2 class="text-[36px] md:text-5xl font-serif font-100 tracking-1pc leading-none xl:pr-[20%] z-10">{{ title | metafield_tag }}</h2>
+    {% endif %}
+  </div>
+  <div class="flex justify-between gap-2 xl:gap-[10%]">
+    {% if copy != blank %}
+      <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end">{{ copy | metafield_tag }}</div>
+    {% endif %}
+    {% if button_text %}
+      <a href="{{ button_link }}" class="button__primary min-w-[150px] whitespace-nowrap z-10 {% unless text_button_color  == 'Dark' %} white {% endunless %}">{{ button_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<!-- mobile has link wrapper and no button -->
+<a
+  href="{{ button_link }}"
+  class="relative flex lg:hidden flex-col justify-between gap-30 rounded-4 pt-5 px-5 pb-9 {% if text_button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+  style="background-color: {{ background_color | default: '#7D794D' }};"
+>
+  {% if image != blank and use_background_image == true %}
+    <img
+      src="{{ image | img_url: '1000x' }}"
+      class="w-full h-full object-cover absolute inset-0 rounded-4"
+    />
+  {% endif %}
+  <div class="flex gap-5">
+    {% if illustration != blank %}
+      <img class="max-w-[40px] z-10" src="{{ illustration | img_url: '200x'}}" alt="{{ illustration.alt }}">
+    {% endif %}
+    {% if title != blank %}
+      <h2 class="text-5xl font-serif font-100 tracking-1pc leading-none z-10">{{ title | metafield_tag }}</h2>
+    {% endif %}
+  </div>
+  <div class="flex">
+    {% if copy != blank %}
+      <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end">{{ copy | metafield_tag }}</div>
+    {% endif %}
+  </div>
+</a>

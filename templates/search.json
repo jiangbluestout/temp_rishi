@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search",
+      "settings": {
+        "empty_results_text": "No results found.",
+        "collection": "best-sellers",
+        "carousel_heading": ""
+      }
+    },
+    "component_instafeed_r3QiHx": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "https:\/\/www.instagram.com\/rishitea\/",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_instafeed_r3QiHx"
+  ]
+}

@@ -1,0 +1,117 @@
+<script>
+  document.addEventListener("alpine:init", () => {
+    Alpine.data("giftCardForm", () => ({
+      showForm: false,
+      errors: {},
+      validateForm(formValues) {
+        const errors = {}
+        if (!formValues['Recipient name']) {
+          errors['Recipient name'] = 'A recipient name is required'
+        }
+        if (!formValues['Recipient email']) {
+          errors['Recipient email'] = 'A recipient email is required'
+        }
+        if (!formValues['Send on']) {
+          errors['Send on'] = 'A send date is required'
+        }
+        if (Object.keys(errors).length) {
+          this.errors = errors
+          return false
+        }
+        return true
+      },
+      handleAddToCart() {
+        const properties = {}
+        if (this.showForm) {
+          const form = document.querySelector('#gift-card-form')
+          const formData = new FormData(form)
+          for (const [key, value] of formData.entries()) {
+            properties[key] = value
+          }
+          if (!this.validateForm(properties)) {
+            return
+          }
+          if (Object.values(properties).some(Boolean)) {
+            properties['__shopify_send_gift_card_to_recipient'] = true
+          }
+        }
+        Alpine.store('main').addVariant({
+          variantId: Alpine.store('main').activeProductVariantId ? Alpine.store('main').activeProductVariantId : '{{ product.first_available_variant.id }}',
+          openCart: true,
+          quantity: 1,
+          properties,
+        })
+      }
+    }));
+  });
+</script>
+
+
+<div
+  class="lg:max-w-[456px] 3xl:max-w-[800px] mx-auto pt-5 lg:pt-[70px] lg:sticky lg:top-[99px] 3xl:top-[200px]"
+  x-data="giftCardForm()"
+>
+  <form
+    class=""
+    method="post"
+    action="/cart/add">
+    <input
+      type="hidden"
+      name="id"
+      :value="$store.main.activeProductVariantId" />
+    <div class="">
+      <div class="hidden lg:block">
+        {% render 'product__title-and-price', product: product %}
+      </div>
+      <div class="text-dark/75 leading-[18.2px] lg:leading-[21px] para-md lg:para-sm lg:pt-6 mb-8 lg:mb-15">{{ product.description }}</div>
+      {% unless product.has_only_default_variant %}
+        <hr class="text-dark/[0.15] mb-[13px] lg:mb-6">
+        {% for option in product.options_with_values %}
+          {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+          <div class="md:hidden flex justify-center pb-2.5">
+            <label class="para-xs uppercase font-[500] text-dark/50">{{ option.name }}:</label>
+          </div>
+          <div class="flex flex-col w-full pb-5">
+            <label class="para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0 pb-5">{{ option.name }}:</label>
+            <div class="flex flex-col gap-y-2.5 w-full">
+              {%
+                render 'product__option-selector-radio'
+                product: product,
+                activeVariant: activeVariant,
+                optionIndex: optionIndex,
+                option: option,
+              %}
+            </div>
+          </div>
+        {% endfor %}
+        <hr class="text-dark/[0.15] mt-[13px] lg:mt-6">
+      {% endunless %}
+      <div>
+        <button
+          id="gift-card-atc"
+          type="submit"
+          @click.prevent="handleAddToCart"
+          x-intersect:leave="showStickyAtc = true"
+          x-intersect:enter="showStickyAtc = false"
+          class="button__atc w-full lg:w-[456px] mt-6 lg:mt-12"
+          :disabled="!reactiveData.activeVariant.isAvailable"
+        >
+          <span x-text="reactiveData.activeVariant.isAvailable ? 'Add to cart&nbsp;&nbsp;•&nbsp;&nbsp;' : 'Sold Out'"></span>
+          <span x-show="reactiveData.activeVariant.isAvailable" x-price="reactiveData.activeVariant?.variantPrice"></span>
+        </button>
+      </div>
+    </div>
+  </form>
+  <div class="flex pt-5 gap-x-2 items-center">
+    <input
+      type="checkbox"
+      :checked="showForm"
+      @click="showForm = !showForm"
+      id="show-form"
+      name="show-form"
+      class="form-checkbox"
+    />
+    <label for="show-form" class="para-xs pt-0.5">Would you like to send this as a gift?</label>
+  </div>
+  {% render 'product__giftcard-recipient-form' %}
+</div>

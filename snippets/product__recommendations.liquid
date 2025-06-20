@@ -1,0 +1,17 @@
+<script src="{{ 'component-product-recommendations.js' | asset_url }}" defer></script>
+
+
+
+{% unless data.use_collection %}
+  <product-recommendations
+  data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations-template&product_id={{ product.id }}&limit={% if data.limit != blank %}{{ data.limit }}{% else %}8{% endif %}&intent={% if data.intent == 'Complementary Products' %}complementary{% else %}related{% endif %}"
+  ></product-recommendations>
+{% else %}
+  {% assign collection = section.settings.collection %}
+  {% if data.collection != blanlk %}
+    {% assign collection = data.collection.value %}
+  {% endif %}
+
+  {% render 'product__recommendations-carousel', recommendations: collection, data: data %}
+
+{% endunless %}

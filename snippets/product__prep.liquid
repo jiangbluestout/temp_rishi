@@ -1,0 +1,197 @@
+{% if data != blank %}
+  <section
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    class="transition-opacity duration-[1100ms] ease section-p-b medium"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div class="pt-6 px-6 pb-[38px] lg:p-16 xl:p-[120px] bg-green">
+      <div
+        x-data="{
+          system: 'Imperial',
+          opacityTransition: {
+              'x-transition:enter': 'transition-all duration-[400ms] delay-[400ms] ease','x-transition:enter-start':'opacity-0',
+              'x-transition:enter-end': 'opacity-100',
+              'x-transition:leave': 'transition-all duration-[400ms] ease',
+              'x-transition:leave-start': 'opacity-100',
+              'x-transition:leave-end': 'opacity-0'
+          }
+        }"
+        class="grid grid-cols-10 gap-3 w-full"
+      >
+        <div class="col-span-10 lg:col-span-4 flex flex-col">
+            <div class="flex flex-col bg-white py-5 px-5 lg:px-6 rounded-4 {% if data.display.value != 'Quote' %} h-full {% else %} h-fit {% endif %}">
+            <div class="flex justify-between items-center w-full mb-8">
+                <h6 id="product-preparation" class="para-xs">Preparation</h6>
+                <div x-data="{ open: false }" class="relative para-sm bg-white w-[80px]">
+                  <button class="toggle flex justify-between items-center w-fit" @click="open = !open">
+                    <span x-text="system" class="mr-1.5"></span>
+                    <span>{% render 'svg__caret' %}</span>
+                  </button>
+                  <ul
+                    x-show="open"
+                    x-collapse
+                    class="flex flex-col items-start absolute top-[20px] left-0 leading-1.5 w-full bg-white cursor-pointer">
+                    <li @click="system = 'Imperial'; open = false;">Imperial</li>
+                    <li @click="system = 'Metric'; open = false;">Metric</li>
+                  </ul>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-y-6 w-full {% if data.display.value != 'Quote' %} mb-12 lg:mb-16 {% else %} mb-6 {% endif %}">
+              <div class="flex justify-start items-center text-left">
+                <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px] lg:rounded-4 mr-4">{% render 'svg__leaf', classes: 'scale-[0.8] lg:scale-1' %}</div>
+                <h6 class="relative">
+                  <span
+                    x-show="system === 'Imperial'"
+                    x-text="'{{ data.amount_imperial }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                  <span
+                    x-show="system === 'Metric'"
+                    x-text="'{{ data.amount_metric }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                </h6>
+              </div>
+              <div class="flex justify-start items-center text-left">
+                <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px]  lg:rounded-4 mr-4">{% render 'svg__teapot', classes: 'scale-[0.8] lg:scale-1' %}</div>
+                <h6 class="relative">
+                  <span
+                    x-show="system === 'Imperial'"
+                    x-text="'{{ data.water_imperial }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                  <span
+                    x-show="system === 'Metric'"
+                    x-text="'{{ data.water_metric }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                </h6>
+              </div>
+              <div class="flex justify-start items-center text-left">
+                <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px]  lg:rounded-4 mr-4">{% render 'svg__thermometer', classes: 'scale-[0.8] lg:scale-1' %}</div>
+                <h6 class="relative">
+                  <span
+                    x-show="system === 'Imperial'"
+                    x-text="'{{ data.temp_fahrenheit }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                  <span
+                    x-show="system === 'Metric'"
+                    x-text="'{{ data.temp_celsius }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                </h6>
+              </div>
+              <div class="flex justify-start items-center text-left">
+                <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px] lg:rounded-4 mr-4">{% render 'svg__clock', classes: 'scale-[0.8] lg:scale-1' %}</div>
+                <h6 class="relative">
+                  <span
+                    x-text="'{{ data.time }}'"
+                    x-bind="opacityTransition"
+                    class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
+                </h6>
+              </div>
+            </div>
+            {% if data.display.value != 'Quote' and data.instructions %}
+              <div class="pr-[18px] lg:pr-14">
+                  <h6 class="para-xs mb-4">{{ data.subheading }}</h6>
+                  <p class="para-md lg:para-sm lg:leading-1.5 leading-[120%] mb-3 lg:mb-0">{{ data.instructions | newline_to_br }}</p>
+              </div>
+            {% endif %}
+          </div>
+          {% if data.display.value == 'Quote' and data.quote %}
+            <div class="flex flex-col flex-grow bg-white py-5 px-6 rounded-4 mt-3">
+              <h6 class="para-xs mb-8">{{ data.subheading }}</h6>
+              <p class="heading-xs text-[20px] leading-[120%] mb-3">{{ data.quote }}</p>
+              <p class="para-sm text-dark/50 leading-[120%]">— {{ data.quote_attribution }}</p>
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% comment %} video player / image {% endcomment %}
+        <div class="col-span-10 lg:col-span-6 rounded-4 relative">
+            {% if data.video != blank %}
+                <div class="relative w-full h-full"
+                    x-data="{
+                        play: false,
+                        showLightbox: false,
+                        toggleLightbox() {
+                            this.play = !this.play
+                            this.showLightbox = !this.showLightbox
+                            this.$refs.video[this.play ? 'play' : 'pause']()
+                        },
+                        togglePlay() {
+                          this.play = !this.play
+                          this.$refs.video[this.play ? 'play' : 'pause']()
+                        }
+                    }"
+                >
+                    <img class="w-full h-full object-cover rounded-4" src="{{ data.image | img_url: '1000x' }}" loading="lazy">
+
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                        <button @click="toggleLightbox" class="button__primary white">Play Video</button>
+                    </div>
+                    <div
+                        x-show="showLightbox"
+                        x-trap.noscroll="showLightbox"
+                        x-transition:enter="transition-all duration-[1100ms] ease"
+                        x-transition:enter-start="opacity-0"
+                        x-transition:enter-end="opacity-100"
+                        x-transition:leave="transition-all duration-[300ms] ease"
+                        x-transition:leave-start="opacity-100"
+                        x-transition:leave-end="opacity-0"
+                        class="fixed inset-0 w-full h-full flex justify-center items-center z-[8000] bg-green-light/[0.9]">
+                        <div class="flex justify-center items-center relative w-full h-full">
+                            <video
+                                x-ref="video"
+                                class="w-[95vw] lg:w-[70vw] h-auto object-cover rounded-4"
+                                playsinline
+                                width="700"
+                                loop
+
+                            >
+                              {% for source in data.video.value.sources %}
+                                <source
+                                  src="{{ source.url }}"
+                                  type="{{ source.mime_type }}"
+                                ></source>
+                              {% endfor %}
+                            </video>
+                            <button @click="toggleLightbox" class="absolute top-3 lg:top-5 right-3 lg:right-5 flex justify-center items-center w-8 h-8 rounded-full bg-white/50 border-transparent hover:border hover:border-brown transition-all duration-[100ms] ease">{% render 'svg__x' %}</button>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+              {% if data.image %}
+                <img class="w-full h-full object-cover rounded-4" src="{{ data.image | img_url: '1000x' }}">
+              {% endif %}
+            {% endif %}
+        </div>
+      </div>
+      {% if data.helpful_accessories_title != blank and data.helpful_accessories != blank %}
+        <div class="helpful-accessories__wrapper">
+          <h2 class="heading-lg">{{ data.helpful_accessories_title }}</h2>
+          {% assign helpful_accessories = data.helpful_accessories.value %}
+          <div class="helpful-accessories__products">
+            {% for helpful_accessories in helpful_accessories %} 
+              <a href = "{{shop.url | append: "/products/" | append: helpful_accessories.handle }}"> 
+                <div class = "helpful-accessories"> 
+                  <div class = "helpful-accessories-image"> 
+                    <img src = "{{helpful_accessories.featured_image | img_url: 'medium' }}" /> 
+                  </div> 
+                  <div class="helpful-accessories__content">
+                    <div class = "helpful-accessories-name">{{helpful_accessories.title}}</div> 
+                  <div class = "helpful-accessories-sh">{{ helpful_accessories.metafields.custom.subheading }}</div>
+                  <div class = "helpful-accessories-price">{{helpful_accessories.price | money}}</div> 
+                  </div>
+                </div> 
+              </a> 
+              {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endif %}

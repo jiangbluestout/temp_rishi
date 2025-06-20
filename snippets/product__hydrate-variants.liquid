@@ -1,0 +1,49 @@
+{% assign options = '' %}
+{% assign optionValues = '' %}
+
+{% for option in product.options_with_values %}
+	{%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+	{%- capture optionValue -%}{{ activeVariant[optionIndex] }}{%- endcapture -%}
+
+	{% assign options = options | append: option.name %}
+	{% assign optionValues = optionValues | append: optionValue %}
+
+	{% unless forloop.last %}
+		{% assign options = options | append: ',' %}
+		{% assign optionValues = optionValues | append: ',' %}
+	{% endunless %}
+{% endfor %}
+
+[
+	{% for variant in product.variants %}
+	  {
+		id: {{ variant.id }},
+      	{% if variant.compare_at_price and variant.price < variant.compare_at_price %}
+      	  variant_compare_at_price: {{ variant.compare_at_price }},
+      	{% endif %}
+      	variantPrice: {{ variant.price }},
+      	optionValues: [
+					{% if variant.option1 %}`{{ variant.option1 | escape }}`{% endif %}
+					{% if variant.option2 %}, `{{ variant.option2 | escape }}`{% endif %}
+					{% if variant.option3 %}, `{{ variant.option3 | escape }}`{% endif %}
+	  	],
+	  isAvailable: {{ variant.available }},
+
+    {% comment %} PDP only {% endcomment %}
+		inventory: {{ variant.inventory_quantity }},
+		inventoryPolicy: '{{ variant.inventory_policy | escape }}',
+		{% if variant.metafields.custom.enable_inventory_note  %}
+			displayInventoryNote: {{ variant.metafields.custom.enable_inventory_note }},
+		{% endif %}
+		{% if variant.metafields.custom.oos_status %}
+			oosStatus: '{{ variant.metafields.custom.oos_status }}',
+	    {% endif %}
+		{% if variant.metafields.custom.enable_waitlist_form %}
+			enableWaitlist: {{ variant.metafields.custom.enable_waitlist_form }},
+		{% endif %}
+		{% if variant.metafields.custom.pre_order_note %}
+			preOrderNote: '{{ variant.metafields.custom.pre_order_note }}'
+		{% endif %}
+	  }{% unless forloop.last %},{% endunless %}
+	{% endfor %}
+]

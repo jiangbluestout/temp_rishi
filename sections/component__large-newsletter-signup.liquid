@@ -1,0 +1,57 @@
+<div
+  class="w-full section-p-b {{ section.settings.padding_bottom }} section-p-x"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="relative section-container">
+    <h4 class="heading-2xl text-center max-w-[1000px] mx-auto pb-8 md:pb-12">{{ section.settings.heading | newline_to_br }}</h4>
+    <div class="">
+      {% render 'newsletter', center: true, is_alt: true %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Large Newsletter Signup",
+    "class": "section-large-newsletter",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading",
+        "default": "Sign up For the Latest Stories and Recipes from Our Travels"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          }, {
+            "value": "small",
+            "label": "Small"
+          }, {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Large Newsletter Signup",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

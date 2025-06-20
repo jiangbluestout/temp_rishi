@@ -1,0 +1,212 @@
+{
+  "sections": {
+    "component_hero_dual_image_split_hxz3Lh": {
+      "type": "component__hero-dual-image-split",
+      "disabled": true,
+      "settings": {
+        "champion": "unset",
+        "variant": "button",
+        "image_one": "shopify:\/\/shop_images\/About_Hero_Botanical_Collection_Tea_Cups_Loose_Leaf.jpg",
+        "banner_heading_1": "<h1>The <em>perfect<\/em> variety sampler for every tea lover’s <em>journey<\/em><\/h1>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 52,
+        "banner_heading_2": "",
+        "banner_heading_font_2": "ivypresto-headline",
+        "heading_text_size_2": 52,
+        "banner_superscript": "<p>Rishi tea sampler<\/p>",
+        "text_one_size": 12,
+        "banner_superscript_two": "<p>Not sure where to start? Rishi's Premium Sachet Collection sampler is a great place to begin your Tea Journey. Try our most popular teas—all organic, direct trade, and made from the finest possible ingredients.<\/p>",
+        "text_two_size": 14,
+        "text_color": "#ffffff",
+        "button_text": "SHOP THE SAMPLER BOX",
+        "button_text_size": 12,
+        "button_link": "shopify:\/\/products\/premium-sachet-collection",
+        "button_colors": "#ffffff",
+        "button_border_color": "#ffffff",
+        "button_color": "button__primary",
+        "background_color": "#283645",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "hero": {
+      "type": "product-hero",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "title": "",
+        "buy_box_testimonials": "{{ product.metafields.custom.buy_box_testerminal | metafield_tag }}"
+      }
+    },
+    "press_reviews_xw6Rqn": {
+      "type": "press-reviews",
+      "blocks": {
+        "review_pPxpAc": {
+          "type": "review",
+          "settings": {
+            "heading": "PureWow",
+            "logo": "shopify:\/\/shop_images\/PureWow_logo.png",
+            "header": "What They're Saying",
+            "content": "Rishi sources ingredients for its <i>passionately-crafted<\/i> line of teas through direct trade with artisan growers. Their teas are an ode to the culinary and botanical arts, and you can <i>taste<\/i> the love."
+          }
+        },
+        "review_zWmy3J": {
+          "type": "review",
+          "settings": {
+            "heading": "Engadget",
+            "logo": "shopify:\/\/shop_images\/Engadget_logo.png",
+            "header": "What They're Saying",
+            "content": "For someone just getting started on their tea adventure, this sampler is an <i>excellent<\/i> place to begin. Try high-quality mainstays alongside fun blends, two weeks of new flavors all in one <i>convenient<\/i> package."
+          }
+        },
+        "review_PwQ7Yr": {
+          "type": "review",
+          "settings": {
+            "heading": "Good Housekeeping",
+            "logo": "shopify:\/\/shop_images\/Logo-Good_Housekeeping.png",
+            "header": "What They're Saying",
+            "content": "The <i>larger tea leaves<\/i> in the pyramid-shaped sachets are definitely an <i>upgrade<\/i> on the dusty dregs often found in lower-quality tea bags."
+          }
+        },
+        "review_UTE7E3": {
+          "type": "review",
+          "settings": {
+            "heading": "Parade",
+            "logo": "shopify:\/\/shop_images\/Parade_logo.png",
+            "header": "What They're Saying",
+            "content": "It may not be loose-leaf, but is <i>carefully<\/i> contained in individual sachets that allow the <i>full flavor<\/i> of the leaves to infuse into your cup."
+          }
+        }
+      },
+      "block_order": [
+        "review_pPxpAc",
+        "review_zWmy3J",
+        "review_PwQ7Yr",
+        "review_UTE7E3"
+      ],
+      "name": "Press Reviews",
+      "settings": {
+        "pt": 3,
+        "pb": 3,
+        "section_class": ""
+      }
+    },
+    "customer_favorites_dBtMCB": {
+      "type": "customer-favorites",
+      "settings": {
+        "subheading": "Our Most Popular Teas",
+        "heading": "Try our customer favorites",
+        "description": "Our sampler box contains 24 individually-wrapped sachets featuring 12 teas and botanical blends from our flagship line and featuring doubles of our most popular teas.",
+        "collection": "sachet-collection-items",
+        "product_count": 10,
+        "button_text": "Get the Sampler Box",
+        "button_link": ""
+      }
+    },
+    "component_review_grid_TjFwNj": {
+      "type": "component__review_grid",
+      "blocks": {
+        "review_qCVbQm": {
+          "type": "review",
+          "settings": {
+            "title": "CERTIFIED ORGANIC",
+            "quote": "<p>Organic teas are healthier for the planet and people who grow, craft and enjoy steeping them. That's why over 95% of Rishi's ingredients are certified organic.<\/p>",
+            "product": ""
+          }
+        },
+        "review_nCy7Nc": {
+          "type": "review",
+          "settings": {
+            "title": "DIRECT TRADE",
+            "quote": "<p>Ethically sourced directly from artisan tea and botanical farmers around the world. Our deep relationships are the foundation of the authentic tea experiences you can expect from Rishi.<\/p>",
+            "product": ""
+          }
+        },
+        "review_g44Ray": {
+          "type": "review",
+          "settings": {
+            "title": "BEAUTIFUL INGREDIENTS",
+            "quote": "<p>Rishi teas are inspired by equal parts: ancient herbal medicinal traditions and modern culinary innovation. Discover new teas and botanicals in exciting, fresh and artfully crafted blends<\/p>",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_qCVbQm",
+        "review_nCy7Nc",
+        "review_g44Ray"
+      ],
+      "settings": {
+        "header": "Founded on the commitment to set the standard for <em>quality<\/em>",
+        "description": "We offer premium tea and botanicals imported directly from growers across the world and draw inspiration from ancient artisanal practices that use organic cultivation techniques",
+        "background_color": "#33432e",
+        "padding_bottom": "none",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "button_color": "button__primary brown"
+      }
+    },
+    "component_spacer_7kWr36": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "components": {
+      "type": "product__sections",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "collection": "best-sellers",
+        "no_reviews_text": "Customer Reviews"
+      }
+    },
+    "component_product_carousel_tabs_HCCtA8": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_h4YHGK": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_h4YHGK"
+      ],
+      "name": "Product Carousel + Tabs",
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Customer Favorites",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "component_hero_dual_image_split_hxz3Lh",
+    "hero",
+    "press_reviews_xw6Rqn",
+    "customer_favorites_dBtMCB",
+    "component_review_grid_TjFwNj",
+    "component_spacer_7kWr36",
+    "components",
+    "component_product_carousel_tabs_HCCtA8"
+  ]
+}

@@ -1,0 +1,760 @@
+{
+  "sections": {
+    "36051a49-e685-43f8-8671-b879863fd66d": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#5d6342",
+        "height_desktop": 0,
+        "height_mobile": 48
+      }
+    },
+    "f31131f5-be00-42f2-9e41-720ba3fdeec1": {
+      "type": "component__hero-full-width",
+      "disabled": true,
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/CM_-_Website_LP_Banner.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/CM_-_Website_LP_Banner_Mobile.jpg",
+        "hide_for_abtest": false,
+        "heading": "",
+        "superscript": "",
+        "text_color": "#ffffff",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "button__primary white",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "0b68ff36-45ea-43f6-a903-d97b79c09514": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "Summer Solstice Sale",
+        "description": "<p>Savor the season with <strong>15% off<\/strong> all your favorite teas and botanicals, no code required. From refreshing cold brews to steamy steeps, there's a tea for every mood and every moment of the day.<\/p>",
+        "background_color": "#5d6342",
+        "header_text_color": "#f5f4ed"
+      }
+    },
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba": {
+          "type": "collection",
+          "settings": {
+            "collection": "loose-leaf-teas",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e": {
+          "type": "collection",
+          "settings": {
+            "collection": "sachet-tea-bags",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d": {
+          "type": "collection",
+          "settings": {
+            "collection": "matcha-powders",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "8e69ee6f-b6a3-43ba-98aa-01ff2e5647d6": {
+          "type": "collection",
+          "settings": {
+            "collection": "tea-concentrates",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "45bcc92f-94ce-4218-9a88-5e6a220e9793": {
+          "type": "collection",
+          "settings": {
+            "collection": "sparkling-botanicals",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "568a72be-0989-499e-9eae-97d38a368e72": {
+          "type": "collection",
+          "settings": {
+            "collection": "teaware",
+            "overlay_color": "#ac9268",
+            "alt_title": "Teaware",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        }
+      },
+      "block_order": [
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba",
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e",
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d",
+        "8e69ee6f-b6a3-43ba-98aa-01ff2e5647d6",
+        "45bcc92f-94ce-4218-9a88-5e6a220e9793",
+        "568a72be-0989-499e-9eae-97d38a368e72"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "<p>Shop By Form<\/p>",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
+      }
+    },
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "407a150b-0c0f-4b18-9276-9b4ced503231": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "desc": "",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "74f87119-4d90-40e0-bc00-9b79a063f613": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "desc": "",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "collection_8ALDga": {
+          "type": "collection",
+          "settings": {
+            "title": "Iced Teas",
+            "desc": "",
+            "collection": "iced-teas",
+            "products": []
+          }
+        },
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7": {
+          "type": "collection",
+          "settings": {
+            "title": "Matcha & Powders",
+            "desc": "",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "5941fc05-8048-4bfc-ade3-64c48837405e": {
+          "type": "collection",
+          "settings": {
+            "title": "Concentrates",
+            "desc": "",
+            "collection": "tea-concentrates",
+            "products": []
+          }
+        },
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551": {
+          "type": "collection",
+          "settings": {
+            "title": "Sparkling",
+            "desc": "",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "407a150b-0c0f-4b18-9276-9b4ced503231",
+        "74f87119-4d90-40e0-bc00-9b79a063f613",
+        "collection_8ALDga",
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7",
+        "5941fc05-8048-4bfc-ade3-64c48837405e",
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Format",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#970909",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "component_collection_grid_gPGY3b": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "collection_E3ERBe": {
+          "type": "collection",
+          "settings": {
+            "collection": "summer-teas",
+            "overlay_color": "#c17d8a",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "collection_bU9btY": {
+          "type": "collection",
+          "settings": {
+            "collection": "new-arrivals",
+            "overlay_color": "#daba23",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "collection_VFGgQx": {
+          "type": "collection",
+          "settings": {
+            "collection": "caffeine-free",
+            "overlay_color": "#9fbc94",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_E3ERBe",
+        "collection_bU9btY",
+        "collection_VFGgQx"
+      ],
+      "name": "Collection Grid",
+      "settings": {
+        "heading": "<p>Summertime Collections<\/p>",
+        "button_link": "",
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
+      }
+    },
+    "d824a171-c9bb-45f9-a028-f45129b63657": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "2607f95c-564f-4260-803a-314650812a17": {
+          "type": "collection",
+          "settings": {
+            "title": "Best Sellers",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        },
+        "81ffff4a-f89e-4ad6-8b68-719c667885eb": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "new-arrivals",
+            "products": []
+          }
+        },
+        "collection_yBqgAW": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "summer-teas",
+            "products": []
+          }
+        },
+        "collection_pVVrHT": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "iced-teas",
+            "products": []
+          }
+        },
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "caffeine-free",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "2607f95c-564f-4260-803a-314650812a17",
+        "81ffff4a-f89e-4ad6-8b68-719c667885eb",
+        "collection_yBqgAW",
+        "collection_pVVrHT",
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop Featured Collections",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "631080cc-3ae9-43b9-bac8-1ccfacf0e905": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "0b86a9d2-aade-436d-8383-1b6200c4e49a": {
+          "type": "rebuy",
+          "settings": {
+            "rebuy_datasource": "131964",
+            "tab_button_text": "",
+            "tab_button_url": "shopify:\/\/collections\/best-sellers"
+          }
+        }
+      },
+      "block_order": [
+        "0b86a9d2-aade-436d-8383-1b6200c4e49a"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Recommended for You",
+        "full_width": true,
+        "button_text": "Shop Customer Favorites",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "e9023f74-6d3e-472a-92b9-77115a871ffb": {
+      "type": "component__cta-card-split",
+      "blocks": {
+        "a20465b4-1cd5-4606-93f8-45564f913d02": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Origin-PDP-Carousel-OrangeBlossomPuer.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Loose Leaf Teas",
+            "description": "",
+            "text_color": "#ffffff",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/loose-leaf-teas",
+            "button_text": "Shop All Loose Leaf",
+            "button_color": "button__primary white"
+          }
+        },
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-RTTB-TG.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Sachet Tea Bags",
+            "description": "",
+            "text_color": "#283645",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/sachet-tea-bags",
+            "button_text": "Shop All Sachets",
+            "button_color": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "a20465b4-1cd5-4606-93f8-45564f913d02",
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac"
+      ],
+      "settings": {
+        "full_width": false,
+        "padding_bottom": "none"
+      }
+    },
+    "d783a720-5c84-40bd-af9d-d26f7583f6e7": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 80,
+        "height_mobile": 80
+      }
+    },
+    "7538f951-b5bf-4b0a-a689-bac13662802a": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "a0650ddf-7dae-4953-8311-5dcdc8e09aa6": {
+          "type": "collection",
+          "settings": {
+            "title": "Botanical",
+            "desc": "",
+            "collection": "herbal-tea-botanicals",
+            "products": []
+          }
+        },
+        "85a7b680-fd8c-4af0-acbb-7fe35f555e0d": {
+          "type": "collection",
+          "settings": {
+            "title": "Black",
+            "desc": "",
+            "collection": "black-tea",
+            "products": []
+          }
+        },
+        "e6d36d7d-b999-4d0d-8470-e798abb636f2": {
+          "type": "collection",
+          "settings": {
+            "title": "Chai",
+            "desc": "",
+            "collection": "chai-tea",
+            "products": []
+          }
+        },
+        "1df367cc-f8d2-475a-b995-8048462c995f": {
+          "type": "collection",
+          "settings": {
+            "title": "Green",
+            "desc": "",
+            "collection": "green-tea",
+            "products": []
+          }
+        },
+        "a096977c-f25a-46cf-9ff7-d68ebaf13ebd": {
+          "type": "collection",
+          "settings": {
+            "title": "Oolong",
+            "desc": "",
+            "collection": "oolong-tea",
+            "products": []
+          }
+        },
+        "fb291d8d-3a8c-4912-bd62-a93a8d026420": {
+          "type": "collection",
+          "settings": {
+            "title": "Pu'er",
+            "desc": "",
+            "collection": "puer-tea",
+            "products": []
+          }
+        },
+        "e3b63a25-9705-4487-8fb1-c7798c46dab1": {
+          "type": "collection",
+          "settings": {
+            "title": "White",
+            "desc": "",
+            "collection": "white-tea",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "a0650ddf-7dae-4953-8311-5dcdc8e09aa6",
+        "85a7b680-fd8c-4af0-acbb-7fe35f555e0d",
+        "e6d36d7d-b999-4d0d-8470-e798abb636f2",
+        "1df367cc-f8d2-475a-b995-8048462c995f",
+        "a096977c-f25a-46cf-9ff7-d68ebaf13ebd",
+        "fb291d8d-3a8c-4912-bd62-a93a8d026420",
+        "e3b63a25-9705-4487-8fb1-c7798c46dab1"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Tea Type",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "c56e4128-ad8f-498a-80e7-3356860ee564": {
+      "type": "component__cta-card-split",
+      "blocks": {
+        "8bb74f53-6b52-4d57-a893-b6a528c1e959": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Origin-Carousel-Lincang-1.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Garden Direct Teas",
+            "description": "",
+            "text_color": "#222222",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/garden-direct-teas",
+            "button_text": "Shop All Garden Direct",
+            "button_color": "button__primary white"
+          }
+        },
+        "8e867386-8e82-4c26-871f-7b1b7cf137af": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/PDP-Everday-Matcha-Teaware-Bundle-4.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Teaware Essentials",
+            "description": "",
+            "text_color": "#f3f3f3",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/teaware",
+            "button_text": "Shop All Teaware",
+            "button_color": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "8bb74f53-6b52-4d57-a893-b6a528c1e959",
+        "8e867386-8e82-4c26-871f-7b1b7cf137af"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "small"
+      }
+    },
+    "41a591bb-2b59-43e1-90bd-37dfa9910377": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "4609473a-e6cd-4e9e-b652-75ed4d9919b9": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "all-gifts",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "4609473a-e6cd-4e9e-b652-75ed4d9919b9"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Gifts for All",
+        "full_width": true,
+        "button_text": "Shop All Gifts",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "a805616c-4096-49e3-96e8-c54a9fddc9f3": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 80,
+        "height_mobile": 80
+      }
+    },
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450": {
+      "type": "component__cta-panel",
+      "settings": {
+        "heading": "Explore the Entire Collection",
+        "superscript": "",
+        "text_color": "#f5f4ed",
+        "button_text": "Shop All Products",
+        "button_link": "shopify:\/\/collections\/all-products",
+        "button_color": "button__primary white",
+        "background_color": "#5d6342",
+        "full_width": false,
+        "flip_orientation": false,
+        "padding_bottom": "none"
+      }
+    },
+    "2afc811a-800f-4852-bfbd-8f067614dde8": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "faq_collection_copy_AVchgg": {
+      "type": "faq-collection-copy",
+      "blocks": {
+        "faq_jQWRAw": {
+          "type": "faq",
+          "settings": {
+            "title": "What is CashBack?",
+            "answer": "<p>Enjoy 20% cash back on your first order when you sign up for emails and text messages from Rishi. CashBack can be redeemed as a Visa prepaid gift card or a digital gift card for Rishi-Tea.com. CashBack cannot be used with other discounts or offers.<\/p>"
+          }
+        },
+        "faq_g3dibM": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I get CashBack on my order?",
+            "answer": "<p>Once signing up for emails and text messages from Rishi, you will receive a link via email and text which will automatically apply CashBack on your first order (no code required). Proceed to complete checkout and you will receive an email to redeem your CashBack reward. Please be sure to use the same email address you used to sign up for emails when placing your order.<\/p>"
+          }
+        },
+        "faq_KHQhrR": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I redeem my CashBack?",
+            "answer": "<p>After a qualifying purchase, you will receive a confirmation email to redeem your CashBack. Select between a Visa prepaid gift card or a digital gift card for Rishi-Tea.com, and you will receive an email with your reward, which will be available for use once the 30 day holding period ends. <\/p>"
+          }
+        },
+        "faq_kYXUxq": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I get a discount code to use my CashBack?",
+            "answer": "<p>There is no discount code associated with applying CashBack to your first order. You will receive a link via email and text message to auto-apply your CashBack offer to the qualifying order.<\/p>"
+          }
+        },
+        "faq_TtcCcd": {
+          "type": "faq",
+          "settings": {
+            "title": "Where can I find my CashBack?",
+            "answer": "<p>You will receive an email with instructions to redeem your CashBack. If you can no longer locate that message, please <a href=\"\/pages\/contact\" target=\"_blank\" title=\"Contact\">contact us<\/a> to assist.<\/p>"
+          }
+        },
+        "faq_Aze9q6": {
+          "type": "faq",
+          "settings": {
+            "title": "Is there a holding period for my CashBack?",
+            "answer": "<p>To deter fraud, the CashBack program includes a 30-day holding period. You may redeem your CashBack reward once that period has lapsed.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_jQWRAw",
+        "faq_g3dibM",
+        "faq_KHQhrR",
+        "faq_kYXUxq",
+        "faq_TtcCcd",
+        "faq_Aze9q6"
+      ],
+      "disabled": true,
+      "settings": {
+        "category": "CashBack FAQs"
+      }
+    },
+    "faq_global_PXGn8b": {
+      "type": "faq-global",
+      "blocks": {
+        "faq_6GFTMY": {
+          "type": "faq",
+          "settings": {
+            "title": "What is CashBack?",
+            "answer": "<p>Enjoy 20% cash back on your first order when you sign up for emails and text messages from Rishi. CashBack can be redeemed as a Visa prepaid gift card or a digital gift card for Rishi-Tea.com. CashBack cannot be used with other discounts or offers.<\/p>"
+          }
+        },
+        "faq_fwk4ag": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I get CashBack on my order?",
+            "answer": "<p>Once signing up for emails and text messages from Rishi, you will receive a link via email and text which will automatically apply CashBack on your first order (no code required). Proceed to complete checkout and you will receive an email to redeem your CashBack reward. Please be sure to use the same email address you used to sign up for emails when placing your order.<\/p>"
+          }
+        },
+        "faq_YmBwtU": {
+          "type": "faq",
+          "settings": {
+            "title": "How do I redeem my CashBack?",
+            "answer": "<p>After a qualifying purchase, you will receive a confirmation email to redeem your CashBack. Select between a Visa prepaid gift card or a digital gift card for Rishi-Tea.com, and you will receive an email with your reward, which will be available for use once the 30 day holding period ends. <\/p>"
+          }
+        },
+        "faq_8Xnizk": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I get a discount code to use my CashBack?",
+            "answer": "<p>There is no discount code associated with applying CashBack to your first order. You will receive a link via email and text message to auto-apply your CashBack offer to the qualifying order.<\/p>"
+          }
+        },
+        "faq_neFaix": {
+          "type": "faq",
+          "settings": {
+            "title": "Where can I find my CashBack?",
+            "answer": "<p>You will receive an email with instructions to redeem your CashBack. If you can no longer locate that message, please <a href=\"\/pages\/contact\" target=\"_blank\" title=\"Contact\">contact us<\/a> to assist.<\/p>"
+          }
+        },
+        "faq_eDmDPe": {
+          "type": "faq",
+          "settings": {
+            "title": "Is there a holding period for my CashBack?",
+            "answer": "<p>To deter fraud, the CashBack program includes a 30-day holding period. You may redeem your CashBack reward once that period has lapsed.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_6GFTMY",
+        "faq_fwk4ag",
+        "faq_YmBwtU",
+        "faq_8Xnizk",
+        "faq_neFaix",
+        "faq_eDmDPe"
+      ],
+      "disabled": true,
+      "settings": {
+        "category": "CashBack FAQs"
+      }
+    },
+    "component_spacer_qb9Cbe": {
+      "type": "component__spacer",
+      "disabled": true,
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 160,
+        "height_mobile": 160
+      }
+    },
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h6><strong>Sale Terms<\/strong>: The Summer Solstice Sale (valid 6\/13\/2025 12:00 AM PST to 6\/20\/2025 11:59 PM PST) cannot be combined with other offers and discount codes. Discount requires code SUMMER15 and will be reflected on eligible items upon checkout. Rishi Tea reserves the right to modify or cancel this offer at any time. Sorry, no rain checks. Offer applies to orders placed at rishi-tea.com. Discount cannot be used towards digital gift cards, Tea Club or wholesale orders.<\/h6><h6><\/h6><h6><\/h6><h6><\/h6>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    }
+  },
+  "order": [
+    "36051a49-e685-43f8-8671-b879863fd66d",
+    "f31131f5-be00-42f2-9e41-720ba3fdeec1",
+    "0b68ff36-45ea-43f6-a903-d97b79c09514",
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c",
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a",
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9",
+    "component_collection_grid_gPGY3b",
+    "d824a171-c9bb-45f9-a028-f45129b63657",
+    "631080cc-3ae9-43b9-bac8-1ccfacf0e905",
+    "e9023f74-6d3e-472a-92b9-77115a871ffb",
+    "d783a720-5c84-40bd-af9d-d26f7583f6e7",
+    "7538f951-b5bf-4b0a-a689-bac13662802a",
+    "c56e4128-ad8f-498a-80e7-3356860ee564",
+    "41a591bb-2b59-43e1-90bd-37dfa9910377",
+    "a805616c-4096-49e3-96e8-c54a9fddc9f3",
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450",
+    "2afc811a-800f-4852-bfbd-8f067614dde8",
+    "faq_collection_copy_AVchgg",
+    "faq_global_PXGn8b",
+    "component_spacer_qb9Cbe",
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f"
+  ]
+}

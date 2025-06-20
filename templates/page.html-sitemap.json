@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "d1ed0315-1629-40f7-aa69-03b90d7fc64e": {
+      "type": "liquid-section",
+      "custom_css": [
+        "h1 {text-align: center; font-size: 36px; margin: 20px 0;}",
+        "h2 {font-size: 26px; margin: 20px 0 10px 0;}",
+        "a {text-decoration: underline;}",
+        "ul {list-style: disc; margin-left: 25px; columns: 2; -webkit-columns: 2; -moz-columns: 2;}",
+        "li {margin-bottom: 5px;}",
+        ".rte.section-container {max-width: 800px; margin: auto;}"
+      ],
+      "settings": {
+        "custom_liquid": "<h1>Sitemap<\/h1>\n<h2><a href=\"https:\/\/rishi-tea.com\/\">Home<\/a><\/h2>\n<h2>Collections<\/h2>\n<ul>\n  {% for collection in collections %}\n  <li><a href=\"{{ collection.url }}\">{{ collection.title }}<\/a><\/li>\n  {% endfor %}\n<\/ul>\n\n<h2>Products<\/h2>\n<ul>\n  {% for product in collections.all.products %}\n  <li><a href=\"{{ product.url }}\">{{ product.title }}<\/a><\/li>\n  {% endfor %}\n<\/ul>\n\n<h2>Pages<\/h2>\n<ul>\n  {% for page in pages %}\n  <li><a href=\"{{ page.url }}\">{{ page.title }}<\/a><\/li>\n  {% endfor %}\n<\/ul>",
+        "full_width": false,
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "d1ed0315-1629-40f7-aa69-03b90d7fc64e"
+  ]
+}

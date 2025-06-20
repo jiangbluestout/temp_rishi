@@ -1,0 +1,417 @@
+<script src="{{ 'component-mapbox.js' | asset_url }}" defer></script>
+{{ 'component-mapbox.css' | asset_url | stylesheet_tag }}
+{{ 'component-origin.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'component-swiper.js' | asset_url }}" defer></script>
+{{ 'component-swiper.css' | asset_url | stylesheet_tag }}
+{{ 'component-swiper-custom.css' | asset_url | stylesheet_tag }}
+
+<script src="{{ 'component-plyr-element.js' | asset_url }}" defer></script>
+{{ 'component-plyr-element.css' | asset_url | stylesheet_tag }}
+{{ 'component-plyr-custom.css' | asset_url | stylesheet_tag }}
+
+<div
+  class="relative"
+  x-data
+  x-init="$store.main.removeHeaderSpacer()"
+>
+  <mapbox-element class="h-screen block origin__map"></mapbox-element>
+
+  <div class="hidden md:block">
+    <div
+      x-show="$store.mapPopup.hoverOpened"
+      x-transition.opacity.duration.200ms
+      class="origin__hover bg-white rounded-md p-3.5 absolute"
+      :style="{ top: $store.mapPopup.hoverData?.top + 'px', left: $store.mapPopup.hoverData?.left + 'px' }"
+    >
+      <div
+        x-text="$store.mapPopup.hoverData?.title"
+        class="text-sm mb-3.5 tracking-4pc text-brown-light"
+      ></div>
+      <div
+        x-text="$store.mapPopup.hoverData?.content"
+        class="font-serif font-100 text-3xl tracking-2pc text-dark"
+      ></div>
+    </div>
+  </div>
+
+  <div
+    x-show="$store.mapPopup.popupOpen"
+    x-transition
+    class="md:h-auto fixed bg-light left-3 bottom-3 right-3 top-1/3 md:right-auto md:left-6 md:top-6 md:bottom-6 rounded flex flex-col sm:flex-row md:w-7/12 sm:bg-white z-header overflow-y-auto sm:overflow-y-visible"
+  >
+    <div
+      x-transition.opacity.duration.250ms
+      x-show="$store.mapPopup.popupLoading"
+      class="absolute inset-0 bg-white bg-opacity-90 z-20 flex items-center justify-center"
+    >
+      <svg class="w-10" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g><circle cx="12" cy="2.5" r="1.5" opacity=".14"/><circle cx="16.75" cy="3.77" r="1.5" opacity=".29"/><circle cx="20.23" cy="7.25" r="1.5" opacity=".43"/><circle cx="21.50" cy="12.00" r="1.5" opacity=".57"/><circle cx="20.23" cy="16.75" r="1.5" opacity=".71"/><circle cx="16.75" cy="20.23" r="1.5" opacity=".86"/><circle cx="12" cy="21.5" r="1.5"/><animateTransform attributeName="transform" type="rotate" calcMode="discrete" dur="0.75s" values="0 12 12;30 12 12;60 12 12;90 12 12;120 12 12;150 12 12;180 12 12;210 12 12;240 12 12;270 12 12;300 12 12;330 12 12;360 12 12" repeatCount="indefinite"/></g></svg>
+    </div>
+
+    <div class="sm:w-7/12 bg-light flex flex-col">
+      <div class="aspect-[3/2] w-full">
+        <template x-if="$store.mapPopup.popupOpen && !$store.mapPopup.popupLoading">
+          <swiper-carousel
+            x-show="$store.mapPopup?.data?.images?.references?.nodes?.length"
+            class="relative block origin__swiper1 w-full"
+            data-swiper='{
+              "slidesPerView": 1,
+              "allowSlidePrev": true,
+              "allowSlideNext": true
+            }'
+          >
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <template x-for="image in $store.mapPopup?.data?.images?.references?.nodes">
+                  <div class="swiper-slide">
+                    <template x-if="image.image?.url">
+                      <img
+                        class="aspect-[3/2] object-cover w-full object-center"
+                        :src="image.image.smallUrl"
+                        :width="image.image.width"
+                        :height="image.image.height"
+                        loading="eager"
+                      >
+                    </template>
+                    <template x-if="image.sources">
+                      <plyr-element data-ratio="3:2" class="block w-auto mx-auto h-auto max-h-full">
+                        <video
+                          playsinline
+                          controls
+                          x-bind:data-poster="image.previewImage?.smallUrl"
+                        >
+                          <template x-for="source in image.sources">
+                            <source :src="source.url" x-bind:type="source.mimeType" />
+                          </template>
+                        </video>
+                      </plyr-element>
+                    </template>
+                  </div>
+                </template>
+              </div>
+            </div>
+
+            <div class="absolute bottom-3 left-3 z-10 right-3 flex justify-between">
+              <div>
+                <button type="button" class="swiper-button-prev text-dark hover:text-brown transition-colors opacity-95 hover:opacity-100 bg-white rounded group">
+                  <svg class="transform group-hover:scale-x-125 transition-transform" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5582 17.5581C10.3141 17.8021 10.3141 18.1979 10.5582 18.4419L14.5357 22.4194C14.7798 22.6635 15.1755 22.6635 15.4196 22.4194C15.6636 22.1753 15.6636 21.7796 15.4196 21.5355L11.884 18L15.4196 14.4645C15.6636 14.2204 15.6636 13.8247 15.4196 13.5806C15.1755 13.3365 14.7798 13.3365 14.5357 13.5806L10.5582 17.5581ZM24.916 17.375L11.0002 17.375L11.0002 18.625L24.916 18.625L24.916 17.375Z" fill="currentColor"/>
+                  </svg>
+                </button>
+                <button type="button" class="swiper-button-next text-dark hover:text-brown transition-colors bg-opacity-95 hover:bg-opacity-100 bg-white rounded group">
+                  <svg class="transform rotate-180 group-hover:scale-x-125 transition-transform" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5582 17.5581C10.3141 17.8021 10.3141 18.1979 10.5582 18.4419L14.5357 22.4194C14.7798 22.6635 15.1755 22.6635 15.4196 22.4194C15.6636 22.1753 15.6636 21.7796 15.4196 21.5355L11.884 18L15.4196 14.4645C15.6636 14.2204 15.6636 13.8247 15.4196 13.5806C15.1755 13.3365 14.7798 13.3365 14.5357 13.5806L10.5582 17.5581ZM24.916 17.375L11.0002 17.375L11.0002 18.625L24.916 18.625L24.916 17.375Z" fill="currentColor"/>
+                  </svg>
+                </button>
+              </div>
+
+              <button
+                type="button"
+                @click="
+                  $store.mapPopup.imagePopupOpen = true
+                  document.body.querySelector('.origin__swiper2').swiper.slideTo(document.body.querySelector('.origin__swiper1').swiper.activeIndex)
+                "
+                class="text-dark hover:text-brown transition-colors opacity-95 hover:opacity-100 bg-white rounded group"
+              >
+                <svg class="transform group-hover:scale-125 transition-transform" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.3747 25.2201C10.3747 25.5652 10.6545 25.8451 10.9997 25.8451L16.6247 25.8451C16.9698 25.8451 17.2497 25.5652 17.2497 25.2201C17.2497 24.8749 16.9698 24.5951 16.6247 24.5951L11.6247 24.5951L11.6247 19.5951C11.6247 19.2499 11.3448 18.9701 10.9997 18.9701C10.6545 18.9701 10.3747 19.2499 10.3747 19.5951L10.3747 25.2201ZM16.1499 19.186L10.5577 24.7781L11.4416 25.662L17.0337 20.0699L16.1499 19.186Z" fill="currentColor"/>
+                  <path d="M25.846 10.9997C25.846 10.6545 25.5662 10.3747 25.221 10.3747L19.596 10.3747C19.2509 10.3747 18.971 10.6545 18.971 10.9997C18.971 11.3448 19.2509 11.6247 19.596 11.6247L24.596 11.6247L24.596 16.6247C24.596 16.9698 24.8759 17.2497 25.221 17.2497C25.5662 17.2497 25.846 16.9698 25.846 16.6247L25.846 10.9997ZM20.0708 17.0337L25.663 11.4416L24.7791 10.5577L19.187 16.1499L20.0708 17.0337Z" fill="currentColor"/>
+                </svg>
+              </button>
+            </div>
+          </swiper-carousel>
+        </template>
+      </div>
+
+      <button
+        class="absolute top-3 left-3 z-10 bg-white rounded-full bg-opacity-90 hover:bg-opacity-100 transition-colors group"
+        type="button"
+        @click="$store.mapPopup.closePopup()"
+      >
+        <svg class="transform group-hover:scale-125 transition-transform active:scale-100" width="35" height="39" viewBox="0 0 35 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M25.0938 11.9062L9.90625 27.0938" stroke="#A88667"/>
+          <path d="M25.0938 27.0938L9.90625 11.9062" stroke="#A88667"/>
+        </svg>
+      </button>
+
+      <div class="flex-1 overflow-y-auto py-6 px-3 lg:p-8">
+        <h2
+          class="text-3xl lg:text-6xl tracking-2pc mb-6 lg:mb-9 font-serif font-100 text-dark"
+          x-text="$store.mapPopup?.data?.title?.value"
+        ></h2>
+
+        <div class="border-t border-dark border-opacity-25 grid grid-cols-4">
+          <div
+            x-show="$store.mapPopup?.data?.location?.value?.length"
+            class="col-span-1 text-xxs text-dark tracking-8pc text-opacity-75 uppercase py-3 border-b border-b-dark border-opacity-25 font-500"
+          >
+            Location
+          </div>
+          <div
+            x-show="$store.mapPopup?.data?.location?.value?.length"
+            class="col-span-3 text-sm text-dark tracking-4pc py-3 border-b border-b-dark border-opacity-25"
+            x-text="$store.mapPopup?.data?.location?.value"
+          ></div>
+          <div
+            x-show="$store.mapPopup?.data?.region?.value?.length"
+            class="col-span-1 text-xxs text-dark tracking-8pc text-opacity-75 uppercase py-3 border-b border-b-dark border-opacity-25 font-500"
+          >
+            Region
+          </div>
+          <div
+            x-show="$store.mapPopup?.data?.region?.value?.length"
+            class="col-span-3 text-sm text-dark tracking-4pc py-3 border-b border-b-dark border-opacity-25"
+            x-text="$store.mapPopup?.data?.region?.value"
+          ></div>
+          <div
+            x-show="$store.mapPopup?.data?.elevation?.value?.length"
+            class="col-span-1 text-xxs text-dark tracking-8pc text-opacity-75 uppercase py-3 border-b border-b-dark border-opacity-25 font-500"
+          >
+            Elevation
+          </div>
+          <div
+            x-show="$store.mapPopup?.data?.elevation?.value?.length"
+            class="col-span-3 text-sm text-dark tracking-4pc py-3 border-b border-b-dark border-opacity-25"
+            x-text="$store.mapPopup?.data?.elevation?.value"
+          ></div>
+        </div>
+
+        <p
+          x-show="$store.mapPopup?.data?.copy?.value"
+          class="mt-6 text-base leading-1.5 tracking-4pc"
+          x-text="$store.mapPopup?.data?.copy?.value"
+        ></p>
+      </div>
+    </div>
+    <div
+      class="sm:hidden border-b border-brown border-opacity-50 mx-3.5"
+    ></div>
+    <div class="sm:w-5/12 sm:overflow-y-auto px-6 py-8 bg-light sm:bg-white">
+      <div x-show="$store.mapPopup?.data?.products?.references.nodes.length > 0">
+        <h2 class="text-brown text-xl tracking-2pc md:text-3xl mb-6 md:mb-8 font-serif font-100 ">
+          Taste This Origin
+        </h2>
+        <div class="my-6 md:my-8">
+          <div class="relative">
+            <template x-for="(product, index) in $store.mapPopup?.data?.products?.references.nodes.slice(0, $store.mapPopup?.showAllProducts ? 20: 4)">
+              <a
+                :href="product.onlineStoreUrl"
+                class="flex md:flex-col xl:flex-row gap-3 mb-2 group"
+              >
+                <img
+                  class="w-25 group-hover:transform group-hover:scale-105 transition-transform aspect-square object-cover object-center"
+                  :src="product.featuredImage.url"
+                  :width="product.featuredImage.width"
+                  :height="product.featuredImage.height"
+                  loading="lazy"
+                >
+                <div class="flex flex-1 flex-col justify-center">
+                  <div
+                    class="text-dark leading-1.5 tracking-4pc text-base group-hover:underline"
+                    x-text="product.title"
+                  ></div>
+                  <div
+                    class="text-dark text-opacity-75 leading-1.2 tracking-4pc text-sm"
+                    x-text="JSON.parse(product.tea_type?.value)?.join(', ')"
+                  ></div>
+                  <div
+                    class="text-dark text-opacity-75 leading-1.2 tracking-4pc text-sm"
+                    x-text="product.tasting_notes?.value"
+                  ></div>
+                </div>
+              </a>
+            </template>
+            <div x-show="$store.mapPopup?.data?.products?.references.nodes.length >= 5 && !$store.mapPopup?.showAllProducts">
+              <div class="absolute bottom-0 w-full h-16" style="background: linear-gradient(0deg, #FFF 14.06%, rgba(255, 255, 255, 0.00) 100%);">
+              </div>
+            </div>
+          </div>
+          <div x-show="$store.mapPopup?.data?.products?.references.nodes.length >= 5 && !$store.mapPopup?.showAllProducts" class="text-center">
+            <button
+              @click="if($store.mapPopup) $store.mapPopup.showAllProducts = true"
+              class="px-6 py-2.5 bg-brown bg-opacity-10 text-brown rounded-full text-sm tracking-4pc inline-block mt-4"
+              type="button"
+            >
+              View All Teas
+            </button>
+          </div>
+        </div>
+      </div>
+      <div x-show="$store.mapPopup?.data?.articles?.references.nodes.length > 0">
+        <div class="border-b border-brown border-opacity-25 -mx-2.5 mt-7 mb-4"></div>
+        <h2 class="text-brown text-xl tracking-2pc md:text-3xl mb-6 md:mb-8 font-serif font-100 ">
+          Discover More
+        </h2>
+        <template x-for="article in $store.mapPopup?.data?.articles?.references.nodes">
+          <a
+            :href="article.link?.value"
+            class="flex md:flex-col xl:flex-row gap-3 mb-3 group"
+          >
+            <img
+              class="w-20 aspect-[5/4] object-cover object-center rounded"
+              :src="article.image?.reference?.image?.url"
+              :width="article.image?.reference?.image?.width"
+              :height="article.image?.reference?.image?.height"
+              loading="lazy"
+            >
+            <div class="flex flex-1 flex-col justify-center gap-2.5">
+              <div
+                class="text-dark text-opacity-50 leading-none tracking-4pc text-sm"
+                x-text="article.upper_label?.value"
+              ></div>
+              <div
+                class="text-dark leading-1.5 tracking-4pc text-base group-hover:underline"
+                x-text="article.title?.value"
+              ></div>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+
+  <div
+    x-show="!$store.mapPopup.mapTouched"
+    x-transition
+    class="absolute text-center px-container z-10 map-overlay-effect"
+  >
+    <h1
+      class="font-serif font-100 text-6xl md:text-[52px] mb-4 text-white tracking-4pc"
+      style="text-shadow: 0px 0px 13px rgba(0, 0, 0, 0.33); "
+    >
+      {{ section.settings.title }}
+    </h1>
+    <div
+      class="text-[14px] leading-1.5 text-white tracking-4pc whitespace-pre-wrap"
+      style="text-shadow: 0px 0px 13px rgba(0, 0, 0, 0.33);"
+    >{{ section.settings.copy }}</div>
+  </div>
+
+
+  <div class="absolute right-6 bottom-10 bg-white bg-opacity-10 p-1.5 flex gap-1.5 rounded-full origin__zoom">
+    <button
+      @click="document.body.querySelector('.origin__map').map.zoomOut(); $store.mapPopup.mapTouched = true;"
+      type="button"
+    >
+      <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="14.5" cy="15" r="14.5" transform="rotate(-180 14.5 15)"/>
+        <line x1="10" y1="15.5" x2="20" y2="15.5"/>
+      </svg>
+    </button>
+    <button
+      @click="document.body.querySelector('.origin__map').map.zoomIn(); $store.mapPopup.mapTouched = true;"
+      type="button"
+    >
+      <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle opacity="0.1" cx="14.5" cy="15" r="14.5" transform="rotate(-180 14.5 15)"/>
+        <line x1="15" y1="21" x2="15" y2="10"/>
+        <line x1="9.5" y1="15.5" x2="20.5" y2="15.5"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div
+  x-show="$store.mapPopup.imagePopupOpen"
+  x-transition.opacity
+  class="fixed inset-0 bg-green bg-opacity-95 py-24 flex items-center z-header"
+>
+  <button
+    class="w-9 h-9 absolute top-6 right-6 z-10 bg-dark rounded-full bg-opacity-50 hover:bg-opacity-100 transition-colors group"
+    type="button"
+    @click="$store.mapPopup.imagePopupOpen = false"
+  >
+    <svg class="transform group-hover:scale-125 transition-transform active:scale-100" width="35" height="39" viewBox="0 0 35 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M25.0938 11.9062L9.90625 27.0938" stroke="#A88667"/>
+      <path d="M25.0938 27.0938L9.90625 11.9062" stroke="#A88667"/>
+    </svg>
+  </button>
+
+
+  <template x-if="$store.mapPopup.popupOpen && !$store.mapPopup.popupLoading">
+    <swiper-carousel
+      class="relative block w-full h-full swiper__scale-effect origin__swiper2"
+      data-swiper='{
+        "slidesPerView": 1,
+        "centeredSlides": false,
+        "allowSlidePrev": true,
+        "allowSlideNext": true,
+        "breakpoints": {
+          "768": {
+            "centeredSlides": true,
+            "spaceBetween": 10,
+            "slidesPerView": "2"
+          }
+        }
+      }'
+    >
+      <div class="swiper h-full">
+        <div class="swiper-wrapper h-full">
+          <template x-for="image in $store.mapPopup?.data?.images?.references?.nodes">
+            <div class="swiper-slide w-full">
+              <div class="h-full flex items-center">
+                <template x-if="image.image?.url">
+                  <img
+                    class="w-auto mx-auto h-auto max-h-full"
+                    :src="image.image.url"
+                    :width="image.image.width"
+                    :height="image.image.height"
+                    loading="eager"
+                  >
+                </template>
+                <template x-if="image.sources">
+                  <plyr-element class="block w-auto mx-auto h-auto max-h-full">
+                    <video
+                      playsinline
+                      controls
+                      x-bind:data-poster="image.previewImage?.url"
+                    >
+                      <template x-for="source in image.sources">
+                        <source :src="source.url" x-bind:type="source.mimeType" />
+                      </template>
+                    </video>
+                  </plyr-element>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+
+      <button type="button" class="swiper-button-prev absolute left-4 -bottom-13 md:left-16 md:bottom-1/2 z-10 md:transform md:translate-y-1/2 text-dark hover:text-white transition-colors opacity-95 hover:opacity-100 bg-brown rounded group">
+        <svg class="transform group-hover:scale-x-125 transition-transform" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5582 17.5581C10.3141 17.8021 10.3141 18.1979 10.5582 18.4419L14.5357 22.4194C14.7798 22.6635 15.1755 22.6635 15.4196 22.4194C15.6636 22.1753 15.6636 21.7796 15.4196 21.5355L11.884 18L15.4196 14.4645C15.6636 14.2204 15.6636 13.8247 15.4196 13.5806C15.1755 13.3365 14.7798 13.3365 14.5357 13.5806L10.5582 17.5581ZM24.916 17.375L11.0002 17.375L11.0002 18.625L24.916 18.625L24.916 17.375Z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <div class="text-brown text-sm absolute md:hidden -bottom-10 left-1/2 transform -translate-x-1/2 swiper-pagination-current">
+        1/<span x-text="$store.mapPopup?.data?.images?.references?.nodes.length"></span>
+      </div>
+
+      <button type="button" class="swiper-button-next absolute right-4 -bottom-13 md:right-16 md:bottom-1/2 z-10 md:transform md:translate-y-1/2 text-dark hover:text-white transition-colors opacity-95 hover:opacity-100 bg-brown rounded group">
+        <svg class="transform rotate-180 group-hover:scale-x-125 transition-transform" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M10.5582 17.5581C10.3141 17.8021 10.3141 18.1979 10.5582 18.4419L14.5357 22.4194C14.7798 22.6635 15.1755 22.6635 15.4196 22.4194C15.6636 22.1753 15.6636 21.7796 15.4196 21.5355L11.884 18L15.4196 14.4645C15.6636 14.2204 15.6636 13.8247 15.4196 13.5806C15.1755 13.3365 14.7798 13.3365 14.5357 13.5806L10.5582 17.5581ZM24.916 17.375L11.0002 17.375L11.0002 18.625L24.916 18.625L24.916 17.375Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </swiper-carousel>
+  </template>
+</div>
+
+
+{% schema %}
+{
+  "name": "Origin",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy"
+    }
+  ]
+}
+{% endschema %}

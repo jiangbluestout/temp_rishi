@@ -1,0 +1,42 @@
+{% assign video_url = '' %}
+
+{% for source in video.sources %}
+  {% if source.format == 'mp4' %}
+    {% assign video_url = source.url %}
+  {% endif %}
+{% endfor %}
+
+
+<div
+  x-data="{
+    play: false,
+    togglePlay() {
+      this.play = !this.play
+      this.$refs.video[this.play ? 'play' : 'pause']()
+    }
+  }"
+  class="relative flex items-center justify-center"
+>
+  <video
+    x-ref="video"
+    class="{{ video_classes }}"
+    src="{{ video_url }}"
+    x-on:ended="play = false"
+  ></video>
+  <button
+    @click="togglePlay"
+    class="absolute button__primary white"
+    x-show="!play"
+    x-transition
+  >
+    Play Video
+  </button>
+  <button
+    @click="togglePlay"
+    class="absolute button__primary white"
+    x-show="play"
+    x-transition
+  >
+    Pause Video
+  </button>
+</div>

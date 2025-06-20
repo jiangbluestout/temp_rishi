@@ -1,0 +1,431 @@
+{
+  "sections": {
+    "030dbd8c-ec68-4541-8249-26010c973f65": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "FAQ",
+        "description": "",
+        "background_color": "#283645",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "faq",
+      "blocks": {
+        "5497d035-df5b-4a1b-b1d0-55134db4d908": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_9_3e539d60-7fe8-4c4d-8de1-56e687534a2c.png",
+            "icon_active": "shopify:\/\/shop_images\/Group_9_907d983f-ade8-4157-b949-f88d283b80a8.png",
+            "category": "General"
+          }
+        },
+        "2b5d4136-22b1-47e4-a8e6-c0579bfda722": {
+          "type": "faq",
+          "settings": {
+            "category": "General",
+            "title": "Where can I find Rishi Tea near me?",
+            "answer": "<p>If you are looking for Rishi Tea & Botanicals we encourage you to check the tea aisle of your local grocery store or ask for it at your local coffee shop. Our products can often be found at Whole Foods, Cost Plus World Market, Wegmans, The Fresh Market, Sprouts, Publix and many other local grocers.<\/p><p><\/p><p>If you are interested in seeing Rishi offerings in a market, cafe, or store near you, please share with your local merchant!<\/p>"
+          }
+        },
+        "176c974d-ceb9-4e6a-b7e4-6a1b244f4163": {
+          "type": "faq",
+          "settings": {
+            "category": "General",
+            "title": "Does Rishi have any retail locations?",
+            "answer": "<p>Rishi is an online and wholesale retailer. You can place your order directly from our online store or find us at select markets, retail stores, cafes, restaurants and hotels.<\/p>"
+          }
+        },
+        "037fe1b6-161e-4bd6-b27f-b177c268bfd5": {
+          "type": "faq",
+          "disabled": true,
+          "settings": {
+            "category": "General",
+            "title": "How do I update my account settings?",
+            "answer": "<p>To change your password, update account information, or change your billing and\/or shipping address, click on the corresponding tab under My Account.<\/p>"
+          }
+        },
+        "icon_zrcGcq": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_11_81972502-f999-43bc-b0dc-5226561c8d92.png",
+            "icon_active": "shopify:\/\/shop_images\/Group_11_8fb322c9-044e-49cb-a22a-22e4ec9dfc19.png",
+            "category": "Shipping & Returns"
+          }
+        },
+        "b2cd1bc3-6b1a-4e4d-b8e0-0446a08b0d2e": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "I forgot a discount code, can you add it for me after I've placed my order?",
+            "answer": "<p>We are unable to retroactively apply discounts once an order has been placed.<\/p><p>Discounts and\/or promotions cannot be stacked. If you’ve already taken advantage of a discount or promotion, we will not be able to apply another one to your order.<\/p>"
+          }
+        },
+        "0bc71ea6-fa55-42e8-be38-5e7f939f45da": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Can I make changes to my order after it's placed?",
+            "answer": "<p>In effort to get our customers their orders as fast as possible, your order is immediately sent to our fulfillment team and we are unable to make changes to the order details, including address changes, item changes, and cancellation requests. <\/p>"
+          }
+        },
+        "06b1fba3-e5c2-4856-8367-d62407cc6a55": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "What shipping methods do you use?",
+            "answer": "<p>FedEx is our preferred shipper for all contiguous US orders. We offer multiple FedEx options to ensure convenient delivery to a range of addresses. If you are unable to receive FedEx deliveries, contact us at Customer Service or 844-467-4744 to place your order. <\/p><p><\/p><p>Orders shipping to APO, AK, HI, AA, AP, AS, FM, GU, MH, MP, PW, PR, VI are shipped via US Postal Service. During checkout, USPS shipping will automatically apply to orders going to regions listed above.<\/p>"
+          }
+        },
+        "21f2ed83-2809-4733-8732-12a4ba2c4914": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Do you ship outside North America?",
+            "answer": "<p>At this time, we do not ship internationally outside of the U.S. or Canada.<\/p><p> <\/p><p>If you are interested in Rishi products outside of North America, please <a href=\"https:\/\/rishi-tea.com\/pages\/contact\" target=\"_blank\" title=\"https:\/\/rishi-tea.com\/pages\/contact\">contact us<\/a> and we will evaluate the possibility of international shipping.<\/p>"
+          }
+        },
+        "4c4b09a3-d556-48a9-96db-cfbc51e73241": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Do you ship to Canada?",
+            "answer": "<p>Yes! We do ship Canadian orders via Delivery Duty Paid (DDP) shipping through FedEx. Duties and fees are collecting during checkout.<\/p>"
+          }
+        },
+        "42bda01e-0d2d-4377-bdd6-859f1751c5cb": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "How do I track my order?",
+            "answer": "<p>A shipping confirmation will be sent to your email when your order ships. This email includes either a FedEx or USPS tracking number. <\/p><p><\/p><p>You can also follow your order through your account on our website, you can find tracking information under “My Account” &gt; “Past Orders \/ Shipments”.<\/p><p><\/p><p>Orders sent via FedEx can be tracked with the tracking number provided in your shipping confirmation email here- <a href=\"https:\/\/tools.usps.com\/go\/TrackConfirmAction_input\" target=\"_blank\">FedEx Tracking<\/a><\/p><p><\/p><p>Orders sent via USPS can be tracked with the tracking number provided in your shipping confirmation email here- <a href=\"https:\/\/tools.usps.com\/go\/TrackConfirmAction_input\" target=\"_blank\">USPS Tracking <\/a><\/p>"
+          }
+        },
+        "6e9897fd-4346-4482-9de9-6be123ad604e": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Why has my tracking not updated?",
+            "answer": "<p><strong>Pending Status <\/strong><br\/>When packages enter high volume facilities, FedEx automatically updates the expected delivery date to pending. Once your package enters a lower volume facility, a new expected delivery date will be generated. <br\/><br\/> <br\/><strong>Strange Routing <\/strong><br\/>With FedEx Economy shipments, you may follow your package updates and notice that it has gone a strange way, or seemingly away from your address during its journey. <br\/><br\/>These packages must be sorted through certain facilities, and this may be why you see a strange direction on your tracking details. This process may also add additional transit days to your order. Be assured once sorted, it will arrive soon. <br\/><br\/><br\/><strong>Extended Transit Times <\/strong><br\/>We do our best to provide estimated times in transit, but please note transit time vary by carrier and distance, delivery may be extended past estimated days in transit. Please allow ample time for your order to arrive. <\/p>"
+          }
+        },
+        "fc391ae9-fde3-4bcc-bf70-dc45477eca88": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "My order arrived damaged or incomplete. What should I do?",
+            "answer": "<p>We work hard to ensure orders are filled correctly and completely, and all items are packaged carefully to prevent breakage. If you experience any problem with your order, please  <a href=\"https:\/\/rishi-tea-1.myshopify.com\/pages\/contact\" title=\"Contact\">contact our customer service<\/a> team for assistance. We’re happy to rectify any problems to ensure your satisfaction.<\/p>"
+          }
+        },
+        "165828e6-f629-417e-b1c8-706b9580b259": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Do you accept returns or exchanges?",
+            "answer": "<p>As a Safe Quality Foods (SQF) facility, we are unable to accept returns or exchanges.<\/p><p>If you are not satisfied with our products or feel the quality of our products is less than expected, please <a href=\"\/pages\/contact\" target=\"_blank\" title=\"Contact\">contact our customer service<\/a> within 45 days of your date of purchase. We will need the lot code and photos of the issue to process your inquiry.<\/p><p>Please note that because we are unable to control the quality of our products sold by unauthorized sellers, unless otherwise prohibited by law, our Guarantee is not available for products purchased from unauthorized sellers, including unauthorized internet sites\/third-party marketplace storefronts.  If you have any questions regarding whether a seller is an authorized seller of our products, please <a href=\"\/pages\/contact\" title=\"Contact\">contact our customer service<\/a>. <\/p>"
+          }
+        },
+        "2e05961c-3e5e-4816-8d5e-9dbfcb2c5513": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "Can I return opened tea or used teaware?",
+            "answer": "<p>Rishi Tea & Botanicals is dedicated to sourcing only the highest quality products and your experience is important to us. If you are not satisfied with our products or feel the quality of our products is less than expected, please contact our customer service within 45 days of your date of purchase. We reserve the right to evaluate situations on a case-by-case basis.  <\/p><p>Please note, as an agricultural product, some seasonal variance is to be expected in the flavor profiles of tea. For this reason, we recommend purchasing smaller quantities such as our “Teaser” sample size, ensuring the tea is to your liking before committing to larger bags. For insight into the most recent crop tasting notes, our Customer Service team can help.  <\/p>"
+          }
+        },
+        "cfd0d8b4-0be0-4bad-8942-345fe39913a8": {
+          "type": "faq",
+          "settings": {
+            "category": "Shipping & Returns",
+            "title": "How can I return tea and teaware purchased from an outside retailer?",
+            "answer": "<p>If you purchased your tea from a third-party retailer, we kindly ask you to first contact the retailer from which you purchased the items for the resolution of all product-related issues. If you are not satisfied with the resolution offered by the retailer from which you purchased your tea, please <a href=\"\/pages\/contact\" title=\"Contact\">contact our customer service<\/a> with your proof of purchase.<\/p>"
+          }
+        },
+        "icon_YhLG6w": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Rishi-Temperature-Icon_Indigo.png",
+            "icon_active": "shopify:\/\/shop_images\/Rishi-Temperature-Icon_Gold.png",
+            "category": "CashBack"
+          }
+        },
+        "faq_eYTUL3": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "What is CashBack?",
+            "answer": "<p>Enjoy 20% cash back on your first order when you sign up for emails and text messages from Rishi. CashBack can be redeemed as a Visa prepaid gift card or a digital gift card for Rishi-Tea.com. CashBack cannot be used with other discounts or offers.<\/p>"
+          }
+        },
+        "faq_GypjLm": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "How do I get CashBack on my order?",
+            "answer": "<p>Once signing up for emails and text messages from Rishi, you will receive a link via email and text which will automatically apply CashBack on your first order (no code required). Proceed to complete checkout and you will receive an email to redeem your CashBack reward. Please be sure to use the same email address you used to sign up for emails when placing your order.<\/p>"
+          }
+        },
+        "faq_3pmBtC": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "How do I redeem my CashBack?",
+            "answer": "<p>After a qualifying purchase, you will receive a confirmation email to redeem your CashBack. Select between a Visa prepaid gift card or a digital gift card for Rishi-Tea.com, and you will receive an email with your reward, which will be available for use once the 30 day holding period ends. <\/p>"
+          }
+        },
+        "faq_ceEGAC": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "Do I get a discount code to use my CashBack?",
+            "answer": "<p>There is no discount code associated with applying CashBack to your first order. You will receive a link via email and text message to auto-apply your CashBack offer to the qualifying order.<\/p>"
+          }
+        },
+        "faq_3npxKA": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "Where can I find my CashBack?",
+            "answer": "<p>You will receive an email with instructions to redeem your CashBack. If you can no longer locate that message, please <a href=\"\/pages\/contact\" target=\"_blank\" title=\"Contact\">contact us<\/a> to assist.<\/p>"
+          }
+        },
+        "faq_G8Xgpm": {
+          "type": "faq",
+          "settings": {
+            "category": "CashBack",
+            "title": "Is there a holding period for my CashBack?",
+            "answer": "<p>To deter fraud, the CashBack program includes a 30-day holding period. You may redeem your CashBack reward once that period has lapsed.<\/p>"
+          }
+        },
+        "5b18ce07-4424-4f2e-a739-44d9af489b67": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_12_39bea4eb-2cfb-47b2-9605-c96f0d9ccab1.png",
+            "icon_active": "shopify:\/\/shop_images\/Group_12_0d4beaf5-041c-4a19-90fb-8b152adda727.png",
+            "category": "Caffeine"
+          }
+        },
+        "8df56718-4d1f-4656-875a-5c3753b1ad0a": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "How much caffeine is in tea compared to coffee?",
+            "answer": "<p>Caffeine is one of three stimulating alkaloids found in tea, the others being theobromine and theophylline. Theobromine is a mild stimulant found in greater concentration in chocolate.<\/p><p><span style=\"text-decoration:underline\">In general, a brewed cup of tea has about 1\/3 to 1\/2 the caffeine of a cup of coffee.<\/span> A cup of coffee has about 100-120 mg per 8 ounces. Most teas fall between 20-50 mg per 8 ounces. Contrary to popular myth, this average is true regardless of the type of tea (green tea, black tea, etc). This makes sense when you consider that all true tea is made from a single plant species, <em>Camellia sinensis<\/em>.<\/p><p>The cultivar or “cultivated variety,” is one of the most significant factors determining how much caffeine might be available in any given tea. Broad-leaf variety teas grown in Yunnan and Southeast Asia contain more caffeine than small-leaf varieties. But with hundreds of cultivars in existence, the range varies greatly.<\/p><p>Caffeine is more readily extracted at higher temperatures, so brewing tea at a higher temperature or for a longer period of time will result in a higher concentration of caffeine in your cup. For this reason, cold brew teas can contain less caffeine.<\/p>"
+          }
+        },
+        "ecbde744-672e-4663-9b5b-4f8b89f25e7a": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "How does caffeine content vary between types of tea?",
+            "answer": "<p>The six tea types are differentiated by their processing steps. The techniques used to process fresh tea leaves– such as rolling, firing, oxidizing, or drying– do not alter caffeine on a molecular level, and thus they do not affect the amount of caffeine contained in the fresh leaf. Teas that undergo baking or roasting in their final stages, such as Houjicha or Iron Goddess of Mercy, may lose some caffeine by pyrolysis, where the caffeine molecule is literally baked out of the tea leaves. In general, the processing methods do not affect caffeine content so various types of tea can have similar levels of caffeine. <\/p><p><\/p><p>A greater factor influencing the amount of caffeine potential in tea is the cultivar of the tea plant. The brewing technique also plays a large role in determining how much caffeine is extracted into the final cup. <\/p>"
+          }
+        },
+        "76c6e516-0ea2-4f81-8300-10dd06945295": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "What do the caffeine levels represent on your tea bag and loose leaf packaging?",
+            "answer": "<p>We worked with an independent lab to measure the caffeine content of our packaged teas. The teas were brewed according to our recommended brewing instructions for temperature and infusion time, and then the caffeine content of the infusion was measured. We found that most teas registered within three tiers: <\/p><p><\/p><p><strong>LOW:<\/strong> &lt; 20 mg \/ 8oz cup <br\/><strong>MEDIUM:<\/strong> 20 – 40 mg \/ 8oz cup <br\/><strong>HIGH:<\/strong> &gt; 40 mg \/ 8oz cup <\/p><p><\/p><p>An average cup of coffee contains about 90 – 120 mg \/ 8oz cup.<\/p>"
+          }
+        },
+        "9f6bef36-8996-4d0b-bc07-c8a99d573770": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "When you re-steep your tea, how much caffeine is in the 2nd and 3rd infusions?",
+            "answer": "<p>A decent amount! After a first 4-5 minute infusion, most teas have only released 30-50% of their total caffeine. The tea leaves will release the remaining caffeine in subsequent infusions. <\/p><p><\/p><p>There are some variables, of course. If a tea is made of very small leaves and leaf particles, more surface area is exposed to water, and more caffeine will come out in the cup. The water temperature also affects the extraction rate greatly. <\/p>"
+          }
+        },
+        "b25efb9c-8940-4cd0-81b3-c9433e43db75": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "Is it true you can rinse the caffeine off your tea by brewing it for 30 seconds and discarding that first cup?",
+            "answer": "<p>No. It takes several minutes to extract significant amounts of caffeine from the leaf. Using higher temperature water and a longer infusion time will yield more caffeine in the cup. By contrast, cooler water and short infusion times do not extract as much caffeine. <\/p>"
+          }
+        },
+        "bac03d12-053e-40ef-ab13-3ef13ccd3383": {
+          "type": "faq",
+          "settings": {
+            "category": "Caffeine",
+            "title": "Why is the tea high different from the coffee buzz?",
+            "answer": "<p>Tea is known to create a more even, sustained lift compared to the buzz and crash of coffee. There are several reasons for this. <\/p><p><\/p><p>First, the amount of caffeine in tea is about 1\/3 to 1\/2 that of coffee. The peak of the tea high does not spike as high as the coffee jolt. <\/p><p><\/p><p>Secondly, there are other compounds in tea, such as l-theanine, that are attributed to relaxation.  L-theanine is thought to evoke a feeling of relaxation.   <\/p>"
+          }
+        },
+        "f6c481ff-96a6-488a-9314-0896fa232a24": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Vector_8891f9b0-7d6a-4c38-8b70-1c2ff62baa88.png",
+            "icon_active": "shopify:\/\/shop_images\/Vector_45b767c9-51f5-47fb-9ab2-0f9eecfda3c7.png",
+            "category": "Sustainability"
+          }
+        },
+        "369cacb7-dff7-4bfb-bf93-ab54899c55e3": {
+          "type": "faq",
+          "settings": {
+            "category": "Sustainability",
+            "title": "What are your tea sachets made of?",
+            "answer": "<p>Rishi tea sachets are made from a plant-based material called polylactic acid (or PLA for short). PLA is made by breaking down starches found in plant sources like corn and sugarcane.<\/p>"
+          }
+        },
+        "04260eb4-df9a-4925-87b9-c28f7b11bae9": {
+          "type": "icon",
+          "settings": {
+            "icon": "shopify:\/\/shop_images\/Group_5_36481128-a0b7-4eec-9390-d8fd07158488.png",
+            "icon_active": "shopify:\/\/shop_images\/Group_5_d32e3d0e-ad09-4ddd-959a-257904b7bb4d.png",
+            "category": "Tea & Food Safety"
+          }
+        },
+        "c4832b95-dbe1-4243-9eac-94f02a9cc91c": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "How should I store my tea?",
+            "answer": "<p>Similar to spices and coffee beans, dried tea leaves and powders will not “go bad” or spoil but can lose freshness over time.  To maintain your tea’s quality, we recommend storing in a resealable container (they can stay in your Rishi resealable bag!) away from direct sunlight, heat , moisture and strong smells.  Tea is hygroscopic—meaning it absorbs moisture and nearby aroma—so it is best to store teas away from other highly fragrant products like coffee, spices, or herbs.   <\/p><p><\/p><p>A cool pantry or cupboard is perfect. Remember to gently push out any excess air when resealing the bag after use!  <\/p>"
+          }
+        },
+        "45b7c4f0-71da-411a-b226-c0c0bb438983": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "Are you testing your Japanese teas for radiation?",
+            "answer": "<p>The March 2011 Tohoku tsunami and earthquake off of northeast Japan's Fukushima district was a terrible incident. <\/p><p><\/p><p>Since then the Japanese agriculture industry has maintained a stringent monitoring program to test for radioactive isotopes of Cesium and Iodine in all manner of agricultural products including tea. <\/p><p><\/p><p>Following the Fukushima incident, Rishi received annual test results from the Japanese tea industry, which have consistently shown Non-Detect results. Regular monitoring is still carried out in Japan to ensure the continuation of this trend.<\/p>"
+          }
+        },
+        "ea8995ea-288b-4ff2-9880-81c4a2110a45": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "Are your teas gluten\/dairy\/allergen free?",
+            "answer": "<p>All Rishi Tea products are free from ingredients containing gluten or dairy. Additionally, we do not work with ingredients containing or exposed to eggs, wheat, corn, soy, or shellfish. Teas containing hibiscus may contain peanut or peanut shell fragments, and we do use coconut and ramon nut in some tea blends, but follow a strict allergen control procedure to separate these ingredients from our allergen-free ingredients.<\/p>"
+          }
+        },
+        "b8d180e4-59e9-4d94-ba0f-38649c313930": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "What are 'natural flavors'?",
+            "answer": "<p>Natural flavors are concentrated liquid extracts made from real food ingredients. We use natural flavors to complement dried fruits, herbs, and other botanicals in some blends to create a complex depth of flavor that infuses deeply into the tea leaves. We use our natural flavors in compliance with USDA NOP organic standards.<\/p>"
+          }
+        },
+        "ea3f8656-462b-442e-b792-9701c849ea81": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "Are your teas free of GMOs (genetically modified organisms)?",
+            "answer": "<p>All Rishi teas are free of GMOs. Fortunately, GMOs are not as significant an issue in the tea industry as they are in grain or produce markets. The tea plant, <em>Camellia sinensis<\/em>, is grown without genetic modification. Instead, hundreds of tea plant strains known as cultivars, or “cultivated varieties,” are bred and planted through traditional botanical methods like crossing. GMOs are explicitly forbidden under the USDA’s organic program, so any Rishi tea bearing the USDA Organic logo is free of GMOs. <\/p>"
+          }
+        },
+        "90be71fa-7eb3-41fb-b6af-24541498c82e": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "What does \"Organic\" mean?",
+            "answer": "<p>The aim of the organic agriculture movement is to promote environmental sustainability by encouraging biodiversity, enhancing soil fertility and protecting the health of farm workers and consumers. In the US, organic agriculture and product labeling standards are regulated by a USDA certification program called the National Organic Program (NOP). <strong>The NOP certification prohibits the use of banned pesticides, herbicides, fungicides, growth hormones, GMOs, irradiation, sewage sludge, and artificial preservatives, flavors and dyes in crops, livestock and foods.<\/strong> Third-party certifying agencies make annual inspections to verify that an organic farmer, manufacturer, or product satisfies these standards. Compliant businesses are awarded the right to use the USDA Organic logo.  You can look for this logo on over 95% of our tea and botanicals.<\/p><p><\/p><p>Rishi believes organic agriculture is an important part of leading a healthy, natural lifestyles and for restoring ecological balance to world in an age of global environmental degradation. <strong>One of Rishi’s founding principles was to help create and expand the demand for organic tea internationally.<\/strong>  We have specialized in sourcing organically grown tea since we were founded in 1997—five years before the NOP standards were developed for tea in 2002. Today, we’re proud to be a leader in this market! <strong> <\/strong><\/p>"
+          }
+        },
+        "d5ad3b95-83cd-4f1c-b4ae-2d28b02c8585": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "What steps does Rishi take to ensure the purity of its tea?",
+            "answer": "<p>Beyond the USDA Organic certification, Rishi adheres to a robust quality control program that begins in the field.  Our buyers spend months traveling to the tea farms each year to taste and evaluate quality during the peak crop seasons. This also allows us to experience our organic tea cultivation firsthand. Throughout the year, our Compliance team performs additional spot-testing on select teas to ensure our organic teas are free of pesticides and other contaminants.<\/p><p> <\/p><p><strong>What about your conventional (not organic certified) teas? <\/strong><\/p><p>We celebrate the fact that organic tea is gaining popularity in tea markets worldwide, and farms across many growing regions are converting to organic cultivation to meet that demand. However, there are several classical tea growing regions where organic tea farms simply do not exist yet. The major oolong tea regions—Fujian, Guangdong, and Taiwan—are notable examples. Many oolong tea farms in those areas produce exclusive micro-lots of top shelf conventional teas for premium markets worldwide. Phoenix Dancong oolongs from Guangdong and High Mountain oolongs from Taiwan are some of the most expensive teas in the world. With such strong demand and high-end marketing, the farms have little incentive to seek organic certification. The same can be said for several of the tea regions in Japan that specialize in growing gyokuro or tencha for making matcha.     <\/p><p><\/p><p>The good news is many of the farms in those areas—including our suppliers there—practice a range of “Integrated Pest Management” techniques to minimize their use of pesticides. The install solar-powered insect zappers, pheromone sticky paper traps and plant buffer zones to that effect. Since these are some of the most treasured and sought-after styles of tea in the world, we import these as specialty items for tea connoisseurs. These are some of the favorite teas enjoyed by our staff, and we would never sell a tea we would not drink ourselves. <\/p>"
+          }
+        },
+        "5ff42173-5abc-445e-8015-c1524eabac37": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "How long does tea stay fresh?",
+            "answer": "<p>Similar to spices and coffee beans, dried tea leaves and powders will not “go bad” but can lose complexity of aroma and taste over time.  Each category of tea has a unique level of oxidation and freshness window:<\/p><p> <\/p><p>Green and White teas will lose their freshness most quickly. We recommend consuming these teas within 2 months from the time you first open the package.  <\/p><p><\/p><p>Matcha powders should be enjoyed within 2 weeks upon opening because the powder will undergo “post-oxidation” when exposed to air, transforming its bright green color into a stale shade of pea-green or yellow.  This can be minimized by using proper storage method.   <\/p><p><\/p><p>We recommend using Oolong, Black and Botanical teas within 4 months of opening, for the best flavor.  <\/p><p><\/p><p>Lastly, roasted Oolong and Pu’er teas have the unique ability to ripen and develop complexity with age over several years if stored properly.   <\/p><p><\/p><p><em>Good rule of thumb<\/em>: know the category of tea, order what you need, employ proper tea storage practices and enjoy your offerings!  <\/p>"
+          }
+        },
+        "76cb07de-d086-4c53-817b-dc67a58d7ff4": {
+          "type": "faq",
+          "settings": {
+            "category": "Tea & Food Safety",
+            "title": "How many servings do I get out of a bag of loose leaf tea?",
+            "answer": "<p>This depends on the size of the bag and the amount of tea used for each serving. In general, we recommend Rishi Loose Leaf Teas be measured at 1 tablespoon (4-5g) per 8 oz of water. A 250 gram bag yields about 50 – 60 servings and a one-pound bag (454g) yields about 90 – 120 servings. One of the joys of loose leaf tea is that you can re-infuse the tea leaves multiple times during each brewing session. Check the label and product description online for specific brewing tips for each category and type of tea. <\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "5497d035-df5b-4a1b-b1d0-55134db4d908",
+        "2b5d4136-22b1-47e4-a8e6-c0579bfda722",
+        "176c974d-ceb9-4e6a-b7e4-6a1b244f4163",
+        "037fe1b6-161e-4bd6-b27f-b177c268bfd5",
+        "icon_zrcGcq",
+        "b2cd1bc3-6b1a-4e4d-b8e0-0446a08b0d2e",
+        "0bc71ea6-fa55-42e8-be38-5e7f939f45da",
+        "06b1fba3-e5c2-4856-8367-d62407cc6a55",
+        "21f2ed83-2809-4733-8732-12a4ba2c4914",
+        "4c4b09a3-d556-48a9-96db-cfbc51e73241",
+        "42bda01e-0d2d-4377-bdd6-859f1751c5cb",
+        "6e9897fd-4346-4482-9de9-6be123ad604e",
+        "fc391ae9-fde3-4bcc-bf70-dc45477eca88",
+        "165828e6-f629-417e-b1c8-706b9580b259",
+        "2e05961c-3e5e-4816-8d5e-9dbfcb2c5513",
+        "cfd0d8b4-0be0-4bad-8942-345fe39913a8",
+        "icon_YhLG6w",
+        "faq_eYTUL3",
+        "faq_GypjLm",
+        "faq_3pmBtC",
+        "faq_ceEGAC",
+        "faq_3npxKA",
+        "faq_G8Xgpm",
+        "5b18ce07-4424-4f2e-a739-44d9af489b67",
+        "8df56718-4d1f-4656-875a-5c3753b1ad0a",
+        "ecbde744-672e-4663-9b5b-4f8b89f25e7a",
+        "76c6e516-0ea2-4f81-8300-10dd06945295",
+        "9f6bef36-8996-4d0b-bc07-c8a99d573770",
+        "b25efb9c-8940-4cd0-81b3-c9433e43db75",
+        "bac03d12-053e-40ef-ab13-3ef13ccd3383",
+        "f6c481ff-96a6-488a-9314-0896fa232a24",
+        "369cacb7-dff7-4bfb-bf93-ab54899c55e3",
+        "04260eb4-df9a-4925-87b9-c28f7b11bae9",
+        "c4832b95-dbe1-4243-9eac-94f02a9cc91c",
+        "45b7c4f0-71da-411a-b226-c0c0bb438983",
+        "ea8995ea-288b-4ff2-9880-81c4a2110a45",
+        "b8d180e4-59e9-4d94-ba0f-38649c313930",
+        "ea3f8656-462b-442e-b792-9701c849ea81",
+        "90be71fa-7eb3-41fb-b6af-24541498c82e",
+        "d5ad3b95-83cd-4f1c-b4ae-2d28b02c8585",
+        "5ff42173-5abc-445e-8015-c1524eabac37",
+        "76cb07de-d086-4c53-817b-dc67a58d7ff4"
+      ],
+      "settings": {}
+    },
+    "4af38a61-8827-4e5c-a67c-2a9541e53435": {
+      "type": "component__cta-panel",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-MatchaSuperGreen-1.jpg",
+        "heading": "Still have \nquestions?",
+        "superscript": "Rishi Support",
+        "text_color": "#ffffff",
+        "button_text": "Contact Us",
+        "button_link": "shopify:\/\/pages\/contact",
+        "button_color": "button__primary white",
+        "background_color": "#33432e",
+        "full_width": true,
+        "flip_orientation": false,
+        "padding_bottom": "medium"
+      }
+    },
+    "8e344624-89fa-444a-bbc4-7ebd8e0eb689": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "030dbd8c-ec68-4541-8249-26010c973f65",
+    "main",
+    "4af38a61-8827-4e5c-a67c-2a9541e53435",
+    "8e344624-89fa-444a-bbc4-7ebd8e0eb689"
+  ]
+}

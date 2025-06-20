@@ -1,0 +1,348 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "716d7b36-e22c-46cc-8cca-6ce95e06384d": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 100,
+        "height_mobile": 40
+      }
+    },
+    "press_hero_jjPBGy": {
+      "type": "press__hero",
+      "blocks": {
+        "press_item_F3TaVA": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WSJ_Article_Image_-_June_2024.jpg",
+            "logo": "shopify:\/\/shop_images\/The-Wall-Street-Journal-logo_5.png",
+            "title": "This Summer’s Best Iced Teas Come in Bright Colors and Bold Flavors",
+            "date": "6.5.2024",
+            "link": "https:\/\/www.wsj.com\/arts-culture\/food-cooking\/best-iced-teas-come-in-bright-colors-and-bold-flavors-6c2b0250"
+          }
+        }
+      },
+      "block_order": [
+        "press_item_F3TaVA"
+      ],
+      "settings": {
+        "heading": "Rishi In \nThe Press",
+        "copy": "<p>Read what press outlets are saying about our products, business and founder.<\/p>"
+      }
+    },
+    "4d4491a7-26a0-4139-a527-b1843008cc82": {
+      "type": "press__grid",
+      "blocks": {
+        "press_item_Jg7y34": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-Peppermint.jpg",
+            "title": "The Absolute Best Peppermint Tea Brand Will Leave You Feeling Totally Refreshed",
+            "date": "4.14.2025",
+            "logo": "shopify:\/\/shop_images\/logo_tasting_table.png",
+            "link": "https:\/\/www.tastingtable.com\/1829154\/best-peppermint-tea-brand-rishi\/"
+          }
+        },
+        "press_item_feC3ay": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-EverydayMatcha-LS-1.jpg",
+            "title": "I Tried 14 Matcha Powders—Most Were Good, But a Few Were Outstanding",
+            "date": "3.31.2025",
+            "logo": "shopify:\/\/shop_images\/logo_serious_eats.png",
+            "link": "https:\/\/www.seriouseats.com\/best-matcha-powder-8757655"
+          }
+        },
+        "press_item_zVXr7B": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/PDP-Carousel-Sachet-Sampler-1.jpg",
+            "title": "The 30 Best Gifts Under $50, Including a Few of Our Tested Favorites",
+            "date": "2.26.2025",
+            "logo": "shopify:\/\/shop_images\/logo_Food___Wine.svg",
+            "link": "https:\/\/www.foodandwine.com\/best-gifts-under-50-8398853"
+          }
+        },
+        "press_item_YnWnry": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Food-and-Wine-feature-I-Drink-Matcha-Daily--August-2024.webp",
+            "title": "I Drink Matcha Daily — This Is the Best Matcha Powder, According to My Tests",
+            "date": "1.10.2025",
+            "logo": "shopify:\/\/shop_images\/logo_Food___Wine.svg",
+            "link": "https:\/\/www.foodandwine.com\/best-matcha-powder-8695612#toc-best-value-matcha-powder-rishi-tea-everyday-matcha-powder"
+          }
+        },
+        "press_item_ebH3Vq": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/WSJ_Article_Image_-_June_2024.jpg",
+            "title": "This Summer’s Best Iced Teas Come in Bright Colors and Bold Flavors",
+            "date": "6.5.2024",
+            "logo": "shopify:\/\/shop_images\/The-Wall-Street-Journal-logo_5.png",
+            "link": "https:\/\/www.wsj.com\/arts-culture\/food-cooking\/best-iced-teas-come-in-bright-colors-and-bold-flavors-6c2b0250"
+          }
+        },
+        "press_item_zkFmg9": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Monthly-Tea-Club-PDP-1.jpg",
+            "title": "36 Last-Minute Mother’s Day Gifts That’ll Arrive Just In Time",
+            "date": "5.7.2024",
+            "logo": "shopify:\/\/shop_images\/logo_forbes_transparent_background.png",
+            "link": ""
+          }
+        },
+        "press_item_xzkKkw": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Monthly_Tea_Club_Large_CTA_A_1.jpg",
+            "title": "64 Of The Best Valentine’s Day Gifts For Him That Are Sure To Impress",
+            "date": "2.5.2024",
+            "logo": "shopify:\/\/shop_images\/logo_forbes_transparent_background.png",
+            "link": "https:\/\/www.forbes.com\/sites\/forbes-personal-shopper\/2024\/02\/05\/best-valentines-day-gifts-for-him\/"
+          }
+        },
+        "43bbc1c9-4bdd-4dff-a89f-ec31ecd59360": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Camille_Styles.png",
+            "title": "17 Gorgeous Hostess Gifts You’ll Want to Keep For Yourself",
+            "date": "11.13.2023",
+            "logo": "shopify:\/\/shop_images\/logo_camille-styles-logo.png",
+            "link": "https:\/\/camillestyles.com\/design\/2023-gift-guide-for-host\/"
+          }
+        },
+        "b8a3566a-01a8-46f0-b93c-cafa78560730": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Robb_Report_RR_Dad_Gifts_Update_lead.webp",
+            "title": "The 45 Best Gift Ideas for Dads, No Matter What’s on His List",
+            "date": "11.3.2023",
+            "logo": "shopify:\/\/shop_images\/logo_Robb_Report.png",
+            "link": "https:\/\/robbreport.com\/lifestyle\/product-recommendations\/gift-ideas-for-dad-1234774770\/"
+          }
+        },
+        "70bf213b-90b9-4844-ab5a-a7b785cf3f7b": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_PureWow_gifts-for-millennials.universal-1.webp",
+            "title": "58 Gifts for Millennials (Vetted by a Discerning Millennial)",
+            "date": "10.30.2023",
+            "logo": "shopify:\/\/shop_images\/logo_PureWow_Logo_-_Wordmark.png",
+            "link": "https:\/\/www.purewow.com\/gift-guides\/gifts-for-millennials"
+          }
+        },
+        "c74ad74f-2603-47f9-8f80-c0de0b0e520b": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Spruce_Eats_loose_leaf.webp",
+            "title": "The 14 Best Loose Leaf Teas of 2023: Best Gourmet",
+            "date": "10.30.2023",
+            "logo": "shopify:\/\/shop_images\/logo_the-spruce-eats-logo-08834471F3-seeklogo.com.png",
+            "link": "https:\/\/www.thespruceeats.com\/best-loose-leaf-teas-7498375"
+          }
+        },
+        "f6f506ef-226b-4722-a3da-ae77f7c7acdc": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Penta.jpg",
+            "title": "This Tea Brand Is Steeped in Organic Practices",
+            "date": "10.19.2023",
+            "logo": "shopify:\/\/shop_images\/logo_barrons.png",
+            "link": "https:\/\/www.barrons.com\/articles\/this-tea-brand-is-steeped-in-organic-practices-d3bd239"
+          }
+        },
+        "b14f343a-343e-4d0c-aba9-5408abba1530": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Artful_Living_WEB-Square-Images-36.jpg",
+            "title": "10 Top Drink Brands to Sip This Summer",
+            "date": "8.16.2023",
+            "logo": "shopify:\/\/shop_images\/logo_artfulliving_logo_black.png",
+            "link": "https:\/\/artfulliving.com\/top-beverage-drink-brands-summer-2023\/"
+          }
+        },
+        "4a7d0a7e-f21d-4db4-b0ce-6a397caea147": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Rolling_Stones_cacaoespresso-1.webp",
+            "title": "Take a Break from Average Joes With These 14 Energizing Coffee Alternatives",
+            "date": "7.24.2023",
+            "logo": "shopify:\/\/shop_images\/logo_Rolling-Stone-Logo-1.png",
+            "link": "https:\/\/www.rollingstone.com\/product-recommendations\/lifestyle\/best-coffee-alternatives-1132488\/"
+          }
+        },
+        "6b2c5e5a-2240-45b1-8cf6-ca8a6d3e22bc": {
+          "type": "press_quote",
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/logo_Rolling-Stone-Logo-1.png",
+            "quote": "<p>\"The layered ingredients pop with strong flavor, but are ultimately light and refreshing. Unlike anything on the market.\"<\/p>",
+            "background_color": "#909563",
+            "date": "",
+            "link": "https:\/\/www.rollingstone.com\/product-recommendations\/lifestyle\/best-coffee-alternatives-1132488\/"
+          }
+        },
+        "7f42abfb-28ca-4d59-993f-8cb580e41753": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Well_Good.png",
+            "title": "The 7 Best Matcha Powders That Money Can Buy, According to a Matcha Pro",
+            "date": "5.21.2023",
+            "logo": "shopify:\/\/shop_images\/logo_well_good.png",
+            "link": "https:\/\/www.wellandgood.com\/best-matcha-powders\/"
+          }
+        },
+        "press_item_rjQh89": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Forbes-Fathers-Day-Gift-Guide-The-Best-Gifts-For-The-Culinary-Traveler-GD-Wild-Silver-Needles-May-2023.webp",
+            "title": "Father's Day Gift Guide: The Best Gifts For The Culinary Traveler",
+            "date": "5.20.2023",
+            "logo": "shopify:\/\/shop_images\/logo_forbes_transparent_background.png",
+            "link": "https:\/\/www.forbes.com\/sites\/alywalansky\/2023\/05\/20\/fathers-day-gift-guide-the-best-gifts-for-the-culinary-traveler\/"
+          }
+        },
+        "5bb52790-1aea-438f-a8f1-52d4c83760fb": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Womens_Health_cup-of-tea-royalty-free-image-1676315403.jpg",
+            "title": "These Delicious Teas Will Get You Through Winter",
+            "date": "2.22.2023",
+            "logo": "shopify:\/\/shop_images\/logo-Womenshealthlogo.png",
+            "link": "https:\/\/www.womenshealthmag.com\/food\/g42861496\/these-delicious-teas-will-get-you-through-winter\/"
+          }
+        },
+        "press_item_UTqpat": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Forbes-2022-Gift-Guide-Nonalcoholic-Spirits-And-Ready-To-Drink-Cocktails.webp",
+            "title": "Forbes 2022 Gift Guide: Nonalcoholic Spirits And Ready-To-Drink Cocktails",
+            "date": "12.19.2022",
+            "logo": "shopify:\/\/shop_images\/logo_forbes_transparent_background.png",
+            "link": "https:\/\/www.forbes.com\/sites\/jeanettehurt\/2022\/12\/19\/forbes-2022-gift-guide-nonalcoholic-spirits-and-ready-to-drink-cocktails\/"
+          }
+        },
+        "634cc811-411e-4fac-8bfc-d4a3d3d7e98d": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_food_network.jpg",
+            "title": "The 8 Best Green Teas to Buy, According to Experts",
+            "date": "7.7.2022",
+            "logo": "shopify:\/\/shop_images\/logo_FoodNetwork.png",
+            "link": "https:\/\/www.foodnetwork.com\/how-to\/packages\/shopping\/best-green-teas-to-buy-according-to-experts"
+          }
+        },
+        "019139b7-47b7-4fff-a9ff-d2eef97a9aea": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_thrillist.webp",
+            "title": "These Sparkling Tea Seltzers Are Getting Us Through the Heat Wave",
+            "date": "8.9.2022",
+            "logo": "shopify:\/\/shop_images\/logo_thrillist.png",
+            "link": "https:\/\/www.thrillist.com\/drink\/nation\/best-hard-tea-seltzers-nonalcoholic-options"
+          }
+        },
+        "8296847f-8c77-45db-9eeb-e5d044199f22": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_Forbes_joshua.webp",
+            "title": "Increase Your Startup Or Small Business Success Rate: Learn What Tea, Beer And Dog Food Founders All Leveraged",
+            "date": "2.5.2021",
+            "logo": "shopify:\/\/shop_images\/logo_forbes_transparent_background.png",
+            "link": "https:\/\/www.forbes.com\/sites\/bernhardschroeder\/2021\/02\/05\/increase-your-startup-or-small-business-success-rate-learn-what-tea-beer-and-dog-food-founders-all-leveraged\/?sh=6a5622dc754b"
+          }
+        },
+        "b446cb5c-f0f2-42c2-bc7a-33fb2616a6af": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-MasalaChaiCon-Packaging.jpg",
+            "title": "We Tried 52 Warming Drinks—Here Are 6 You'll Want to Sip All Winter Long",
+            "date": "11.19.2020",
+            "logo": "shopify:\/\/shop_images\/logo_Real_Simple_6277eb7c8fc5efe391150bc9.png",
+            "link": "https:\/\/www.realsimple.com\/food-recipes\/shopping-storing\/beverages\/warm-drinks"
+          }
+        },
+        "1307f5e9-fd81-4492-9bb9-f33219753e07": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/press_image_WSJ.jpg",
+            "title": "Can You Find Wellness in a Cup of Tea? A Soothing Guide.",
+            "date": "6.11.2020",
+            "logo": "shopify:\/\/shop_images\/The-Wall-Street-Journal-logo_5.png",
+            "link": "https:\/\/www.wsj.com\/articles\/can-you-find-wellness-in-a-cup-of-tea-a-soothing-guide-11591866440"
+          }
+        },
+        "82f8c78a-1fcc-440c-b10b-03c4c4e5f2de": {
+          "type": "press_quote",
+          "disabled": true,
+          "settings": {
+            "logo": "shopify:\/\/shop_images\/The-Wall-Street-Journal-logo_5.png",
+            "quote": "<p>“Venerable brands and upstarts alike are encouraging us to steep and sip our way to vitality, better sleep, even happiness. These delicious brews are the ones worth choosing.”<\/p>",
+            "background_color": "#909563",
+            "date": "1.1.2023",
+            "link": "shopify:\/\/pages\/about"
+          }
+        }
+      },
+      "block_order": [
+        "press_item_Jg7y34",
+        "press_item_feC3ay",
+        "press_item_zVXr7B",
+        "press_item_YnWnry",
+        "press_item_ebH3Vq",
+        "press_item_zkFmg9",
+        "press_item_xzkKkw",
+        "43bbc1c9-4bdd-4dff-a89f-ec31ecd59360",
+        "b8a3566a-01a8-46f0-b93c-cafa78560730",
+        "70bf213b-90b9-4844-ab5a-a7b785cf3f7b",
+        "c74ad74f-2603-47f9-8f80-c0de0b0e520b",
+        "f6f506ef-226b-4722-a3da-ae77f7c7acdc",
+        "b14f343a-343e-4d0c-aba9-5408abba1530",
+        "4a7d0a7e-f21d-4db4-b0ce-6a397caea147",
+        "6b2c5e5a-2240-45b1-8cf6-ca8a6d3e22bc",
+        "7f42abfb-28ca-4d59-993f-8cb580e41753",
+        "press_item_rjQh89",
+        "5bb52790-1aea-438f-a8f1-52d4c83760fb",
+        "press_item_UTqpat",
+        "634cc811-411e-4fac-8bfc-d4a3d3d7e98d",
+        "019139b7-47b7-4fff-a9ff-d2eef97a9aea",
+        "8296847f-8c77-45db-9eeb-e5d044199f22",
+        "b446cb5c-f0f2-42c2-bc7a-33fb2616a6af",
+        "1307f5e9-fd81-4492-9bb9-f33219753e07",
+        "82f8c78a-1fcc-440c-b10b-03c4c4e5f2de"
+      ],
+      "settings": {
+        "padding_bottom": "medium"
+      }
+    },
+    "4bc512c0-d285-41b2-bf4c-94780173977c": {
+      "type": "component__cta-panel",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-ButterflyPeaFlower_bb2e0a8f-572b-4c29-9a74-fed64364237e.jpg",
+        "heading": "Discover Our \nTeas",
+        "superscript": "WHAT THEY'RE RAVING ABOUT",
+        "text_color": "#ffffff",
+        "button_text": "shop All",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_color": "button__primary white",
+        "background_color": "#a88667",
+        "full_width": true,
+        "flip_orientation": false,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "716d7b36-e22c-46cc-8cca-6ce95e06384d",
+    "press_hero_jjPBGy",
+    "4d4491a7-26a0-4139-a527-b1843008cc82",
+    "4bc512c0-d285-41b2-bf4c-94780173977c"
+  ]
+}

@@ -1,0 +1,144 @@
+{% style %}
+  .customer-favorites-section .section-subheading {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 150%;
+    letter-spacing: 8%;
+    text-transform: uppercase;
+    color: #283645; 
+  }
+  .customer-favorites-section .section-heading {
+    font-family: ivypresto-headline,ui-serif,serif;
+    font-weight: 100;
+    font-size: 42px;
+    leading-trim: Cap height;
+    line-height: 120%;
+    letter-spacing: 4%;
+    color: #283645;
+  }
+  .customer-favorites-section .section-description { 
+    font-weight: 100;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 4%;
+    text-align: center;
+    color: #283645;
+    opacity: 0.8;
+  }
+
+  .product-title {
+    font-family: ivypresto-headline,ui-serif,serif;
+    font-weight: 100;
+    font-size: 22px;
+    line-height: 120%;
+    letter-spacing: 4%;
+    text-align: center;
+    color: #283645;
+  }
+{% endstyle %}
+
+<div x-data class="customer-favorites-section text-center py-12">
+  <div class="max-w-[85%] md:max-w-[740px] mb-6 mx-auto">
+    <p class="section-subheading">
+      {{ section.settings.subheading }}
+    </p>
+
+    <h2 class="section-heading mb-2">
+      {{ section.settings.heading }}
+    </h2>
+
+    <p class="section-description">
+      {{ section.settings.description }}
+    </p>
+  </div>
+
+  {% if section.settings.collection %}
+    {% assign collection = collections[section.settings.collection] %}
+    {% if collection.products.size > 0 %}
+      {% assign product_count = section.settings.product_count %}
+      <div 
+        class="grid
+          {% if product_count >= 10 %}md:grid-cols-5{% elsif product_count >= 8 %}md:grid-cols-4{% elsif product_count >= 6 %}md:grid-cols-3{% elsif product_count == 5 %}md:grid-cols-5{% elsif product_count == 4 %}md:grid-cols-4{% elsif product_count == 3 %}md:grid-cols-3{% endif %} 
+          grid-cols-2 gap-x-2 gap-y-4 lg:gap-6 max-w-6xl mx-auto mb-10 px-5"
+      >
+        {% for product in collection.products limit:product_count %}
+          <div class="text-center" x-data>
+            <a href="{{ product.url }}" class="block group">
+              {% if product.featured_image %}
+                <img 
+                  src="{{ product.featured_image | image_url: width: 400 }}" 
+                  alt="{{ product.title }}" 
+                  class="mx-auto mb-2 w-full object-contain transition-transform duration-300 group-hover:scale-105" 
+                />
+              {% endif %}
+              <p class="product-title">
+                {{ product.title }}
+              </p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endif %}
+
+  {% if section.settings.button_text and section.settings.button_link %}
+    <a href="{{ section.settings.button_link }}" class="button__atc inline-flex h-[48px] px-6 py-3 bg-gray-900 text-white text-sm font-semibold rounded hover:bg-gray-800 transition">
+      {{ section.settings.button_text }}
+    </a>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Customer Favorites",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Our Most Popular Teas"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Try our customer favorites"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Our sampler box contains 24 individually-wrapped sachets featuring 12 teas and botanical blends from our flagship line and featuring doubles of our most popular teas."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "product_count",
+      "label": "Product Count",
+      "default": 8,
+      "min": 3,
+      "max": 20
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Get the Sampler Box"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Favorites"
+    }
+  ]
+}
+{% endschema %}

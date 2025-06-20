@@ -1,0 +1,50 @@
+{% for value in option.values %}
+	{% assign all_variants_in_option = product.variants | where: optionIndex, value %}
+	{% assign available_variants_in_option = all_variants_in_option | where: "available", true %}
+
+	{% if available_variants_in_option.size == 0 %}
+		{% assign isOptionAvailable = false %}
+	{% else %}
+		{% assign isOptionAvailable = true %}
+	{% endif %}
+
+  {% assign mod = forloop.index | modulo: 2 %}
+  {% assign odd = false %}
+  {% if mod != 0 %}
+    {% assign odd = true %}
+  {% endif %}
+
+  {% assign variant = product.variants | where: 'option1', value | first %}
+
+  {% if value != 'Teaser' and value != 'teaser' %}
+    <div class="flex-1 {% if odd  %}md:border-r border-brown/25 {% endif %} px-1 flex items-center justify-center">
+      <button
+        type="button"
+        :disabled="!isOptionAvailable('{{ optionIndex }}', '{{ value }}')"
+        :class="{
+          'line-through': !isOptionAvailable('{{ optionIndex }}', '{{ value }}')
+        }"
+        class="hover:border-brown border-transparent border rounded-[100%] transition-colors py-2.5 px-4 {% unless isOptionAvailable %} line-through {% endunless %}"
+        @click="
+          onOptionChanged(`{{ optionIndex }}`, `{{ value | replace: '"', "'" }}`);
+          $store.main.addVariant({
+            variantId: reactiveData.activeVariant.id,
+            button: 'quick_add',
+            openCart: true,
+            quantity: 1,
+          }).then(() => {
+            added = true;
+            opened = false;
+          });
+        "
+      >
+        <span class="para-sm">{{ value }}</span>
+        <span class="pl-3 opacity-50 para-xs">
+          {% if variant %}
+            {{ variant.price | money }}
+          {% endif %}
+        </span>
+      </button>
+    </div>
+  {% endif %}
+{% endfor %}

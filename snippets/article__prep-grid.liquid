@@ -1,0 +1,14 @@
+<section
+  class="section-p-x pb-25 md:pb-30"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  {% if data.heading %}
+    <h2 class="text-3xl md:text-5xl md:leading-1.1 pb-6 md:pb-9 text-center font-serif font-100">{{ data.heading }}</h2>
+  {% endif %}
+  <div class="flex flex-col md:flex-row section-container tight md:border-t border-brown/50 ">
+    <div class="md:pl-8 md:pr-3 rte article flex-1 border-t md:border-t-0 border-brown/50 pt-3 md:pt-6 {% if data.ingredients_rich_text != blank and data.preparation_rich_text != blank %} md:border-r {% endif %}">{{ data.ingredients_rich_text | metafield_tag }}</div>
+    <div class="md:pl-8 md:pr-3 rte article flex-1 border-t md:border-0 border-brown/50 pt-3 md:pt-6">{{ data.preparation_rich_text | metafield_tag }}</div>
+  </div>
+</section>

@@ -1,0 +1,160 @@
+{
+  "sections": {
+    "component_hero_dual_image_split_hxz3Lh": {
+      "type": "component__hero-dual-image-split",
+      "settings": {
+        "champion": "unset",
+        "variant": "button",
+        "image_one": "shopify:\/\/shop_images\/About_Hero_Botanical_Collection_Tea_Cups_Loose_Leaf.jpg",
+        "banner_heading_1": "<h1>The <em>perfect<\/em> variety sampler for every tea lover’s <em>journey<\/em><\/h1>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 52,
+        "banner_heading_2": "",
+        "banner_heading_font_2": "ivypresto-headline",
+        "heading_text_size_2": 52,
+        "banner_superscript": "<p>Rishi tea sampler<\/p>",
+        "text_one_size": 12,
+        "banner_superscript_two": "<p>Not sure where to start? Rishi's Premium Sachet Collection sampler is a great place to begin your Tea Journey. Try our most popular teas—all organic, direct trade, and made from the finest possible ingredients.<\/p>",
+        "text_two_size": 14,
+        "text_color": "#ffffff",
+        "button_text": "SHOP THE SAMPLER BOX",
+        "button_text_size": 12,
+        "button_link": "shopify:\/\/products\/premium-sachet-collection",
+        "button_colors": "#ffffff",
+        "button_border_color": "#ffffff",
+        "button_color": "button__primary",
+        "background_color": "#283645",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "hero": {
+      "type": "product-hero",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "title": "",
+        "buy_box_testimonials": "{{ product.metafields.custom.buy_box_testerminal | metafield_tag }}"
+      }
+    },
+    "press_reviews_xw6Rqn": {
+      "type": "press-reviews",
+      "blocks": {
+        "review_pPxpAc": {
+          "type": "review",
+          "settings": {
+            "heading": "Food & Wine",
+            "logo": "shopify:\/\/shop_images\/Food_Wine_vector_logo.svg",
+            "header": "What They're Saying",
+            "content": "Make just about any beverage with this <i>versatile, high-quality<\/i> matcha powder and you’ll understand why it's so popular."
+          }
+        },
+        "review_zWmy3J": {
+          "type": "review",
+          "settings": {
+            "heading": "Serious Eats",
+            "logo": "shopify:\/\/shop_images\/Serious_Eats_vector_logo.svg",
+            "header": "What They're Saying",
+            "content": "<i>Fantastic<\/i>, especially in lattes, and hands-down the most <i>approachable<\/i> matcha for beginners."
+          }
+        },
+        "review_PwQ7Yr": {
+          "type": "review",
+          "settings": {
+            "heading": "Camille Styles",
+            "logo": "shopify:\/\/shop_images\/Camille_Styles_logo.png",
+            "header": "What They're Saying",
+            "content": "Its invigoratingly <i>smooth flavor<\/i> and <i>bright green hue<\/i> pair perfectly with your milk of choice"
+          }
+        }
+      },
+      "block_order": [
+        "review_pPxpAc",
+        "review_zWmy3J",
+        "review_PwQ7Yr"
+      ],
+      "name": "Press Reviews",
+      "settings": {
+        "pt": 3,
+        "pb": 3,
+        "section_class": ""
+      }
+    },
+    "customer_favorites_dBtMCB": {
+      "type": "customer-favorites",
+      "settings": {
+        "subheading": "Direct Trade from Japan",
+        "heading": "Matcha Customer Favorites",
+        "description": "",
+        "collection": "matcha-tea",
+        "product_count": 6,
+        "button_text": "Get the Sampler Box",
+        "button_link": ""
+      }
+    },
+    "component_review_grid_TjFwNj": {
+      "type": "component__review_grid",
+      "blocks": {
+        "review_qCVbQm": {
+          "type": "review",
+          "settings": {
+            "title": "CERTIFIED ORGANIC",
+            "quote": "<p>Organic teas are healthier for the planet and people who grow, craft and enjoy steeping them. That's why over 95% of Rishi's ingredients are certified organic.<\/p>",
+            "product": ""
+          }
+        },
+        "review_nCy7Nc": {
+          "type": "review",
+          "settings": {
+            "title": "DIRECT TRADE",
+            "quote": "<p>Ethically sourced directly from artisan tea and botanical farmers around the world. Our deep relationships are the foundation of the authentic tea experiences you can expect from Rishi.<\/p>",
+            "product": ""
+          }
+        },
+        "review_g44Ray": {
+          "type": "review",
+          "settings": {
+            "title": "BEAUTIFUL INGREDIENTS",
+            "quote": "<p>Rishi teas are inspired by equal parts: ancient herbal medicinal traditions and modern culinary innovation. Discover new teas and botanicals in exciting, fresh and artfully crafted blends<\/p>",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "review_qCVbQm",
+        "review_nCy7Nc",
+        "review_g44Ray"
+      ],
+      "settings": {
+        "header": "Founded on the commitment to set the standard for quality",
+        "description": "We offer premium tea and botanicals imported directly from growers across the world and draw inspiration from ancient artisanal practices that use organic cultivation techniques",
+        "background_color": "#33432e",
+        "padding_bottom": "medium",
+        "button_text": "Shop Now",
+        "button_link": "",
+        "button_color": "button__primary brown"
+      }
+    },
+    "components": {
+      "type": "product__sections",
+      "custom_css": [
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+      ],
+      "settings": {
+        "collection": "best-sellers",
+        "no_reviews_text": "Customer Reviews"
+      }
+    }
+  },
+  "order": [
+    "component_hero_dual_image_split_hxz3Lh",
+    "hero",
+    "press_reviews_xw6Rqn",
+    "customer_favorites_dBtMCB",
+    "component_review_grid_TjFwNj",
+    "components"
+  ]
+}

@@ -1,0 +1,17 @@
+<div x-show="reactiveData.activeVariant?.displayInventoryNote">
+  <template x-if="reactiveData.activeVariant?.inventory">
+    <div class="flex para-xs text-brown font-[400] uppercase mt-[14px]">
+      <span class="font-[500] mx-auto">Low Stock: Limited quantities remain</span>
+    </div>
+  </template>
+  <template x-if="reactiveData.activeVariant?.inventory < 1">
+    <div class="flex para-xs text-brown uppercase mt-[14px]">
+      <div x-text="reactiveData.activeVariant?.oosStatus === 'Pre Order' && reactiveData.activeVariant?.preOrderNote ? 'Pre Order: ' : reactiveData.activeVariant?.oosStatus === 'Coming Soon' ? 'Coming Soon' : 'Sold Out'"></div>
+      <div x-show="reactiveData.activeVariant?.enableWaitlist && reactiveData.activeVariant?.oosStatus !== 'Pre Order'">Sign up for waitlist</div>
+      <div
+        x-show="reactiveData.activeVariant?.oosStatus === 'Pre Order' && reactiveData.activeVariant?.preOrderNote"
+        x-text="reactiveData.activeVariant?.preOrderNote"
+        class="pl-1 font-[400]"></div>
+    </div>
+  </template>
+</div>

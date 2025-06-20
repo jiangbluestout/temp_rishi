@@ -1,0 +1,63 @@
+{% assign level = level | downcase %}
+<div
+    x-data="{
+        animate: false,
+        offSet: 0,
+        thumbWidth: null,
+        matches: false,
+        setVariables(){
+            this.matches = window.innerWidth > 1024
+            this.thumbWidth = window.innerWidth > 1024 ? 189 : 89
+
+            {% if level == 'high' %}
+                this.offset = window.innerWidth > 1024 ? $refs.bar.offsetWidth - 220 : $refs.bar.offsetWidth - 120
+            {% elsif level == 'medium' %}
+                this.offset = ($refs.bar.offsetWidth / 2) - (this.thumbWidth / 2)
+            {% elsif level == 'low' %}
+                this.offset = window.innerWidth > 1024 ? $refs.bar.offsetWidth - 220 : $refs.bar.offsetWidth - 140
+            {% else %}
+                this.offset = 0
+            {% endif %}
+        },
+        init(){
+            this.setVariables()
+        }
+    }"
+    class="w-full relative"
+    x-intersect.margin.-5%="animate = true"
+>
+    <div class="flex justify-between para-xs mb-2.5 w-full px-[2px]">
+        <h6>0 MG</h6>
+        <h6>100 MG</h6>
+    </div>
+    <div x-ref="bar" class="h-[1px] bg-dark w-full relative">
+        <div class="absolute top-1/2 left-[10px] transform -translate-y-1/2 flex justify-center items-center w-[9px] h-[9px] bg-white">
+            <div class="w-[4.5px] h-[4.5px] bg-dark rounded-full"></div>
+        </div>
+        <div
+            {% if level == 'high' %}
+                :style="animate ? 'right: 58px' : 'right: ' + offset + 'px'"
+            {% elsif level == 'medium' %}
+                 :style="animate ?  'left: ' + offset + 'px' : 'left: 58px'"
+            {% elsif level == 'low' %}
+                 :style="animate ? 'left: 58px' : 'left: ' + offset + 'px'"
+            {% else %}
+                :style="animate ?  'left: ' + offset + 'px' : 'left: 0px'"
+            {% endif %}
+
+            class="absolute w-[89px] lg:w-[189px] h-[8px] top-1/2 transform -translate-y-1/2 flex items-center bg-white px-[2px] transition-all duration-[2s] ease-in-out"
+            x-cloak
+        >
+            <div class="relative w-full h-full">
+                <div class="bg-brown w-full h-full rounded-[73px]"></div>
+                <div class="absolute top-[-25px] left-1/2 transform -translate-x-1/2 para-xs text-brown {% if level == 'none' %} ml-6 md:ml-0 {% endif %}">
+                    {{ level }}
+                </div>
+            </div>
+        </div>
+        <div class="absolute top-1/2 right-[10px] transform -translate-y-1/2 flex justify-center items-center w-[9px] h-[9px] bg-white">
+        <div class="w-[4.5px] h-[4.5px] bg-dark rounded-full"></div>
+    </div>
+    </div>
+    </div>
+</div>

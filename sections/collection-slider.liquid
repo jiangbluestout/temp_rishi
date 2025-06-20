@@ -1,0 +1,298 @@
+<button-slider
+  data-slider-options='
+    {
+      "breakpoints": {
+        "(max-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": false,
+          "slides": { "perView": "2", "spacing": 8 }
+        },
+        "(min-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": false,
+          "slides": { "perView": "3", "spacing": 12 }
+        },
+        "(min-width: 1400px)": {
+          "mode": "snap",
+          "rtl": false,
+          "loop": false,
+          "slides": { "perView": "4", "spacing": 12 }
+        }
+      }
+    }
+  '
+>
+  <section
+    id="collection-slider__{{ section.id }}"
+    class="section-p-b md:p-6 md:pb-px p-2 pb-px {{ section.settings.padding_bottom }}"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div
+      class="overflow-x-hidden"
+      {% if section.settings.background_color != blank %}
+        style="background-color: {{ section.settings.background_color }};padding: 20px;"
+      {% endif %}
+    >
+      <div class="flex justify-between items-center pb-11">
+        <div class="text-white">
+          {% if section.settings.header != blank %}
+            <h2 style="color:{{ section.settings.font_color }};" class="heading-sm">{{ section.settings.header }}</h2>
+          {% endif %}
+        </div>
+
+        {% assign block_count = 0 %}
+
+        {% for block in section.blocks %}
+          {% assign block_count = block_count | plus: 1 %}
+        {% endfor %}
+
+        <div class="arrow-button__wrapper {% if block_count < 4 %}hide-on-desktop{% endif %}">
+          <button class="slider-btn">
+            <span class="sr-only">Carousel Button Previous</span>
+            {% render 'carousel-btn-left' %}
+          </button>
+
+          <button class="slider-btn">
+            <span class="sr-only">Carousel Button Next</span>
+            {% render 'carousel-btn-right' %}
+          </button>
+        </div>
+      </div>
+      
+      <div
+        class="keen-slider flex cursor-grab {% if block_count < 4 %}flex-less-than-four-blocks{% endif %}"
+        x-ref="slides"
+      >
+        {% for block in section.blocks %}
+          <div class="keen-slider__slide flex flex-col justify-between">
+            {% if block.settings.collection_item.url != blank -%}
+              <a href="{{ block.settings.collection_item.url }}">
+            {%- endif %}
+            <div
+              class="collection-image-and-text__wrapper"
+              style="background-color:{{ block.settings.text_background_color }};color:{{ block.settings.font_color }};"
+            >
+              <div
+                class="collection-image-and-text__image"
+                style="height: {{ block.settings.image_height }}px; width: 100%; overflow: hidden;"
+              >
+                {% if block.settings.collection_image != blank %}
+                  <img
+                    src="{{ block.settings.collection_image | img_url: '1000x' }}"
+                    width="500"
+                    height="500"
+                    alt="{{ block.settings.collection_image.alt }}"
+                    style="width: 100%; height: 100%; object-fit: {{ block.settings.image_object_fit }};"
+                  >
+                {% endif %}
+              </div>
+              {% if block.settings.collection_title != blank %}
+                <div
+                  class="collection-image-and-text__text"
+                  style="font-size:{{ block.settings.font_size }}px;padding-top:{{ block.settings.font_padding }}px;padding-bottom:{{ block.settings.font_padding }}px; text-align:{{ block.settings.text_align }};"
+                >
+                  {{ block.settings.collection_title }}
+                </div>
+              {% endif %}
+            </div>
+            {% if block.settings.collection_item.url != blank %}</a>{% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</button-slider>
+
+<style>
+      .collection-image-and-text__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 5px;
+    }
+
+    .collection-image-and-text__wrapper img{
+        height: 90px;
+        object-fit: cover;
+        border-radius: 5px 5px 0 0 ;
+    }
+
+    .arrow-button__wrapper {
+        display: flex;
+        gap: 30px;
+    }
+
+    .collection-image-and-text__text {
+            width: 100%;
+    }
+
+      .collection-image-and-text__image {
+      overflow: hidden;
+    }
+
+    .collection-image-and-text__image img {
+      transition: transform 1s ease;
+    }
+
+    .collection-image-and-text__image:hover img {
+      transform: scale(1.1);
+    }
+
+  @media(min-width: 1024px){
+      .arrow-button__wrapper.hide-on-desktop {
+          display: none;
+      }
+    #collection-slider__{{ section.id }} .flex-less-than-four-blocks {
+      justify-content: center;
+  }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Customizable Slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "header",
+      "label": "Heading"
+    },
+     {
+      "type": "color",
+      "id": "font_color",
+      "label": "Title Color",
+      "default": "#eee"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#33432E"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Block",
+      "settings": [
+        {
+          "type": "color",
+          "id": "text_background_color",
+          "label": "Background Color",
+          "default": "#fbf9f7"
+        },
+        {
+          "type": "url",
+          "id": "collection_item",
+          "label": "Select Page"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_image",
+          "label": "Select Block Image"
+        },
+        {
+          "type": "number",
+          "id": "image_height",
+          "label": "Image Height (in pixels)",
+          "default": 90
+        },
+        {
+          "type": "select",
+          "id": "image_object_fit",
+          "label": "Image Object Fit",
+          "options": [
+            {
+              "value": "cover",
+              "label": "Cover"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "cover"
+        },
+        {
+          "type": "text",
+          "id": "collection_title",
+          "label": "Title"
+        },
+        {
+          "type": "radio",
+          "id": "text_align",
+          "label": "Text Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "number",
+          "id": "font_size",
+          "label": "Font Size (in pixels)",
+          "default": 16
+        },
+        {
+          "type": "number",
+          "id": "font_padding",
+          "label": "Text Padding Top and Bottom (in pixels)",
+          "default": 30
+        },
+        {
+          "type": "color",
+          "id": "font_color",
+          "label": "Text Color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customizable Slider",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

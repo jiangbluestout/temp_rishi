@@ -1,0 +1,30 @@
+<a :href="product.url">
+  <div class="flex bg-light/50 md:bg-white justify-start rounded-4 {{ classes }} relative overflow-hidden pr-3.5 group">
+    <div class="overflow-hidden">
+      <img
+        class="aspect-square object-cover max-h-[88px] group-hover:scale-105 transition-all duration-300 w-full"
+        :src="product.image.src"
+        :width="product.image.width"
+        :height="product.image.height"
+        :alt="product.image.alt"
+        loading="lazy"
+      >
+    </div>
+    <div class="flex flex-col md:gap-1 justify-center pt-3 pb-3 md:pb-3.5 pl-3 md:pl-4 pr-3 md:pr-10">
+      <h3 class="para-sm" x-text="product.title"></h3>
+      <p class="para-sm opacity-75" x-text="product.tasting_notes"></p>
+      <p class="para-sm opacity-75">
+        <span x-show="product.priceRange.minVariantPrice.amount == 0 && product.priceRange.maxVariantPrice.amount">Free</span>
+        <span
+          x-show="product.priceRange.minVariantPrice.amount == product.priceRange.maxVariantPrice.amount"
+          x-price="product.priceRange.minVariantPrice.amount"
+        ></span>
+        <span
+          x-show="product.priceRange.minVariantPrice.amount != product.priceRange.maxVariantPrice.amount"
+        >
+          from <span x-price="product.lowestPrice"></span>
+        </span>
+      </p>
+    </div>
+  </div>
+</a>

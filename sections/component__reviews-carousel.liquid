@@ -1,0 +1,217 @@
+<button-slider
+  data-slider-options='{
+    "breakpoints": {
+      "(max-width: 1024px)": {
+        "mode": "snap",
+        "rtl": false,
+        "loop": true,
+        "slides": { "perView": "1.2", "spacing": 8 }
+      },
+      "(min-width: 1024px)": {
+        "mode": "snap",
+        "rtl": false,
+        "loop": true,
+        "slides": { "perView": "2.5", "spacing": 12 }
+      },
+      "(min-width: 1400px)": {
+        "mode": "snap",
+        "rtl": false,
+        "loop": true,
+        "slides": { "perView": "3.5", "spacing": 12 }
+      }
+    }
+  }'
+>
+  <section
+    class="section-p-b {{ section.settings.padding_bottom }}"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div class="pt-6 px-6 md:pt-12 md:px-12 overflow-x-hidden" style="background-color: {{ section.settings.background_color }}">
+      <div class="flex justify-between items-center pb-11">
+        <div class="text-white">
+          <h2 class="text-xs tracking-8pc leading-1.5 font-500 uppercase font-sans pb-2.5 md:pb-3">{{ section.settings.superscript }}</h2>
+          <h2 class="heading-sm">{{ section.settings.header | newline_to_br }}</h2>
+        </div>
+        <a href="{{ section.settings.button_link }}" class="{{ section.settings.button_color }} hidden md:block">{{ section.settings.button_text }}</a>
+      </div>
+      <div class="keen-slider flex cursor-grab" x-ref="slides">
+        {% for block in section.blocks %}
+          <div class="keen-slider__slide bg-light rounded-4 px-5 md:px-9 pt-6 pb-3.5 md:py-8 lg:min-h-[340px] flex flex-col justify-between">
+            <div class="pb-10">
+              <blockquote class="pb-6 heading-xs indent-8">{{ block.settings.quote }}</blockquote>
+              <div class="hidden md:flex gap-0.5 pb-3">
+                {% for i in (1..block.settings.rating) %}
+                  {% render "svg__star", classes: "fill-brown w-5" %}
+                {% endfor %}
+              </div>
+              <p class="para-sm md:text-sm">—{{ block.settings.attribution }}</p>
+            </div>
+            {% if block.settings.product != blank %}
+              {% render 'product__card-mini', product: block.settings.product, classes: "md:w-fit" %}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="w-full flex justify-between items-center min-h-[90px]">
+        <button class="fill-brown py-5 pr-4 slider-btn">
+          {% render 'svg__arrow-left', classes: 'fill-brown' %}
+        </button>
+        <div class="md:hidden flex gap-1.5">
+          {% for block in section.blocks %}
+            <div class="dot bg-white"></div>
+          {% endfor %}
+        </div>
+        <button class="fill-brownpy py-5 pl-4 slider-btn">
+          {% render 'svg__arrow-right', classes: 'fill-brown' %}
+        </button>
+      </div>
+    </div>
+  </section>
+</button-slider>
+
+{% schema %}
+  {
+    "name": "Reviews Carousel",
+    "settings": [
+      {
+        "type": "text",
+        "id": "superscript",
+        "label": "Superscript Heading",
+        "default": "Reviews"
+      },
+      {
+        "type": "textarea",
+        "id": "header",
+        "label": "Heading",
+        "default": "Reviews Lorem Ipsum Headline Here"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#33432E"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "select",
+        "id": "button_color",
+        "label": "Button Color",
+        "options": [
+          {
+            "value": "button__primary",
+            "label": "Dark"
+          },
+          {
+            "value": "button__primary white",
+            "label": "Light"
+          },
+          {
+            "value": "button__primary brown",
+            "label": "Brown"
+          }
+        ],
+        "default": "button__primary brown"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "review",
+        "name": "Review",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "quote",
+            "label": "Quote",
+            "info": "Size formatting is disabled for this field."
+          },
+          {
+            "type": "text",
+            "id": "attribution",
+            "label": "Attribution"
+          },
+          {
+            "type": "select",
+            "id": "rating",
+            "label": "Rating",
+            "options": [
+              {
+                "value": "1",
+                "label": "1"
+              },
+              {
+                "value": "2",
+                "label": "2"
+              },
+              {
+                "value": "3",
+                "label": "3"
+              },
+              {
+                "value": "4",
+                "label": "4"
+              },
+              {
+                "value": "5",
+                "label": "5"
+              }
+            ],
+            "default": "5"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product",
+            "info": "The product associated with this review."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Reviews Carousel",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

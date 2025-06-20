@@ -1,0 +1,389 @@
+<div
+  class="hidden lg:block fixed w-full px-3 pb-3 bottom-0 left-0 right-0 z-10 transform transition-all duration-300 ease-in-out"
+  x-data="
+    {
+      optionsOpen: false,
+      showContent: false,
+      watchButtons() {
+        const buttons = document.querySelectorAll('.product__option-selector-radio')
+        buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            this.showContent = false
+            setTimeout(() => {
+              this.optionsOpen = false
+            }, 250)
+          })
+        })
+      },
+      toggleOptions() {
+        if (!this.optionsOpen) {
+          this.optionsOpen = !this.optionsOpen
+          setTimeout(() => {
+            this.showContent = true
+          }, 250)
+        } else {
+          this.showContent = false
+          setTimeout(() => {
+            this.optionsOpen = false
+          }, 250)
+        }
+      },
+    }
+  "
+  x-cloak
+  :class="
+    {
+      'show-sticky-atc translate-y-0': showStickyAtc && !$store.main.footerInView,
+      'translate-y-full': !showStickyAtc || $store.main.footerInView,
+    }
+  "
+  x-init="watchButtons()"
+>
+  <div class="product-sticky-parent min-h-[72px] w-full flex rounded-4">
+    <div class="flex flex-1 bg-light p-2">
+      {% if product.has_only_default_variant != true %}
+        {% for option in product.options_with_values %}
+          {% assign size = option.values | size %}
+          {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+          {% if size > 3 %}
+            <div class="flex items-center justify-between w-full pl-6 pr-4 relative">
+              <div
+                class="flex flex-col gap-y-1 transition-all duration-300 delay-200"
+                :class="optionsOpen ? 'opacity-0' : 'opacity-100'"
+              >
+                <label class="para-xs mr-7 text-dark/50">Select {{ option.name }}</label>
+                <span class="para-sm" x-text="reactiveData.activeVariant.optionValues[0]"></span>
+              </div>
+              <button
+                class="bg-black/5 w-[30px] h-[30px] flex items-center justify-center rounded-4 z-50 hover:bg-black/10 transition-all duration-200"
+                @click="toggleOptions()"
+                :aria-expanded="optionsOpen"
+                aria-controls="options"
+                @keydown.escape="optionsOpen = false"
+              >
+                <span class="transition-all duration-150" :class="optionsOpen ? 'rotate-180' : 'rotate-0'">
+                  <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 18L20 13L10 13L15 18Z" fill="#283645"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="absolute -left-2 -bottom-2 -right-4  bg-light py-6 px-8"
+                x-data
+                x-show="optionsOpen"
+                id="options"
+                x-collapse
+              >
+                <div
+                  class="flex flex-col gap-y-2.5 transition-all duration-300"
+                  :class="showContent ? 'opacity-100' : 'opacity-0'"
+                >
+                  <label class="para-xs mr-7 text-dark/50">Select {{ option.name }}</label>
+                  {%
+                    render 'product__option-selector-radio'
+                    product: product,
+                    activeVariant: activeVariant,
+                    optionIndex: optionIndex,
+                    option: option,
+                  %}
+                </div>
+              </div>
+            </div>
+          {% else %}
+            <div class="sticky-qty-variant-parent__wrapper flex items-center justify-center w-full">
+              <div class="sticky-qty-variant__wrapper">
+                <div class="sticky-variant-item__image">
+                  <!-- {{ product.featured_image | image_url: width: 60 | image_tag }} -->
+                  <div class="sticky-variant-item__content">
+                    <div class="sticky-variant-item__title">{{ product.title }}</div>
+                    <!-- <div class="sticky-variant-item__subhead">{{ product.metafields.custom.subheading }}</div> -->
+                  </div>
+                </div>
+                <div class="sticky-variant-item">
+                  <label class="para-sm mr-7 text-dark/75">{{ option.name }}:</label>
+                  <div class="flex gap-x-2">
+                    {%
+                      render 'product__option-selector'
+                      product: product,
+                      activeVariant: activeVariant,
+                      optionIndex: optionIndex,
+                      option: option,
+                    %}
+                  </div>
+                </div>
+                <div class="sticky-qty-item">
+                  <div
+                    class="flex items-start lg:items-center justify-center md:justify-between w-full"
+                    :class="{ 'opacity-30 pointer-events-none': !reactiveData.activeVariant.isAvailable }"
+                  >
+                    <label class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0"
+                      >Quantity:</label
+                    >
+                    <div class="flex pt-7 md:pt-0">
+                      <button
+                        type="button"
+                        name="subtract"
+                        class="button__minus bg-light w-[30px] h-[30px] flex justify-center items-center rounded-4 transition-all duration-200 text-dark hover:text-brown"
+                        :class="quantity === 1 ? 'opacity-50 pointer-events-none' : ''"
+                        @click.prevent="decrementQuantity"
+                        :disabled="quantity === 1"
+                        aria-label="Subtract one from quantity"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
+                          <path d="M5 5L10 0L0 -4.37114e-07L5 5Z" fill="currentCOlor"/>
+                        </svg>
+                      </button>
+                      <div class="flex items-center px-4 md:px-0 text-base">
+                        <span class="flex justify-center items-center pr-1 md:hidden">Qty:</span>
+                        <span
+                          class="flex justify-center items-center min-w-[10px] md:min-w-[38px]"
+                          x-text="quantity"
+                        ></span>
+                      </div>
+                      <button
+                        type="button"
+                        name="add"
+                        class="button__plus bg-light w-[30px] h-[30px] flex justify-center items-center rounded-4 transition-all duration-200 text-dark hover:text-brown"
+                        :class="incrementDisabled() ? 'opacity-50 pointer-events-none' : ''"
+                        @click.prevent="incrementQuantity"
+                        aria-label="Add one to quantity"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
+                          <path d="M5 5.96244e-08L0 5L10 5L5 5.96244e-08Z" fill="currentColor"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+
+        {% else %}
+
+        <!-- For only one variant -->
+        <div class="sticky-qty-variant-parent__wrapper flex items-center justify-center w-full">
+              <div class="sticky-qty-variant__wrapper">
+                <div class="sticky-variant-item__image">
+                  <!-- {{ product.featured_image | image_url: width: 60 | image_tag }} -->
+                  <div class="sticky-variant-item__content">
+                    <div class="sticky-variant-item__title">{{ product.title }}</div>
+                    <!-- <div class="sticky-variant-item__subhead">{{ product.metafields.custom.subheading }}</div> -->
+                  </div>
+                </div>
+                <!-- <div class="sticky-variant-item">
+                  <label class="para-sm mr-7 text-dark/75">{{ option.name }}:</label>
+                  <div class="flex flex-wrap gap-x-2">
+                    {%
+                      render 'product__option-selector'
+                      product: product,
+                      activeVariant: activeVariant,
+                      optionIndex: optionIndex,
+                      option: option,
+                    %}
+                  </div>
+                </div> -->
+                <div class="sticky-qty-item">
+                  <div
+                    class="flex items-start lg:items-center justify-center md:justify-between w-full"
+                    :class="{ 'opacity-30 pointer-events-none': !reactiveData.activeVariant.isAvailable }"
+                  >
+                    <label style="display: block;" class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0"
+                      >Quantity:</label
+                    >
+                    <div class="flex pt-7 md:pt-0">
+                      <button
+                        type="button"
+                        name="subtract"
+                        class="button__minus bg-light w-[30px] h-[30px] flex justify-center items-center rounded-4 transition-all duration-200 text-dark hover:text-brown"
+                        :class="quantity === 1 ? 'opacity-50 pointer-events-none' : ''"
+                        @click.prevent="decrementQuantity"
+                        :disabled="quantity === 1"
+                        aria-label="Subtract one from quantity"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
+                          <path d="M5 5L10 0L0 -4.37114e-07L5 5Z" fill="currentCOlor"/>
+                        </svg>
+                      </button>
+                      <div class="flex items-center px-4 md:px-0 text-base">
+                        <span class="flex justify-center items-center pr-1 md:hidden">Qty:</span>
+                        <span
+                          class="flex justify-center items-center min-w-[10px] md:min-w-[38px]"
+                          x-text="quantity"
+                        ></span>
+                      </div>
+                      <button
+                        type="button"
+                        name="add"
+                        class="button__plus bg-light w-[30px] h-[30px] flex justify-center items-center rounded-4 transition-all duration-200 text-dark hover:text-brown"
+                        :class="incrementDisabled() ? 'opacity-50 pointer-events-none' : ''"
+                        @click.prevent="incrementQuantity"
+                        aria-label="Add one to quantity"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" viewBox="0 0 10 5" fill="none">
+                          <path d="M5 5.96244e-08L0 5L10 5L5 5.96244e-08Z" fill="currentColor"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+      {% endif %}
+                            
+    </div>
+    {% assign skioSellingPlanGroups = product.selling_plan_groups | where: 'app_id', 'SKIO' %}
+    {% if skioSellingPlanGroups.size > 0 %}
+      <div
+        class="hidden xl:flex flex-1 bg-light p-2"
+        x-data="
+          {
+            activeOption: 'single',
+            handleClick(value) {
+              if (value === 'single') {
+                this.activeOption = 'single'
+              } else {
+                this.activeOption = 'subscription'
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+                setTimeout(() => {
+                  this.activeOption = 'single'
+                }, 500)
+              }
+            }
+          }
+        "
+        x-cloak
+      >
+        <div class="border-l border-brown/50 w-full flex justify-center items-center">
+          <label class="para-sm mr-7 text-dark/75">Delivery:</label>
+          <button
+            @click="handleClick('single')"
+            class="button__variant-selector medium"
+            x-show="$store.main.skioPurchaseOption !== 'subscription'"
+            :class="
+              {
+                'brown-border-only': activeOption === 'single',
+                'no-border': activeOption !== 'single',
+              }
+            "
+          >
+            One Time
+          </button>
+          <button
+            @click="handleClick('subscription')"
+            class="button__variant-selector medium"
+            :class="
+              {
+                'brown-border-only': activeOption === 'subscription' || $store.main.skioPurchaseOption === 'subscription',
+                'no-border': activeOption !== 'subscription' && $store.main.skioPurchaseOption !== 'subscription',
+              }
+            "
+          >
+            Subscribe
+          </button>
+        </div>
+      </div>
+    {% endif %}
+
+    {% render 'product__page-atc' %}
+  </div>
+</div>
+
+<style>
+  .sticky-qty-variant-parent__wrapper{
+    display: block;
+}
+.sticky-qty-variant__wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+    margin: 0 30px;
+}
+
+.sticky-qty-item label {
+    display: none;
+}
+
+.sticky-variant-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sticky-variant-item__image {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+
+.sticky-variant-item__title {
+    font-family: ivypresto-headline,ui-serif,serif;
+    font-size: 26px;
+    font-weight: lighter;
+}
+
+.sticky-variant-item__subhead {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.sticky-qty-item button{
+    background-color: white;
+}
+
+button.button__atc.sticky.mobile.w-full.h-full {
+    background-color: #D86C00;
+}
+
+  button.button__atc.sticky.mobile.w-full.h-full:hover {
+    color: white;
+}
+
+  
+@media(min-width: 1024px){
+ 
+
+}
+
+  .sticky-qty-variant-parent__wrapper{
+    display: flex;
+    width: 100%;
+    justify-content:space-evenly
+}
+
+.sticky-qty-variant__wrapper {
+    margin: 0 10px;
+    gap: 5px;
+}
+
+.sticky-variant-item label {
+    margin-right: 0;
+}
+
+  .sticky-qty-variant__wrapper {
+    width: 100%;
+}
+
+  @media(max-widtH: 1110px){
+    .sticky-variant-item__title {
+        max-width: 90px;
+    }
+}
+
+  @media(min-width: 1026px){
+    .atc-button__wrapper{
+    max-width: 400px;
+        
+}
+    .button__atc.sticky.mobile {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    height: 72px;
+}
+}
+
+</style>

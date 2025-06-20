@@ -1,0 +1,30 @@
+{% if static %}
+  <a href="{{ product.url }}">
+    <div class="flex bg-light/50 md:bg-white justify-start rounded-4 {{ classes }} relative overflow-hidden pr-3.5 group">
+      <div class="overflow-hidden">
+        <img width="88" height="88" loading="lazy" class="aspect-square object-cover max-h-[88px] group-hover:scale-105 transition-all duration-300" src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.title }}-image">
+      </div>
+      <div class="flex flex-col md:gap-1 justify-center pt-3 pb-3 md:pb-3.5 pl-3 md:pl-4 pr-3 md:pr-10">
+        <h3 class="para-sm">{{ product.title}}</h3>
+        <p class="para-sm opacity-75">{{ product.metafields.my_fields.tasting_notes }}</p>
+        <p class="para-sm opacity-75">from {{ product.price_min | money_without_trailing_zeros }}</p>
+      </div>
+    </div>
+  </a>
+{% else %}
+  <a href="{{ product.url }}">
+    <div class="flex bg-white justify-between md:justify-start rounded-4 {{ classes }} relative overflow-hidden pr-3.5 group">
+      <div class="hidden md:block overflow-hidden">
+        <img width="88" height="88" loading="lazy" class="aspect-square object-cover max-h-[88px] group-hover:scale-105 transition-all duration-300" src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.title }}-image">
+      </div>
+      <div class="flex flex-col md:gap-1 justify-center pt-3 pb-3 md:pb-3.5 pl-3 md:pl-4 pr-3 md:pr-10">
+        <h3 class="para-sm">{{ product.title}}</h3>
+        <p class="para-sm opacity-75">{{ product.metafields.my_fields.tasting_notes }}</p>
+        <p class="para-sm opacity-75 hidden md:block">from {{ product.price_min | money_without_trailing_zeros }}</p>
+      </div>
+      <button class="fill-brown stroke-brown md:hidden group-hover:scale-105 transition-all duration-300">
+        {% render "svg__arrow-button", classes: "stroke-inherit", arrow_fill: '#A88667' %}
+      </button>
+    </div>
+  </a>
+{% endif %}

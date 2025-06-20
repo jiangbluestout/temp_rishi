@@ -1,0 +1,64 @@
+{
+  "sections": {
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6": {
+      "type": "component__simple-header",
+      "custom_css": [],
+      "settings": {
+        "heading": "Wholesale",
+        "description": "",
+        "background_color": "#275b68",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "custom_css": [],
+      "settings": {
+        "form_heading": "Wholesale Inquiry Form",
+        "html": ""
+      }
+    },
+    "17042339678529d4a9": {
+      "type": "apps",
+      "blocks": {
+        "6b7d1f9e-3ff2-4c8c-825e-dbf804f4e5be": {
+          "type": "shopify:\/\/apps\/formful\/blocks\/app-block-form\/be9de36b-78a1-4ce9-8de3-f1044fb2ee2e",
+          "settings": {
+            "form_id": "form_oaSa37K7kV",
+            "max_width": 49,
+            "column_gap": 3,
+            "row_gap": 1
+          }
+        }
+      },
+      "block_order": [
+        "6b7d1f9e-3ff2-4c8c-825e-dbf804f4e5be"
+      ],
+      "settings": {}
+    },
+    "9c866494-880e-41b7-999c-3c115f8820dc": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "none"
+      }
+    },
+    "eb488230-b2c8-43b7-9e84-64f1f850985a": {
+      "type": "instafeed",
+      "settings": {
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": ""
+      }
+    }
+  },
+  "order": [
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6",
+    "main",
+    "17042339678529d4a9",
+    "9c866494-880e-41b7-999c-3c115f8820dc",
+    "eb488230-b2c8-43b7-9e84-64f1f850985a"
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "sections": {
+    "0b68ff36-45ea-43f6-a903-d97b79c09514": {
+      "type": "component__simple-header",
+      "disabled": true,
+      "settings": {
+        "heading": "Holiday Shop",
+        "description": "<p>Find the perfect gift among our collection of tea and teaware sets, bundles, tea flights and more!<\/p>",
+        "background_color": "#233747",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "26fc1e35-2d3a-423f-9734-53c177623983": {
+      "type": "component__hero-dual-image-split",
+      "settings": {
+        "champion": "unset",
+        "variant": "icon",
+        "image_one": "shopify:\/\/shop_images\/Holiday_-_Gift_Shop_-_Hero_Desktop.jpg",
+        "image_two": "shopify:\/\/shop_images\/Holiday_2024_Hompage_Hero_Tea_Gifting_Gradient.jpg",
+        "icon": "shopify:\/\/shop_images\/Rishi_Hand_Mark_Goil_Foil.png",
+        "banner_heading_1": "<h1>THE HOLIDAY<\/h1>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 52,
+        "banner_heading_2": "<h1>SHOP<\/h1>",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 52,
+        "banner_superscript": "<p>TEA IS FOR GIFTING<\/p>",
+        "text_one_size": 16,
+        "banner_superscript_two": "<p>Find the perfect tea gift for everyone on your list.<\/p>",
+        "text_two_size": 14,
+        "text_color": "#283645",
+        "button_text": "",
+        "button_text_size": 12,
+        "button_link": "",
+        "button_colors": "#000000",
+        "button_border_color": "#ffffff",
+        "button_color": "button__primary white",
+        "background_color": "#233747",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "19b2b064-d3ae-4fc6-b2dd-56f8054e8da8": {
+      "type": "component__html-block",
+      "disabled": true,
+      "settings": {
+        "html": "",
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 28,
+        "height_mobile": 28
+      }
+    },
+    "d824a171-c9bb-45f9-a028-f45129b63657": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_WzFcFy": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "all-gifts",
+            "products": []
+          }
+        },
+        "2607f95c-564f-4260-803a-314650812a17": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "gift-sets",
+            "products": []
+          }
+        },
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "tea-flights",
+            "products": []
+          }
+        },
+        "8f8df3eb-bc57-451f-b28a-3b37be181540": {
+          "type": "collection",
+          "settings": {
+            "title": "Teaware Bundles",
+            "desc": "",
+            "collection": "tea-teaware-bundles",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_WzFcFy",
+        "2607f95c-564f-4260-803a-314650812a17",
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b",
+        "8f8df3eb-bc57-451f-b28a-3b37be181540"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Gifts By Type",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "db47131d-a80a-4f9f-bbbb-689d1c1cefaf": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "e9023f74-6d3e-472a-92b9-77115a871ffb": {
+      "type": "component__cta-card-split",
+      "blocks": {
+        "a20465b4-1cd5-4606-93f8-45564f913d02": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Monthly-Tea-Club-PDP-1.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Monthly Tea Club",
+            "description": "<p>Give the gift of a curated tea delivery each month - just choose the tea type and length<\/p>",
+            "text_color": "#f7f5f0",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/products\/monthly-tea-club",
+            "button_text": "Shop Now",
+            "button_color": "button__primary"
+          }
+        },
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Digital_Gift_Card_Image_Rishi_Logo_Botanical_Herbal_Tea_Background.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Digital Gift Card",
+            "description": "",
+            "text_color": "#222222",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/products\/digital-gift-card",
+            "button_text": "Shop Now",
+            "button_color": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "a20465b4-1cd5-4606-93f8-45564f913d02",
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac"
+      ],
+      "disabled": true,
+      "settings": {
+        "full_width": false,
+        "padding_bottom": "small"
+      }
+    },
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba": {
+          "type": "collection",
+          "settings": {
+            "collection": "gifts-under-50",
+            "overlay_color": "#e2817e",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Gifts"
+          }
+        },
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d": {
+          "type": "collection",
+          "settings": {
+            "collection": "breakfast-teas",
+            "overlay_color": "#96afa6",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Gifts"
+          }
+        },
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e": {
+          "type": "collection",
+          "settings": {
+            "collection": "evening-teas",
+            "overlay_color": "#e9a74b",
+            "alt_title": "Evening Teas",
+            "superscript": "",
+            "count_label": "Gifts"
+          }
+        }
+      },
+      "block_order": [
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba",
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d",
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e"
+      ],
+      "settings": {
+        "heading": "<p>Tea Gifts for All<\/p>",
+        "button_link": "shopify:\/\/collections\/all-gifts",
+        "button_text": "Shop All Gifts",
+        "padding_bottom": "none"
+      }
+    },
+    "761f425d-838c-44d0-8a7e-23345281074c": {
+      "type": "component__spacer",
+      "disabled": true,
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "7538f951-b5bf-4b0a-a689-bac13662802a": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "1df367cc-f8d2-475a-b995-8048462c995f": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "limited-edition-seasonal-blends",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "1df367cc-f8d2-475a-b995-8048462c995f"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Limited Edition Seasonal Blends",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_image": "shopify:\/\/shop_images\/Holiday_-_PLP_-_Bundles_Seasonal.jpg",
+        "panel_background_color": "#5d7261",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "883d34c2-15b0-44b1-af2a-9c998f0e41c0": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "0a375407-6417-4aed-9711-9a223e8d8cf6": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "839033d6-476e-4fd3-914c-ea344cb1330a": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "garden-direct-teas",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "839033d6-476e-4fd3-914c-ea344cb1330a"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Gifts for the Tea Connoisseur",
+        "full_width": true,
+        "button_text": "Shop Garden Direct",
+        "padding_bottom": "none",
+        "panel_eyebrow": "SEASONAL GARDEN DIRECT",
+        "panel_desc": "",
+        "panel_image": "shopify:\/\/shop_images\/Burma_Origin_1.jpg",
+        "panel_background_color": "#a39280",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "component_spacer_jfkMWP": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "4abe1d6c-9397-4105-82a8-58845f7c8b67": {
+      "type": "component__reviews-carousel",
+      "blocks": {
+        "9823ddb2-0cab-4837-af6b-70e69e6078c5": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>Great gift for a tea lover. Gave to a friend for her birthday. She loved every one :)<\/p>",
+            "attribution": "Dana W",
+            "rating": "5",
+            "product": "premium-sachet-collection"
+          }
+        },
+        "review_XByQnc": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>Really nicely packaged. The ceramic bowl has a nice finish to it and the matcha tastes delicious. Nice little instruction manual as well. Would make a great gift.<\/p>",
+            "attribution": "John M",
+            "rating": "5",
+            "product": "ceremonial-matcha-kit"
+          }
+        },
+        "f7b12b6c-ef4e-4cac-a879-212ef96312ce": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>My wife's favorite tea of all time. We ordered the biggest bag possible of it. She might stop drinking coffee she likes it so much.<\/p>",
+            "attribution": "Aaron J",
+            "rating": "5",
+            "product": "organic-cinnamon-plum-herbal-tea"
+          }
+        },
+        "review_Ty76jF": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>So glad I got this set. I was able to try teas I haven’t had before. Delicious. I love the teapot too. Highly recommended.<\/p>",
+            "attribution": "Nancy W",
+            "rating": "5",
+            "product": "black-tea-gift-set"
+          }
+        },
+        "9dd1fcdc-e83e-4a20-90ae-0e11696ddbae": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "quote": "<p>Order While You Can - It's Seasonal! A soothing evening drink without worry about caffeine. Full of flavor and its as if you're drinking a minty cocoa.<\/p>",
+            "attribution": "Gwen I",
+            "rating": "5",
+            "product": "organic-cocoa-mint-herbal-tea"
+          }
+        },
+        "1357833e-3c21-4db3-8cb4-d3c5d9ef26af": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>The tea is wonderful - very soothing and aromatic - initially its effects were extremely healing as it helped me sleep and find solace in deep sense of grief - also it made aches and inflammation of my body better - this tea could be a peace treaty.<\/p>",
+            "attribution": "Jessica G",
+            "rating": "5",
+            "product": "blue-jasmine-green-tea"
+          }
+        },
+        "92c6a217-18e1-4417-851c-e8aeded031e8": {
+          "type": "review",
+          "disabled": true,
+          "settings": {
+            "quote": "<p>An Explosion Of Autumn! Easily the richest pumpkin spice blend I've ever tasted. It's bursting with flavor but incredibly well balanced, earthy, spicy, and cinnamon sweet. Delicious!<\/p>",
+            "attribution": "Kristy K",
+            "rating": "5",
+            "product": "organic-pumpkin-spice-tea"
+          }
+        }
+      },
+      "block_order": [
+        "9823ddb2-0cab-4837-af6b-70e69e6078c5",
+        "review_XByQnc",
+        "f7b12b6c-ef4e-4cac-a879-212ef96312ce",
+        "review_Ty76jF",
+        "9dd1fcdc-e83e-4a20-90ae-0e11696ddbae",
+        "1357833e-3c21-4db3-8cb4-d3c5d9ef26af",
+        "92c6a217-18e1-4417-851c-e8aeded031e8"
+      ],
+      "settings": {
+        "superscript": "Reviews",
+        "header": "What Rishi Tea Drinkers\nAre Saying",
+        "background_color": "#8c615e",
+        "padding_bottom": "none",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_color": "button__primary white"
+      }
+    },
+    "76bb6a07-6828-4e98-be4f-20cbb2720da2": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "8160c571-9eca-441c-9d13-8e23f31e8eca": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "18b23aba-a74f-4a15-94a3-b3b6cbe97f59": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "premium-matcha-bowls",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "18b23aba-a74f-4a15-94a3-b3b6cbe97f59"
+      ],
+      "settings": {
+        "layout": "panel",
+        "heading": "Artisanal & Collectible",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "PREMIUM MATCHA BOWLS",
+        "panel_desc": "",
+        "panel_image": "shopify:\/\/shop_images\/230624_Matcha_Family_28769.jpg",
+        "panel_background_color": "#283645",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "407a150b-0c0f-4b18-9276-9b4ced503231": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "desc": "",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "74f87119-4d90-40e0-bc00-9b79a063f613": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "desc": "",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7": {
+          "type": "collection",
+          "settings": {
+            "title": "Matcha & Powders",
+            "desc": "",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "5941fc05-8048-4bfc-ade3-64c48837405e": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "title": "Concentrates",
+            "desc": "",
+            "collection": "tea-concentrates",
+            "products": []
+          }
+        },
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551": {
+          "type": "collection",
+          "disabled": true,
+          "settings": {
+            "title": "Sparkling",
+            "desc": "",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        },
+        "2fe9a391-83ab-4fe2-9359-f43a57c494e0": {
+          "type": "collection",
+          "settings": {
+            "title": "Teaware",
+            "desc": "",
+            "collection": "teaware",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "407a150b-0c0f-4b18-9276-9b4ced503231",
+        "74f87119-4d90-40e0-bc00-9b79a063f613",
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7",
+        "5941fc05-8048-4bfc-ade3-64c48837405e",
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551",
+        "2fe9a391-83ab-4fe2-9359-f43a57c494e0"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Craft Your Own Gift",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450": {
+      "type": "component__cta-panel",
+      "disabled": true,
+      "settings": {
+        "heading": "Explore the Entire Collection",
+        "superscript": "",
+        "text_color": "#ffffff",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_color": "button__primary white",
+        "background_color": "#cfa163",
+        "full_width": false,
+        "flip_orientation": false,
+        "padding_bottom": "none"
+      }
+    },
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f": {
+      "type": "component__rte-block",
+      "disabled": true,
+      "settings": {
+        "rich_text": "<p><strong>Sale Terms:<\/strong> The Rishi Tea & Botanicals Autumn Equinox Sale discount code \"FALL20\" (valid 9\/15\/2023 12:00am CST to 9\/21\/2023 11:59pm CST) cannot be combined with other offers and discount codes. The code must be entered into the \"Enter Discount Code\" area during checkout. Once entered, the code will automatically discount your entire purchase by 20%. Rishi Tea reserves the right to modify or cancel this offer at any time. Sorry, no rain checks. Offer applies to orders placed at rishi-tea.com. Discount code cannot be used towards digital gift cards or wholesale orders. Shipping charges are calculated after the discount code is applied.<\/p><p><\/p>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    }
+  },
+  "order": [
+    "0b68ff36-45ea-43f6-a903-d97b79c09514",
+    "26fc1e35-2d3a-423f-9734-53c177623983",
+    "19b2b064-d3ae-4fc6-b2dd-56f8054e8da8",
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a",
+    "d824a171-c9bb-45f9-a028-f45129b63657",
+    "db47131d-a80a-4f9f-bbbb-689d1c1cefaf",
+    "e9023f74-6d3e-472a-92b9-77115a871ffb",
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c",
+    "761f425d-838c-44d0-8a7e-23345281074c",
+    "7538f951-b5bf-4b0a-a689-bac13662802a",
+    "883d34c2-15b0-44b1-af2a-9c998f0e41c0",
+    "0a375407-6417-4aed-9711-9a223e8d8cf6",
+    "component_spacer_jfkMWP",
+    "4abe1d6c-9397-4105-82a8-58845f7c8b67",
+    "76bb6a07-6828-4e98-be4f-20cbb2720da2",
+    "8160c571-9eca-441c-9d13-8e23f31e8eca",
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9",
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450",
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f"
+  ]
+}

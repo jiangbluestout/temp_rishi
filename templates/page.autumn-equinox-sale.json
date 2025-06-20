@@ -1,0 +1,465 @@
+{
+  "sections": {
+    "0b68ff36-45ea-43f6-a903-d97b79c09514": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "Autumn Equinox",
+        "description": "<p>In celebration of the changing seasons, our most anticipated sale of the fall is finally here!<\/p>",
+        "background_color": "#904e36",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "f31131f5-be00-42f2-9e41-720ba3fdeec1": {
+      "type": "component__hero-full-width",
+      "disabled": true,
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/LP_Header_-_Option_C.jpg",
+        "heading": "Autumn Equinox Sale",
+        "superscript": "Save Up to 20% Off Site Wide",
+        "text_color": "#ffffff",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "button__primary white",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "full_width": false,
+        "flush_top": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "26fc1e35-2d3a-423f-9734-53c177623983": {
+      "type": "component__hero-dual-image-split",
+      "disabled": true,
+      "settings": {
+        "variant": "icon",
+        "image_one": "shopify:\/\/shop_images\/MicrosoftTeams-image_copy_2.jpg",
+        "icon": "shopify:\/\/shop_images\/Group_13.png",
+        "text_color": "#ffffff",
+        "button_text": "",
+        "button_link": "",
+        "button_color": "button__primary white",
+        "background_color": "#283645",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba": {
+          "type": "collection",
+          "settings": {
+            "collection": "loose-leaf-teas",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e": {
+          "type": "collection",
+          "settings": {
+            "collection": "sachet-tea-bags",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d": {
+          "type": "collection",
+          "settings": {
+            "collection": "matcha-powders",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "8e69ee6f-b6a3-43ba-98aa-01ff2e5647d6": {
+          "type": "collection",
+          "settings": {
+            "collection": "tea-concentrates",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "45bcc92f-94ce-4218-9a88-5e6a220e9793": {
+          "type": "collection",
+          "settings": {
+            "collection": "sparkling-botanicals",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "568a72be-0989-499e-9eae-97d38a368e72": {
+          "type": "collection",
+          "settings": {
+            "collection": "teaware",
+            "overlay_color": "#ac9268",
+            "alt_title": "Teaware",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        }
+      },
+      "block_order": [
+        "a0b54b9f-6abc-46fd-90d6-fb3e4e6b90ba",
+        "94ce8eaa-8be9-4f48-9cd6-f83819cea17e",
+        "a4bca628-1e59-42ae-a1fd-f7b3bdbb226d",
+        "8e69ee6f-b6a3-43ba-98aa-01ff2e5647d6",
+        "45bcc92f-94ce-4218-9a88-5e6a220e9793",
+        "568a72be-0989-499e-9eae-97d38a368e72"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "<p>Shop By Form<\/p>",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
+      }
+    },
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 40
+      }
+    },
+    "d824a171-c9bb-45f9-a028-f45129b63657": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "2607f95c-564f-4260-803a-314650812a17": {
+          "type": "collection",
+          "settings": {
+            "title": "Best Sellers",
+            "collection": "best-sellers",
+            "products": []
+          }
+        },
+        "8f8df3eb-bc57-451f-b28a-3b37be181540": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "fall-teas",
+            "products": []
+          }
+        },
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "caffeine-free",
+            "products": []
+          }
+        },
+        "81ffff4a-f89e-4ad6-8b68-719c667885eb": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "collection": "new-arrivals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "2607f95c-564f-4260-803a-314650812a17",
+        "8f8df3eb-bc57-451f-b28a-3b37be181540",
+        "3a9d56d2-1c9c-4bba-b4e9-e7d088065c5b",
+        "81ffff4a-f89e-4ad6-8b68-719c667885eb"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop Teas",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_background_color": "#A88667",
+        "panel_text_color": "#FFFFFF",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "e9023f74-6d3e-472a-92b9-77115a871ffb": {
+      "type": "component__cta-card-split",
+      "blocks": {
+        "a20465b4-1cd5-4606-93f8-45564f913d02": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-Kyusu_6c2db06b-8755-40ed-833d-e4b1579f8fa2.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Loose Leaf Teas",
+            "description": "",
+            "text_color": "#ffffff",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/loose-leaf-teas",
+            "button_text": "Shop All Loose Leaf",
+            "button_color": "button__primary white"
+          }
+        },
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-TGSachets.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Sachet Tea Bags",
+            "description": "",
+            "text_color": "#222222",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/sachet-tea-bags",
+            "button_text": "Shop All Sachets",
+            "button_color": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "a20465b4-1cd5-4606-93f8-45564f913d02",
+        "571ee108-aca2-4432-8c6f-1bcce807d8ac"
+      ],
+      "settings": {
+        "full_width": false,
+        "padding_bottom": "small"
+      }
+    },
+    "7538f951-b5bf-4b0a-a689-bac13662802a": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "1df367cc-f8d2-475a-b995-8048462c995f": {
+          "type": "collection",
+          "settings": {
+            "title": "Green",
+            "collection": "green-tea",
+            "products": []
+          }
+        },
+        "a0650ddf-7dae-4953-8311-5dcdc8e09aa6": {
+          "type": "collection",
+          "settings": {
+            "title": "Botanical",
+            "collection": "herbal-tea-botanicals",
+            "products": []
+          }
+        },
+        "85a7b680-fd8c-4af0-acbb-7fe35f555e0d": {
+          "type": "collection",
+          "settings": {
+            "title": "Black",
+            "collection": "black-tea",
+            "products": []
+          }
+        },
+        "e6d36d7d-b999-4d0d-8470-e798abb636f2": {
+          "type": "collection",
+          "settings": {
+            "title": "Chai",
+            "collection": "chai-tea",
+            "products": []
+          }
+        },
+        "a096977c-f25a-46cf-9ff7-d68ebaf13ebd": {
+          "type": "collection",
+          "settings": {
+            "title": "Oolong",
+            "collection": "oolong-tea",
+            "products": []
+          }
+        },
+        "e3b63a25-9705-4487-8fb1-c7798c46dab1": {
+          "type": "collection",
+          "settings": {
+            "title": "White",
+            "collection": "white-tea",
+            "products": []
+          }
+        },
+        "fb291d8d-3a8c-4912-bd62-a93a8d026420": {
+          "type": "collection",
+          "settings": {
+            "title": "Pu'er",
+            "collection": "puer-tea",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "1df367cc-f8d2-475a-b995-8048462c995f",
+        "a0650ddf-7dae-4953-8311-5dcdc8e09aa6",
+        "85a7b680-fd8c-4af0-acbb-7fe35f555e0d",
+        "e6d36d7d-b999-4d0d-8470-e798abb636f2",
+        "a096977c-f25a-46cf-9ff7-d68ebaf13ebd",
+        "e3b63a25-9705-4487-8fb1-c7798c46dab1",
+        "fb291d8d-3a8c-4912-bd62-a93a8d026420"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Tea Type",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_background_color": "#A88667",
+        "panel_text_color": "#FFFFFF",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "c56e4128-ad8f-498a-80e7-3356860ee564": {
+      "type": "component__cta-card-split",
+      "blocks": {
+        "8bb74f53-6b52-4d57-a893-b6a528c1e959": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/SLX1.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Garden Direct Teas",
+            "description": "",
+            "text_color": "#222222",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/garden-direct-teas",
+            "button_text": "Shop All Garden Direct",
+            "button_color": "button__primary white"
+          }
+        },
+        "8e867386-8e82-4c26-871f-7b1b7cf137af": {
+          "type": "cta_card",
+          "settings": {
+            "image_desktop": "shopify:\/\/shop_images\/Rishi-CardamomHoujicha-1.jpg",
+            "superscript_left": "",
+            "superscript_right": "",
+            "title": "Teaware Essentials",
+            "description": "",
+            "text_color": "#222222",
+            "flip_footer_orientation": false,
+            "button_link": "shopify:\/\/collections\/teaware",
+            "button_text": "Shop All Teaware",
+            "button_color": "button__primary"
+          }
+        }
+      },
+      "block_order": [
+        "8bb74f53-6b52-4d57-a893-b6a528c1e959",
+        "8e867386-8e82-4c26-871f-7b1b7cf137af"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "small"
+      }
+    },
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "407a150b-0c0f-4b18-9276-9b4ced503231": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "74f87119-4d90-40e0-bc00-9b79a063f613": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7": {
+          "type": "collection",
+          "settings": {
+            "title": "Matcha & Powders",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "5941fc05-8048-4bfc-ade3-64c48837405e": {
+          "type": "collection",
+          "settings": {
+            "title": "Concentrates",
+            "collection": "tea-concentrates",
+            "products": []
+          }
+        },
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551": {
+          "type": "collection",
+          "settings": {
+            "title": "Sparkling",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "407a150b-0c0f-4b18-9276-9b4ced503231",
+        "74f87119-4d90-40e0-bc00-9b79a063f613",
+        "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7",
+        "5941fc05-8048-4bfc-ade3-64c48837405e",
+        "46bd4564-82b1-476e-8a0a-9ee96a5dd551"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Format",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_background_color": "#A88667",
+        "panel_text_color": "#FFFFFF",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450": {
+      "type": "component__cta-panel",
+      "settings": {
+        "heading": "Explore the Entire Collection",
+        "superscript": "",
+        "text_color": "#ffffff",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_color": "button__primary white",
+        "background_color": "#cfa163",
+        "full_width": false,
+        "flip_orientation": false,
+        "padding_bottom": "none"
+      }
+    },
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f": {
+      "type": "component__rte-block",
+      "disabled": true,
+      "settings": {
+        "rich_text": "<p><strong>Sale Terms:<\/strong> The Rishi Tea & Botanicals Autumn Equinox Sale discount code \"FALL20\" (valid 9\/15\/2023 12:00am CST to 9\/21\/2023 11:59pm CST) cannot be combined with other offers and discount codes. The code must be entered into the \"Enter Discount Code\" area during checkout. Once entered, the code will automatically discount your entire purchase by 20%. Rishi Tea reserves the right to modify or cancel this offer at any time. Sorry, no rain checks. Offer applies to orders placed at rishi-tea.com. Discount code cannot be used towards digital gift cards or wholesale orders. Shipping charges are calculated after the discount code is applied.<\/p><p><\/p>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    }
+  },
+  "order": [
+    "0b68ff36-45ea-43f6-a903-d97b79c09514",
+    "f31131f5-be00-42f2-9e41-720ba3fdeec1",
+    "26fc1e35-2d3a-423f-9734-53c177623983",
+    "917930d9-f47d-4b4b-a382-5723c3e27a5c",
+    "d8644151-c791-4ac3-abfb-1d7dcc114a7a",
+    "d824a171-c9bb-45f9-a028-f45129b63657",
+    "e9023f74-6d3e-472a-92b9-77115a871ffb",
+    "7538f951-b5bf-4b0a-a689-bac13662802a",
+    "c56e4128-ad8f-498a-80e7-3356860ee564",
+    "1a82cc5f-fcdd-4a08-9c57-6218ed656cb9",
+    "3cc5e652-8e02-41bb-a466-5dbd5965f450",
+    "e901fdc3-42b7-49f8-902f-31ce6b429e5f"
+  ]
+}

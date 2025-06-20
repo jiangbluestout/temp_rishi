@@ -1,0 +1,445 @@
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring
+  | split: '"pageurl":"'
+  | last
+  | split: '"'
+  | first
+  | split: '.myshopify.com'
+  | last
+  | replace: '\/', '/'
+  | replace: '%20', ' '
+  | replace: '\u0026', '&'
+-%}
+
+{%- liquid 
+  assign section_show = false
+
+  if pageUrl contains 'summer' and section.settings.champion == "new"
+    assign section_show = true
+  elsif pageUrl contains 'first-flush' and section.settings.champion == "old"
+    assign section_show = true
+  elsif section.settings.champion == "unset"
+    assign section_show = true
+  endif
+-%}
+
+{% if section_show %}
+<script>
+  const currentRoute = '{{ template }}';
+
+  setTimeout(() => {
+    if (currentRoute === 'page.careers-dev' || currentRoute === 'page.careers') {
+      const button = document.querySelector('.hero-btn')
+      const careersList = document.querySelector('.careers-list')
+      const handleClick = (e) => {
+        e.preventDefault()
+        // scroll to careers list
+        careersList.scrollIntoView({ behavior: 'smooth' })
+      }
+      button.addEventListener('click', handleClick)
+    }
+  }, 0)
+
+
+</script>
+
+{% if section.settings.variant == "button" %}
+  <a href="{{ section.settings.button_link }}">
+    <section
+      class="w-full section-p-b {{ section.settings.padding_bottom }} {% unless section.settings.full_width %} md:section-p-x {% endunless %} overflow-x-hidden {{ section.settings.challenger }} cw-champion"
+      style="color: {{ section.settings.text_color }}"
+      {% if section.settings.flush_top %}
+        x-init="$store.main.removeHeaderSpacer()"
+      {% endif %}
+      x-data="{ fadeIn: false }"
+      x-intersect="fadeIn = true"
+    >
+      <div class="relative flex {% if section.settings.flip_orientation %} flex-col lg:flex-row-reverse {% else %} flex-col-reverse lg:flex-row {% endif %} {% if section.settings.full_width %} xl:max-h-screen overflow-y-hidden {% else %} container {% endif %}" style="background-color: {{ section.settings.background_color }}">
+        <div class="h-[500px] md:h-auto lg:w-1/2 relative aspect-auto lg:aspect-auto">
+          {% if section.settings.image_two %}
+            {% render 'image',
+              image_desktop: section.settings.image_two,
+              image_mobile: section.settings.image_two,
+              width_desktop: '2000x',
+              width_mobile: '800x',
+              ratio_desktop: '100%',
+              ratio_mobile: '100%',
+              lazy: true,
+              image_classes: 'xl:max-h-screen',
+            %}
+          {% endif %}
+
+          <div class="{% if section.settings.image_two %} absolute {% else %} lg:absolute {% endif %} bottom-0 left-0 flex flex-col h-full w-full justify-center items-center px-6 md:px-10 pb-7 md:pb-12">
+            <div class="pb-10 text-center lg:pt-[120px]" style="animation: fadeIn 800ms ease-in-out">
+              <div class="para-xs pb-2 md:pb-3 px-5" style="font-size: {{ section.settings.text_one_size }}px">{{ section.settings.banner_superscript }}</div>
+              <div class="heading-2xl md:heading-xl xl:heading-2xl" style="font-size: {{ section.settings.heading_text_size_1 }}px; font-family: {{ section.settings.banner_heading_font_1 }} ">{{ section.settings.banner_heading_1 | newline_to_br }}</div>
+              <div class="heading-2xl md:heading-xl xl:heading-2xl" style="font-size: {{ section.settings.heading_text_size_2 }}px; font-family: {{ section.settings.banner_heading_font_2 }}">{{ section.settings.banner_heading_2 | newline_to_br }}</div>
+              <div class="para-sm pb-2 md:pb-3 pt-5 md:pt-6 opacity-80 max-w-[450px]"  style="font-size: {{ section.settings.text_two_size }}px">{{ section.settings.banner_superscript_two }}</div>
+            </div>
+            {% if section.settings.button_border_image != blank %}
+              <button class="hero-btn {{ section.settings.button_color }} w-fit absolute bottom-16 md:bottom-12" style="animation: fadeIn 1000ms ease-in-out; background-color: {{ section.settings.button_colors }}; font-size: {{ section.settings.button_text_size }}px; border-image-source: url({{ section.settings.button_border_image | img_url }}); border-image-slice: 1; border-image-repeat: stretch; border-width: 2px;">{{ section.settings.button_text }}</button>
+            {% else %}
+              <button class="hero-btn {{ section.settings.button_color }} w-fit absolute bottom-16 md:bottom-12" style="animation: fadeIn 1000ms ease-in-out; background-color: {{ section.settings.button_colors }}; font-size: {{ section.settings.button_text_size }}px; border-color: {{ section.settings.button_border_color }};">{{ section.settings.button_text }}</button>
+            {% endif %}
+          </div>
+        </div>
+        <div class="lg:w-1/2" style="animation: fadeIn 200ms ease-in-out">
+              {% if section.settings.image_one %}
+                {% render 'image',
+                  image_desktop: section.settings.image_one,
+                  image_mobile: section.settings.image_one,
+                  width_desktop: '2000x',
+                  width_mobile: '800x',
+                  ratio_desktop: '100%',
+                  ratio_mobile: '100%',
+                  lazy: true,
+                  image_classes: 'xl:max-h-screen',
+                %}
+              {% endif %}
+        </div>
+      </div>
+    </section>
+  </a>
+{% else %}
+  <section
+    class="w-full section-p-b {{ section.settings.padding_bottom }} {% unless section.settings.full_width %} md:section-p-x {% endunless %} overflow-x-hidden {{ section.settings.challenger }}"
+    style="color: {{ section.settings.text_color }}"
+    {% if section.settings.flush_top %}
+      x-init="$store.main.removeHeaderSpacer()"
+    {% endif %}
+  >
+    <div class="relative flex {% if section.settings.flip_orientation %} flex-col lg:flex-row-reverse {% else %} flex-col-reverse lg:flex-row {% endif %} {% if section.settings.full_width %} xl:max-h-screen {% else %} container {% endif %}" style="background-color: {{ section.settings.background_color }}">
+      <div class="lg:w-1/2 relative">
+        {% if section.settings.image_two %}
+          {% render 'image',
+            image_desktop: section.settings.image_two,
+            image_mobile: section.settings.image_two,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '100%',
+            ratio_mobile: '100%',
+            lazy: true,
+            image_classes: 'xl:max-h-screen',
+          %}
+        {% endif %}
+        <div class="{% if section.settings.image_two %} absolute {% else %} pt-17 pb-7 lg:py-4 lg:absolute {% endif %} bottom-0 left-0 flex flex-col h-full w-full justify-center items-center px-6 md:px-10 pb-7 md:pb-12">
+          <div class="pb-16 md:pb-10 text-center flex flex-col items-center lg:pt-[120px]" style="animation: fadeIn 800ms ease-in-out">
+            <div class="para-xs pb-2 md:pb-3 px-5" style="font-size: {{ section.settings.text_one_size }}px">{{ section.settings.banner_superscript }}</div>
+            <div class="heading-2xl md:heading-xl xl:heading-2xl" style="font-size: {{ section.settings.heading_text_size_1 }}px; font-family: {{ section.settings.banner_heading_font_1 }} ">{{ section.settings.banner_heading_1 | newline_to_br }}</div>
+            <div class="heading-2xl md:heading-xl xl:heading-2xl" style="font-size: {{ section.settings.heading_text_size_2 }}px; font-family: {{ section.settings.banner_heading_font_2 }}">{{ section.settings.banner_heading_2 | newline_to_br }}</div>
+
+            <div class="para-sm pb-2 md:pb-3 pt-5 md:pt-6 opacity-80"  style="font-size: {{ section.settings.text_two_size }}px">{{ section.settings.banner_superscript_two }}</div>
+          </div>
+          <div class="lg:absolute bottom-9 flex w-full justify-center" style="animation: fadeIn 1000ms ease-in-out">
+            <img class="max-w-[51px] lg:max-w-[70px]" src="{{ section.settings.icon | img_url: '500x' }}" alt="{{ section.settings.icon.alt }}">
+          </div>
+        </div>
+      </div>
+      <div class="lg:w-1/2" style="animation: fadeIn 400ms ease-in-out">
+        {% if section.settings.image_one %}
+          {% render 'image',g
+            image_desktop: section.settings.image_one,
+            image_mobile: section.settings.image_one,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '100%',
+            ratio_mobile: '100%',
+            lazy: true,
+            image_classes: 'xl:max-h-screen',
+          %}
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endif %}
+{% endif %}
+{% schema %}
+{
+  "name": "Hero | Dual Image Split",
+  "class": "section-hero-full-width cw-dual-image-split",
+  "settings": [
+    {
+      "type": "select",
+      "id": "champion",
+      "options": [
+        {
+          "label": "New",
+          "value": "new"
+        },
+        {
+          "label": "Old",
+          "value": "old"
+        },
+        {
+          "label": "Unset",
+          "value": "unset"
+        }
+      ],
+      "default": "unset",
+      "label": "Champion Users"
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": "Variant",
+      "options": [
+        {
+          "value": "button",
+          "label": "Button"
+        },
+        {
+          "value": "icon",
+          "label": "Icon"
+        }
+      ],
+      "default": "button"
+    },
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_one",
+      "label": "Image One",
+      "info": "Aspect Ratio: 1x1 / Min Width: 2000px / JPG"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_two",
+      "label": "Image Two",
+      "info": "Aspect Ratio: 1x1 / Min Width: 2000px / JPG"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon",
+      "info": "Icon Variant Only / Transparent PNG"
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "richtext",
+      "id": "banner_heading_1",
+      "label": "Heading 1st Line",
+      "info": "25 - 50 characters"
+    },
+    {
+      "type": "select",
+      "id": "banner_heading_font_1",
+      "label": "Heading 1st Line(Font Type)",
+      "options": [
+        {
+          "value": "neue-haas-grotesk-text",
+          "label": "Neue Haas Grotesk"
+        },
+        {
+          "value": "ivypresto-headline",
+          "label": "Ivy Presto Headline"
+        }
+      ],
+      "default": "neue-haas-grotesk-text"
+    },
+    {
+      "type": "range",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "id": "heading_text_size_1",
+      "label": "Heading 1st Line(Text Size)",
+      "default": 52
+    },
+    {
+      "type": "richtext",
+      "id": "banner_heading_2",
+      "label": "Heading 2nd Line",
+      "info": "25 - 50 characters"
+    },
+    {
+      "type": "select",
+      "id": "banner_heading_font_2",
+      "label": "Heading 2nd Line(Font Type)",
+      "options": [
+        {
+          "value": "neue-haas-grotesk-text",
+          "label": "Neue Haas Grotesk"
+        },
+        {
+          "value": "ivypresto-headline",
+          "label": "Ivy Presto Headline"
+        }
+      ],
+      "default": "neue-haas-grotesk-text"
+    },
+    {
+      "type": "range",
+      "min": 12,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "id": "heading_text_size_2",
+      "label": "Heading 2nd Line(Text Size)",
+      "default": 52
+    },
+    {
+      "type": "richtext",
+      "id": "banner_superscript",
+      "label": "Text - One",
+      "info": "Button Variant: Above the Heading / Icon Variant: Below the Heading"
+    },
+    {
+      "type": "range",
+      "min": 12,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "id": "text_one_size",
+      "label": "Text One (font size)",
+      "default": 12
+    },
+    {
+      "type": "richtext",
+      "id": "banner_superscript_two",
+      "label": "Text - Two",
+      "info": "Button Variant Only: Below the Heading"
+    },
+    {
+      "type": "range",
+      "min": 12,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "id": "text_two_size",
+      "label": "Text Two (font size)",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "CTA Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings / Button Variant Only"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "range",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "id": "button_text_size",
+      "label": "Button Text Size",
+      "default": 12
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_colors",
+      "label": "Button Color",
+      "default": "#000000"
+    },
+    {
+      "type": "image_picker",
+      "id": "button_border_image",
+      "label": "Button Border (image)"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border (color)",
+      "default": "#fff"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button Color",
+      "options": [
+        {
+          "value": "button__primary",
+          "label": "Dark"
+        },
+        {
+          "value": "button__primary white",
+          "label": "Light"
+        }
+      ],
+      "default": "button__primary white"
+    },
+    {
+      "type": "header",
+      "content": "Component Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#283645"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_orientation",
+      "label": "Flip Orientation?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": false,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "checkbox",
+      "id": "flush_top",
+      "label": "Flush To Top?",
+      "default": true,
+      "info": "If checked, the section will be flush to the top of the screen. This should only be selected if it's the first component on the page."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero | Dual Image Split",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

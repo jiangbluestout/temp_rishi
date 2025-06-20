@@ -1,0 +1,20 @@
+<div class="section-p-x py-10">
+  <div class="flex flex-col gap-3 pb-10">
+    <h1 class="heading-2xl">Hello World</h1>
+    <h1 class="heading-xl">Hello World</h1>
+    <h1 class="heading-md">Hello World</h1>
+    <h1 class="heading-sm">Hello World</h1>
+    <h1 class="heading-xs">Hello World</h1>
+    <p class="para-xl">Hello World</p>
+    <p class="para-lg">Hello World</p>
+    <p class="para-md">Hello World</p>
+    <p class="para-sm">Hello World</p>
+    <p class="para-xs">Hello World</p>
+  </div>
+  <div class="max-w-[250px]">
+    <div class="select__primary-wrapper" x-data="customSelect" x-init="setOptions(['one', 'two', 'three'])">
+      {% render 'input__select', label: 'Test Select', options: categories, classes: 'select__primary absolute' %}
+    </div>
+  </div>
+  <button class="button__primary">This is a test</button>
+</div>

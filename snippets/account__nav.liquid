@@ -1,0 +1,77 @@
+{{ 'section-main-account.css' | asset_url | stylesheet_tag }}
+
+<div
+  x-data
+  class="pt-8 md:pt-24 pb-7 md:pb-24"
+>
+  <select
+    class="select__primary w-full md:hidden"
+    @change="window.location = $event.target.value"
+  >
+    <option disabled>
+      Select Page
+    </option>
+    <option
+      value="/account/"
+      {% if section == 'account' %}selected{% endif %}
+    >
+      Order History
+    </option>
+    {% if customer.metafields.subscriptions.customer_string %}
+      <option
+        value="/tools/recurring/customer/{{customer.metafields.subscriptions.customer_string}}/subscriptions/"
+        {% if section == 'subscriptions' %}selected{% endif %}
+      >
+        Subscriptions
+      </option>
+    {% endif %}
+    <option
+      value="/account/addresses"
+      {% if section == 'addresses' %}selected{% endif %}
+    >
+      Address Book
+    </option>
+    <option
+      value="/account/logout"
+    >
+      Logout
+    </option>
+  </select>
+
+  <div class="account--nav hidden md:block">
+    <div class="mb-2.5">
+      <a
+        href="/account/"
+        class="para-sm {% if section == 'account' %} opacity-100 {% else %} opacity-50 transition-all duration-300 hover:opacity-90 {% endif %}"
+      >
+        Order History
+      </a>
+    </div>
+    {% if customer.metafields.subscriptions.customer_string %}
+      <div class="mb-2.5">
+        <a
+          href="/tools/recurring/customer/{{customer.metafields.subscriptions.customer_string}}/subscriptions/"
+        class="para-sm {% if section == 'subscriptions' %} opacity-100 {% else %} opacity-50 transition-all duration-300 hover:opacity-90 {% endif %}"
+        >
+          Subscriptions
+        </a>
+      </div>
+    {% endif %}
+    <div class="mb-2.5">
+      <a
+        class="para-sm {% if section == 'addresses' %} opacity-100 {% else %} opacity-50 transition-all duration-300 hover:opacity-90 {% endif %}"
+        href="/account/addresses"
+      >
+        Address Book
+      </a>
+    </div>
+    <div class="mb-2.5">
+      <a
+        class="para-sm text-dark opacity-50 transition-all duration-300 hover:opacity-90"
+        href="/account/logout"
+      >
+        Logout
+      </a>
+    </div>
+  </div>
+</div>

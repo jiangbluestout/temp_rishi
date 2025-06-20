@@ -1,0 +1,62 @@
+<section
+  class="section-p-x md:max-w-[740px] mx-auto section-p-b medium"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  {% if data.link != blank %}
+    <a href="{{ data.link }}">
+      <div
+        class="relative w-full min-h-[360px] lg:min-h-[490px] flex flex-col justify-between rounded-4 pt-5 px-5 pb-9 lg:p-9 h-full {% if data.button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+        style="background-color: {{ data.background_color | default: '#7D794D' }}"
+      >
+        <!-- if background image is enabled, display it is the background -->
+        {% if data.background_image != blank %}
+          <img
+            src="{{ data.background_image | img_url: '2000x' }}"
+            class="w-full h-full object-cover lg:absolute lg:inset-0 rounded-4"
+          />
+        {% endif %}
+        <div class="flex gap-6">
+          {% if data.illustration != blank %}
+            <img class="max-w-[64px] z-10" src="{{ data.illustration | img_url: '200x'}}" alt="{{ data.illustration.alt }}">
+          {% endif %}
+          {% if data.heading != blank %}
+            <h2 class="text-8xl font-serif font-100 tracking-1pc leading-none lg:pr-[20%] z-10 whitespace-pre-wrap">{{ data.heading | metafield_tag }}</h2>
+          {% endif %}
+        </div>
+        <div class="flex justify-between gap-[16%]">
+          {% if data.copy != blank %}
+            <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end">{{ data.copy | metafield_tag }}</div>
+          {% endif %}
+        </div>
+      </div>
+    </a>
+  {% else %}
+    <div
+      class="relative w-full min-h-[360px] lg:min-h-[490px] flex flex-col justify-between rounded-4 pt-5 px-5 pb-9 lg:p-9 h-full {% if data.button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+      style="background-color: {{ data.background_color | default: '#7D794D' }}"
+    >
+      <!-- if background image is enabled, display it is the background -->
+      {% if data.background_image != blank %}
+        <img
+          src="{{ data.background_image | img_url: '2000x' }}"
+          class="w-full h-full object-cover lg:absolute lg:inset-0 rounded-4"
+        />
+      {% endif %}
+      <div class="flex gap-6">
+        {% if data.illustration != blank %}
+          <img class="max-w-[64px] z-10" src="{{ data.illustration | img_url: '200x'}}" alt="{{ data.illustration.alt }}">
+        {% endif %}
+        {% if data.heading != blank %}
+          <h2 class="text-8xl font-serif font-100 tracking-1pc leading-none lg:pr-[20%] z-10 whitespace-pre-wrap">{{ data.heading | metafield_tag }}</h2>
+        {% endif %}
+      </div>
+      <div class="flex justify-between gap-[16%]">
+        {% if data.copy != blank %}
+          <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end">{{ data.copy | metafield_tag }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section

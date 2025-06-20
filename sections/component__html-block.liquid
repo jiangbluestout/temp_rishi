@@ -1,0 +1,61 @@
+<section class="section-p-b {{ section.settings.padding_bottom }} section-p-x">
+  <div class="rte {% unless section.settings.full_width %} section-container {% endunless %}">
+    {{ section.settings.html}}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "HTML Block",
+  "class": "section-html",
+  "settings": [
+    {
+      "type": "html",
+      "id": "html",
+      "label": "HTML"
+    },
+    {
+      "type": "header",
+      "content": "Component Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": true,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "HTML Block",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

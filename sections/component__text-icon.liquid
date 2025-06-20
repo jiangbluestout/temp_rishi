@@ -1,0 +1,55 @@
+<section
+  class="section-p-x py-14"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="flex md:gap-x-15 justify-center items-center font-serif text-md md:text-3xl leading-1.1 tracking-4pc font-100" style="color: {{ section.settings.text_color }}">
+    <div class="w-full md:w-fit flex justify-center">
+      <p class="max-w-[125px] md:max-w-fit text-center">{{ section.settings.text_left}}</p>
+    </div>
+    <img src="{{ section.settings.icon | img_url: '100x' }}" alt="{{ section.settings.icon.alt }}" class="w-12 md:w-16">
+    <div class="w-full md:w-fit flex justify-center">
+      <p class="max-w-[125px] md:max-w-fit text-center">{{ section.settings.text_right}}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text + Icon",
+  "class": "section-text-icon",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text_left",
+      "label": "Text - Left",
+      "default": "Lorem Ipsum dolor sit"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#A88667"
+    },
+    {
+      "type": "text",
+      "id": "text_right",
+      "label": "Text - Right",
+      "default": "Vivamus fermentum felis"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon",
+      "info": "Select an icon to display between the text."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text + Icon",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+{
+  "sections": {
+    "7d6ceffa-733c-49d0-8d59-c0ac10453e0b": {
+      "type": "blog__header",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-Holiday2023-24-Web.jpg",
+        "background_color": "#8e3f28",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "blogHero": {
+      "type": "blog__hero",
+      "blocks": {
+        "4fd212ec-9df2-44db-acc7-a9f295eb6978": {
+          "type": "article",
+          "settings": {
+            "article": "",
+            "background_color": "#F7F5F0"
+          }
+        }
+      },
+      "block_order": [
+        "4fd212ec-9df2-44db-acc7-a9f295eb6978"
+      ],
+      "settings": {}
+    },
+    "articleGrid": {
+      "type": "blog__article-grid",
+      "settings": {}
+    }
+  },
+  "order": [
+    "7d6ceffa-733c-49d0-8d59-c0ac10453e0b",
+    "blogHero",
+    "articleGrid"
+  ]
+}

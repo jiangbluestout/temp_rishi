@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-article",
+      "settings": {}
+    },
+    "components": {
+      "type": "article__components",
+      "settings": {}
+    },
+    "faq_global_NW7MrW": {
+      "type": "faq-global",
+      "blocks": {
+        "faq_ay76pD": {
+          "type": "faq",
+          "repeater": "{{ article.metafields.custom.faqs.value }}",
+          "settings": {
+            "title": "{{ block.repeater.faq_question.value }}",
+            "answer": "{{ block.repeater.faq_answer | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_ay76pD"
+      ],
+      "custom_css": [
+        ".section-container {margin-bottom: 30px;}",
+        "h3.faq-copy-title {text-align: center;}"
+      ],
+      "settings": {
+        "category": "{{ article.metafields.custom.faq_heading.value }}",
+        "description": "{{ article.metafields.custom.faq_description | metafield_tag }}"
+      }
+    },
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841": {
+      "type": "article__related-articles",
+      "settings": {
+        "heading": "Similar Articles To Explore",
+        "button_text": "View All",
+        "padding_bottom": "medium"
+      }
+    },
+    "cc52ea23-a593-415a-943a-09abed32df58": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "35ad982b-750b-4089-8dd5-75ec0d3e11f9": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "shop-all-tea-types",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "35ad982b-750b-4089-8dd5-75ec0d3e11f9"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Discover Our Teas",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "components",
+    "faq_global_NW7MrW",
+    "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841",
+    "cc52ea23-a593-415a-943a-09abed32df58"
+  ]
+}

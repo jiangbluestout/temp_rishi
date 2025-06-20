@@ -1,0 +1,15 @@
+<section
+    class="section-p-x pb-8 min-h-[240px] pt-[var(--nav-height)] h-fit flex items-end"
+    style="background-color: {{ background_color }}; color: {{ header_text_color }};"
+    x-cloak
+    x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('{{ background_color }}', '{{ header_text_color }}');"
+  >
+  <div class="grid md:grid-cols-12 gap-5 pt-4">
+    <div class="md:col-span-8 flex items-end" style="animation: fadeIn 400ms ease-in-out">
+      <h1 class="heading-lg">{{ heading }}</h1>
+    </div>
+    <div class="md:col-span-4 flex items-end md:pt-10" style="animation: fadeIn 800ms ease-in-out">
+      <div class="opacity-80 para-sm leading-1.5">{{ description }}</div>
+    </div>
+  </div>
+</section>

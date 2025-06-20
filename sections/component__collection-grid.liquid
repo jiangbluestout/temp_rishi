@@ -1,0 +1,163 @@
+<section
+  class="section-p-b section-p-x {{ section.settings.padding_bottom }} transition-opacity duration-800 ease"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="pb-8 md:pb-9 flex justify-start md:justify-between">
+    <div class="heading-xl whitespace-pre-wrap">{{ section.settings.heading | newline_to_br }}</div>
+    <a href="{{ section.settings.button_link }}" class="button__primary hidden md:block">{{ section.settings.button_text }}</a>
+  </div>
+  <div class="grid md:grid-cols-3 gap-3 rounded-4">
+    {% for block in section.blocks %}
+      {% assign title = block.settings.collection.title %}
+      {% if block.settings.alt_title != blank %}
+        {% assign title = block.settings.alt_title %}
+      {% endif %}
+      <a href="{{ block.settings.collection.url }}" class="relative group">
+        <div class="md:opacity-0 flex flex-col items-center justify-between py-8 absolute inset-0 w-full h-full rounded-4 text-white hover:opacity-100 transition-opacity duration-300 z-20">
+          <p class="para-xs">{{ block.settings.superscript}}</p>
+          <h4 class="mobile-collection-grid-text mobile-collection-grid-text-{{ block.id }} heading-3xl text-center">{{ title }}</h4>
+          <div class="flex items-center gap-2.5">
+            <div class="para-xs flex justify-center border-white border rounded-full px-2 py-1 min-w-[37px]">{{ block.settings.collection.products_count }}</div>
+            <span class="para-sm">{{ block.settings.count_label }}</span>
+          </div>
+        </div>
+        <div class="hidden z-10 md:block absolute w-full h-full inset-0 opacity-0 group-hover:opacity-95" style="background-color: {{ block.settings.overlay_color }}"></div>
+        <style>
+          @media(max-width: 768px){
+            .mobile-collection-grid-text-{{ block.id }} {
+                background-color: {{ block.settings.overlay_color }};
+            }
+            .mobile-collection-grid-text{
+                opacity: 95%;
+                padding: 10px 20px;
+                border-radius: 5px
+            }
+          }
+        </style>
+        <div class="z-0">
+          {% render 'image',
+            image_desktop: block.settings.collection.image.src,
+            image_mobile: block.settings.collection.image.src,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '133%',
+            ratio_mobile: '102%',
+            lazy: true,
+            image_classes: 'rounded-4',
+          %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  <div class="md:hidden w-full flex justify-center pt-9">
+    <a href="{{ section.settings.button_link }}" class="button__primary">{{ section.settings.button_text }}</a>
+  </div>
+</section>
+
+
+
+{% schema %}
+  {
+    "name": "Collection Grid",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "This uses the image uploaded to the 3x4 image metafield on the collection"
+      },
+      {
+        "type": "richtext",
+        "id": "heading",
+        "label": "Heading",
+        "info": "Font sizes in the editor are disabled. Empy spaces entered into the editor are retained."
+      },
+      {
+        "type": "header",
+        "content": "Button Settings"
+      },
+      {
+        "type": "url",
+        "id": "button_link",
+        "label": "Button Link",
+        "info": "If blank, the button will be hidden"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "Shop All"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "color",
+            "id": "overlay_color",
+            "label": "Overlay Color",
+            "default": "#AC9268",
+            "info": "This is the color that will be used for the overlay on hover."
+          },
+          {
+            "type": "text",
+            "id": "alt_title",
+            "label": "Alternate Title",
+            "info": "If you want to display a different title than the collection title, enter it here."
+          },
+          {
+            "type": "text",
+            "id": "superscript",
+            "label": "Superscript",
+            "info": "This is the text that will be displayed at the top of the component."
+          },
+          {
+            "type": "text",
+            "id": "count_label",
+            "label": "Count Label",
+            "info": "This is the label for product count just to the right of the count on the component",
+            "default": "Teas"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection Grid",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,95 @@
+<section class="pt-12 md:pt-20 section-p-b section-p-x large" style="animation: fadeIn 500ms ease-in-out">
+  <div class="max-w-[460px] mx-auto">
+    <h1 class="heading-md pb-20 text-center">
+      {{ section.settings.heading }}
+    </h1>
+    {% form 'create_customer' %}
+      <div class="flex flex-col gap-y-8">
+          <div class="flex flex-col md:flex-row w-full gap-x-2.5 gap-y-8">
+            <div class="w-full md:w-1/2">
+              <label class="sr-only" for="firstName">First Name</label>
+              <input
+                id="firstName"
+                class="input__secondary{% if form.errors contains 'first_name' %}error{% endif %}"
+                type="text"
+                name="customer[first_name]"
+                placeholder="First"
+                required
+                spellcheck="false"
+                autocomplete="given-name"
+                autofocus
+              />
+            </div>
+            <div class="w-full md:w-1/2">
+              <label class="sr-only" for="lastName">Last Name</label>
+              <input
+                id="lastName"
+                class="input__secondary {% if form.errors contains 'last_name' %}error{% endif %}"
+                type="text"
+                name="customer[last_name]"
+                placeholder="Last"
+                spellcheck="false"
+                autocomplete="family-name"
+                required
+              />
+            </div>
+          </div>
+          <div class="w-full">
+            <label class="sr-only" for="email">Email Address</label>
+            <input
+              id="email"
+              class="input__secondary {% if form.errors contains 'email' %}error{% endif %}"
+              type="email"
+              name="customer[email]"
+              placeholder="Email"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <div class="w-full">
+            <label class="sr-only" for="password">Password</label>
+            <input
+              id="password"
+              class="input__secondary {% if form.errors contains 'password' %}error{% endif %}"
+              type="password"
+              name="customer[password]"
+              placeholder="Password"
+              autocomplete="password"
+              required
+            />
+          </div>
+        </div>
+
+      <div class="text-pink">
+        {{ form.errors | default_errors }}
+      </div>
+
+      <button class="button__secondary w-full mt-8" type="submit">Sign Up</button>
+      <p class="pt-5 para-xs text-center">
+        Already have an account?
+        <a
+          href="/account/login"
+          class="underline para-xs"
+        >
+          Log in
+        </a>
+      </p>
+    {% endform %}
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "t:sections.register.name",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Sign Up"
+    }
+  ]
+}
+{% endschema %}

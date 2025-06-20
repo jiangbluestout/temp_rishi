@@ -1,0 +1,272 @@
+{
+  "sections": {
+    "7d6ceffa-733c-49d0-8d59-c0ac10453e0b": {
+      "type": "blog__header",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-Holiday2023-24-Web.jpg",
+        "background_color": "#8e3f28",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "blogHero": {
+      "type": "blog__hero",
+      "blocks": {
+        "article_6dXyW3": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/kuradashi-fine-aged-japanese-green-teas",
+            "background_color": "#f7f5f0"
+          }
+        },
+        "article_qMK7xN": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/the-story-of-ancient-tea-in-thailand-and-the-old-tea-trees-found-in-doi-wawee",
+            "background_color": "#f7f5f0"
+          }
+        }
+      },
+      "block_order": [
+        "article_6dXyW3",
+        "article_qMK7xN"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "55549ff9-0994-4376-bde4-24f17c36670b": {
+      "type": "blog__featured-category",
+      "blocks": {
+        "62e6c273-14f2-4934-a543-5b85565eab5f": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/why-water-temperature-is-important-when-brewing-tea"
+          }
+        },
+        "57033299-7747-4a1e-8f1a-c1336c03a97e": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/how-to-brew-loose-leaf-tea-in-a-simple-brew"
+          }
+        }
+      },
+      "block_order": [
+        "62e6c273-14f2-4934-a543-5b85565eab5f",
+        "57033299-7747-4a1e-8f1a-c1336c03a97e"
+      ],
+      "settings": {
+        "heading": "Start Here: Tea Education",
+        "description": "<p>An educational series for beginners designed to bring clarity to some of the most commonly asked questions about tea. Follow along as we explore the different tea types and optimal preparation methods for brewing the perfect cup of tea.<\/p>",
+        "tag": "education",
+        "article_configuration": "config_one",
+        "padding_bottom": "small"
+      }
+    },
+    "6c307624-6614-4099-bace-36f5e6dc03b6": {
+      "type": "blog__category-menu",
+      "blocks": {
+        "d080a1a5-aaf7-4afc-b9a6-ef80800254fd": {
+          "type": "category",
+          "settings": {
+            "category_label": "Tea Education",
+            "category_tag": "education",
+            "image": "shopify:\/\/shop_images\/Rectangle_66.jpg",
+            "hero_image": "shopify:\/\/shop_images\/230624_Barista_Matcha_28762.jpg"
+          }
+        },
+        "7aaf084d-9290-4527-9201-47ae4a20d3e6": {
+          "type": "category",
+          "settings": {
+            "category_label": "Recipes",
+            "category_tag": "recipes",
+            "image": "shopify:\/\/shop_images\/Rectangle_1109.jpg",
+            "hero_image": "shopify:\/\/shop_images\/RedMedicine_sized_recipe_ffea0031-9581-424d-ad76-f015618e8bdf.jpg"
+          }
+        },
+        "0d658587-611e-45f9-a45a-582c92f428a5": {
+          "type": "category",
+          "settings": {
+            "category_label": "Origins & Travel",
+            "category_tag": "origins-travel",
+            "image": "shopify:\/\/shop_images\/Rectangle_1110.jpg"
+          }
+        },
+        "1cf8a299-f06a-4a2a-88a9-1724b8cbbb07": {
+          "type": "category",
+          "settings": {
+            "category_label": "Tea Life",
+            "category_tag": "tea_life",
+            "image": "shopify:\/\/shop_images\/Rectangle_1108.jpg",
+            "hero_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-JPB.jpg"
+          }
+        },
+        "6e9d14e5-f5e0-4d9d-9920-5ef9b1d0b561": {
+          "type": "category",
+          "settings": {
+            "category_label": "How To Brew Tea",
+            "category_tag": "how_to",
+            "image": "shopify:\/\/shop_images\/Rectangle_1111.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "d080a1a5-aaf7-4afc-b9a6-ef80800254fd",
+        "7aaf084d-9290-4527-9201-47ae4a20d3e6",
+        "0d658587-611e-45f9-a45a-582c92f428a5",
+        "1cf8a299-f06a-4a2a-88a9-1724b8cbbb07",
+        "6e9d14e5-f5e0-4d9d-9920-5ef9b1d0b561"
+      ],
+      "settings": {
+        "heading": "All Stories"
+      }
+    },
+    "b6eb5578-dad9-4091-a88a-ff3170f03f47": {
+      "type": "blog__featured-category",
+      "blocks": {
+        "article_CkyhBE": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/journey-to-the-source-gong-nong-yunnan"
+          }
+        },
+        "f4b38775-9564-4d73-a2b2-cb32c9b62593": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/biodiversity-what-makes-rishi-tea-an-exceptional-standard-in-sustainability"
+          }
+        }
+      },
+      "block_order": [
+        "article_CkyhBE",
+        "f4b38775-9564-4d73-a2b2-cb32c9b62593"
+      ],
+      "settings": {
+        "heading": "Origins & Travel",
+        "description": "<p>As practitioners of direct trade we take pride in the personal relationships we have built with tea and botanical growers around the world.<\/p>",
+        "tag": "origins-travel",
+        "article_configuration": "config_two",
+        "padding_bottom": "small"
+      }
+    },
+    "c4112829-572a-49db-a558-6d6d0f745bb6": {
+      "type": "blog__featured-category",
+      "blocks": {
+        "article_mJq438": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/prickly-pear-sweet-tea"
+          }
+        },
+        "article_3EBXWc": {
+          "type": "article",
+          "settings": {
+            "article": "journal\/earth-sky-matcha-latte"
+          }
+        }
+      },
+      "block_order": [
+        "article_mJq438",
+        "article_3EBXWc"
+      ],
+      "settings": {
+        "heading": "Recipes & Inspiration",
+        "description": "<p>Find something inspiring among our catalog of recipes for tea drinks, cocktails, food and more.<\/p>",
+        "tag": "recipes",
+        "article_configuration": "config_one",
+        "padding_bottom": "small"
+      }
+    },
+    "articleGrid": {
+      "type": "blog__article-grid",
+      "settings": {
+        "article_image_height": "525"
+      }
+    },
+    "6d613062-8cd8-4ac4-a209-f1cd2f0ebf4d": {
+      "type": "component__large-newsletter-signup",
+      "settings": {
+        "heading": "Sign up for the Latest Stories and Recipes from Our Travels",
+        "padding_bottom": "medium"
+      }
+    },
+    "7a3208f2-87d2-4086-bedc-c0fa473d7c06": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "37d62c61-c389-4868-934a-4904ee279fd7": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "desc": "",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "82464dc5-ae01-4ba7-bbaa-b31dd245c0f5": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "desc": "",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "671de7b8-257a-4018-b66a-2e772faee2ea": {
+          "type": "collection",
+          "settings": {
+            "title": "Powders",
+            "desc": "",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "8e1096b6-0bdd-4728-8ac1-120b38ff9d04": {
+          "type": "collection",
+          "settings": {
+            "title": "Concentrates",
+            "desc": "",
+            "collection": "tea-concentrates",
+            "products": []
+          }
+        },
+        "8ee647d2-cf49-4095-bb80-1466735a477d": {
+          "type": "collection",
+          "settings": {
+            "title": "Sparkling",
+            "desc": "",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "37d62c61-c389-4868-934a-4904ee279fd7",
+        "82464dc5-ae01-4ba7-bbaa-b31dd245c0f5",
+        "671de7b8-257a-4018-b66a-2e772faee2ea",
+        "8e1096b6-0bdd-4728-8ac1-120b38ff9d04",
+        "8ee647d2-cf49-4095-bb80-1466735a477d"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Discover Our Teas",
+        "full_width": true,
+        "button_text": "",
+        "padding_bottom": "medium",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    }
+  },
+  "order": [
+    "7d6ceffa-733c-49d0-8d59-c0ac10453e0b",
+    "blogHero",
+    "55549ff9-0994-4376-bde4-24f17c36670b",
+    "6c307624-6614-4099-bace-36f5e6dc03b6",
+    "b6eb5578-dad9-4091-a88a-ff3170f03f47",
+    "c4112829-572a-49db-a558-6d6d0f745bb6",
+    "articleGrid",
+    "6d613062-8cd8-4ac4-a209-f1cd2f0ebf4d",
+    "7a3208f2-87d2-4086-bedc-c0fa473d7c06"
+  ]
+}

@@ -1,0 +1,141 @@
+<div
+  class="w-full section-p-b {{ section.settings.padding_bottom }} section-p-x"
+  style="color: {{ section.settings.text_color }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="relative {{ section.settings.component_width }}">
+    <div
+      class=" lg:block rte {{ section.settings.rte_variant }} whitespace-pre-wrap {{ section.settings.alignment }}"
+      style="padding-right: {{ section.settings.padding_right }}%; padding-left: {{ section.settings.padding_left }}%;"
+    >
+      {{ section.settings.rich_text }}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Rich Text Block",
+    "class": "section-rich-text-block",
+    "settings": [
+      {
+        "type": "richtext",
+        "id": "rich_text",
+        "label": "Rich Text"
+      },
+      {
+        "type": "select",
+        "id": "rte_variant",
+        "label": "Rich Text Variant",
+        "options": [
+          {
+            "value": "page",
+            "label": "Page"
+          },
+          {
+            "value": "component",
+            "label": "Component"
+          }
+        ],
+        "default": "page"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#283645"
+      },
+      {
+        "type": "select",
+        "id": "component_width",
+        "label": "Component Width",
+        "options": [
+          {
+            "value": "w-full",
+            "label": "Full Width"
+          },
+          {
+            "value": "section-container",
+            "label": "Container. Max-width 1440px"
+          },
+          {
+            "value": "section-container tight",
+            "label": "Tight Container. Max-width 1200px"
+          }
+        ],
+        "default": "w-full"
+      },
+      {
+        "type": "select",
+        "id": "alignment",
+        "label": "Text Justification",
+        "options": [
+          {
+            "value": "text-left",
+            "label": "Left"
+          }, {
+            "value": "text-center",
+            "label": "Center"
+          }, {
+            "value": "text-right",
+            "label": "Right"
+          }
+        ],
+        "default": "text-left"
+      },
+      {
+        "type": "range",
+        "id": "padding_right",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Right",
+        "default": 0,
+        "info": "Desktop Only - This indicates how much padding should be added to the right of the section."
+      },
+      {
+        "type": "range",
+        "id": "padding_left",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "%",
+        "label": "Padding Left",
+        "default": 0,
+        "info": "Desktop Only - This indicates how much padding should be added to the left of the section."
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          }, {
+            "value": "small",
+            "label": "Small"
+          }, {
+            "value": "medium",
+            "label": "Medium"
+          }, {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Rich Text Block",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

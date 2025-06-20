@@ -1,0 +1,66 @@
+{% assign unique_tag_labels = "format,type,caffeine,mood,profile,origin" | split: ',' %}
+
+<div
+  class="filter-panel-mobile"
+  id="filter-panel"
+  x-show="filtersOpen"
+  x-ref="filtersPanel"
+  x-collapse
+  x-cloak
+  @keydown.escape="filtersOpen = false"
+>
+  <div class="border-t transition-all duration-700 mx-3 md:mx-6" :class="filtersOpen ? 'border-brown/25' : 'border-transparent'"></div>
+  <div class="pb-5 grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6">
+    {% for filter in collection.filters %}
+      {%- case filter.type -%}
+        {%- when 'boolean' or 'list' -%}
+          {% if filter.label == 'Tags' %}
+            <!-- Render the filters in the specified order -->
+            {% for label in unique_tag_labels %}
+              <fieldset class="mt-1 border-b md:border-r md:border-b-0 transition-all duration-700 filter-column px-6" :class="filtersOpen ? 'border-brown/25 opacity-100' : 'border-transparent opacity-0'">
+                <div class="pb-5">
+                  <legend class="pt-5 pb-4 block para-xs">{{ label }}</legend>
+                  <div class="grid grid-cols-2 md:grid-cols-1 gap-3.5 pb-4">
+                    {%- for filter_value in filter.values -%}
+                      {% assign current_filter_parts = filter_value.value | split: ':' %}
+                      {% assign current_filter_label = current_filter_parts | first %}
+                      {% assign current_filter_value = current_filter_parts | last | replace: '-', ' & ' %}
+                      {% assign current_filter_value = current_filter_value | replace: '_', ' ' %}
+                      {% if label == current_filter_label %}
+                        {% if filter_value.count >= 1 %}
+                          <div
+                            class="flex items-center text-base sm:text-sm"
+                            x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null"
+                            id="category-{{ label }}"
+                          >
+                            <input
+                              id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              value="{{ filter_value.value }}"
+                              name="{{ filter_value.param_name }}"
+                              type="checkbox"
+                              x-ref="filter"
+                              @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}', '{{ label }}')"
+                              @change="$dispatch('filter-updated')"
+                              :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                              {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                              class="form-checkbox h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                            >
+                            <label
+                              for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              class="ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer para-sm text-base tracking-2pc"
+                            >
+                              {{ current_filter_value }}
+                            </label>
+                          </div>
+                        {%- endif -%}
+                      {% endif %}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </fieldset>
+            {% endfor %}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>

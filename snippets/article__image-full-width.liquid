@@ -1,0 +1,19 @@
+<section
+  class="section-p-x pb-20 md:pb-30"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="flex w-full justify-center {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight{% elsif data.max_width == 'Editorial' %} article-container {% endif%}">
+    <div>
+      {% render 'image-article',
+        image_desktop: data.image,
+        width_desktop: '2000x',
+        width_mobile: '800x',
+        image_classes: 'rounded-4',
+      %}
+      {% assign caption = data.caption | metafield_tag %}
+      {% render 'image-caption', caption: caption %}
+    </div>
+  </div>
+</section>

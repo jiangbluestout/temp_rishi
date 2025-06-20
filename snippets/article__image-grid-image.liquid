@@ -1,0 +1,14 @@
+<div class="keen-slider__slide">
+  <div class="ml-3">
+    <div class="relative">
+      <img src="{{ image_url | img_url: '800x' }}" alt="{{ image_one.alt }}" class="w-full h-auto relative rounded-4">
+      {% if cta_text %}
+        <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <a href="{{ cta_link }}" class="button__primary white">{{ cta_text }}</a>
+        </div>
+      {% endif %}
+    </div>
+    {% assign caption = image_caption | metafield_tag %}
+    {% render 'image-caption', caption: caption %}
+  </div>
+</div>

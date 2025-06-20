@@ -1,0 +1,26 @@
+<section
+  class="w-full pb-16 md:pb-30"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="flex flex-col w-full {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight {% endif %}">
+    <div class="w-full">
+      {% if data.youtube_id %}
+        {%
+          render 'youtube_player',
+          youtube_id: data.youtube_id.value,
+          video_classes: 'w-full'
+        %}
+      {% else %}
+        {%
+          render 'video_player',
+          video: data.video.value,
+          video_classes: 'w-full'
+        %}
+      {% endif %}
+    </div>
+    {% assign caption = data.caption | metafield_tag %}
+    {% render 'image-caption', caption: caption %}
+  </div>
+</section>

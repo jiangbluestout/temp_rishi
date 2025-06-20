@@ -1,0 +1,53 @@
+<section
+  class="section-p-x section-p-b pt-[var(--nav-height)]  {{ section.settings.padding_bottom }} bg-light"
+  x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('#F7F5F0', '#283645');"
+  x-cloak
+>
+  <div class="pt-3 pb-3 md:pb-6 {% unless section.settings.full_width %} section-container {% endunless %} min-h-[498px]">
+    <div id='storerocket-widget' style='width:100%;' data-storerocket-env='p' data-storerocket-id='vZ4vPay8Qd'><p style='text-align:center;font-size:13px;padding:10px;'>Store locator is loading from StoreRocket <a target='_blank' href='https://storerocket.io' style='font-size:13px;'>Store Locator App</a>..</p></div><script>(function(){var a=document.createElement('script');a.type='text/javascript';a.async=!0;a.src='https://cdn.storerocket.io/js/widget-mb.js';var b=document.getElementsByTagName('script')[0];b.parentNode.insertBefore(a,b);}());</script>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Store Locator",
+  "class": "section-store-locator",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": true,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        }, {
+          "value": "small",
+          "label": "Small"
+        }, {
+          "value": "medium",
+          "label": "Medium"
+        }, {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Store Locator",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

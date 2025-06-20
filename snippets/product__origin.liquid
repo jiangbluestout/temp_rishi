@@ -1,0 +1,83 @@
+{% assign elevation = data.elevation %}
+{% assign cultivar = data.cultivar %}
+
+<!-- If the elevation and cultivar metafields are populated on the product, overwrite that value from the Origin metaobject -->
+{% if product.metafields.custom.elevation %}
+  {% assign elevation = product.metafields.custom.elevation %}
+{% endif %}
+
+{% if product.metafields.custom.cultivar %}
+  {% assign cultivar = product.metafields.custom.cultivar %}
+{% endif %}
+
+{% assign background_map_mobile = data.background_map_mobile %}
+
+{% if background_map_mobile == blank %}
+  {% assign background_map_mobile = data.background_map_desktop %}
+{% endif %}
+
+{% assign background_map_desktop = data.background_map_desktop %}
+
+
+{% if data.title != blank %}
+  <section
+    class="transition-opacity duration-[1100ms] ease section-p-b small"
+    x-data="{ fadeIn: false }"
+    x-intersect="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+  <div class="relative lg:bg-green/20">
+    {% if background_map_desktop %}
+      <img
+        src="{{ data.background_map_desktop | img_url: '2500x' }}"
+        alt="{{ data.title }} background map desktop"
+        loading="lazy"
+        draggable="false"
+        class="absolute inset-0 w-full h-full object-cover object-center z-0 hidden lg:block"
+      >
+      <img
+        src="{{ data.background_map_mobile | img_url: '1000x' }}"
+        alt="{{ data.title }} background map mobile"
+        loading="lazy"
+        draggable="false"
+        class="z-0 lg:hidden"
+      >
+    {% endif %}
+    <div class="px-3 lg:p-12 lg:gap-3 flex flex-col lg:flex-row z-10 transform -translate-y-6 lg:translate-y-0">
+      <div class="p-4 lg:p-9 lg:w-[40%] xl:w-[32%] rounded-t-4 lg:rounded-4 bg-light z-10 h-fit">
+        <div>
+          {% if data.eyebrow_text %}
+            <div class="lg:border-b border-brown pb-6">
+              <h4 id="product-origin" class="para-2xs">{{ data.eyebrow_text }}</h4>
+            </div>
+          {% endif %}
+          <div class="lg:pt-6">
+            {% if data.title %}
+              <h5 class="heading-lg pb-4">{{ data.title }}</h5>
+            {% endif %}
+            {% if data.location %}
+              <p class="text-sm tracking-8pc leading-1.5 uppercase opacity-75 font-500">{{ data.location }}</p>
+            {% endif %}
+            {% if data.description %}
+              <div class="pt-8 lg:pt-9 pb-2 lg:pb-16 para-sm leading-1.5">{{ data.description | metafield_tag }}</div>
+            {% endif %}
+          </div>
+        </div>
+        {% comment %} THIS WILL BE ADDED IN PHASE TWO {% endcomment %}
+        {% comment %} <div>
+          <h6 class="para-2xs">Discover More</h6>
+            {% render 'origin__article-card' %}
+        </div> {% endcomment %}
+      </div>
+      <div class="flex flex-col lg:gap-3 lg:w-[30%] xl:w-[24%]">
+        <div>
+          {% render 'origin__media', data: data %}
+        </div>
+        {% comment %} <div>
+          {% render 'origin__region-details-card', data:data, elevation: elevation, cultivar: cultivar %}
+        </div> {% endcomment %}
+      </div>
+    </div>
+  </div>
+  </section>
+{% endif %}

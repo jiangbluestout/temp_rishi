@@ -1,0 +1,343 @@
+<style>
+  .best-sellers .best-sellers__additional-info {
+    display: block;
+  }
+  .best-sellers .best-sellers__product-card-price {
+    display: flex;
+  }
+  .product-card-price {
+    display: flex;
+  }
+  .best-sellers .product-card-price {
+    display: none;
+  }
+  /* .best-sellers .product-card-container-mobile {
+    position: relative;
+  }
+  .best-sellers .product-card-price {
+    position: absolute;
+    right: 0;
+    bottom: -18px;
+  } */
+</style>
+
+{% unless activeVariant %}
+	{% assign activeVariant = product.selected_or_first_available_variant %}
+{% endunless %}
+
+{%- capture productCardVariants -%}
+  {%- render 'product__hydrate-variants', product: product, activeVariant: activeVariant -%}
+{%- endcapture -%}
+
+<!-- get lowest price that is not teaser -->
+{% assign lowest_price = blank %}
+
+{% for option in product.options_with_values %}
+  {% if option.name != 'Title' and option.name != 'title' %}
+    {% for value in option.values %}
+      {% assign variant = product.variants | where: 'option1', value | first %}
+      {% if value != 'Teaser' and value != 'teaser' %}
+        {% if lowest_price == blank or variant.price < lowest_price %}
+          {% assign lowest_price = variant.price %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign is_control_product_id = false %}
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+  {% for val in elevate_tests %}
+                  {% assign testID = val[0] %}
+                  {%- assign testData = val[1] -%}
+                  {% if testID == 'settings' or testData.data.isLive == false %}
+                    {% continue %}
+                  {% endif %}
+                  {% assign control_product_id = testData["0"].id %}
+                  {% assign string_product_id = product.id | append: '' %}
+                  
+                  {% if string_product_id == control_product_id %}
+                      {% assign is_control_product_id = true %}
+                  {% endif %}
+                {% endfor %}
+
+
+
+<div x-data="productForm({{ productCardVariants | strip }}, {{ activeVariant.id }})" class="{{ collection.handle }} {{ classes }}{% if is_control_product_id %} eab-test-{{ product.id }}{% endif %}" style="{% if is_control_product_id %}visibility: hidden;{% endif %}">
+  
+  <div class="product-card-container-mobile">
+    <a
+      href="{{ product.url | within: collection }}"
+      x-data="{ opened: false }"
+      @mouseleave="opened = false;"
+      class="group"
+    >
+    <div class="relative mb-3 md:mb-4">
+      <img
+        class="aspect-5/5 object-cover object-center rounded overflow-hidden w-full product-card-image"
+        src="{{ product.featured_image | img_url: '800x' }}"
+        width="{{ product.featured_image.width }}"
+        height="{{ product.featured_image.height }}"
+        alt="{{ product.featured_image.alt }}"
+        style="object-position: {{ product.featured_image.presentation.focal_point }};"
+        loading="lazy"
+      >
+
+      {% if product.metafields.custom.list_hover_image %}
+        <img
+          class="absolute top-0 left-0 aspect-5/5 object-cover object-center rounded overflow-hidden w-full h-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
+          src="{{ product.metafields.custom.list_hover_image | img_url: '800x' }}"
+          style="object-position: {{ product.metafields.custom.list_hover_image.value.presentation.focal_point }};"
+          width="{{ product.metafields.custom.list_hover_image.value.width }}"
+          height="{{ product.metafields.custom.list_hover_image.value.height }}"
+          alt="{{ product.title }} hover image"
+          loading="lazy"
+        >
+      {% endif %}
+
+      {% if product.metafields.custom.list_badge %}
+        <img
+          class="absolute left-5 top-5 w-13 {% if hide_mobile_badge %} hidden md:block {% endif %}"
+          src="{{ product.metafields.custom.list_badge | img_url: '200x' }}"
+          style="object-position: {{ product.metafields.custom.list_badge.value.presentation.focal_point }};"
+          width="{{ product.metafields.custom.list_badge.value.width }}"
+          height="{{ product.metafields.custom.list_badge.value.height }}"
+          alt="{{ product.title }} icon"
+          loading="lazy"
+        >
+      {% endif %}
+
+      {% if product.available %}
+        <div
+          class="hidden lg:block absolute bottom-3 left-3 right-3 text-center md:group-hover:opacity-100 opacity-0  duration-500 rounded text-dark bg-white cursor-pointer transition-opacity"
+          style="transition-duration: 200ms; transition-property: background-color, opacity, backdrop-filter;"
+          @click.stop.prevent="opened = true; added = false;"
+        >
+          <div
+            x-show="opened"
+            class="flex flex-wrap justify-center p-1.5 pb-2 gap-y-2"
+          >
+            {% for option in product.options_with_values %}
+              {% if option.name != 'Title' and option.name != 'title' %}
+                {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+                {% assign optionSize = option.values.size %}
+                {%
+                  render 'product__card-option-selector'
+                  product: product,
+                  activeVariant: activeVariant,
+                  optionIndex: optionIndex,
+                  option: option,
+                %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if optionSize > 1 %}
+            <div
+              x-show="!opened"
+              class="p-5 uppercase text-sm font-500 tracking-8pc flex items-center justify-center gap-2.5"
+            >
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                  <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#283645" stroke-width="1.5"/>
+                  <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#283645" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>
+                QUICK ADD
+              </span>
+            </div>
+          {% else %}
+            <button
+              type="button"
+              class="p-5 uppercase text-sm font-500 tracking-8pc flex items-center justify-center gap-2.5 w-full"
+              title="{{ value }}"
+              @click.prevent.stop="
+                $store.main.addVariant({
+                  variantId: reactiveData.activeVariant.id,
+                  openCart: true,
+                  button: 'quick_add',
+                  quantity: 1,
+                }).then(() => {
+                  opened = false;
+                }); opened = false;
+              "
+            >
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                  <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#283645" stroke-width="1.5"/>
+                  <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#283645" stroke-width="1.5"/>
+                </svg>
+              </span>
+              <span>
+                QUICK ADD
+              </span>
+            </button>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="flex flex-col mb-1 md:mb-3 md:flex-row md:justify-between md:items-start gap-y-1.5">
+      {% if product.title != blank %}
+        <h2 class="font-serif text-lg leading-1.1 tracking-4pc md:text-2xl font-100">
+          {{ product.title }}
+        </h2>
+      {% endif %}
+      
+    </div>
+    <div class="flex items-end justify-between flex-col md:flex-row	md:items-end">
+      <div class="self-start">
+        {% for tea_type in product.metafields.my_fields.tea_type.value %}
+          <div class="text-sm md:text-base tracking-4pc leading-1.5">
+            {{ tea_type }}
+          </div>
+        {% endfor %}
+        <div class="text-sm md:text-base tracking-4pc leading-1.5 text-dark text-opacity-40">
+          {{ product.metafields.my_fields.tasting_notes }}
+        </div>
+      </div>
+      <div class="product-card-price hidden text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end pt-1.5">
+        {% if product.compare_at_price > product.price %}
+          <div class="sale-product-wrapper">
+            <span class="actual__price compare-price-strikethrough">{{ product.compare_at_price | money }}</span>
+            <span class="sale__price">{{ product.price | money }}</span>
+          </div>
+        {% else %}
+          {% if product.price == 0 %}
+            Free
+          {% else %}
+            {% if product.price_min == product.price_max %}
+              {{ product.price | money }}
+            {% else %}
+              from {{ lowest_price | money }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </a>
+
+
+  {% for option in product.options_with_values %}
+    {% for value in option.values %}
+      {% if value != 'Teaser' and value != 'teaser' %}
+          {% assign size_count = forloop.index %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+
+  {% assign target_prefix = "format:" %}
+  {% for tag in product.tags %}
+    {% if tag contains target_prefix %}
+      {% assign formatted_tag = tag | remove: target_prefix | replace: "_", " " %}
+    {% endif %}
+  {% endfor %}
+
+  {% if product.metafields.custom.underline_product_links.value != blank %}
+    {% assign underline_product = product.metafields.custom.underline_product_links.value %}
+    {% assign url_link = underline_product.selected_or_first_available_variant.url %}
+
+    {% for tag in underline_product.tags %}
+      {% if tag contains target_prefix %}
+        {% assign formatted_tag = tag | remove: target_prefix | replace: "_", " " %}
+      {% endif %}
+    {% endfor %}
+    {% assign underline_title = formatted_tag %}
+  {% else %}
+    {% case formatted_tag %}
+      {% when 'loose leaf' %}
+        {% assign url_link = '/collections/loose-leaf-teas' %}
+      {% when 'sachets' %}
+        {% assign url_link = '/collections/sachet-tea-bags' %}
+      {% when 'powders' %}
+        {% assign url_link = '/collections/matcha-powders' %}
+      {% when 'concentrates' %}
+        {% assign url_link = '/collections/tea-concentrates' %}
+      {% when 'sparkling botanicals' %}
+        {% assign url_link = '/collections/sparkling-botanicals' %}
+    {% endcase %}
+    {% assign underline_title = formatted_tag %}
+  {% endif %}
+
+  <div class="flex flex-col xl:flex-row items-start md:items-start gap-1	xl:gap-0 justify-between">
+    {% comment %} <div class="best-sellers__additional-info hidden text-xs md:text-base tracking-4pc leading-1.5">
+    {% if size_count > 1 %}
+      Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+    {% else %}
+      Also available in <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+    {% endif %}
+    </div> {% endcomment %}
+    {% assign size_count = product.variants_count %}
+    <div class="best-sellers__additional-info hidden text-xs md:text-base tracking-4pc leading-1.5">
+      {% case product.metafields.custom.usecase.value %}
+        {% when 1 %}
+          {% if size_count > 1 %}
+            Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+          {% else %}
+            Also available in <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+          {% endif %}
+        {% when 2 %}
+          {% if size_count > 1 %}
+            Available in {{ size_count }} sizes
+          {% endif %}
+        {% when 3 %}
+        {% else %}
+          {% if product.metafields.custom.usecase.value == blank %}
+            {% if size_count > 1 %}
+              Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+            {% else %}
+              Also available in <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
+            {% endif %}
+          {% endif %}
+      {% endcase %}
+    </div>
+    <div class="best-sellers__product-card-price hidden self-end leading-1.5	md:self-end text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end">
+        {% if product.compare_at_price > product.price %}
+          <div class="sale-product-wrapper">
+            <span class="actual__price compare-price-strikethrough">{{ product.compare_at_price | money }}</span>
+            <span class="sale__price">{{ product.price | money }}</span>
+          </div>
+        {% else %}
+          {% if product.price == 0 %}
+            Free
+          {% else %}
+            {% if product.price_min == product.price_max %}
+              {{ product.price | money }}
+            {% else %}
+              from {{ lowest_price | money }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  
+  <button
+      type="button"
+      class="mobile-product-card-atc flex lg:hidden button__atc w-full p-5 h-auto mt-5 items-center justify-center gap-x-3"
+      title="{{ value }}"
+      @click.prevent.stop="
+        {% comment %} handleATCEvent(reactiveData.activeVariant.id); {% endcomment %}
+        $store.main.addVariant({
+          variantId: reactiveData.activeVariant.id,
+          openCart: true,
+          button: 'quick_add',
+          quantity: 1,
+        }).then(() => {
+          opened = false;
+        }); opened = false;
+      "
+    >
+      <span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 10" fill="none">
+          <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#fff" stroke-width="1.5"/>
+          <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#fff" stroke-width="1.5"/>
+        </svg>
+      </span>
+      <span>
+        QUICK ADD
+      </span>
+    </button>
+</div>

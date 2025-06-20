@@ -1,0 +1,303 @@
+{% assign accent_class = '' %}
+{% if section.settings.accent_color == 'light' %}
+  {% assign accent_class = 'border-light/50' %}
+{% else %}
+  {% assign accent_class = 'border-dark/50' %}
+{% endif %}
+
+<section
+  class="section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{
+    fadeIn: false,
+    activeIndex: 1,
+    handleMouseEnter(index) {
+      this.activeIndex = index;
+    },
+    handleMobileClick(index) {
+      this.activeIndex = index;
+    },
+    showImages(index) {
+      if (window.innerWidth < 768) {
+        return this.activeIndex == index;
+      }
+      if (window.innerWidth >= 768) {
+        return this.activeIndex == index;
+      }
+    }
+  }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  x-cloak
+>
+  <div class="flex flex-col lg:flex-row transition-colors duration-200" style="background-color: {{ section.settings.background_color }}; color: {{ section.settings.text_color }}">
+    <div class="w-full lg:w-1/3 px-3 lg:px-9 pt-8 pb-7 lg:pt-10 lg:pb-15">
+      <label class="para-2xs uppercase" for="{{ section.settings.collection.title }}-nav-links">{{ section.settings.header }}</label>
+      <!-- Italic Variant -->
+      {% if section.settings.variant == 'italic' %}
+        <ul id="{{ section.settings.collection.title }}-nav-links" class="pt-6 pb-0 lg:pt-0 flex-col gap-2 hidden lg:flex h-full justify-center">
+          {% for block in section.blocks %}
+            <li class="w-fit group">
+              {% if block.settings.collection.url %}
+                <a
+                  class="menu-link w-fit flex items-center gap-6 relative"
+                  href="{{ block.settings.collection.url }}"
+                  @mouseenter="handleMouseEnter({{ forloop.index }})"
+                >
+                  {% if block.settings.alt_title != blank %}
+                    <h3
+                      class="heading-xl transition-colors duration-200"
+                      :class="activeIndex == {{ forloop.index }} ? 'text-brown italic' : '' "
+                    >
+                      {{ block.settings.alt_title }}
+                    </h3>
+                  {% else %}
+                    <h3 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h3>
+                  {% endif %}
+                </a>
+              {% else %}
+                <button
+                  class="menu-link w-fit flex items-center gap-6 relative"
+                  @mouseenter="handleMouseEnter({{ forloop.index }})"
+                >
+                  {% if block.settings.alt_title != blank %}
+                    <h3
+                      class="heading-xl transition-colors duration-200"
+                      :class="activeIndex == {{ forloop.index }} ? 'text-brown italic' : '' "
+                    >
+                      {{ block.settings.alt_title }}
+                    </h3>
+                  {% else %}
+                    <h3 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h3>
+                  {% endif %}
+                </button>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+      <!-- Arrow Variant -->
+        <ul id="{{ section.settings.collection.title }}-nav-links" class="pt-6 pb-0 lg:pt-16 flex-col gap-2 hidden lg:flex">
+          {% for block in section.blocks %}
+            <li class="w-fit group">
+              <a
+                class="menu-link w-fit flex items-center gap-6 relative transform transition-transform duration-150 hover:translate-x-[30px] pr-1"
+                href="{{ block.settings.collection.url }}"
+                @mouseenter="handleMouseEnter({{ forloop.index }})"
+              >
+                {% if block.settings.alt_title != blank %}
+                  <h3
+                    class="heading-xl transition-all duration-200 "
+                    :class="activeIndex == {{ forloop.index }} ? 'text-brown' : '' "
+                  >
+                    {{ block.settings.alt_title }}
+                  </h3>
+
+                {% else %}
+                  <h3 class="heading-xl transition-all duration-200 hover:text-brown">{{ block.settings.collection.title }}</h3>
+                {% endif %}
+                <div class="absolute -right-1 top-1/2 opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-x-full -translate-y-1/2 stroke-brown fill-brown">
+                  {% render "svg__arrow-button", classes: "stroke-inherit", arrow_fill: '#A88667' %}
+                </div>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+      <ul id="{{ section.settings.collection.title }}-nav-links" class="pt-4 pb-0 lg:pt-16 gap-2 flex lg:hidden flex-wrap">
+        {% for block in section.blocks %}
+          <li class="w-fit group">
+            <button
+              class="menu-link w-fit flex items-center relative transform rounded-57 border py-2 px-3.5 transition-all duration-150"
+              :class="activeIndex == {{ forloop.index }} ? 'bg-brown border-brown text-white' : '{{ accent_class }}' "
+              @click="handleMobileClick({{ forloop.index }})"
+            >
+              {% if block.settings.alt_title != blank %}
+                <span class="text-xl tracking-4pc font-serif font-100">{{ block.settings.alt_title }}</span>
+              {% else %}
+                <span class="text-xl tracking-4pc font-serif font-100">{{ block.settings.collection.title }}</span>
+              {% endif %}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="w-full lg:w-2/3 relative px-3 lg:px-6 pt-8 pb-6 lg:pt-10 lg:pb-6">
+      {% for block in section.blocks %}
+        {% if block.settings.lifestyle_image != blank or block.settings.tea_image %}
+          {% assign character_count = block.settings.description | split: "" | size %}
+          <div
+            class="flex flex-col items-end justify-between gap-6 h-full"
+            x-show="() => showImages({{ forloop.index }})"
+          >
+            <div class="w-fit heading-2xl md:heading-sm lg:heading-md {% if character_count > 185 %} xl:heading-xl  {% else %} xl:heading-2xl {% endif %} flex items-end lg:block min-h-[250px] lg:min-h-[400px]">
+              {{ block.settings.description }}
+            </div>
+            <div class="md:min-h-[17.5vw] w-full flex justify-end items-end">
+              <div class="w-full lg:w-[62.5%] grid grid-cols-5 gap-2.5">
+                {% if block.settings.lifestyle_image %}
+                  {% unless block.settings.tea_image != blank %}
+                    <div class="col-span-2"></div>
+                  {% endunless %}
+                  <div class="flex col-span-3 relative h-full w-full" style="padding-top: 78.5%">
+                    <img
+                      class="absolute inset-0 w-full h-full object-cover rounded-4"
+                      src="{{ block.settings.lifestyle_image | img_url: '800x' }}"
+                      alt="{{ block.settings.lifestyle_image.alt }}"
+                      loading="lazy"
+                      draggable="false"
+                      style="animation: fadeIn 200ms ease-in-out"
+                    />
+                  </div>
+                {% endif %}
+                {% if block.settings.tea_image %}
+                  <div class="flex col-span-2">
+                    <div class="relative w-full h-full" style="padding-top: 120%; animation: fadeIn 300ms ease-in-out" >
+                      <img
+                        class="absolute inset-0 w-full h-full object-cover rounded-4"
+                        src="{{ block.settings.tea_image | img_url: '800x' }}"
+                        alt="{{ block.settings.tea_image.alt }}"
+                        loading="lazy"
+                        draggable="false"
+                      />
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+            {% if block.settings.collection.url %}
+              <a href="{{ block.settings.collection.url }}" class="button__primary brown w-fit mx-auto lg:hidden">Shop Collection</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Collection List",
+    "settings": [
+      {
+        "type": "select",
+        "id": "variant",
+        "label": "Variant",
+        "info": "This indicates the style of hover effect added to the list items",
+        "options": [
+          {
+            "value": "arrow",
+            "label": "Arrow"
+          },
+          {
+            "value": "italic",
+            "label": "Italic"
+          }
+        ],
+        "default": "arrow"
+      },
+      {
+        "type": "text",
+        "id": "header",
+        "label": "Heading",
+        "default": "Explore our Teas"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Background Color",
+        "default": "#283645"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Text Color",
+        "default": "#ffffff"
+      },
+      {
+        "type": "select",
+        "id": "accent_color",
+        "label": "Accent Color",
+        "info": "This is used as the border color for mobile buttons",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "dark",
+            "label": "Dark"
+          }
+        ],
+        "default": "light"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection"
+          },
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description",
+            "info": "This description will be displayed when the collection is hovered over. If empty, the collection's description will be displayed."
+          },
+          {
+            "type": "text",
+            "id": "alt_title",
+            "label": "Alternate Title",
+            "info": "If you want to display a different title than the collection title, enter it here."
+          },
+          {
+            "type": "image_picker",
+            "id": "lifestyle_image",
+            "label": "Lifestyle Image",
+            "info": "This image will be displayed when the collection is hovered over. If empty, there will be no lifestyle image displayed."
+          },
+          {
+            "type": "image_picker",
+            "id": "tea_image",
+            "label": "Tea Image",
+            "info": "This image will be displayed when the collection is hovered over. If empty, there will be no tea image displayed."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection List",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

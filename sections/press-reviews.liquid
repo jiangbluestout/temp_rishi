@@ -1,0 +1,248 @@
+{% style %}
+    .press-quote-content {
+        font-family: ivypresto-headline,ui-serif,serif;
+        font-weight: 100;
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: 4%;
+        text-align: center;
+        letter-spacing: 2px;
+        color: #283645;
+        min-height: 300px;
+        will-change: opacity, transform;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    @media screen and (max-width: 768px) {
+        .press-quote-content {
+            font-size: 32px;
+            min-height: 350px;
+        }
+    }
+    .bg-primary {
+        background-color: #000000;	
+    }
+    .rounded-full {
+        border-radius: 9999px;
+    }
+    .bg-grey-400 {
+        background-color: #d0c8c3;
+    }
+    .review_content {
+        transition: opacity 0.5s, transform 0.5s;
+        will-change: opacity, transform;
+        touch-action: pan-y;
+        display: none;
+    }
+    .review_content.active {
+        display: flex;
+    }
+{% endstyle %}
+
+{% if section.blocks.size > 0 -%}
+    {%- assign sources = '' -%}
+    <section class="press_reviews_container pt-{{ section.settings.pt | times: 4 }} pb-{{ section.settings.pb | times: 4 }}{% if section.settings.section_class != blank %} {{ section.settings.section_class }}{% endif %}">
+        <div class="container text-center relative">
+            <div class="mb-6" id="press-carousel">
+                {% for block in section.blocks -%}
+                    {% liquid
+                        assign content = block.settings.content
+                        if content.size > 250
+                            assign content = content | truncate: 250
+                        endif
+                    -%}
+                    {%- capture source -%}
+                        <button class="review_source inline-block w-32 grow-0 transition-all" data-index="{{ forloop.index0 }}">
+                            <span class="sr-only">{{ block.settings.heading }}</span>
+                            <img class="object-contain object-center h-full w-full grayscale" src="{{ block.settings.logo | image_url: width: 400 }}" alt="{{ block.settings.logo.alt }}" width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}" loading="lazy">
+                        </button>
+                    {%- endcapture -%}
+                    {%- assign sources = sources | append: source -%}
+                    <div class="review_content top-0 left-0 w-full px-8 mb-5 h-96 md:h-36 text-xl md:text-lg lg:text-xl transition-all duration-500 flex items-center"
+                        data-carousel-item
+                        {% if forloop.first %}class="review_content active top-0 left-0 w-full px-8 mb-5 h-96 md:h-36 text-xl md:text-lg lg:text-xl transition-all duration-500 flex items-center"{% endif %}
+                    >
+                        <div>
+                            <div class="w-full xl:w-2/3 px-0 md:px-12 xl:px-0 mx-auto text-center">
+                                <p class="press-quote-header pb-6 para-xs">{{ block.settings.header }}</p>
+                                <h2 class="press-quote-content">{{ content }}</h2>
+                            </div>
+                            <div>
+                                <div class="aspect-landscape inline-block w-40 md:hidden mt-6 z-0">
+                                    <img class="object-contain object-center h-full w-full grayscale" src="{{ block.settings.logo | image_url: width: 400 }}" alt="{{ block.settings.logo.alt }}" width="{{ block.settings.logo.width }}" height="{{ block.settings.logo.height }}" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {%- endfor -%}
+                <div class="hidden md:flex gap-10 justify-center mb-8" id="press-carousel-sources">
+                    {{ sources }}
+                </div>
+            </div>				
+            <div class="flex md:hidden gap-4 items-center justify-between">
+                <button class="fill-brown py-5 pr-4 slider-btn" id="press-carousel-prev" aria-label="Previous review">
+                    {% render 'svg__arrow-left', classes: 'fill-brown' %}
+                </button>
+                <div class="md:hidden flex gap-1.5" id="press-carousel-dots">
+                    {% for block in section.blocks %}
+                        <button class="hover:bg-white rounded-full m-1 h-2 w-2" data-dot-index="{{ forloop.index0 }}" aria-label="Review {{ forloop.index }}"><span class="sr-only">{{ forloop.index }}</span></button>
+                    {% endfor %}
+                </div>
+                <button class="fill-brown py-5 pl-4 slider-btn" id="press-carousel-next" aria-label="Next review">
+                    {% render 'svg__arrow-right', classes: 'fill-brown' %}
+                </button>
+            </div>
+        </div>
+    </section>
+{% elsif request.design_mode %}
+    <section class="content_tabs container pt-{{ section.settings.pt | times: 4 }} pb-{{ section.settings.pb | times: 4 }}">
+        <div class="rounded m-1 p-2 bg-shopify-blue text-center text-white">- Please add a review -</div>
+    </section>
+{% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var items = document.querySelectorAll('[data-carousel-item]');
+    var dots = document.querySelectorAll('[data-dot-index]');
+    var sources = document.querySelectorAll('.review_source');
+    var current = 0;
+    var interval = null;
+
+    function showItem(idx) {
+        items.forEach(function(item, i) {
+            item.classList.toggle('active', i === idx);
+        });
+        dots.forEach(function(dot, i) {
+            dot.classList.toggle('bg-primary', i === idx);
+            dot.classList.toggle('bg-grey-400', i !== idx);
+        });
+        sources.forEach(function(source, i) {
+            source.style.opacity = (i === idx) ? '1' : '0.3';
+        });
+        current = idx;
+    }
+
+    function nextItem() {
+        var idx = (current + 1) % items.length;
+        showItem(idx);
+    }
+
+    function prevItem() {
+        var idx = (current - 1 + items.length) % items.length;
+        showItem(idx);
+    }
+
+    // Dots click
+    dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+            showItem(i);
+            resetInterval();
+        });
+    });
+
+    // Sources click (desktop)
+    sources.forEach(function(source, i) {
+        source.addEventListener('click', function() {
+            showItem(i);
+            resetInterval();
+        });
+    });
+
+    // Prev/Next buttons
+    var prevBtn = document.getElementById('press-carousel-prev');
+    var nextBtn = document.getElementById('press-carousel-next');
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', function() {
+            prevItem();
+            resetInterval();
+        });
+        nextBtn.addEventListener('click', function() {
+            nextItem();
+            resetInterval();
+        });
+    }
+
+    function resetInterval() {
+        if (interval) clearInterval(interval);
+        interval = setInterval(nextItem, 5000);
+    }
+
+    // Start auto-advance
+    resetInterval();
+
+    // Show first item on load
+    showItem(0);
+});
+</script>
+
+{% schema -%}
+{
+	"name": "Press Reviews",
+	"limit": 1,
+	"class": "press_reviews_section_container",
+	"settings": [
+		{
+			"type": "header",
+			"content": "Advanced"
+		},
+		{
+			"type": "range",
+			"id": "pt",
+			"label": "Spacing Top",
+			"min": 0,
+			"max": 15,
+			"step": 1,
+			"unit": "rem",
+			"default": 3
+		},
+		{
+			"type": "range",
+			"id": "pb",
+			"label": "Spacing Bottom",
+			"min": 0,
+			"max": 15,
+			"step": 1,
+			"unit": "rem",
+			"default": 3
+		},
+		{
+			"type": "text",
+			"id": "section_class",
+			"label": "Section Class"
+		}
+	],
+	"blocks": [
+		{
+			"name": "Press Review",
+			"type": "review",
+			"settings": [
+				{
+					"type": "text",
+					"id": "heading",
+					"label": "Source"
+				},
+				{
+					"type": "image_picker",
+					"id": "logo",
+					"label": "Logo"
+				},
+				{
+					"type": "text",
+					"id": "header",
+					"label": "Header"
+				}		,
+				{
+					"type": "textarea",
+					"id": "content",
+					"label": "Content"
+				}				
+			]
+		}
+	],
+	"presets": [
+		{
+			"name": "Press Reviews"
+		}
+	]
+}
+{% endschema -%}

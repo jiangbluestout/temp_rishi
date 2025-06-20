@@ -1,0 +1,49 @@
+<section
+  class="section-p-x section-p-b medium"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  {% paginate blog.articles by 15 %}
+    <div class="grid md:grid-cols-3 gap-x-3 gap-y-12 md:gap-y-20 pb-16 md:pb-30">
+      {% for article in blog.articles %}
+        {% render 'article__card', article: article, image_height: section.settings.article_image_height %}
+      {% endfor %}
+    </div>
+    {% render 'pagination', paginate: paginate %}
+  {% endpaginate %}
+
+</section>
+
+{% schema %}
+  {
+    "name": "Blog Article Grid",
+    "settings": [
+      {
+        "type": "select",
+        "id": "article_image_height",
+        "label": "Article Image Height",
+        "options": [
+          {
+            "value": "525",
+            "label": "525px"
+          },
+          {
+            "value": "600",
+            "label": "600px"
+          },
+          {
+            "value": "800",
+            "label": "800px"
+          }
+        ],
+        "default": "525"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog Article Grid"
+      }
+    ]
+  }
+  {% endschema %}

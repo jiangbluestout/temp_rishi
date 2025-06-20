@@ -1,0 +1,13 @@
+{% if data.headline != blank %}
+  <section
+    class="section-p-x flex justify-center {% if data.background_color != blank %} py-12 md:py-16 mb-16 md:mb-20 {% else %} pb-16 md:pb-20 {% endif %}"
+    style="background-color: {{ data.background_color }};"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    <div class="rte component text-center max-w-5xl px-5 md:px-0">
+      {{ data.headline | metafield_tag }}
+    </div>
+  </section>
+{% endif %}

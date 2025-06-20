@@ -1,0 +1,362 @@
+<script src="{{ 'component-filter-and-sort-cro.js' | asset_url }}"></script>
+{{ 'section-collection.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  @media (min-width: 768px) {
+    .md\:opacity-hidden {
+      visibility: hidden;
+      opacity: 0; 
+    }
+  }
+{% endstyle %}
+
+{% comment %} setup menus {% endcomment %}
+{% assign parent_collection = collection.metafields.custom.parent_collection.value %}
+{% assign submenu_handle = blank %}
+{% assign submenu_label = parent_collection.metafields.custom.submenu_label %}
+
+{% if parent_collection != blank %}
+  {% assign submenu_handle = parent_collection.metafields.custom.submenu %}
+{% else %}
+  {% assign submenu_handle = collection.metafields.custom.submenu %}
+{% endif %}
+
+{% if submenu_label == blank %}
+  {% assign submenu_label = collection.metafields.custom.submenu_label %}
+{% endif %}
+
+{% assign submenu = linklists[submenu_handle] %}
+
+{% comment %} setup cta blocks {% endcomment %}
+{% assign cta_block_small = collection.metafields.custom.collection_listing_cta_small.value %}
+{% assign cta_block_large = collection.metafields.custom.collection_listing_cta_large.value %}
+{% assign listing_image = collection.metafields.custom.collection_listing_image_small %}
+
+{% assign cta_block_large_position = 9 %}
+
+{% assign paginate_count = 16 %}
+
+{% if cta_block_small == blank %}
+  {% assign paginate_count = 18 %}
+{% endif 
+
+  {% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+     {% assign testVariation = key[0] %}
+    {% if testVariation != '0' and testVariation != 'data' %}
+      {% if elevate_variant_ids != '' %}
+        {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+      {% endif %}
+       {% assign testVariationData = key[1] %}
+      {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<div
+  class="collection pb-20 md:pb-30"
+  x-data=filterAndSort
+  x-cloak
+  x-bind="updateForm"
+  x-init="initializeData('{{ collection.sort_by }}', 'collections', '{{ collection.handle }}')"
+>
+
+  {% render 'collection__hero', parent_collection: parent_collection %}
+
+  <!-- This ref is used to grab the form values -->
+  <form class="" x-ref="filter_form_mobile">
+    <!-- set x-data for filterPanel -->
+    <div class="collection-filter">
+      <div class="bg-white rounded" style="animation: fadeIn 400ms ease-in-out" >
+        {% render 'collection__submenu-mobile', submenu: submenu, submenu_label: submenu_label %}
+        <h2 id="filter-heading" class="sr-only">Filters</h2>
+        <div aria-labelledby="filter-heading" class="flex justify-between items-center section-p-x py-2 md:py-2">
+          <div class="block md:hidden">
+            {% render 'collection__filter-toggle' %}
+          </div>
+          <div class="hidden md:block">
+            {% render 'collection__filter-toggle-desktop' %}
+          </div>
+          {% render 'collection__submenu-desktop', submenu: submenu, submenu_label: submenu_label %}
+          {% render 'collection__sort' %}
+        </div>
+        <div class="md:hidden">
+          {% render 'collection__filter-panel' %}
+        </div>
+      </div>
+    </div>
+  </form>
+  <form class="" x-ref="filter_form_desktop">
+    <div style="animation: fadeIn 500ms ease-in-out">
+      <div
+        class="transition-opacity duration-300 section-p-x md:grid md:grid-cols-4 md:gap-4"
+        :class="{'opacity-50': loading }"
+        x-data="{
+          imageHeight: 0,
+          setImageHeight() {
+            this.imageHeight = document.querySelector('.product-card-image').getBoundingClientRect().height
+          },
+          updateImageHeight() {
+            this.setImageHeight()
+            window.addEventListener('resize', () => this.setImageHeight())
+          },
+        }"
+        x-init="$nextTick(() => updateImageHeight())"
+        x-cloak
+      >
+        <div class="md:col-span-1 md:show pr-15">
+          {% render 'collection__filter-panel-desktop' %}
+        </div>
+        <div class="md:col-span-3" id="productGridContainer">
+          {% paginate collection.products by paginate_count %}
+            <div class="product-grid grid grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-10 gap-x-2 md:gap-x-3 pb-12 md:pb-20">
+              {% for product in collection.products %}
+                {% unless product.metafields.seo.hidden == 1 %}
+
+                  {% assign string_product_id = product.id | append: '' %} <!-- Convert product ID to string -->
+
+                  {% if elevate_variant_ids contains string_product_id %}
+                    {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                  {% endif %}
+                  
+                  {% if paginate.current_page == 1 %}
+                    {% if forloop.index == 5 or forloop.index == 11 %}
+                      {% render 'product__card', product: product, classes: 'col-span-2 lg:col-span-1', hide_mobile_badge: false %}
+                    {% else %}
+                      {% render 'product__card', product: product, hide_mobile_badge: true %}
+                    {% endif %}
+                    {% if forloop.index == 7 %}
+                      {% if cta_block_small != blank %}
+                        <div class="col-span-2 h-full">
+                          {% render 'collection__listing-cta-small',
+                            title: cta_block_small.heading2,
+                            illustration: cta_block_small.illustration,
+                            image: cta_block_small.image,
+                            copy: cta_block_small.copy,
+                            button_text: cta_block_small.button_text,
+                            button_link: cta_block_small.button_link,
+                            background_color: cta_block_small.background_color,
+                            text_button_color: cta_block_small.text_and_button_color,
+                            use_background_image: cta_block_small.use_background_image,
+                          %}
+                        </div>
+                        {% assign cta_block_large_position = 10 %}
+                      {% endif %}
+                    {% endif %}
+                    {% if collection.all_products_count >= cta_block_large_position and forloop.index == cta_block_large_position %}
+                      {% if cta_block_large != blank %}
+                        {% render 'collection__listing-cta-large',
+                          title: cta_block_large.heading2,
+                          image: cta_block_large.image,
+                          copy: cta_block_large.copy,
+                          button_text: cta_block_large.button_text,
+                          button_link: cta_block_large.button_link,
+                          background_color: cta_block_large.background_color,
+                          text_button_color: cta_block_large.text_and_button_color,
+                        %}
+                      {% endif %}
+                    {% endif %}
+                    {% if collection.all_products_count < cta_block_large_position and forloop.last %}
+                      {% if cta_block_large != blank %}
+                        {% render 'collection__listing-cta-large',
+                          title: cta_block_large.heading2,
+                          image: cta_block_large.image,
+                          copy: cta_block_large.copy,
+                          button_text: cta_block_large.button_text,
+                          button_link: cta_block_large.button_link,
+                          background_color: cta_block_large.background_color,
+                          text_button_color: cta_block_large.text_and_button_color,
+                        %}
+                      {% endif %}
+                    {% endif %}
+                  {% else %}
+                    {% if forloop.index == 5 or forloop.index == 10 %}
+                      {% render 'product__card', product: product, classes: 'col-span-2 lg:col-span-1', hide_mobile_badge: false %}
+                    {% else %}
+                      {% render 'product__card', product: product, hide_mobile_badge: true %}
+                    {% endif %}
+                    {% if forloop.index == 7 %}
+                      {% if cta_block_small != blank %}
+                        {% if listing_image %}
+                          <div class="col-span-2 h-full w-full">
+                            <img class="object-cover h-full w-full rounded-4" src="{{ listing_image | img_url: '1500x' }}">
+                          </div>
+                        {% else %}
+                          <div class="col-span-2 h-full">
+                            {% render 'collection__listing-cta-small',
+                              title: cta_block_small.heading2,
+                              illustration: cta_block_small.illustration,
+                              image: cta_block_small.image,
+                              copy: cta_block_small.copy,
+                              button_text: cta_block_small.button_text,
+                              button_link: cta_block_small.button_link,
+                              background_color: cta_block_small.background_color,
+                              text_button_color: cta_block_small.text_and_button_color,
+                              use_background_image: cta_block_small.use_background_image,
+                            %}
+                          </div>
+                        {% endif %}
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% for val in elevate_tests %}
+                    {% assign testID = val[0] %}
+                    {%- assign testData = val[1] -%}
+                    {% if testID == 'settings' or testData.data.isLive == false %}
+                      {% continue %}
+                    {% endif %}
+                    {% assign control_product_id = testData["0"].id %}
+
+                    {% if string_product_id == control_product_id %}
+                      {% for key in testData %}
+                        {% assign testVariation = key[0] %}
+                        {% if testVariation == 'data' or testVariation == '0' %}
+                          {% continue %}
+                        {% endif %}
+                        {% assign testVariationData = key[1] %}
+                        {% assign product_data = all_products[testVariationData.handle] %}
+                          <div style="display: none;" class="eab-test-{{ product_data.id }}" >
+                              {% render 'product__card', product: product_data, hide_mobile_badge: true %}
+                          </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endfor %}
+            
+                {% endunless %}
+              {% endfor %}
+            </div>
+            {% render 'pagination', paginate: paginate %}
+          {% endpaginate %}
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const cards = document.querySelectorAll('.product-card-container-mobile');
+    let rowTops = {};
+    
+    // Reset heights to avoid accumulation issues
+    cards.forEach(card => card.style.height = 'auto');
+
+    // Group cards by their row position (assumes flexbox/grid layout)
+    cards.forEach(card => {
+        let top = card.getBoundingClientRect().top;
+        if (!rowTops[top]) rowTops[top] = [];
+        rowTops[top].push(card);
+    });
+
+    // Set the max height for each row
+    Object.values(rowTops).forEach(row => {
+        let maxHeight = Math.max(...row.map(card => card.offsetHeight));
+        row.forEach(card => card.style.height = `${maxHeight}px`);
+    }); 
+
+    function handleFilterPanelVisibility() {
+      const filterPanelMobile = document.querySelector('.filter-panel-mobile'); // Mobile filter panel
+      const filterPanelDesktop = document.querySelector('.filter-panel-desktop'); // Desktop filter panel
+      const screenWidth = window.innerWidth;
+  
+      if (screenWidth > 768) {
+        if (filterPanelMobile) {
+          filterPanelMobile.remove();
+        }
+      } else {
+        if (filterPanelDesktop) {
+          filterPanelDesktop.remove();
+        }
+      }
+    }
+  
+    handleFilterPanelVisibility();
+    window.addEventListener('resize', handleFilterPanelVisibility);
+
+      // const screenWidth = window.innerWidth;
+      // if (screenWidth < 1023) {
+      //   function getMaxHeight(elements) {
+      //       let maxHeight = 0;
+      //       elements.forEach(element => {
+      //           const height = element.offsetHeight; 
+      //           if (height > maxHeight) {
+      //               maxHeight = height;
+      //           }
+      //       });
+      //       return maxHeight;
+      //   }
+      //   const elements = document.querySelectorAll('.product-grid > div:not(.col-span-2) > .product-card-container-mobile');
+      //   const maxHeight = getMaxHeight(Array.from(elements));
+
+      //   elements.forEach(element => {
+      //     element.style.height = `${maxHeight}px`;
+      //     element.style.display = `block`;
+      //   });
+      // } 
+  });
+  
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+
+    function checkClassExistence() {
+      let headerWrapper = document.querySelector('.header__wrapper'); 
+      const collectionFilter = document.querySelector('.collection-filter');
+      
+      // if(window.scrollY === 0){
+      //   collectionFilter.classList.remove('collection-filter--sticky');
+      //   element.classList.add('collection-filter--sticky-remove');
+      // } 
+
+      if(!collectionFilter.classList.contains('collection-filter--sticky-remove') && window.scrollY !== 0){
+        if (headerWrapper && headerWrapper.classList.contains('header-in')) { // Replace 'myClass' with the class you're checking
+          collectionFilter.classList.add('collection-filter--sticky');
+        } else {
+          collectionFilter.classList.remove('collection-filter--sticky');
+        }
+      }
+    }
+    let intervalId = setInterval(checkClassExistence, 100);
+
+    let lastScrollY = window.scrollY;
+    window.addEventListener('scroll', function() {
+      const element = document.querySelector('.collection-filter');
+      const scrollValue = 150;
+      let currentScrollY = window.scrollY;
+
+      // if(window.scrollY === 0){
+      //   collectionFilter.classList.remove('collection-filter--sticky');
+      //   element.classList.add('collection-filter--sticky-remove');
+      // }
+
+      if (currentScrollY < lastScrollY && currentScrollY <= scrollValue) {
+        element.classList.add('collection-filter--sticky-remove');
+        element.classList.remove('collection-filter--sticky');
+        headerWrapper.classList.remove('header-in')
+        headerWrapper.classList.add('header-out')
+      } else {
+        element.classList.remove('collection-filter--sticky-remove');
+      }
+
+      // Update the last scroll position
+      lastScrollY = currentScrollY;
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

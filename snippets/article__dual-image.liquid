@@ -1,0 +1,43 @@
+<section
+  class="section-p-x pb-16 md:pb-25"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="flex flex-col md:flex-row gap-3 {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight{% endif %}">
+    <div>
+      <div class='relative'>
+        {% render 'image',
+          image_desktop: data.image_one,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          image_classes: 'rounded-4',
+        %}
+        {% if data.image_one_cta_text %}
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <a href="{{ data.image_one_cta_link }}" class="button__primary white">{{ data.image_one_cta_text }}</a>
+          </div>
+        {% endif %}
+      </div>
+      {% assign caption = data.image_one_caption | metafield_tag %}
+      {% render 'image-caption', caption: caption %}
+    </div>
+    <div>
+      <div class="relative">
+        {% render 'image',
+          image_desktop: data.image_two,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          image_classes: 'rounded-4',
+        %}
+        {% if data.image_two_cta_text %}
+          <div class="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <a href="{{ data.image_two_cta_link }}" class="button__primary white">{{ data.image_two_cta_text }}</a>
+          </div>
+        {% endif %}
+      </div>
+      {% assign caption = data.image_two_caption | metafield_tag %}
+      {% render 'image-caption', caption: caption %}
+    </div>
+  </div>
+</section>

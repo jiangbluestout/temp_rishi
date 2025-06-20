@@ -1,0 +1,187 @@
+<cart-drawer
+  x-data="{
+    open: false,
+    cart: {},
+    fetchCart() {
+      fetch('/cart.js')
+        .then(res => res.json())
+        .then(data => {
+          this.cart = data;
+        })
+        .catch(err => console.error('Error fetching cart:', err));
+    },
+    updateCart(index, quantity) {
+      if (quantity < 0) return;
+      const updates = {};
+      updates[this.cart.items[index].key] = quantity;
+      fetch('/cart/update.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ updates })
+      })
+        .then(() => this.fetchCart())
+        .catch(err => console.error('Error updating cart:', err));
+    },
+    removeItem(index) {
+      this.updateCart(index, 0);
+    }
+  }"
+  x-init="
+    fetchCart();
+    window.addEventListener('native-cart-toggle', e => {
+      open = e.detail.open;
+      if (open) fetchCart(); // Ensure cart is fetched when drawer is opened
+    });
+    window.addEventListener('cart-updated', fetchCart); // Fetch cart on cart update
+  "
+  x-effect="
+    document.body.classList.toggle('overflow-hidden', open);
+  "
+  x-cloak
+  class="z-50"
+  :class="{ 'translate-x-0': open, 'translate-x-full': !open }"
+>
+  <!-- Overlay -->
+  <div 
+    x-show="open" 
+    x-cloak 
+    class="fixed inset-0 bg-black bg-opacity-50 z-[2000] transition-opacity duration-300"
+    @click="open = false"
+  ></div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-drawer fixed top-0 right-0 h-full bg-white shadow-xl z-[8000] transition-transform duration-300"
+    x-show="open"
+    x-cloak
+    :class="{ 'translate-x-0': open, 'translate-x-full': !open }"
+    id="cart-drawer" aria-hidden="true" aria-modal="true" aria-label="Cart Drawer" role="dialog" tabindex="-1">
+    <form id="cart-drawer__form" action="{{ routes.cart_url }}" method="post" class="cart-drawer__form">
+      <div class="cart-drawer__inner">
+        <div class="cart-drawer__header">
+          <h3 class="cart-drawer__title">Your Cart</h3>
+          <button
+            type="button"
+            class="cart-drawer__close modal__close-button link link--text focus-inset"
+            id="cart-drawer__close"
+            aria-label="{{ 'accessibility.close' | t }}"
+            @click="open = false; fetchCart()"
+          >
+            {% render 'icon-close' %}
+          </button>
+        </div>
+        <div class="cart-drawer__content" id="cart-drawer__content" data-id="{{ section.id }}">
+          <template x-if="cart.items && cart.items.length === 0">
+            <div class="cart-drawer__empty">
+              <h3>Your cart is empty.</h3>
+            </div>
+          </template>
+          <template x-if="cart.items && cart.items.length > 0">
+            <div class="cart-drawer__items" id="cart-drawer-items">
+              <template x-for="(item, index) in cart.items" :key="index">
+                <div class="cart-drawer__item">
+                  <div class="cart-drawer__item-image-wrapper">
+                    <img class="cart-drawer__item-image"
+                      :src="item.image ? item.image : ''"
+                      :alt="item.image ? item.image.alt : ''"
+                      loading="lazy"
+                      width="100"
+                      :height="item.image ? Math.ceil(100 / item.image.aspect_ratio) : 100"
+                    >
+                  </div>
+                  <div class="cart-drawer__item-content">
+                    <h4 class="cart-drawer__item-title body-3 medium" x-text="item.product_title"></h4>
+                    {% comment %} <p class="cart-drawer__item-subtitle caption" x-text="item.product_description"></p> {% endcomment %}
+                    
+                    <div class="cart-drawer__item-variant">
+                      <template x-for="(option, optionIndex) in item.options_with_values" :key="optionIndex">
+                        <h6 class="cart-drawer__item-option caption" x-text="option.value"></h6>
+                      </template>
+                      <template x-for="(property, propertyIndex) in item.properties" :key="propertyIndex">
+                        <h6 class="cart-drawer__item-option caption">
+                          <span x-text="property.first"></span>:
+                          <template x-if="property.last.includes('/uploads/')">
+                            <a :href="property.last" target="_blank" x-text="property.last.split('/').pop()"></a>
+                          </template>
+                          <template x-if="!property.last.includes('/uploads/')">
+                            <span x-text="property.last"></span>
+                          </template>
+                        </h6>
+                      </template>
+                    </div>
+
+                    <div class="cart-drawer__item-bottom">
+                      <div class="cart-drawer__item-quantity">
+                        <quantity-input class="quantity">
+                          <button
+                            class="quantity__button no-js-hidden"
+                            name="minus"
+                            type="button"
+                            @click="updateCart(index, item.quantity - 1)"
+                          >
+                            <span class="visually-hidden">Decrease quantity</span>
+                            {% render 'icon-minus' %}
+                          </button>
+                          <span
+                            class="quantity_text btn"
+                            :aria-label="'Quantity for ' + item.product_title"
+                            x-text="item.quantity"
+                          ></span>
+                          <button
+                            class="quantity__button no-js-hidden"
+                            name="plus"
+                            type="button"
+                            @click="updateCart(index, item.quantity + 1)"
+                          >
+                            <span class="visually-hidden">Increase quantity</span>
+                            {% render 'icon-plus' %}
+                          </button>
+                        </quantity-input>
+                      </div>
+
+                      <cart-drawer-remove-button :id="'Remove-' + index" :data-index="index">
+                        <a
+                          href="javascript:void(0)"
+                          class="cart-drawer__item-remove caption"
+                          @click.prevent="removeItem(index)"
+                        >
+                          <span class="hidden md:block">Remove</span>
+                          <span class="block md:hidden">{% render 'icon-close' %}</span>
+                        </a>
+                      </cart-drawer-remove-button>
+
+                      <div class="cart-drawer__item-price body-4 medium">
+                        <template x-if="item.original_price !== item.final_price">
+                          <dl class="cart-item__discounted-prices">
+                            <dt class="visually-hidden">Regular price</dt>
+                            <dd>
+                              <s class="cart-item__old-price price price--end" x-text="(item.original_price / 100).toFixed(2)"></s>
+                            </dd>
+                            <dt class="visually-hidden">Sale price</dt>
+                            <dd class="price price--end" x-text="(item.final_price / 100).toFixed(2)"></dd>
+                          </dl>
+                        </template>
+                        <template x-if="item.original_price === item.final_price">
+                          <span class="price price--end" x-text="(item.original_price / 100).toFixed(2)"></span>
+                        </template>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+                      
+          <div class="cart-drawer__footer" x-show="cart.items && cart.items.length > 0">
+            <div class="cart-drawer__subtotal-wrapper" id="cart-drawer-subtotal">
+              <h4 class="body-2">Subtotal</h4>
+              <div class="cart-drawer__loading-container">
+                <h4 class="cart-drawer__subtotal body-2 medium" x-text="(cart.total_price / 100).toFixed(2)"></h4>
+              </div>
+            </div>
+            <a href="/checkout" class="mobile-product-card-atc flex button__atc w-full p-5 h-auto mt-5 items-center justify-center gap-x-3" name="checkout" form="cart">CONTINUE TO CHECKOUT</a>
+          </div>
+        </div>
+      </div>
+    </form> 
+  </div>
+</cart-drawer>

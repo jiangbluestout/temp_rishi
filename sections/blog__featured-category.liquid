@@ -1,0 +1,136 @@
+{% unless request.path contains '/tagged/' %}
+  <section
+    class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+    {% if section.settings.article_configuration == 'config_one' %}
+      <div class="grid grid-cols-12 gap-x-3 pb-12 lg:pb-0">
+        <div class="col-span-12 lg:col-span-5">
+          <div class="pr-4 lg:pr-[25%] pb-5 lg:pb-8">
+            <h2 class="font-serif font-100 text-3xl md:text-5xl leading-1.1 pb-4">{{ section.settings.heading }}</h2>
+            <div class="para-sm leading-1.5 opacity-80">
+              {{ section.settings.description }}
+            </div>
+          </div>
+          {% comment %} TODO Add Link {% endcomment %}
+          <a href="{{ blog.url }}/tagged/{{ section.settings.tag | handleize }}" class="button__primary hidden lg:block w-fit">View All</a>
+        </div>
+        {% for block in section.blocks %}
+          <div class="col-span-12 lg:col-span-3 {% if forloop.last %} pl-[33%] lg:pl-0 lg:pr-[25%] {% else %} pr-[33%] lg:pr-0 mb-8 {% endif %}">
+            {% render 'article__card', article: block.settings.article %}
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="grid grid-cols-12 gap-x-3 pb-12 lg:pb-0">
+        <div class="col-span-12 lg:col-span-4">
+          <div class="pr-4 lg:pr-[20%] pb-5 lg:pb-8">
+            <h2 class="font-serif font-100 text-3xl md:text-5xl leading-1.1 pb-4">{{ section.settings.heading }}</h2>
+            <div class="para-sm leading-1.5 opacity-80">
+              {{ section.settings.description }}
+            </div>
+          </div>
+          {% comment %} TODO Add Link {% endcomment %}
+          <a href="{{ blog.url }}/tagged/{{ section.settings.tag | handleize }}" class="button__primary hidden lg:block w-fit">View All</a>
+        </div>
+        {% for block in section.blocks %}
+          <div class="col-span-12 {% if forloop.last %} pl-[33%] lg:pl-0 lg:col-span-5 {% else %} pr-[33%] lg:pr-0 mb-8 lg:col-span-3 {% endif %}">
+            {% render 'article__card', article: block.settings.article %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="flex justify-center">
+      <a href="{{ blog.url }}/tagged/{{ section.settings.tag | handleize }}" class="button__primary lg:hidden">View All</a>
+    </div>
+  </section>
+{% endunless %}
+
+{% schema %}
+  {
+    "name": "Blog | Featured Category",
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading",
+        "label": "Heading"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description",
+        "info": "Font styles are enabled / font sizes are disabled."
+      },
+      {
+        "type": "text",
+        "id": "tag",
+        "label": "Category Tag",
+        "info": "This is the tag that will be used to filter the blog posts"
+      },
+      {
+        "type": "select",
+        "id": "article_configuration",
+        "label": "Article Configuration",
+        "info": "This determines the layout for the articles in this section",
+        "options": [
+          {
+            "value": "config_one",
+            "label": "Configuration 1"
+          },
+          {
+            "value": "config_two",
+            "label": "Configuration 2"
+          }
+        ],
+        "default": "config_one"
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "article",
+        "name": "Article",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Blog | Featured Category",
+        "category": "Blog"
+      }
+    ]
+  }
+{% endschema %}

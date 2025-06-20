@@ -1,0 +1,25 @@
+<div
+  class="col-span-2 lg:col-span-3 rounded-t-4 lg:rounded-4 flex flex-col lg:flex-row justify-between {% if text_button_color  == 'Dark' %} text-dark {% else %} text-light {% endif %}"
+  style="background-color: {{ background_color | default: '#A88667' }};"
+  :style="{ minHeight: imageHeight + 25 + 'px' }"
+>
+  <div class="lg:w-[41.5%] flex flex-col justify-between px-6 py-8 md:p-9">
+    {% if title != blank %}
+      <h2 class="text-8xl font-serif font-100 tracking-1pc leading-none md:pr-[20%] pb-25">{{ title | metafield_tag }}</h2>
+    {% endif %}
+    {% if copy != blank %}
+      <div class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end md:pr-[20%] pt-8">{{ copy | metafield_tag }}</div>
+    {% endif %}
+  </div>
+  <div class="lg:w-[58.5%] flex items-center justify-center relative">
+    {% if image %}
+      <img
+        src="{{ image | img_url: '1000x' }}"
+        class="w-full h-full object-cover lg:absolute lg:inset-0 rounded-b-4 rounded-tr-none lg:rounded-r-4"
+      />
+    {% endif %}
+    {% if button_text %}
+      <a href="{{ button_link }}" class="button__primary absolute lg:block whitespace-nowrap z-10 {% unless text_button_color  == 'Dark' %} white {% endunless %}">{{ button_text }}</a>
+    {% endif %}
+  </div>
+</div>

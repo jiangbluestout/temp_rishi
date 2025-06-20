@@ -1,0 +1,109 @@
+<script>
+
+    function removeEABScript () {
+      function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+  }
+
+    
+  function getJsonCookie(name) {
+    var cookieValue = getCookie(name);
+    if (cookieValue) {
+      try {
+        return JSON.parse(cookieValue);
+      } catch (error) {
+        console.error("Error parsing JSON from cookie ", error);
+        return null;
+      }
+    }
+    return {};
+  }
+
+
+  var allTests = window && window.eab_data ? window.eab_data.allTests : {};
+  var testList = getJsonCookie("ABTL") || {};
+  var eabExcludedTests = getJsonCookie("eabExcludedTests") || {};
+  var runningTests = {};
+
+  for (var key in allTests) {
+    if (allTests.hasOwnProperty(key)) {
+      var value = allTests[key];
+      if (
+        key !== "settings" && (value && value.data && value.data.isLive)
+      ) {
+        runningTests[key] = value;
+      }
+    }
+  }
+
+  for (var item in runningTests) {
+      var testVar = testList[item] || "0";
+      if(eabExcludedTests[item]) {
+        testVar = "0"
+      }
+     var controlID = runningTests[item]["0"].id;
+      var controlElements = document.getElementsByClassName(`eab-test-${controlID}`);
+    // Show original they are in the control
+    if(testVar === "0") {
+      for (var i = controlElements.length - 1; i >= 0; i--) {
+      controlElements[i].style.visibility = "unset";
+        }
+    } else {
+      // Show variation if they are in variation
+      var variationID = runningTests[item][testVar].id;
+      var variationElements = document.getElementsByClassName(`eab-test-${variationID}`);
+
+     if (variationElements.length > 0) {
+    for (let i = 0; i < variationElements.length; i++) {
+        variationElements[i].style.display = 'block';
+    }
+}
+    }
+
+    for(let variation in runningTests[item]) {
+        if(variation != "data" && variation != testVar) {
+          var variationID = runningTests[item][variation].id;
+          var variationElements = document.getElementsByClassName(`eab-test-${variationID}`);
+           while (variationElements.length > 0) {
+        variationElements[0].parentNode.removeChild(variationElements[0]);
+      }
+        }
+      }
+    
+    }
+
+    }
+  function setupHistoryProxy() {
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+
+    const handler = function (originalMethod) {
+        return function () {
+            const result = originalMethod.apply(window.history, arguments);
+            // Call updateElements immediately or with some delay if needed
+            setTimeout(removeEABScript, 200);
+            return result;
+        };
+    };
+
+    window.history.pushState = handler(originalPushState);
+    window.history.replaceState = handler(originalReplaceState);
+}
+  const init = () => {
+      removeEABScript();
+      setupHistoryProxy();
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+</script>

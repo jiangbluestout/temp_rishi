@@ -1,0 +1,189 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "custom_css": [
+        ".collection.pb-20.md\\:pb-30 {padding-bottom: 40px;}",
+        ".product-grid.grid {padding-bottom: 40px;}"
+      ],
+      "settings": {}
+    },
+    "04bedae4-9c1a-4306-8913-1ba31bce6b8d": {
+      "type": "component__reviews-carousel",
+      "blocks": {
+        "f952e430-80e6-4322-9db7-2c93447bf629": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is by far the best Earl Grey tea I have had. I drink a lot of tea and only drink Rishi Earl Grey. You will love the flavor. \"<\/p>",
+            "attribution": "Marshall",
+            "rating": "5",
+            "product": "organic-earl-grey-supreme-black-tea"
+          }
+        },
+        "1f8adec0-7cbf-43c9-a898-a14e3dd293fa": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I don't believe there is a better green tea you can get in a bag. The evidence is in the bright, even, grassy green color this tea makes.\"<\/p>",
+            "attribution": "JD",
+            "rating": "5",
+            "product": "organic-matcha-super-green-teabag-sachets-50-count"
+          }
+        },
+        "249c0e3f-8413-44be-96fd-ee7df1d79622": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"I love this tea - the richness of it is amazing, and it relaxes me with the ginger and turmeric. Such a winner :)\"<\/p>",
+            "attribution": "Kayla",
+            "rating": "5",
+            "product": "organic-turmeric-ginger-teabag-sachets"
+          }
+        },
+        "c7b252f2-e60e-4724-844d-825aebe9bc2c": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This tea is absolutely amazing! I feel immediate uplifting effects after consuming. Rishi has the best quality tea that I have found on any shelf thus far.\"<\/p>",
+            "attribution": "Tia",
+            "rating": "5",
+            "product": "organic-blueberry-hibiscus-teabag-sachets-50-count"
+          }
+        },
+        "e64b062a-f681-4aac-a32f-a1a763b20a4c": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is seriously the BEST chai concentrate out there. It's incredible and has such a great spice. I'll never go back to another brand.\"<\/p>",
+            "attribution": "Courtney",
+            "rating": "5",
+            "product": "organic-masala-chai-concentrate"
+          }
+        },
+        "b0967017-f28c-40f7-93fe-02e1ab4edb8e": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"This is my first tasting of oolong tea and I'm in love! It's flavor is delicate yet robust and floral. Absolutely delicious, my new favorite tea.\"<\/p>",
+            "attribution": "Amber",
+            "rating": "5",
+            "product": "iron-goddess-of-mercy-oolong-tea"
+          }
+        },
+        "73eeeff0-19e5-402f-83c1-18f5c0a8c9ae": {
+          "type": "review",
+          "settings": {
+            "quote": "<p>\"Delicious and satisfying. It's delicate enough to drink without doctoring but also bold enough to hold up to cream and honey. An absolute delight.\"<\/p>",
+            "attribution": "Star",
+            "rating": "5",
+            "product": "organic-golden-yunnan-black-tea"
+          }
+        }
+      },
+      "block_order": [
+        "f952e430-80e6-4322-9db7-2c93447bf629",
+        "1f8adec0-7cbf-43c9-a898-a14e3dd293fa",
+        "249c0e3f-8413-44be-96fd-ee7df1d79622",
+        "c7b252f2-e60e-4724-844d-825aebe9bc2c",
+        "e64b062a-f681-4aac-a32f-a1a763b20a4c",
+        "b0967017-f28c-40f7-93fe-02e1ab4edb8e",
+        "73eeeff0-19e5-402f-83c1-18f5c0a8c9ae"
+      ],
+      "settings": {
+        "superscript": "Reviews",
+        "header": "What Rishi Tea Drinkers \n          Are Saying",
+        "background_color": "#33432e",
+        "padding_bottom": "none",
+        "button_text": "Shop Now",
+        "button_link": "shopify:\/\/collections\/all",
+        "button_color": "button__primary white"
+      }
+    },
+    "bottom_collection_copy_wcpYYr": {
+      "type": "bottom-collection-copy",
+      "settings": {
+        "rich_text": "{{ collection.metafields.custom.bottom_copy_top | metafield_tag }}",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "faq_collection_copy_jxyQmk": {
+      "type": "faq-collection-copy",
+      "blocks": {
+        "faq_U4kdzX": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_1.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_1 | metafield_tag }}"
+          }
+        },
+        "faq_iekHXH": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_2.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_2 | metafield_tag }}"
+          }
+        },
+        "faq_wPNP8Q": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_3.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_3 | metafield_tag }}"
+          }
+        },
+        "faq_YUQ4pd": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_4.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_4 | metafield_tag }}"
+          }
+        },
+        "faq_FnN8LR": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_5.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_5 | metafield_tag }}"
+          }
+        },
+        "faq_CpXfGd": {
+          "type": "faq",
+          "settings": {
+            "title": "{{ collection.metafields.custom.faq_question_6.value }}",
+            "answer": "{{ collection.metafields.custom.faq_answer_6 | metafield_tag }}"
+          }
+        }
+      },
+      "block_order": [
+        "faq_U4kdzX",
+        "faq_iekHXH",
+        "faq_wPNP8Q",
+        "faq_YUQ4pd",
+        "faq_FnN8LR",
+        "faq_CpXfGd"
+      ],
+      "settings": {
+        "category": "{{ collection.metafields.custom.faq_title.value }}"
+      }
+    },
+    "bottom_collection_copy_dQrwtd": {
+      "type": "bottom-collection-copy",
+      "settings": {
+        "rich_text": "{{ collection.metafields.custom.bottom_copy_bottom | metafield_tag }}",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "04bedae4-9c1a-4306-8913-1ba31bce6b8d",
+    "bottom_collection_copy_wcpYYr",
+    "faq_collection_copy_jxyQmk",
+    "bottom_collection_copy_dQrwtd"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "legal",
+      "settings": {
+        "heading": "Terms & Conditions",
+        "last_updated": "Last updated 12.30.2024"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

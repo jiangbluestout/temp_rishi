@@ -1,0 +1,443 @@
+{% assign first_url = blank %}
+{% assign first_title = blank %}
+{% assign first_block_id = blank %}
+
+{% for block in section.blocks %}
+  {% if block.type == 'collection' %}
+    {% assign first_block_id = block.id %}
+    {% assign first_url = block.settings.collection.url %}
+    {% assign first_title = block.settings.collection.title %}
+    {% break %}
+  {% elsif block.type == 'rebuy' %}
+    {% assign first_block_id = block.id %}
+    {% assign first_url = block.settings.tab_button_url %}
+    {% assign first_title = block.settings.tab_button_text %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{% assign elevate_control_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+    {% assign testVariation = key[0] %}
+    {% assign testVariationData = key[1] %}
+       {% if testVariation == '0' %}
+          {% if elevate_control_ids != '' %}
+            {% assign elevate_control_ids = elevate_control_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+          {% endif %}
+          {% assign elevate_control_ids = elevate_control_ids | append: testVariationData.id %} <!-- Append the control ID -->
+      {% elsif testVariation != 'data' %}
+        {% if elevate_variant_ids != '' %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+        {% endif %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+<section
+class="section-p-b {{ section.settings.padding_bottom }} min-h-[156vw] lg:min-h-[47.2vw]"
+x-data="{ fadeIn: false }"
+x-intersect.threshold.10="fadeIn = true"
+
+x-cloak
+>
+<div
+    class="relative"
+    x-data="{
+    selectedId: '{{ first_block_id }}',
+    slideCount: 0,
+    buttonUrl: '{{ first_url }}',
+    buttonText: '{{ first_title }}',
+    handleTabClick(id, url, text) {
+        this.selectedId = id
+        this.buttonUrl = url
+        this.buttonText = text
+    },
+    isSelected(id) {
+        return this.selectedId === id
+    }
+    }"
+    x-cloak
+>
+    <div class="flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11 fade-right section-p-x">
+    <h2 class="data-source-title heading-sm text-center md:text-left pb-4 md:pb-0"></h2>
+    </div>
+    <div id="slider-widget-items">
+    </div>
+</div>
+</section>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dataSourceID = {{ section.settings.widget_indentifier }}
+    const collectionUrl = `{{ section.settings.widget_collection_link }}`
+    const requestParameters = new URLSearchParams({
+      key: "79af9ccb5e4c774262a85d05a8efe0b0f7d06ff0",
+      format: "pretty",
+      metafields: "yes"
+    });
+
+    fetch(`https://rebuyengine.com/api/v1/sources?${requestParameters}`)
+    .then(response => response.json())
+    .then(data => {
+      const dataSourceTitle = data.data.filter(item => item.datasource_id == dataSourceID)
+      console.log("dataSourceTitle",dataSourceTitle)
+      // const dataSourceHeading = document.querySelector('.data-source-title')
+      // dataSourceHeading.textContent  = dataSourceTitle[0].name;
+    })
+
+    fetch(`https://rebuyengine.com/api/v1/custom/id/${dataSourceID}?${requestParameters}`)
+      .then(response => response.json())
+      .then(data => {
+        const dataSourceHeading = document.querySelector('.data-source-title')
+        dataSourceHeading.textContent  = data.metadata.widget.language.title;
+        let htmlCustom = `
+            <button-slider
+                data-slider-options='{
+                    "breakpoints": {
+                    "(max-width: 1024px)": {
+                        "mode": "snap",
+                        "rtl": false,
+                        "loop": true,
+                        "slides": { "perView": "1.2", "spacing": 0 }
+                    },
+                    "(min-width: 1024px)": {
+                        "mode": "snap",
+                        "rtl": false,
+                        "loop": true,
+                        "slides": { "perView": "3.8", "spacing": 0 }
+                    }
+                    }
+                }'
+                data-button-id="{{ section.id }}"
+                >
+                <div
+                    x-data
+                    x-cloak
+                    role="tabpanels"
+                    class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab"
+                >
+                    <section
+                    x-cloak
+                    role="tabpanel"
+                    class="flex flex-col min-h-[118vw] md:min-h-fit"
+                    style="animation: fadeIn 500ms ease-in-out;"
+                    >
+                    {% if block.settings.desc != blank %}
+                        <div class="tab-title-description flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11 fade-right section-p-x">
+                        <!-- <h3>{{ title }}</h3> -->
+                        <div class="para-sm leading-1.5 rte">
+                            {{ block.settings.desc }}
+                        </div>
+                        </div>
+                    {% endif %}
+                    <div class="flex">`
+
+        data.data.forEach(item => {
+          const {
+            id,
+            title,
+            link,
+            image,
+            images,
+            variants,
+            metafields,
+            collection_ids
+          } = item
+          console.log("item", item)
+
+        
+
+        const metafieldTeaType = metafields.filter(item => item.key == "tea_type")
+        const jsonString = metafieldTeaType[0].value;
+        const _metafieldTeaType = JSON.parse(jsonString);
+        
+        const metafieldTastingNotes = metafields.filter(item => item.key == "tasting_notes")
+        const _metafieldTastingNotes = metafieldTastingNotes.length > 0 ? metafieldTastingNotes[0]?.value : ''
+
+        let imageHover = "";
+        if(images[1]?.src) {
+          imageHover = `<img
+                          class="absolute top-0 left-0 aspect-6/6 object-cover object-center rounded overflow-hidden w-full h-full opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"
+                          src="${images[1]?.src}"
+                            width="1600"
+                        height="1200"
+                          alt="organic"
+                          loading="lazy"
+                        >`
+        }
+
+          let badgeIcon = ""
+          if(collection_ids.includes(410852917498)) {
+              badgeIcon = `
+                <img
+                    class="rebuy-carousel__card-badge absolute left-5 top-5 w-13"
+                    src="https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Badge_Best_Seller_200x.png?v=1689975538"
+                    width="255"
+                    height="310"
+                    alt="${title} icon"
+                    loading="lazy"
+                >
+              `
+          }
+
+          let showQuickAdd = ''
+          if(variants.length < 2) {
+            showQuickAdd = `
+                <button
+                    type="button"
+                    class="p-5 uppercase text-sm font-500 tracking-8pc flex items-center justify-center gap-2.5 w-full"
+                    title="${title}"
+                    @click.prevent.stop="
+                        $store.main.addVariant({
+                        variantId: ${variants[0]?.id},
+                        openCart: true,
+                        button: 'quick_add',
+                        quantity: 1,
+                        }).then(() => {
+                        opened = false;
+                        }); opened = false;
+                    "
+                    >
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                        <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#283645" stroke-width="1.5"/>
+                        <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#283645" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    <span>
+                        QUICK ADD
+                    </span>
+                </button>
+            `
+          } else {
+            showQuickAdd = `
+                <div
+                    class="p-5 uppercase text-sm font-500 tracking-8pc flex items-center justify-center gap-2.5"
+                    x-show="!opened"
+                    >
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="10" viewBox="0 0 9 10" fill="none">
+                        <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#283645" stroke-width="1.5"/>
+                        <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#283645" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    <span>
+                        QUICK ADD
+                    </span>
+                </div>
+            `
+          }
+
+          
+
+          
+          let htmlVariants = ``
+          variants.forEach(variant => {
+            if(variant.title !== "Teaser") {
+                htmlVariants += `
+                    <div class="flex-1 px-1 flex items-center justify-center">
+                        <button
+                        type="button"
+                        class="hover:border-brown border-transparent border rounded-[100%] transition-colors py-2.5 px-4 "
+                        @click="
+                            $store.main.addVariant({
+                            variantId: ${variant.id},
+                            button: 'quick_add',
+                            openCart: true,
+                            quantity: 1,
+                            }).then(() => {
+                            added = true;
+                            opened = false;
+                            });
+                        "
+                        >
+                        <span class="para-sm">${variant.title}</span>
+                        <span class="pl-3 opacity-50 para-xs">
+                            $${variant.price}
+                        </span>
+                        </button>
+                    </div>
+                `
+            }
+          });
+
+
+          htmlCustom += `
+          <div
+            x-data
+            x-cloak
+            class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide"
+          >
+            <div class="ml-3 md:ml-5">
+              <div class="slidet-widget-item">
+                <a
+                  href="${link}"
+                  class="group"
+                  x-data="{ opened: false }"
+                  @mouseleave="opened = false;"
+                >
+                <div class="product-card-container-mobile">
+                  <div class="relative mb-3 md:mb-4">
+                    <img
+                      class="aspect-6/6 object-cover object-center rounded overflow-hidden w-full product-card-image"
+                      src="${image?.src}"
+                      width="2000"
+                      height="2000"
+                      alt="iamge"
+                      loading="lazy"
+                    >
+              
+                      ${imageHover}
+
+                      ${badgeIcon}
+              
+                      <div
+                        class="absolute bottom-3 left-3 right-3 text-center md:group-hover:opacity-100 opacity-0 duration-500 rounded text-dark bg-white cursor-pointer transition-opacity"
+                        style="transition-duration: 200ms; transition-property: background-color, opacity, backdrop-filter;"
+                        @click.stop.prevent="opened = true; added = false;"
+                      >
+                        <div
+                          class="flex flex-wrap justify-center p-1.5 pb-2 gap-y-2"
+                          x-show="opened"
+                        >
+                            ${htmlVariants}
+                        </div>
+                         
+                          ${showQuickAdd}
+                      </div>
+                  </div>
+              
+                  <div class="flex flex-col mb-1 md:mb-3 md:flex-row md:justify-between md:items-start gap-y-1.5">
+                    <h2 class="font-serif text-lg leading-1.1 tracking-4pc md:text-2xl font-100">
+                      ${title}
+                    </h2>
+                    
+                  </div>
+
+                   <div class="flex items-end justify-between flex-col md:flex-row	md:items-end">
+                      <div class="self-start">
+                        <div class="text-sm md:text-base tracking-4pc leading-1.5">
+                          ${_metafieldTeaType[0]}
+                        </div>
+                        <div class="text-sm md:text-base tracking-4pc leading-1.5 text-dark text-opacity-40">
+                            ${_metafieldTastingNotes}
+                        </div>
+                      </div>
+                      <div class="text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end pt-1.5">
+                        From ${variants[0]?.price}
+                      </div>
+
+                   </div>
+                </div>
+                </a>
+                <button
+                    type="button"
+                    class="mobile-product-card-atc flex lg:hidden button__atc w-full p-5 h-auto mt-5 items-center justify-center gap-x-3"
+                    title="${title}"
+                    @click.prevent.stop="
+                        $store.main.addVariant({
+                        variantId: ${variants[0]?.id},
+                        openCart: true,
+                        button: 'quick_add',
+                        quantity: 1,
+                        }).then(() => {
+                        opened = false;
+                        }); opened = false;
+                    "
+                    >
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 9 10" fill="none">
+                        <line x1="6.55671e-08" y1="4.75" x2="9" y2="4.75" stroke="#fff" stroke-width="1.5"/>
+                        <line x1="4.4043" y1="0.5" x2="4.4043" y2="9.5" stroke="#fff" stroke-width="1.5"/>
+                        </svg>
+                    </span>
+                    <span>
+                        QUICK ADD
+                    </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          `
+        });
+        htmlCustom += `
+          </div>
+                </section>
+              </div>
+
+        <div class="flex justify-between items-start pt-5 section-p-x mb-1">
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Previous</span>
+                  {% render 'carousel-btn-left' %}
+                </button>
+                <a href="${collectionUrl}" class="button__primary brown whitespace-nowrap w-fit mt-5">Shop All</a>
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Next</span>
+                  {% render 'carousel-btn-right' %}
+                </button>
+              </div>
+            </button-slider>`
+        document.querySelector('#slider-widget-items').innerHTML = htmlCustom;
+
+      });
+
+
+
+    })
+</script>
+
+{% schema %}
+{
+  "name": "Rebuy Carousel",
+  "class": "section-product-carousel-tabs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "widget_indentifier",
+      "label": "Widget"
+    },
+    {
+      "type": "text",
+      "id": "widget_collection_link",
+      "label": "Collection Url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rebuy Carousel"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .tab-title-description{
+    flex-direction: column;
+}
+
+.tab-title-description h3{
+    font-family: neue-haas-grotesk-text,ui-sans,sans;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: .03em;
+    font-weight: 100;
+}
+
+  .panel-description p{
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.5rem;
+}
+</style>

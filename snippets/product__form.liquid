@@ -1,0 +1,300 @@
+<form
+  class="mx-0 pt-5 lg:pt-[70px] lg:sticky lg:top-[var(--header-height)] lg:w-[95%] relative"
+  method="post"
+  action="/cart/add">
+  <input
+    type="hidden"
+    name="id"
+    :value="$store.main.activeProductVariantId" />
+  <div class="mx-0">
+    <div class="hidden lg:block">
+      {% render 'product__breadcrumbs', collection: collection, product: product %}
+    </div>
+    <div class="test hidden lg:block">
+      {% render 'product__title-and-price', product: product, id: "product-badges" %}
+    </div>
+    <div class="testing text-dark/75 leading-[18.2px] lg:leading-[21px] para-md lg:para-sm lg:pt-6 mb-8 lg:mb-10 cst-product">{{ product.description }}</div>
+      {% unless product.has_only_default_variant %}
+        <hr class="text-dark/[0.15] mb-[13px] lg:mb-6">
+        {% for option in product.options_with_values %}
+          {% assign size = option.values | size %}
+          {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+          {% if size > 3 %}
+            <div class="flex flex-col w-full pb-5">
+              <label class="para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0 pb-5">{{ option.name }}:</label>
+              <div class="flex flex-col gap-y-2.5 w-full">
+                {%
+                  render 'product__option-selector-radio'
+                  product: product,
+                  activeVariant: activeVariant,
+                  optionIndex: optionIndex,
+                  option: option,
+                %}
+              </div>
+            </div>
+          {% else %}
+            <div class="md:hidden flex justify-center pb-5">
+              <label class="para-xs uppercase font-[500] text-dark/50">{{ option.name }}:</label>
+            </div>
+            <div class="flex items-start lg:items-center justify-between w-full">
+              <label class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0">{{ option.name }}:</label>
+              <div class="flex justify-center md:justify-end flex-wrap w-full gap-y-2">
+                {%
+                  render 'product__option-selector'
+                  product: product,
+                  activeVariant: activeVariant,
+                  optionIndex: optionIndex,
+                  option: option,
+                %}
+              </div>
+            </div>
+          {% endif %}
+
+          
+        {% endfor %}
+      {% endunless %}
+
+      {% comment %} <hr class="text-dark/[0.15] mt-4 lg:my-6 mb-[13px]"> {% endcomment %}
+      <div class="flex items-start lg:items-center justify-center md:justify-between w-full mt-8">
+        {% for option in product.options_with_values %}
+
+          <hr class="text-dark/[0.15] mt-4 lg:my-6">
+          {% unless product.metafields.custom.hide_quantity_buttons%}
+            <template x-if="reactiveData.activeVariant?.inventory > 0">
+              <div class="flex items-start lg:items-center" :class="{ 'opacity-30 pointer-events-none display-none': !reactiveData.activeVariant.isAvailable }" style="padding-right: 10px">
+                {% comment %} <label class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0">Quantity:</label> {% endcomment %}
+                <div class="flex items-center border border-dark/20 rounded-md md:h-[70px] overflow-hidden">
+                  <button
+                    type="button"
+                    name="subtract"
+                    class="w-[40px] h-[48px] flex justify-center items-center text-dark hover:text-brown disabled:opacity-50 p-4 md:py-0 md:px-4"
+                    :class="quantity === 1 ? 'opacity-50 pointer-events-none' : ''"
+                    @click.prevent="decrementQuantity"
+                    :disabled="quantity === 1"
+                    aria-label="Subtract one from quantity"
+                  >
+                    -
+                  </button>
+                  <input
+                    type="text"
+                    x-model="quantity"
+                    class="text-center w-[40px] max-w-[40px] md:w-[50px] md:max-w-[50px] h-[50px] md:h-[70px] border-0 bg-transparent"
+                    readonly
+                  />
+                  <button
+                    type="button"
+                    name="add"
+                    class="w-[40px] h-[48px] flex justify-center items-center text-dark hover:text-brown disabled:opacity-50 p-4 md:py-0 md:px-4"
+                    :class="incrementDisabled() ? 'opacity-50 pointer-events-none' : ''"
+                    @click.prevent="incrementQuantity"
+                    aria-label="Add one to quantity"
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+            </template>
+          {% endunless %}
+
+        {% endfor %}
+
+        {% comment %} If out of stock {% endcomment %}
+        <template x-if="reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.enableWaitlist">
+
+          {% comment %} If not pre order but waitlist is enabled, then render klaviyo BIS form {% endcomment %}
+          <div x-show="reactiveData.activeVariant?.enableWaitlist && reactiveData.activeVariant?.oosStatus !== 'Pre Order'" class="" :class="{ 'w-full': !reactiveData.activeVariant?.inventory > 0 }">
+
+            <h5 class="heading-xs pb-5" x-text="reactiveData.activeVariant?.oosStatus === 'Coming Soon' ? 'Coming Soon!' : 'This product is out of stock.'"></h5>
+
+            <form
+              x-data="{
+                email: '',
+                subscribeToBackInStockNotif(email){
+                  fetch('https://a.klaviyo.com/onsite/components/back-in-stock/subscribe', {
+                    'headers': {
+                      'accept': 'application/json, text/plain, */*',
+                      'content-type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                    },
+                    'body': new URLSearchParams({
+                        'a': 'TAWTZz',
+                        'email': email,
+                        'platform': 'shopify',
+                        'variant': $store.main.activeProductVariantId,
+                    }),
+                    'method': 'POST',
+                  })
+                  .then(response => {
+                    console.log('success run')
+                    this.email = `Thanks! You're signed up.`
+                    $refs.bisForm.disabled = true
+                    $refs.emailContainer.style.pointerEvents = 'none'
+                    console.log('success! response:')
+                    console.log(response);
+                  })
+                  .catch(err => {
+                    this.email = `Thanks! You're signed up`
+                    $refs.bisForm.disabled = true
+                    $refs.emailContainer.style.pointerEvents = 'none'
+                    console.log('error..:')
+                    console.error(err);
+                  })
+                },
+              }"
+              x-ref="bisForm"
+              @submit.prevent="subscribeToBackInStockNotif(email)"
+
+            >
+              <div x-ref="emailContainer">
+                <div class="input__secondary">
+                  <input
+                    class=""
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email email address"
+                    x-model="email"
+                    x-ref="email"
+                    required
+                  >
+                </div>
+                <button
+                  type="submit"
+                  class="button__atc w-full {% unless product.selected_or_first_available_variant.inventory_quantity > 0 or product.available == true %}lg:w-[456px]{% endunless %} mt-[14px]"
+                  x-intersect:leave="showStickyAtc = true"
+                  x-intersect:enter="showStickyAtc = false"
+                >
+                  Join Waitlist
+                </button>
+              </div>
+            </form>
+          </div>
+        </template>
+
+      {% comment %} If product is available, OR if product is not available but can be pre ordered, OR if product is not available and can't be preordered and not eligible for waitlist {% endcomment %}
+      <template x-if="reactiveData.activeVariant?.inventory > 0 || (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ||  (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order' && !reactiveData.activeVariant?.enableWaitlist)">
+        <div style="width: 100%">
+          <button
+            type="submit"
+            @click.prevent="$store.main.addVariant({
+              variantId: $store.main.activeProductVariantId ? $store.main.activeProductVariantId : '{{ product.first_available_variant.id }}',
+              selling_plan: document.querySelector('skio-plan-picker')?.selectedSellingPlan?.id ? document.querySelector('skio-plan-picker').selectedSellingPlan.id : '',
+              openCart: true,
+              quantity,
+              button: 'pdp',
+              properties: {
+                ...(document.querySelector('skio-prepaid-gift')?.isPrepaidGift && document.querySelector('skio-prepaid-gift')?.isPrepaidSelected && {
+                  '_prepaidGiftEmail': document.querySelector('skio-prepaid-gift').email,
+                  '_prepaidGiftMessage': document.querySelector('skio-prepaid-gift').message
+                })
+              }
+            })"
+            x-intersect:leave.once="hasSeenAtcButton = false"
+            x-intersect:enter.once="showStickyAtc = false"
+            x-intersect:leave="if (hasSeenAtcButton) showStickyAtc = true"
+            x-intersect:enter="showStickyAtc = false"
+            x-init="
+              window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                console.log(scrollTop)
+                hasSeenAtcButton = true;
+                if (scrollTop > 500 && showStickyAtc) {
+                  showStickyAtc = true;
+                } else {
+                  showStickyAtc = false;
+                }
+              });
+            "
+            class="button__atc w-full lg:min-w-[310px] mx-auto h-[50px] md:h-[70px]"
+            :disabled="reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order' && reactiveData.activeVariant?.inventoryPolicy !== 'continue'"
+          >
+            <span
+              x-text="(reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order') && reactiveData.activeVariant?.inventoryPolicy !== 'continue' ? 'Sold Out' : (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ? 'Pre Sale' : 'Add to cart'"></span>
+            <span class="skio-product-price-dot--testing block xl:hidden">&nbsp;&nbsp;•&nbsp;&nbsp;</span>
+            <span x-show="reactiveData.activeVariant?.inventory > 0 || reactiveData.activeVariant?.oosStatus === 'Pre Order' || reactiveData.activeVariant?.inventoryPolicy === 'continue'" x-price="reactiveData.activeVariant?.variantPrice * quantity" class="skio-product-price skio-product-price--testing block xl:hidden"></span>
+          </button>
+
+
+            {% comment %} Begin Skio UI {% endcomment %}
+            {% assign skioSellingPlanGroups = product.selling_plan_groups | where: 'app_id', 'SKIO' %}
+            {% if skioSellingPlanGroups.size > 0 %}
+              <label class="para-xs uppercase font-[500] text-dark/50 mr-5 mt-[20px] lg:mt-4 block">Frequency:</label>
+              <skio-plan-picker
+                product='{{ product | json | escape }}'
+                key='{{ product.id }}'
+                selectedVariant='{{ product.selected_or_first_available_variant | json | escape }}'
+                formId='{{ product_form_id }}'
+                externalPriceSelector='.skio-product-price'
+                currency='USD'
+                useVariantInputClickEvents='false'
+                variantInputSelector=''
+                selectorType='button'
+                >
+              </skio-plan-picker>
+              <input type="hidden" aria-hidden="true" name="selling_plan" value="">
+              <script src="{{ 'component-skio-plan-picker-component.js' | asset_url }}" type="module"></script>
+
+              <skio-prepaid-gift form="{{ product_form_id }}" key="{{ product.id }}"></skio-prepaid-gift>
+              <script src="{{ 'component-skio-prepaid-gift.js' | asset_url }}" type="module"></script>
+            {% endif %}
+            {% comment %} End Skio UI {% endcomment %}
+          </div>
+        </template>
+      </div>
+      {% render 'product__inventory-note' %}
+      {% unless product.has_only_default_variant %}
+        <div class="tabs-navigation__inner mobile">
+        <hr class="text-dark/[0.15] mb-[13px] lg:mb-6">
+        <label class="para-xs uppercase font-[500] text-dark/50">Info:</label>
+          {% assign text_image_split_exists = false %}
+            {% assign ingredients_exists = false %}
+            {% assign prep_exists = false %}
+            {% assign origin_exists = false %}
+            
+            {% for component in product.metafields.custom.sections.value %}
+                {% assign type = component.system.type %}
+                {% if type != blank %}
+                    {% case type %}
+                        {% when 'text_image_split' %}
+                            {% assign text_image_split_exists = true %}
+                        {% when 'ingredients' %}
+                            {% assign ingredients_exists = true %}
+                        {% when 'prep' %}
+                            {% assign prep_exists = true %}
+                        {% when 'origin' %}
+                            {% assign origin_exists = true %}
+                        
+                    {% endcase %}
+                {% endif %}
+            {% endfor %}
+            <nav>
+                <ul>
+                    <li><a href="#" class="tab-link active">Details</a></li>
+                  {% if text_image_split_exists %}
+                    <li><a href="#about-product" class="tab-link">About</a></li>
+                  {% endif %}
+                  {% if origin_exists %}
+                    <li><a href="#product-origin" class="tab-link">Origin</a></li>
+                  {% endif %}
+                  {% if ingredients_exists %}
+                    <li><a href="#product-ingredients" class="tab-link">Ingredients</a></li>
+                  {% endif %}
+                  {% if prep_exists %}
+                    <li><a href="#product-preparation" class="tab-link">Preparation</a></li>
+                  {% endif %}
+                </ul>
+            </nav>
+        </div>
+      {% endunless %}
+    {% if product.metafields.custom.show_rebuy_dynamic_bundle_widget %}
+      <div class="pt-10 lg:max-w-[550px] mx-0">
+        <div data-rebuy-id="{{ product.metafields.custom.show_rebuy_dynamic_bundle_widget }}" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+        {% render 'rebuy-dynamic-bundle', product: product %}
+      </div>
+    {% endif %}
+  </div>
+  {% if product.metafields.custom.rebuy_cross_sell_widget %}
+    <div class="pt-10">
+      <div data-rebuy-id="{{ product.metafields.custom.rebuy_cross_sell_widget }}" data-rebuy-shopify-product-ids="{{ product.id }}"></div>
+      {% render 'rebuy-cross-sell', product: product %}
+    </div>
+  {% endif %}
+</form>

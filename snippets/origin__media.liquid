@@ -1,0 +1,64 @@
+{% assign count = 0 %}
+{% for item in data.origin_carousel_media.value %}
+    {% assign count = count | plus: 1 %}
+{% endfor %}
+
+{% if count > 1 %}
+  <button-slider
+    data-slider-options='{
+      "mode": "snap",
+      "loop": true,
+      "slides": { "perView": "1", "spacing": 0 }
+    }'
+  >
+    <div class="relative">
+      <div class="keen-slider flex overflow-x-hidden w-full cursor-grab">
+        {% for item in data.origin_carousel_media.value %}
+          {% if item.media_type == 'image' %}
+            <div class="rounded-b-4 lg:rounded-4 bg-green/10 keen-slider__slide w-full">
+              {% render 'image',
+                image_desktop: item,
+                image_mobile: item,
+                width_desktop: '1000x',
+                width_mobile: '800x',
+                ratio_desktop: '68%',
+                ratio_mobile: '68%',
+                lazy: true,
+                image_classes: 'lg:rounded-4',
+              %}
+            </div>
+          {% endif %}
+          {% if item.media_type == 'video' %}
+            {% render 'origin__carousel-video', item: item %}
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="absolute hidden md:flex flex-col gap-2 -right-4 top-1/2 transform -translate-y-1/2">
+        {% for item in data.origin_carousel_media.value %}
+          <div class="dot solid"></div>
+        {% endfor %}
+      </div>
+    </div>
+  </button-slider>
+{% else %}
+  {% assign media = data.origin_carousel_media.value | first %}
+  {% if media != blank %}
+    {% if media.media_type == 'image' %}
+      <div class="lg:rounded-4 bg-green/10">
+        {% render 'image',
+          image_desktop: media,
+          image_mobile: media,
+          width_desktop: '1000x',
+          width_mobile: '800x',
+          ratio_desktop: '68%',
+          ratio_mobile: '68%',
+          lazy: true,
+          image_classes: 'rounded-b-4 lg:rounded-4',
+        %}
+      </div>
+    {% endif %}
+    {% if media.media_type == 'video' %}
+      {% render 'origin__carousel-video', item: item %}
+    {% endif %}
+  {% endif %}
+{% endif %}

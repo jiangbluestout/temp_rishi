@@ -1,0 +1,312 @@
+{% assign search_type = 'all' %}
+{% if search.types.size == 1 %}
+  {% if search.types contains 'product' %}
+    {% assign search_type = 'product' %}
+  {% elsif search.types contains 'article' %}
+    {% assign search_type = 'article' %}
+  {% else %}
+    {% assign search_type = 'collection' %}
+  {% endif %}
+{% elsif search.types.size == 3 %}
+  {% assign search_type = 'all' %}
+{% endif %}
+
+
+{% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+     {% assign testVariation = key[0] %}
+    {% if testVariation != '0' and testVariation != 'data' %}
+      {% if elevate_variant_ids != '' %}
+        {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+      {% endif %}
+       {% assign testVariationData = key[1] %}
+      {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+
+<div
+  class="bg-dark pt-nav text-light"
+  x-init="Alpine.store('main').removeHeaderSpacer(); Alpine.store('main').setHeaderColors('#283645', '#F7F5F0');"
+>
+  <div class="container">
+    <h1 class="font-serif font-100 text-5xl lg:text-9xl tracking-1pc pt-16 md:pt-24 pb-6 md:pb-8">
+      Search Results for <span class="block md:inline">“{{ search.terms }}”</span>
+    </h1>
+  </div>
+</div>
+{% if search.results != blank %}
+  {% paginate search.results by 32 %}
+    <div class="container pb-24 pt-8 md:pb-35">
+      <div class="hidden md:block mb-2 uppercase font-500 tracking-8pc text-center text-dark text-opacity-60 text-sm">
+        Results
+      </div>
+      <div class="flex flex-row justify-center">
+        <a
+          class="
+            button__variant-selector small capitalize font-400 tracking-2pc small
+            {% if search_type == 'all' %}
+              border-brown
+            {% else %}
+              border-transparent text-opacity-75
+            {% endif %}
+          "
+           href="/search?q={{ search.terms }}&type=product%2Carticle%2Ccollection"
+        >
+          All Results
+        </a>
+        <a
+          class="
+            button__variant-selector small capitalize font-400 tracking-2pc small
+            {% if search_type == 'product' %}
+              border-brown
+            {% else %}
+              border-transparent text-opacity-75
+            {% endif %}
+          "
+          href="/search?q={{ search.terms }}&type=product"
+        >
+          Products
+        </a>
+        <a
+          class="
+            button__variant-selector capitalize font-400 tracking-2pc small
+            {% if search_type == 'collection' %}
+              border-brown
+            {% else %}
+              border-transparent text-opacity-75
+            {% endif %}
+          "
+          href="/search?q={{ search.terms }}&type=collection"
+        >
+          Collections
+        </a>
+        <a
+          class="
+            button__variant-selector capitalize font-400 tracking-2pc small
+            {% if search_type == 'article' %}
+              border-brown
+            {% else %}
+              border-transparent text-opacity-75
+            {% endif %}
+          "
+          href="/search?q={{ search.terms }}&type=article"
+        >
+          Articles
+        </a>
+      </div>
+
+      {% if search_type == 'product' or search_type == 'all' %}
+        <section class="mt-9 mb-25">
+          <div class="flex flex-row justify-between md:justify-start mb-3 gap-2.5 items-center">
+            <h1 class="uppercase font-500 tracking-8pc text-dark text-sm">
+              Products
+            </h1>
+            {% if search_type == 'product' %}
+              <div class="text-dark text-opacity-75 text-base tracking-4pc">
+                {{ search.results_count }} Results
+              </div>
+            {% endif %}
+          </div>
+
+          {% assign products_count = 0 %}
+          <div class="grid grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-10 gap-x-2 md:gap-x-3">
+            {% for product in search.results %}
+              {% assign string_product_id = product.id | append: '' %} <!-- Convert product ID to string -->
+
+                {% if elevate_variant_ids contains string_product_id %}
+                  {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                {% endif %}
+              {% if product.object_type == 'product' %}
+                {% render 'product__card', product: product %}
+
+                {% assign products_count = products_count | plus: 1 %}
+                {% if products_count == 21 and search_type == 'all' %}
+                  {% break %}
+                {% endif %}
+              {% endif %}
+
+                  {% for val in elevate_tests %}
+                  {% assign testID = val[0] %}
+                  {%- assign testData = val[1] -%}
+                  {% if testID == 'settings' or testData.data.isLive == false %}
+                    {% continue %}
+                  {% endif %}
+                  {% assign control_product_id = testData["0"].id %}
+
+                  {% if string_product_id == control_product_id %}
+                    {% for key in testData %}
+                      {% assign testVariation = key[0] %}
+                      {% if testVariation == 'data' or testVariation == '0' %}
+                        {% continue %}
+                      {% endif %}
+                      {% assign testVariationData = key[1] %}
+                      {% assign product_data = all_products[testVariationData.handle] %}
+                        <div style="display: none;" class="eab-test-{{ product_data.id }}" >
+                           {% render 'product__card', product: product_data %}
+                        </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+
+            
+            {% endfor %}
+          </div>
+
+          {% if products_count == 0 %}
+            <div class="text-2xl font-serif font-100 leading-1.1">
+              No products found.
+            </div>
+          {% endif %}
+        </section>
+      {% endif %}
+
+      {% if search_type == 'collection' or search_type == 'all' %}
+        <section
+          class="mt-9 mb-25"
+          x-data='{
+            results: null,
+            init() {
+              this.results = null
+              Alpine.store("main").search("{{ search.terms }}", {
+                type: "collection",
+                limit_scope: "each",
+                limit: {% if search_type == 'all' %}6{% else %}10{% endif %}
+              }).then((response) => {
+                this.results = response?.resources?.results?.collections
+              })
+            }
+          }'
+        >
+          <div class="flex flex-row justify-between md:justify-start mb-3 gap-2.5 items-center">
+            <h1 class="uppercase font-500 tracking-8pc text-dark text-sm">
+              Collections
+            </h1>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-10 gap-x-2 md:gap-x-3">
+            <template x-for="collection in results">
+              <a
+                :href="collection.url"
+              >
+                <img
+                  x-show="collection.featured_image?.url"
+                  :src="collection.featured_image?.url"
+                  :width="collection.featured_image?.width"
+                  :height="collection.featured_image?.height"
+                  :alt="collection.featured_image?.alt"
+                  loading="lazy"
+                  class="aspect-square w-full mb-2.5"
+                >
+                <h2
+                  class="text-2xl font-serif font-100 leading-1.1"
+                  x-text="collection.title"
+                ></h2>
+              </a>
+            </template>
+          </div>
+
+          <div
+            x-show="!results?.length"
+            class="text-2xl font-serif font-100 leading-1.1"
+          >
+            No collections found.
+          </div>
+        </section>
+      {% endif %}
+
+      {% if search_type == 'article' or search_type == 'all' %}
+        <section class="mt-9 mb-25">
+          <div class="flex flex-row justify-between md:justify-start mb-3 gap-2.5 items-center">
+            <h1 class="uppercase font-500 tracking-8pc text-dark text-sm">
+              Articles
+            </h1>
+            {% if search_type == 'article' %}
+              <div class="text-dark text-opacity-75 text-base tracking-4pc">
+                {{ search.results_count }} Results
+              </div>
+            {% endif %}
+          </div>
+
+          {% assign articles_count = 0 %}
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-10 gap-x-2 md:gap-x-3">
+            {% for article in search.results %}
+              {% if article.object_type == 'article' %}
+                {% render 'article__card', article: article %}
+
+                {% assign articles_count = articles_count | plus: 1 %}
+                {% if articles_count == 6 and search_type == 'all' %}
+                  {% break %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          {% if articles_count == 0 %}
+            <div class="text-2xl font-serif font-100 leading-1.1">
+              No articles found.
+            </div>
+          {% endif %}
+        </section>
+      {% endif %}
+
+      {% if search_type != 'all' and search_type != 'collection' %}
+        {% render 'pagination', paginate: paginate %}
+      {% endif %}
+    </div>
+  {% endpaginate %}
+{% else %}
+  <div class="container pb-24 pt-8 md:pb-35">
+    <div class="text-2xl font-serif font-100 leading-1.1 pb-20">
+      {{ section.settings.empty_results_text }}
+    </div>
+    {% if section.settings.collection != blank %}
+      {% render 'search__carousel',
+        collection: section.settings.collection,
+        button_text: 'Shop All',
+        heading: section.settings.carousel_heading
+      %}
+    {% endif %}
+  </div>
+{% endif %}
+
+<script>
+  window.dataLayer.push({
+    event: 'search',
+    search_term: {{ search.terms }},
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Search results",
+  "settings": [
+    {
+      "type": "text",
+      "id": "empty_results_text",
+      "label": "Empty Results Text",
+      "default": "No results found."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Empty Search Results Collection",
+      "info": "This collection will be displayed when a search returns no results."
+    },
+    {
+      "type": "text",
+      "id": "carousel_heading",
+      "label": "Carousel Heading"
+    }
+  ]
+}
+{% endschema %}

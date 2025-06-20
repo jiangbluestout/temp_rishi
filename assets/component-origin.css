@@ -1,0 +1,107 @@
+/*!**************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/origin.scss ***!
+  \**************************************************************************************************************************************************************************************************/
+.origin__hover {
+  max-width: 270px;
+  filter: drop-shadow(3px 3px 4px rgba(40, 54, 69, 0.25));
+}
+
+.origin__zoom button svg circle {
+  fill: #FFFFFF;
+  opacity: 0.1;
+  transition-property: fill, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+.origin__zoom button svg line {
+  stroke: #283645;
+  transition: stroke 0.3s ease-in-out;
+}
+.origin__zoom button:hover svg circle {
+  fill: #283645;
+  opacity: 1;
+}
+.origin__zoom button:hover svg line {
+  stroke: #A88667;
+}
+.origin__zoom button:active {
+  transform: scale(0.9);
+}
+
+.map-overlay-effect {
+  content: "";
+  padding: 15px;
+  /* background-color: #3e3e3e80; */
+  pointer-events: none;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 440px;
+}
+
+@media (min-width: 768px) {
+  .md\:text-\[52px\] {
+    font-size: 52px;
+  }
+  .map-overlay-effect {
+    top: 66%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .map-overlay-effect {
+    top: 67%;
+  }
+}
+
+@media (min-width: 1024px) and (min-height: 1200px) {
+  .map-overlay-effect {
+    top: 62%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .map-overlay-effect {
+    top: 68%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .map-overlay-effect {
+    top: 67%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .map-overlay-effect {
+    top: 70%;
+  }
+}
+
+.text-\[14px\] {
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1024px) {
+  .map-overlay-effect {
+    width: 95%;
+    max-width: 420px;
+    padding: 15px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .map-overlay-effect {
+    width: 80%;
+    max-width: 380px;
+    padding: 15px 0;
+    bottom: 20%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .map-overlay-effect {
+    bottom: 15%;
+  }
+}
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tcG9uZW50LW9yaWdpbi5jc3MiLCJtYXBwaW5ncyI6Ijs7O0FBQUE7RUFDRTtFQUNBO0FBQ0Y7O0FBS007RUFBQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0FBSkE7QUFRQTtFQUFBO0VBQ0E7QUFEQTtBQVFFO0VBQUE7RUFDQTtBQURBO0FBS0E7RUFBQTtBQUFBO0FBS047RUFDRTtBQVZKLEMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly9iZi1zaG9waWZ5LW9zMi8uL3NyYy9zdHlsZXMvY29tcG9uZW50cy9vcmlnaW4uc2NzcyJdLCJzb3VyY2VzQ29udGVudCI6WyIub3JpZ2luX19ob3ZlciB7XG4gIG1heC13aWR0aDogMjcwcHg7XG4gIGZpbHRlcjogZHJvcC1zaGFkb3coM3B4IDNweCA0cHggcmdiYSg0MCwgNTQsIDY5LCAwLjI1KSk7XG59XG5cbi5vcmlnaW5fX3pvb20gYnV0dG9uIHtcbiAgc3ZnIHtcbiAgICBjaXJjbGUge1xuICAgICAgQGFwcGx5IGZpbGwtd2hpdGU7XG4gICAgICBvcGFjaXR5OiAuMTtcbiAgICAgIHRyYW5zaXRpb24tcHJvcGVydHk6IGZpbGwsIG9wYWNpdHk7XG4gICAgICB0cmFuc2l0aW9uLWR1cmF0aW9uOiAzMDBtcztcbiAgICAgIHRyYW5zaXRpb24tdGltaW5nLWZ1bmN0aW9uOiBlYXNlLWluLW91dFxuICAgIH1cblxuICAgIGxpbmUge1xuICAgICAgQGFwcGx5IHN0cm9rZS1kYXJrO1xuICAgICAgdHJhbnNpdGlvbjogc3Ryb2tlIDAuM3MgZWFzZS1pbi1vdXQ7XG4gICAgfVxuICB9XG5cbiAgJjpob3ZlciB7XG4gICAgc3ZnIHtcbiAgICAgIGNpcmNsZSB7XG4gICAgICAgIEBhcHBseSBmaWxsLWRhcms7XG4gICAgICAgIG9wYWNpdHk6IDE7XG4gICAgICB9XG5cbiAgICAgIGxpbmUge1xuICAgICAgICBAYXBwbHkgc3Ryb2tlLWJyb3duO1xuICAgICAgfVxuICAgIH1cbiAgfVxuXG4gICY6YWN0aXZlIHtcbiAgICB0cmFuc2Zvcm06IHNjYWxlKDAuOSk7XG4gIH1cbn1cbiJdLCJuYW1lcyI6W10sInNvdXJjZVJvb3QiOiIifQ==*/

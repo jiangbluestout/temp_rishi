@@ -1,0 +1,153 @@
+{% assign unique_tag_labels = "format,type,caffeine,mood,profile,origin" | split: ',' %}
+
+<div
+  class="filter-panel-desktop"
+  id="filter-panel"
+  x-show="filtersOpen"
+  x-data="{ filtersOpen: true }"
+  x-ref="filtersPanel"
+  x-collapse
+  x-cloak
+  @keydown.escape="filtersOpen = false"
+>
+  <div class="border-t transition-all duration-700 mx-3 md:mx-6" :class="filtersOpen ? 'border-brown/25' : 'border-transparent'"></div>
+  <div class="pb-5 grid grid-cols-1">
+    {% for filter in collection.filters %}
+      {%- case filter.type -%}
+        {%- when 'boolean' or 'list' -%}
+          {% if filter.label == 'Tags' %}
+            {% for label in unique_tag_labels %}
+              <fieldset 
+                class="transition-all duration-700 filter-column px-6"
+                x-data="{ 
+                  isOpen: {% if label == 'format' or label == 'type' or label == 'caffeine' %}true{% else %}false{% endif %}, 
+                  selected: null 
+                }"
+              >
+                <div class="border-b border-brown/25">
+                  <legend 
+                    class="pt-5 pb-4 block para-xs cursor-pointer flex items-center gap-2" 
+                    @click="isOpen = !isOpen"
+                  >
+                    {{ label }}
+                    <svg 
+                      class="text-brown transition-transform duration-300 inline" 
+                      :class="isOpen ? 'rotate-180' : 'rotate-0'" 
+                      style="margin-bottom: 3px"
+                      width="7" 
+                      height="4" 
+                      viewBox="0 0 7 4" 
+                      fill="none" 
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3.5 3.5L7 0L0 0L3.5 3.5Z" fill="currentColor"></path>
+                    </svg>
+                  </legend>
+                  <div 
+                    class="grid grid-cols-2 md:grid-cols-1 gap-3.5 pb-4 transition-all duration-300" 
+                    x-show="isOpen"
+                    x-collapse
+                    x-cloak
+                  >
+                    {%- for filter_value in filter.values -%}
+                      {% assign current_filter_parts = filter_value.value | split: ':' %}
+                      {% assign current_filter_label = current_filter_parts | first %}
+                      {% assign current_filter_value = current_filter_parts | last | replace: '-', ' & ' %}
+                      {% assign current_filter_value = current_filter_value | replace: '_', ' ' %}
+                      {% if label == current_filter_label %}
+                        {% if filter_value.count >= 1 %}
+                          <div
+                            class="flex items-center text-base sm:text-sm"
+                            x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null"
+                            id="category-{{ label }}"
+                          >
+                            <input
+                              id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              value="{{ filter_value.value }}"
+                              name="{{ filter_value.param_name }}"
+                              type="checkbox"
+                              x-ref="filter"
+                              @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}', '{{ label }}')"
+                              @change="$dispatch('filter-updated')"
+                              :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                              {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                              class="form-checkbox h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                            >
+                            <label
+                              for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                              class="ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer para-sm text-base tracking-2pc"
+                            >
+                              {{ current_filter_value }}
+                            </label>
+                          </div>
+                        {%- endif -%}
+                      {% endif %}
+                    {%- endfor -%}
+                  </div>
+                </div>
+              </fieldset>
+            {% endfor %}
+          {% else %}
+            <fieldset 
+              class="transition-all duration-700 filter-column px-6"
+              x-data="{ isOpen: false }"
+            >
+              <div class="border-b">
+                <legend 
+                  class="pt-5 pb-4 block para-xs cursor-pointer gap-2" 
+                  @click="isOpen = !isOpen"
+                >
+                  {{ filter.label }}
+                  <svg 
+                    class="text-brown transition-transform duration-300" 
+                    :class="isOpen ? 'rotate-180' : 'rotate-0'" 
+                    width="7" 
+                    height="4" 
+                    viewBox="0 0 7 4" 
+                    fill="none" 
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M3.5 3.5L7 0L0 0L3.5 3.5Z" fill="currentColor"></path>
+                  </svg>
+                </legend>
+                <div 
+                  class="grid grid-cols-2 md:grid-cols-1 gap-3 pb-4 transition-all duration-300" 
+                  x-show="isOpen"
+                  x-collapse
+                  x-cloak
+                >
+                  {%- for filter_value in filter.values -%}
+                    {% if filter_value.count >= 1 %}
+                      <div
+                        class="flex items-center text-base sm:text-sm"
+                        x-init="'{{ filter_value.active }}' == 'true' ? handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}') : null"
+                      >
+                        <input
+                          id="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                          value="{{ filter_value.value }}"
+                          name="{{ filter_value.param_name }}"
+                          type="checkbox"
+                          x-ref="filter"
+                          @click="handleFilterValueClick('{{ filter.label }}', '{{ filter_value.label }}')"
+                          @change="$dispatch('filter-updated')"
+                          :checked="activeFilters['{{ filter.label }}'] ? activeFilters['{{ filter.label }}'].includes('{{ filter_value.label }}') : false"
+                          {% if filter_value.count == 0 and filter_value.active == false -%}disabled{%- endif %}
+                          class="form-checkbox h-4 w-4 flex-shrink-0 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"
+                        >
+                        <label
+                          for="Filter-{{ filter.param_name }}-{{ forloop.index }}"
+                          class="ml-3 min-w-0 flex-1 text-gray-600 capitalize cursor-pointer"
+                        >
+                          {{ filter_value.label }}
+                        </label>
+                      </div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              </div>
+            </fieldset>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+  </div>
+</div>

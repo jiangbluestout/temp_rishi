@@ -1,0 +1,275 @@
+{{ 'component-header.css' | asset_url | stylesheet_tag }}
+
+{% assign show_announcement_banner = false %}
+{% assign transparent_header = false %}
+
+{% if section.settings.show_announcement_banner %}
+  {% assign show_announcement_banner = true %}
+  {% if template.name == 'product' and product.metafields.custom.show_announcement_banner == false %}
+    {% assign show_announcement_banner = false %}
+  {% elsif template.name == 'collection' and collection.metafields.custom.show_announcement_banner == false %}
+    {% assign show_announcement_banner = false %}
+  {% elsif template.name == 'blog' and blog.metafields.custom.show_announcement_banner == false %}
+    {% assign show_announcement_banner = false %}
+  {% elsif template.name == 'page' and page.metafields.custom.show_announcement_banner == false %}
+    {% assign show_announcement_banner = false %}
+  {% endif %}
+{% endif %}
+
+
+{% if section.settings.transparent_header and template.name == 'index' %}
+  {% assign transparent_header = true %}
+{% endif %}
+
+{% if page.metafields.custom.transparent_header %}
+  {% assign transparent_header = true %}
+{% endif %}
+
+<div
+  x-data
+  x-cloak
+  class="header__underlay"
+  :class="{
+    active: $store.main.isNavOpen || $store.main.isMobileNavOpen || $store.main.isSearchOpen,
+  }"
+  @click="$store.main.closeMenus()"
+  @mouseover="$store.main.setDesktopHeaderOpened(false)"
+></div>
+
+<header
+  class="header md:p-6 md:pb-px p-2 pb-px {% if transparent_header %} transparent-banner {% endif %}"
+  x-data="{
+    openedDesktopMenu: null,
+    openedDesktopSubMenu: null,
+    openedMobileMenu: null,
+    closeBanner() {
+      document.body.classList.remove('has-banner');
+      $store.main.showBanner = false;
+    },
+    initBanner() {
+      document.body.classList.add('has-banner');
+      $store.main.showBanner = true;setTimeout(() => {
+      const element = document.querySelector('#collection-banner-top-padding');
+        if (element) {
+          element.classList.add('mt-16');
+        }
+      }, 200);
+    },
+    init() {
+      function initTransparentHeader(val) {
+        if (val) {
+          $store.main.setHeaderColors('rgba(0, 0, 0, 0)', '');
+          $store.main.transparentHeader = true;
+        }
+      }
+      initTransparentHeader({{ transparent_header | json }});
+    }
+  }"
+  x-cloak
+  {% if show_announcement_banner %}
+    x-init="initBanner()"
+  {% endif %}
+>
+  <div
+    class="header__wrapper flex flex-col relative rounded h-full group header-in"
+    x-data="{
+      handleInit() {
+        this.$watch('$store.main.isNavScrolled', (value) => {
+          if (value) {
+            $el.classList.add('header-out');
+            $el.classList.remove('header-in');
+
+            {% comment %} document.querySelector('body').classList.add('body-header-out');
+            document.querySelector('body').classList.remove('body-header-in'); {% endcomment %}
+            if ($store.main.transparentHeader) {
+              setTimeout(() => {
+                $store.main.setHeaderColors('#F7F5F0')
+              }, 500);
+            }
+          } else {
+            $el.classList.add('header-in');
+            $el.classList.remove('header-out');
+
+            {% comment %} document.querySelector('body').classList.add('body-header-in');
+            document.querySelector('body').classList.remove('body-header-out'); {% endcomment %}
+          }
+        });
+        this.$nextTick(() => $el.classList.add('initialized'));
+      }
+    }"
+    x-init="handleInit()"
+    x-cloak
+  >
+    {% render 'announcement-banner' %}
+    {% render 'header__nav-desktop' %}
+    {% render 'header__nav-mobile' %}
+    <div class="block relative w-full xl:hidden">
+      {% render 'header__search' %}
+    </div>
+  </div>
+  {% render 'header__nav-mobile-drawer' %}
+</header>
+
+<div class="header-spacer" x-data x-cloak></div>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Nav Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Transparent Header",
+      "default": true,
+      "info": "If enabled, the header will be transparent on the homepage. You can control this on other pages using page metafields."
+    },
+    {
+      "type": "link_list",
+      "id": "tea_menu",
+      "label": "Tea menu"
+    },
+    {
+      "type": "link_list",
+      "id": "teaware_menu",
+      "label": "Teaware menu"
+    },
+    {
+      "type": "link_list",
+      "id": "discover_menu",
+      "label": "Discover menu"
+    },
+    {
+      "type": "text",
+      "id": "left_link_label",
+      "label": "Left Link Label"
+    },
+    {
+      "type": "url",
+      "id": "left_link_url",
+      "label": "Left Link URL"
+    },
+    {
+      "type": "text",
+      "id": "mobile_additional_link_1",
+      "label": "Addional link Label 1(mobile)"
+    },
+    {
+      "type": "url",
+      "id": "mobile_additional_link_url_1",
+      "label": "Addional link URL 1(mobile)"
+    },
+    {
+      "type": "text",
+      "id": "mobile_additional_link_2",
+      "label": "Addional link Label 2(mobile)"
+    },
+    {
+      "type": "url",
+      "id": "mobile_additional_link_url_2",
+      "label": "Addional link URL 2(mobile)"
+    },
+    {
+      "type": "article",
+      "id": "discover_article",
+      "label": "Discover menu article",
+      "info": "This is the article that appears under 'New to Tea? Start Here'"
+    },
+    {
+      "type": "text",
+      "id": "discover_heading_right",
+      "label": "Discover Article Heading - Right",
+      "default": "New to Tea? Start Here"
+    },
+    {
+      "type": "text",
+      "id": "discover_heading_left",
+      "label": "Discover Article Heading - Left",
+      "default": "Latest Recipes"
+    },
+    {
+      "type": "text",
+      "id": "discover_blog_title",
+      "label": "Discover Blog Title",
+      "default": "Tea 101"
+    },
+    {
+      "type": "url",
+      "id": "discover_url",
+      "label": "Discover Article URL",
+      "info": "If this is populated, it will overide the article url"
+    },
+    {
+      "type": "header",
+      "content": "Announcement Banner Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement_banner",
+      "label": "Enable Announcement Banner",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "announcement_banner_background_color",
+      "label": "Background Color",
+      "default": "#283645"
+    },
+    {
+      "type": "color",
+      "id": "announcement_banner_text_color",
+      "label": "Text Color",
+      "default": "#A88667"
+    },
+    {
+      "type": "richtext",
+      "id": "announcement_banner_text",
+      "label": "Desktop Text",
+      "info": "This is the text that appears in the announcement banner. Font size is fixed, links and font styles are enabled.",
+      "default": "<p>Free shipping on orders over $50. <a href='/collections/all-tea'>Shop Now</a></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "announcement_banner_text_home",
+      "label": "Desktop Text for Homepage",
+      "info": "This is the text that appears in the announcement Homepage banner. Font size is fixed, links and font styles are enabled.",
+      "default": "<p>Over 65,000 tea lovers have tried us.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "announcement_banner_text_mobile",
+      "label": "Mobile Text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "recipe",
+      "name": "Recipe",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article"
+        },
+        {
+          "type": "text",
+          "id": "blog_title",
+          "label": "Blog Title",
+          "default": "Recipes"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Article URL",
+          "info": "If this is populated, it will overide the article url"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 2
+}
+{% endschema %}

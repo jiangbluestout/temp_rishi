@@ -1,0 +1,931 @@
+
+{% assign first_url = blank %}
+{% assign first_title = blank %}
+{% assign first_block_id = blank %}
+
+{% for block in section.blocks %}
+  {% if block.type == 'collection' %}
+    {% assign first_block_id = block.id %}
+    {% assign first_url = block.settings.collection.url %}
+    {% assign first_title = block.settings.collection.title %}
+    {% break %}
+  {% elsif block.type == 'rebuy' %}
+    {% assign first_block_id = block.id %}
+    {% assign first_url = block.settings.tab_button_url %}
+    {% assign first_title = block.settings.tab_button_text %}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+
+{% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{% assign elevate_control_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+    {% assign testVariation = key[0] %}
+    {% assign testVariationData = key[1] %}
+       {% if testVariation == '0' %}
+          {% if elevate_control_ids != '' %}
+            {% assign elevate_control_ids = elevate_control_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+          {% endif %}
+          {% assign elevate_control_ids = elevate_control_ids | append: testVariationData.id %} <!-- Append the control ID -->
+      {% elsif testVariation != 'data' %}
+        {% if elevate_variant_ids != '' %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+        {% endif %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% if section.settings.layout == 'tabs' %}
+  <section
+    class="section-p-b {{ section.settings.padding_bottom }} min-h-[156vw] lg:min-h-[47.2vw]"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+    
+    x-cloak
+  >
+    <div
+      class="relative {% unless section.settings.full_width %} section-container {% endunless %}"
+      x-data="{
+        selectedId: '{{ first_block_id }}',
+        slideCount: 0,
+        buttonUrl: '{{ first_url }}',
+        buttonText: '{{ first_title }}',
+        handleTabClick(id, url, text) {
+          this.selectedId = id
+          this.buttonUrl = url
+          this.buttonText = text
+        },
+        isSelected(id) {
+          return this.selectedId === id
+        }
+      }"
+      x-cloak
+    >
+      <div class="flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11 fade-right section-p-x">
+        <h2 class="heading-sm text-center md:text-left pb-4 md:pb-0">{{ section.settings.heading }}</h2>
+        <div class="overflow-x-scroll hide-scrollbars">
+          <ul
+            x-ref="tablist"
+            @keydown.right.prevent.stop="$focus.wrap().next()"
+            @keydown.home.prevent.stop="$focus.first()"
+            @keydown.page-up.prevent.stop="$focus.first()"
+            @keydown.left.prevent.stop="$focus.wrap().prev()"
+            @keydown.end.prevent.stop="$focus.last()"
+            @keydown.page-down.prevent.stop="$focus.last()"
+            role="tablist"
+            class="flex w-fit"
+          >
+            {% for block in section.blocks %}
+              {% if block.type == 'collection' %}
+                {% assign collection = block.settings.collection %}
+                {% if collection %}
+                  {% assign title = block.settings.title %}
+                  {% if title == blank %}
+                    {% assign title = collection.title %}
+                  {% endif %}
+                  <li class="flex items-center relative m-1">
+                    <button
+                      @click="handleTabClick('{{ block.id }}', '{{ collection.url }}', '{{ title }}')"
+                      @focus="handleTabClick('{{ block.id }}', '{{ collection.url }}', '{{ title }}')"
+                      type="button"
+                      :tabindex="isSelected('{{ block.id }}') ? 0 : -1"
+                      :aria-selected="isSelected('{{ block.id }}')"
+                      role="tab"
+                      x-data
+                      x-cloak
+                      class="button__tab para-md font-400 whitespace-nowrap {% if forloop.last %} mr-10 md:mr-0 {% endif %} {{ section.id }}"
+                      :class="isSelected('{{ block.id }}') ? 'active' : ''"
+                    >
+                      {{ title }}
+                    </button>
+                  </li>
+                {% endif %}
+              {% elsif block.type == 'rebuy' %}
+                <li class="flex items-center relative m-1">
+                  <button
+                    @click="handleTabClick('{{ block.id }}', '{{ block.settings.tab_button_url }}', '{{ block.settings.tab_button_text }}')"
+                    @focus="handleTabClick('{{ block.id }}', '{{ block.settings.tab_button_url }}', '{{ block.settings.tab_button_text }}')"
+                    type="button"
+                    :tabindex="isSelected('{{ block.id }}') ? 0 : -1"
+                    :aria-selected="isSelected('{{ block.id }}')"
+                    role="tab"
+                    x-data
+                    x-cloak
+                    class="button__tab para-md font-400 whitespace-nowrap {% if forloop.last %} mr-10 md:mr-0 {% endif %} {{ section.id }}"
+                    :class="isSelected('{{ block.id }}') ? 'active' : ''"
+                  >
+                    {{ block.settings.tab_button_text }}
+                  </button>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'collection' %}
+          {% assign collection = block.settings.collection %}
+          {% if collection %}
+            <button-slider
+              x-show="isSelected('{{ block.id }}')"
+              x-ref="{{ block.id }}"
+              data-slider-options='{
+                "breakpoints": {
+                  "(max-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "loop": true,
+                    "slides": { "perView": "1.2", "spacing": 0 }
+                  },
+                  "(min-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "loop": true,
+                    "slides": { "perView": "3.8", "spacing": 0 }
+                  }
+                }
+              }'
+              data-button-id="{{ section.id }}"
+            >
+              <div
+                x-data
+                x-cloak
+                role="tabpanels"
+                class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab"
+              >
+                {% assign title = block.settings.title %}
+                {% if title == blank %}
+                  {% assign title = collection.title %}
+                {% endif %}
+                <!-- Panel -->
+                <section
+                  x-cloak
+                  role="tabpanel"
+                  class="flex flex-col min-h-[118vw] md:min-h-fit"
+                  style="animation: fadeIn 500ms ease-in-out;"
+                >
+                  {% if block.settings.desc != blank %}
+                    <div class="tab-title-description flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11 fade-right section-p-x">
+                      <!-- <h3>{{ title }}</h3> -->
+                      <div class="para-sm leading-1.5 rte">
+                        {{ block.settings.desc }}
+                      </div>
+                    </div>
+                  {% endif %}
+                  <div class="flex">
+                    {% assign product_list = block.settings.products %}
+                    {% if product_list == blank %}
+                      {% assign product_list = collection.products %}
+                    {% endif %}
+                    {% assign count = 0 %}
+                    {% for product in product_list %}
+
+                      {% assign string_product_id = product.id | append: '' %} <!-- Convert product ID to string -->
+      
+                      {% if elevate_variant_ids contains string_product_id %}
+                        {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                      {% endif %}
+  
+                      {% assign is_control_product_id = false %}
+                      {% if elevate_control_ids contains string_product_id %}
+                        {% assign is_control_product_id = true %}
+                      {% endif %}
+
+
+                    
+                      <div
+                        x-data
+                        x-cloak
+                        class="min-w-[75%] md:min-w-[33.3%]{% if is_control_product_id %} eab-test-{{ product.id }}{% endif %}"
+                        :class="{ 'keen-slider__slide': isSelected('{{ block.id }}'), 'mr-2.5': !isSelected('{{ block.id }}') }"
+                      >
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card', product: product, classes: '' %}
+                        </div>
+                      </div>
+
+
+                          {% for val in elevate_tests %}
+                  {% assign testID = val[0] %}
+                  {%- assign testData = val[1] -%}
+                  {% if testID == 'settings' or testData.data.isLive == false %}
+                    {% continue %}
+                  {% endif %}
+                  {% assign control_product_id = testData["0"].id %}
+
+                  {% if string_product_id == control_product_id %}
+                    {% for key in testData %}
+                      {% assign testVariation = key[0] %}
+                      {% if testVariation == 'data' or testVariation == '0' %}
+                        {% continue %}
+                      {% endif %}
+                      {% assign testVariationData = key[1] %}
+                      {% assign product_data = all_products[testVariationData.handle] %}
+
+                       <div
+                        x-data
+                        x-cloak
+                        style="display: none;"
+                        class="min-w-[75%] md:min-w-[33.3%] eab-test-{{ product_data.id }}"
+                        :class="{ 'keen-slider__slide': isSelected('{{ block.id }}'), 'mr-2.5': !isSelected('{{ block.id }}') }"
+                      >
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card', product: product_data, classes: '' %}
+                        </div>
+                      </div>
+
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+
+                    
+                      {% assign count = count | plus: 1 %}
+                      {% if count == 8 %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                </section>
+              </div>
+
+              <div class="flex justify-between items-start pt-5 section-p-x mb-1">
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Previous</span>
+                  {% render 'carousel-btn-left' %}
+                </button>
+                <a :href="buttonUrl" class="button__primary brown whitespace-nowrap w-fit mt-5">Shop All <span x-text="buttonText"></span></a>
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Next</span>
+                  {% render 'carousel-btn-right' %}
+                </button>
+              </div>
+            </button-slider>
+          {% endif %}
+        {% elsif block.type == 'rebuy' %}
+          <template
+            x-data="rebuyCarousel({{ block.settings.rebuy_datasource }})"
+            x-if="products !== null"
+          >
+            <button-slider
+              x-show="isSelected('{{ block.id }}')"
+              x-ref="{{ block.id }}"
+              data-slider-options='{
+                "breakpoints": {
+                  "(max-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "loop": true,
+                    "slides": { "perView": "1.2", "spacing": 0 }
+                  },
+                  "(min-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "loop": true,
+                    "slides": { "perView": "3.8", "spacing": 0 }
+                  }
+                }
+              }'
+              data-button-id="{{ section.id }}"
+            >
+              <div
+                x-data
+                x-cloak
+                role="tabpanels"
+                class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab"
+              >
+                <!-- Panel -->
+                <section
+                  x-cloak
+                  role="tabpanel"
+                  class="flex flex-col min-h-[118vw] md:min-h-fit"
+                  style="animation: fadeIn 500ms ease-in-out;"
+                >
+                  <div class="flex">
+                    <template x-for="product in products">
+                      <div
+                        x-data
+                        x-cloak
+                        class="min-w-[75%] md:min-w-[33.3%]"
+                        :class="{ 'keen-slider__slide': isSelected('{{ block.id }}'), 'mr-2.5': !isSelected('{{ block.id }}') }"
+                      >
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card-js' %}
+                        </div>
+                      </div>
+                    </template>
+                  </div>
+                </section>
+              </div>
+
+              <div class="flex justify-between items-start pt-5 section-p-x mb-1">
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Previous</span>
+                  {% render 'carousel-btn-left' %}
+                </button>
+                {% if block.settings.tab_button_url %}
+                  <a href="{{ block.settings.tab_button_url }}" class="button__primary brown whitespace-nowrap w-fit mt-5">Shop All <span x-text="buttonText"></span></a>
+                {% endif %}
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Next</span>
+                  {% render 'carousel-btn-right' %}
+                </button>
+              </div>
+            </button-slider>
+          </template>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% elsif section.settings.layout == 'panel' %}
+  <section
+    class="section-p-b {{ section.settings.padding_bottom }}"
+    x-data="{
+      fadeIn: false,
+      slideCount: 0,
+      init() {
+        this.slideCount = this.$refs.slides?.children.length
+      },
+    }"
+    x-intersect.threshold.10="fadeIn = true"
+    
+  >
+    <div class="relative {% unless section.settings.full_width %} section-container {% endunless %}">
+      <div
+        class="w-full rounded-4 overflow-hidden section-p-x pb-3"
+        style="color: {{ section.settings.panel_text_color }};"
+      >
+        <div
+          class="relative flex flex-col {% if section.settings.flip_orientation %} md:flex-row-reverse {% else %} md:flex-row  {% endif %} rounded-4 overflow-hidden {% unless section.settings.full_width %} section-container {% endunless %}"
+          style="animation: fadeIn 300ms ease-in-out; background-color: {{ section.settings.panel_background_color }}"
+        >
+          {% if section.settings.panel_image %}
+            <div class="md:w-1/2">
+              {% render 'image',
+                image_desktop: section.settings.panel_image,
+                image_mobile: section.settings.panel_image,
+                width_desktop: '2000x',
+                width_mobile: '800x',
+                ratio_desktop: '80%',
+                ratio_mobile: '100%',
+                lazy: true,
+                image_classes: '',
+              %}
+            </div>
+          {% endif %}
+          <div class="flex-1 p-5 md:p-8">
+            <div class="flex flex-col gap-y-17 {% if section.settings.panel_image == blank %} md:gap-y-20 {% else %} md:gap-y-10 {% endif %} items-center justify-between w-full h-full" style="animation: fadeIn 800ms ease-in-out;">
+              <p class="para-xs">{{ section.settings.panel_eyebrow }}</p>
+              <h2 class="heading-2xl md:heading-md xl:heading-2xl text-center pt-2 md:pt-0">{{ section.settings.heading | newline_to_br }}</h2>
+              <div class="panel-description">
+                {{ section.settings.panel_desc }}
+              </div>
+              <a href="{{ first_url }}" class="{{ section.settings.panel_button_color }} w-fit mx-auto md:mx-0 {% if section.settings.cta_orientation == 'center '%} mx-auto {% endif %}" style="animation: fadeIn 1400ms ease-in-out;">{{ section.settings.button_text }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'collection' %}
+          {% if forloop.first %}
+            {% assign collection = block.settings.collection %}
+            {% if collection %}
+              {% assign title = block.settings.title %}
+              {% if title == blank %}
+                {% assign title = collection.title %}
+              {% endif %}
+              <button-slider
+                data-slider-options='{
+                  "breakpoints": {
+                    "(max-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "1", "spacing": 0 }
+                    },
+                    "(min-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "3", "spacing": 0 }
+                    }
+                  }
+                }'
+              >
+                <div class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab">
+                  <!-- Panel -->
+                  <section
+                      class="flex"
+                      style="animation: fadeIn 500ms ease-in-out;"
+                      x-ref="slides"
+                  >
+                    {% assign product_list = block.settings.products %}
+                    {% if product_list == blank %}
+                      {% assign product_list = collection.products %}
+                    {% endif %}
+                    {% assign count = 0 %}
+                    {% for product in product_list %}
+                      <div class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide">
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card-mini', product: product, classes: '', static: true %}
+                        </div>
+                      </div>
+                      {% assign count = count | plus: 1 %}
+                      {% if count == 8 %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  </section>
+                </div>
+                <div class="hidden md:block w-fit absolute bottom-6 right-6 z-[2000]">
+                  <button class="slider-btn hidden">
+                    {% render 'carousel-btn-left' %}
+                  </button>
+                  <button class="slider-btn">
+                    <span class="sr-only">Carousel Button Next</span>
+                    {% render 'carousel-btn-right' %}
+                  </button>
+                </div>
+
+                <div class="flex gap-x-1.5 pt-6 justify-center lg:hidden">
+                  <template x-for="slide in slideCount">
+                    <div class="dot bg-dark"></div>
+                  </template>
+                </div>
+              </button-slider>
+            {% endif %}
+          {% endif %}
+        {% elsif block.type == 'rebuy' %}
+          {% if forloop.first %}
+            <template
+              x-data="rebuyCarousel({{ block.settings.rebuy_datasource }})"
+              x-if="products !== null"
+            >
+              <button-slider
+                data-slider-options='{
+                  "breakpoints": {
+                    "(max-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "1", "spacing": 0 }
+                    },
+                    "(min-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "3", "spacing": 0 }
+                    }
+                  }
+                }'
+              >
+                <div class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab">
+                  <!-- Panel -->
+                  <section
+                    class="flex"
+                    style="animation: fadeIn 500ms ease-in-out;"
+                    x-ref="slides"
+                  >
+                    <template x-for="product in products">
+                      <div class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide">
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card-mini-js' %}
+                        </div>
+                      </div>
+                    </template>
+                  </section>
+                </div>
+                <div class="hidden md:block w-fit absolute bottom-6 right-6 z-[2000]">
+                  <button class="slider-btn hidden">
+                    {% render 'carousel-btn-left' %}
+                  </button>
+                  <button class="slider-btn">
+                    <span class="sr-only">Carousel Button Next</span>
+                    {% render 'carousel-btn-right' %}
+                  </button>
+                </div>
+                <div class="flex gap-x-1.5 pt-6 justify-center lg:hidden">
+                  <template x-for="slide in products.length">
+                    <div class="dot bg-dark"></div>
+                  </template>
+                </div>
+              </button-slider>
+            </template>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% else %}
+  <section
+    class="section-p-b {{ section.settings.padding_bottom }}"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+  >
+    <div class="relative {% unless section.settings.full_width %} section-container {% endunless %}">
+      <div class="section-p-x flex flex-col md:flex-row justify-between items-center w-full h-fit pb-2 md:pb-8">
+        <h3 class="heading-sm text-center md:text-left pb-6 md:pb-0">{{ section.settings.heading }}</h3>
+        {% if section.settings.button_text != "" %}<a href="{{ first_url }}" class="button__primary brown whitespace-nowrap hidden md:block">{{ section.settings.button_text }}</a>{% endif %}
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'collection' %}
+          {% if forloop.first %}
+          {% assign collection = block.settings.collection %}
+          {% if collection %}
+            {% assign title = block.settings.title %}
+            {% if title == blank %}
+              {% assign title = collection.title %}
+            {% endif %}
+            <button-slider
+              data-slider-options='{
+                "breakpoints": {
+                  "(max-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "slides": { "perView": "1.2", "spacing": 0 }
+                  },
+                  "(min-width: 1024px)": {
+                    "mode": "snap",
+                    "rtl": false,
+                    "slides": { "perView": "3.8", "spacing": 0 }
+                  }
+                }
+              }'
+            >
+              <div class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab">
+                <!-- Panel -->
+                <section
+                  x-ref="slides"
+                  class="flex"
+                  style="animation: fadeIn 500ms ease-in-out;"
+                  x-data
+                  x-cloak
+                >
+                  {% assign product_list = block.settings.products %}
+                  {% if product_list == blank %}
+                    {% assign product_list = collection.products %}
+                  {% endif %}
+                  {% assign count = 0 %}
+                  {% for product in product_list %}
+
+                    {% assign string_product_id = product.id | append: '' %} <!-- Convert product ID to string -->
+    
+                    {% if elevate_variant_ids contains string_product_id %}
+                      {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                    {% endif %}
+
+                    {% assign is_control_product_id = false %}
+                    {% if elevate_control_ids contains string_product_id %}
+                      {% assign is_control_product_id = true %}
+                    {% endif %}
+                  
+                    <div class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide{% if is_control_product_id %} eab-test-{{ product.id }}{% endif %}">
+                      <div class="ml-3 md:ml-5">
+                        {% render 'product__card', product: product, classes: '' %}
+                      </div>
+                    </div>
+
+
+                  {% for val in elevate_tests %}
+                  {% assign testID = val[0] %}
+                  {%- assign testData = val[1] -%}
+                  {% if testID == 'settings' or testData.data.isLive == false %}
+                    {% continue %}
+                  {% endif %}
+                  {% assign control_product_id = testData["0"].id %}
+
+                  {% if string_product_id == control_product_id %}
+                    {% for key in testData %}
+                      {% assign testVariation = key[0] %}
+                      {% if testVariation == 'data' or testVariation == '0' %}
+                        {% continue %}
+                      {% endif %}
+                      {% assign testVariationData = key[1] %}
+                      {% assign product_data = all_products[testVariationData.handle] %}
+                         <div
+                        style="display: none;"
+                        class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide eab-test-{{ product_data.id }}"
+                      >
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card', product: product_data, classes: '' %}
+                        </div>
+                           </div>
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+
+
+                  
+                    {% assign count = count | plus: 1 %}
+                    {% if count == 8 %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+                </section>
+              </div>
+
+              <div class="flex justify-between items-start pt-5 section-p-x">
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Previous</span>
+                  {% render 'carousel-btn-left' %}
+                </button>
+                  <a href="{{ collection.url }}" class="button__primary brown whitespace-nowrap md:hidden">{{ section.settings.button_text }}</a>
+                <button class="slider-btn">
+                  <span class="sr-only">Carousel Button Next</span>
+                  {% render 'carousel-btn-right' %}
+                </button>
+              </div>
+            </button-slider>
+          {% endif %}
+        {% endif %}
+        {% elsif block.type == 'rebuy' %}
+          {% if forloop.first %}
+            <template
+              x-data="rebuyCarousel({{ block.settings.rebuy_datasource }})"
+              x-if="products !== null"
+            >
+              <button-slider
+                data-slider-options='{
+                  "breakpoints": {
+                    "(max-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "1.2", "spacing": 0 }
+                    },
+                    "(min-width: 1024px)": {
+                      "mode": "snap",
+                      "rtl": false,
+                      "slides": { "perView": "3.8", "spacing": 0 }
+                    }
+                  }
+                }'
+              >
+                <div class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab">
+                  <section
+                    x-ref="slides"
+                    class="flex"
+                    style="animation: fadeIn 500ms ease-in-out;"
+                    x-data
+                    x-cloak
+                  >
+                    <template x-for="product in products">
+                      <div class="min-w-[75%] md:min-w-[33.3%] keen-slider__slide">
+                        <div class="ml-3 md:ml-5">
+                          {% render 'product__card-js' %}
+                        </div>
+                      </div>
+                    </template>
+                  </section>
+                </div>
+
+                <div class="flex justify-between items-start pt-5 section-p-x">
+                  <button class="slider-btn">
+                    <span class="sr-only">Carousel Button Previous</span>
+                    {% render 'carousel-btn-left' %}
+                  </button>
+                    <a href="{{ collection.url }}" class="button__primary brown whitespace-nowrap md:hidden">{{ section.settings.button_text }}</a>
+                  <button class="slider-btn">
+                    <span class="sr-only">Carousel Button Next</span>
+                    {% render 'carousel-btn-right' %}
+                  </button>
+                </div>
+              </button-slider>
+            </template>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}
+
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+      function setMaxHeight(selector) {
+        const elements = document.querySelectorAll(selector);
+        let maxHeight = 0;
+
+        // Find the max height
+        elements.forEach(el => {
+            let height = el.offsetHeight;
+            if (height > maxHeight) {
+                maxHeight = height;
+            }
+        });
+
+        // Apply max height to all elements
+        elements.forEach(el => {
+            el.style.height = maxHeight + 'px';
+        });
+    }
+
+    // Run the function on window load and resize
+    window.addEventListener('load', () => setMaxHeight('.section-product-carousel-tabs .keen-slider__slide .product-card-container-mobile'));
+    window.addEventListener('resize', () => setMaxHeight('.section-product-carousel-tabs .keen-slider__slide .product-card-container-mobile'));
+   })
+</script>
+
+{% schema %}
+{
+  "name": "Product Carousel + Tabs",
+  "class": "section-product-carousel-tabs",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout Style",
+      "info": "If 'No Tabs' is selected, only the first collection block will be used.",
+      "options": [
+        {
+          "value": "tabs",
+          "label": "Tabs"
+        },
+        {
+          "value": "no_tabs",
+          "label": "No Tabs"
+        },
+        {
+          "value": "panel",
+          "label": "Panel"
+        }
+      ],
+      "default": "no_tabs"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": true,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now",
+      "info": "This is the text that will appear on the button. 'No Tabs' variant only."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "header",
+      "content": "Settings for Panel Layout Only"
+    },
+    {
+      "type": "text",
+      "id": "panel_eyebrow",
+      "label": "Panel Eyebrow",
+      "info": "This is the text that will appear on the button. 'Panel' variant only."
+    },
+    {
+      "type": "richtext",
+      "id": "panel_desc",
+      "label": "Panel Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "panel_image",
+      "label": "Panel Image",
+      "info": "This is the image that will appear on the panel. 'Panel' variant only."
+    },
+    {
+      "type": "color",
+      "id": "panel_background_color",
+      "label": "Panel Background Color",
+      "info": "This is the background color that will appear on the panel. 'Panel' variant only.",
+      "default": "#A88667"
+    },
+    {
+      "type": "color",
+      "id": "panel_text_color",
+      "label": "Panel Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "panel_button_color",
+      "label": "Panel Button Color",
+      "info": "This is the button color that will appear on the panel. 'Panel' variant only.",
+      "options": [
+        {
+          "value": "button__primary",
+          "label": "Dark"
+        },
+        {
+          "value": "button__primary white",
+          "label": "Light"
+        }
+      ],
+      "default": "button__primary white"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Tab Name",
+          "info": "If blank, the collection title will be used."
+        },
+        {
+          "type": "richtext",
+          "id": "desc",
+          "label": "Tab Description"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "product_list",
+          "id": "products",
+          "label": "Products",
+          "info": "If no products are selected, the collection's products will be used."
+        }
+      ]
+    },
+    {
+      "name": "Rebuy data source",
+      "type": "rebuy",
+      "settings": [
+        {
+          "type": "text",
+          "id": "rebuy_datasource",
+          "label": "Rebuy datasource ID"
+        },
+        {
+          "type": "text",
+          "id": "tab_button_text",
+          "label": "Tab button text"
+        },
+        {
+          "type": "url",
+          "id": "tab_button_url",
+          "label": "Tab button url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Carousel + Tabs"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .tab-title-description{
+    flex-direction: column;
+}
+
+.tab-title-description h3{
+    font-family: neue-haas-grotesk-text,ui-sans,sans;
+    font-size: 24px;
+    margin-bottom: 20px;
+    letter-spacing: .03em;
+    font-weight: 100;
+}
+
+  .panel-description p{
+    max-width: 800px;
+    text-align: center;
+    line-height: 1.5rem;
+}
+</style>

@@ -1,0 +1,179 @@
+
+{% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
+{% assign elevate_control_ids = '' %} <!-- Initialize an empty string -->
+{%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
+{% for val in elevate_tests %}
+  {% assign testID = val[0] %}
+  {%- assign testData = val[1] -%}
+  {% if testID == 'settings' or testData.data.isLive == false %}
+    {% continue %}
+  {% endif %}
+
+  {% for key in testData %}
+    {% assign testVariation = key[0] %}
+    {% assign testVariationData = key[1] %}
+       {% if testVariation == '0' %}
+          {% if elevate_control_ids != '' %}
+            {% assign elevate_control_ids = elevate_control_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+          {% endif %}
+          {% assign elevate_control_ids = elevate_control_ids | append: testVariationData.id %} <!-- Append the control ID -->
+      {% elsif testVariation != 'data' %}
+        {% if elevate_variant_ids != '' %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: ',' %} <!-- Add a comma separator if not the first ID -->
+        {% endif %}
+          {% assign elevate_variant_ids = elevate_variant_ids | append: testVariationData.id %} <!-- Append the variant ID -->
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+  <section
+    class="section-p-b {{ section.settings.padding_bottom }} md:p-6 md:pb-px p-2 pb-px"
+    x-data="{ fadeIn: false }"
+    x-intersect.threshold.10="fadeIn = true"
+  >
+    <div class="relative">
+      <div class="section-p-x flex flex-col md:flex-row justify-between items-center w-full h-fit pb-2 md:pb-8">
+        <div class="text-white">
+          {% if section.settings.header != blank %}
+            <h2 style="color:{{ section.settings.font_color }};" class="heading-sm">{{ section.settings.header }}</h2>
+          {% endif %}
+        </div>
+      </div>
+      {% for block in section.blocks %}
+        {% if block.type == 'collection' %}
+          {% if forloop.first %}
+          {% assign collection = block.settings.collection %}
+          {% if collection %}
+              <div class="products-grid__wrapper">
+                  {% assign product_list = block.settings.products %}
+                  {% if product_list == blank %}
+                    {% assign product_list = collection.products %}
+                  {% endif %}
+                  {% assign count = 0 %}
+                  {% for product in product_list %}
+
+                    {% assign string_product_id = product.id | append: '' %}
+    
+                    {% if elevate_variant_ids contains string_product_id %}
+                      {% continue %} 
+                    {% endif %}
+
+                    {% assign is_control_product_id = false %}
+                    {% if elevate_control_ids contains string_product_id %}
+                      {% assign is_control_product_id = true %}
+                    {% endif %}
+                  
+                    <div class="products-grid__item">
+                        {% render 'product__card', product: product, classes: '' %}
+                    </div>
+                  
+                   {% assign count = count | plus: 1 %}
+                    {% if count == section.settings.max_products_to_show %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+              </div>
+          {% endif %}
+        {% endif %}
+        
+        {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+
+<style>
+  .products-grid__wrapper {
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.products-grid__item {
+    margin-top: 20px;
+}
+  @media(max-width: 1000px){
+    .products-grid__wrapper {
+    grid-template-columns: 1fr 1fr;
+}
+}
+
+@media(max-width: 500px){
+    .products-grid__wrapper {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "settings": [
+    {
+        "type": "text",
+        "id": "header",
+        "label": "Heading"
+      },
+       {
+        "type": "color",
+        "id": "font_color",
+        "label": "Title Color",
+        "default": "#000"
+      },
+    {
+      "type": "range",
+      "id": "max_products_to_show",
+      "label": "Max Products to Show",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 8,
+      "info": "Choose how many products to display in this section."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Collection",
+      "type": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ],
+      "limit": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid"
+    }
+  ]
+}
+{% endschema %}

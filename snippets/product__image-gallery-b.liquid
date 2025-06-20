@@ -1,0 +1,383 @@
+<button-slider
+  data-slider-options='
+    {
+      "breakpoints": {
+        "(max-width: 1024px)": {
+          "mode": "snap",
+          "rtl": false,
+          "slides": { "perView": "1.2", "spacing": 0 }
+        },
+        "(min-width: 1024px)": {
+          "disabled": true
+        }
+      }
+    }
+  '
+  class="block overflow-x-hidden lg:sticky lg:top-[var(--header-height)] "
+>
+  <div class="lg:hidden section-p-x pt-6">
+    <div class="hidden">
+      {% render 'product__breadcrumbs', collection: collection, product: product %}
+    </div>
+    {% render 'product__title-and-price', product: product %}
+  </div>
+  {% assign variant_images_count = 0 %}
+  {% for variant in product.variants %}
+    {% if variant.featured_image %}
+      {% assign variant_images_count = variant_images_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% assign variants_count = product.variants | size %}
+
+  {% if variant_images_count > 1 %}
+    <div
+      class="keen-slider flex w-full"
+      x-ref="slides"
+      data-use-index-btns="true"
+    >
+      {% for variant in product.variants %}
+        <div
+          x-cloak
+          class="keen-slider__slide"
+          :data-active-slide="reactiveData.activeVariant.id === {{ variant.id }} ? {{ forloop.index0 }} : null"
+        >
+          <div class="ml-2.5">
+            <div class="relative pt-[100%]">
+              <img
+                loading="lazy"
+                {% comment %} alt="{{ variant.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
+                src="{{ variant.featured_image | img_url: '600x' }}"
+                class="absolute inset-0 w-full h-full object-cover rounded-4"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              >
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for image in product.images %}
+        {% unless image.variants != blank %}
+          <div x-cloak class="keen-slider__slide">
+            <div class="ml-2.5">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  {% comment %} alt="{{ product.title }}" {% endcomment %}
+                  alt="{{ image.alt }}"
+                  src="{{ image | img_url: '600x' }}"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                >
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+    <div class="md:hidden flex justify-center mt-4 gap-1.5">
+      {% for image in product.images %}
+        <div class="dot large bg-[#283645]"></div>
+      {% endfor %}
+    </div>
+    <div
+      class="hidden lg:flex gap-x-[30px]"
+      x-data="
+        {
+          activeImageId: null,
+          handleImageClick(id, variantId) {
+            this.activeImageId = id;
+            if (variantId) {
+              this.$store.main.setActiveVariantId(variantId);
+              return;
+            }
+          },
+          handleImageHover(id) {
+            if (this.activeImageId === id) return;
+            if (id) {
+              this.previousActiveImageId = this.activeImageId;
+              this.activeImageId = id;
+            }
+          },
+          removeDuplicateImages(images) {
+            return images.filter((image, index, self) =>
+              index === self.findIndex((t) => (
+                t.id === image.id
+              ))
+            )
+          },
+          images: [
+            {% for variant in product.variants %}
+              {% if variant.featured_image %}
+                {
+                  variantId: {{ variant.id }},
+                  id: {{ variant.featured_image.id }},
+                  src: '{{ variant.featured_image | img_url: '1000x' }}',
+                  srcset: '{{ variant.featured_image | img_url: '480x' }} 480w, {{ variant.featured_image | img_url: '800x' }} 800w, {{ variant.featured_image | img_url: '1500x' }} 1500w',
+                  sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px',
+                  width: {{ variant.featured_image.width }},
+                  height: {{ variant.featured_image.height }}
+                },
+              {% endif %}
+            {% endfor %}
+            {% for image in product.images %}
+              {
+                id: {{ image.id }},
+                src: '{{ image | img_url: '1000x' }}',
+                srcset: '{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w',
+                sizes: '(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px',
+                width: {{ image.width }},
+                height: {{ image.height }}
+              },
+            {% endfor %}
+          ]
+        }
+      "
+      x-init="images = removeDuplicateImages(images)"
+    >
+      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px]">
+        <template x-for="image in images">
+          <div
+            x-init="
+              $watch('reactiveData.activeVariant.id', (value) => {
+                if (value === image.variantId) {
+                  activeImageId = image.id;
+                }
+              })
+            "
+            :class="activeImageId === image.id ? 'border border-[#A88667] hover:border-[#A88667]' : 'border border-transparent hover:border-[#e2d6ca]'"
+            class="w-full h-[86px] rounded-4 hover:cursor-pointer transition-all duration-300 ease relative"
+            @click="handleImageClick(image.id, image.variantId)"
+            @mouseover="handleImageHover(image.id)"
+            @mouseleave="handleImageHover(null)"
+          >
+            <div
+              x-init="reactiveData.activeVariant.id === image.variantId ? activeImageId = image.id : null"
+              class="relative bg-cover w-full h-full rounded-4 transition-all duration-300 ease"
+              :style="`background-image: url(${image.src})`"
+            ></div>
+            <div
+              class="bg-black absolute w-full h-full inset-0 z-50 rounded-4 transition-all duration-150 ease"
+              :class="activeImageId == image.id ? 'opacity-20' : 'opacity-0 hover:opacity-5'"
+            ></div>
+          </div>
+        </template>
+      </div>
+      <div class="flex flex-col xl:flex-row gap-y-[16px] flex-grow">
+        <template x-for="image in images">
+          <div
+            x-show="activeImageId === image.id"
+            class="relative w-full bg-gray/20 rounded-4"
+          >
+            <div class="relative pt-[100%] w-full">
+              <img
+                loading="lazy"
+                {% comment %} alt="{{ product.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
+                :src="image.src"
+                :srcset="image.srcset"
+                :sizes="image.sizes"
+                class="absolute inset-0 w-full h-full object-cover rounded-4"
+                :width="image.width"
+                :height="image.height"
+              >
+            </div>
+          </div>
+        </template>
+        <div class="flex xl:hidden gap-x-[9px] h-[86px]">
+          <template x-for="image in images">
+            <div
+              x-init="reactiveData.activeVariant.id === image.variantId ? activeImageId = image.id : null"
+              :class="activeImageId == image.id ? 'border border-[#A88667] hover:border-[#A88667]' : 'border border-transparent hover:border-[#e2d6ca]'"
+              class="min-w-[84px] w-[86px] max-w-[86px] rounded-4 hover:cursor-pointer transition-all duration-300 ease relative"
+              @click="handleImageClick(image.id, image.variantId)"
+              @mouseover="handleImageHover(image.id)"
+              @mouseleave="handleImageHover(null)"
+            >
+              <div
+                class="relative bg-cover w-full h-full rounded-4 transition-all duration-300 ease"
+                :style="`background-image: url(${image.src})`"
+              ></div>
+              <div
+                class="bg-black absolute w-full h-full inset-0 z-50 rounded-4 transition-all duration-150 ease"
+                :class="activeImageId == image.id ? 'opacity-20' : 'opacity-0 hover:opacity-5'"
+              ></div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="lg:hidden">
+      <div
+        class="keen-slider flex lg:grid lg:grid-cols-2 lg:gap-3 w-full lg:[&>*:nth-child(4n-3)]:col-span-2 lg:[&>*:nth-child(4n)]:col-span-2"
+        x-ref="slides"
+      >
+        {% for image in product.images %}
+          {% assign remainder = forloop.index0 | modulo: 4 %}
+          <div x-cloak class="keen-slider__slide col-span-1 relative">
+            {% if product.metafields.custom.list_badge and forloop.index == 1 %}
+              <img
+                class="absolute left-5 top-5 w-13 md:w-20 z-10 hidden xl:block"
+                src="{{ product.metafields.custom.list_badge | img_url: '200x' }}"
+                style="object-position: {{ product.metafields.custom.list_badge.value.presentation.focal_point }};"
+                width="{{ product.metafields.custom.list_badge.value.width }}"
+                height="{{ product.metafields.custom.list_badge.value.height }}"
+                alt="{{ product.title }} icon"
+                loading="lazy"
+              >
+            {% endif %}
+            <div class="ml-2.5">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  {% comment %} alt="{{ product.title }}" {% endcomment %}
+                  alt="{{ image.alt }}"
+                  src="{{ image | img_url: '1000x' }}"
+                  srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
+                  sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                >
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="md:hidden flex justify-center mt-4 gap-1.5">
+        {% for image in product.images %}
+          <div class="dot large bg-[#283645]"></div>
+        {% endfor %}
+      </div>
+    </div>
+    <div x-data="{ activeImage: 1 }" class="desktop-gallery__wrapper hidden lg:flex gap-x-[30px]">
+      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px]">
+        {% for image in product.images %}
+          <div
+            @click="activeImage = {{ forloop.index }}"
+            @mouseover="activeImage = {{ forloop.index }}"
+            :class="activeImage == {{ forloop.index }} ? 'border border-[#A88667] hover:border-[#A88667]' : 'border border-transparent hover:border-[#e2d6ca]'"
+            class="w-full h-[86px] rounded-4 hover:cursor-pointer transition-all duration-300 ease relative"
+          >
+            <div
+              class="relative bg-cover w-full h-full rounded-4 transition-all duration-300 ease"
+              style="background-image: url({{ image | img_url: '1000x' }})"
+            ></div>
+            <div
+              class="bg-black absolute w-full h-full inset-0 z-50 rounded-4 transition-all duration-150 ease"
+              :class="activeImage == {{ forloop.index }} ? 'opacity-20' : 'opacity-0 hover:opacity-5'"
+            ></div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="flex flex-col xl:flex-row gap-y-[16px] flex-grow relative">
+        {% for image in product.images %}
+          <div x-show="activeImage == {{ forloop.index }}" class="relative w-full bg-gray/20 rounded-4">
+            {% if product.metafields.custom.list_badge and forloop.index == 1 %}
+              <img
+                class="absolute left-5 top-5 w-20 z-10 hidden xl:block"
+                src="{{ product.metafields.custom.list_badge | img_url: '200x' }}"
+                style="object-position: {{ product.metafields.custom.list_badge.value.presentation.focal_point }};"
+                width="{{ product.metafields.custom.list_badge.value.width }}"
+                height="{{ product.metafields.custom.list_badge.value.height }}"
+                alt="{{ product.title }} icon"
+                loading="lazy"
+              >
+            {% endif %}
+            <div class="relative pt-[100%] w-full">
+              <img
+                loading="lazy"
+                {% comment %} alt="{{ product.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
+                src="{{ image | img_url: '1000x' }}"
+                srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
+                sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
+                class="absolute inset-0 w-full h-full object-cover rounded-4"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              >
+            </div>
+          </div>
+        {% endfor %}
+        <div class="flex xl:hidden gap-x-[9px] h-[86px]">
+          {% for image in product.images %}
+            <div
+              @click="activeImage = {{ forloop.index }}"
+              @mouseover="activeImage = {{ forloop.index }}"
+              :class="activeImage == {{ forloop.index }} ? 'border border-[#A88667] hover:border-[#A88667]' : 'border border-transparent hover:border-[#e2d6ca]'"
+              class="min-w-[84px] w-[86px] max-w-[86px] rounded-4 hover:cursor-pointer transition-all duration-300 ease relative"
+            >
+              <div
+                class="relative bg-cover w-full h-full rounded-4 transition-all duration-300 ease"
+                style="background-image: url({{ image | img_url: '1000x' }})"
+              ></div>
+              <div
+                class="bg-black absolute w-full h-full inset-0 z-50 rounded-4 transition-all duration-150 ease"
+                :class="activeImage == {{ forloop.index }} ? 'opacity-20' : 'opacity-0 hover:opacity-5'"
+              ></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  <div class="tabs-navigation__inner desktop">
+    <nav>
+      {% assign text_image_split_exists = false %}
+      {% assign ingredients_exists = false %}
+      {% assign prep_exists = false %}
+      {% assign origin_exists = false %}
+      
+      {% for component in product.metafields.custom.sections.value %}
+          {% assign type = component.system.type %}
+          {% if type != blank %}
+              {% case type %}
+                  {% when 'text_image_split' %}
+                      {% assign text_image_split_exists = true %}
+                  {% when 'ingredients' %}
+                      {% assign ingredients_exists = true %}
+                  {% when 'prep' %}
+                      {% assign prep_exists = true %}
+                  {% when 'origin' %}
+                      {% assign origin_exists = true %}
+                  
+              {% endcase %}
+          {% endif %}
+      {% endfor %}
+
+      <ul>
+        <li><a href="#" class="tab-link active">Details</a></li>
+
+        {% if text_image_split_exists %}
+          <li><a href="#about-product" class="tab-link">About</a></li>
+        {% endif %}
+        {% if origin_exists %}
+          <li><a href="#product-origin" class="tab-link">Origin</a></li>
+        {% endif %}
+        {% if ingredients_exists %}
+          <li><a href="#product-ingredients" class="tab-link">Ingredients</a></li>
+        {% endif %}
+        {% if prep_exists %}
+          <li><a href="#product-preparation" class="tab-link">Preparation</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</button-slider>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      var tabs = document.querySelectorAll('.tab-link');
+
+      tabs.forEach(function(tab) {
+          tab.addEventListener('click', function(e) {
+              tabs.forEach(function(item) {
+                  item.classList.remove('active');
+              });
+              this.classList.add('active');
+          });
+      });
+  });
+</script>

@@ -1,0 +1,94 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('customSelect', () => ({
+      open: false,
+      selectedIndex: 0,
+      options: null,
+      handler: null,
+      selectOption(index) {
+        if (this.handler) {
+          this.handler(this.options[index], index);
+        }
+        this.selectedIndex = index;
+        this.$refs.selectedItem.focus();
+        this.open = false;
+      },
+      toggleDropdown() {
+        if (this.open) {
+          this.closeDropdown();
+        } else {
+          this.openDropdown();
+        }
+      },
+      openDropdown() {
+        this.open = true;
+        this.$refs.select.setAttribute('aria-expanded', 'true');
+      },
+      closeDropdown() {
+        this.open = false;
+        this.$refs.select.setAttribute('aria-expanded', 'false');
+      },
+      setOptions(options) {
+        this.options = options;
+      },
+      }))
+    });
+</script>
+
+<div
+  id="{{ label | handleize }}-select"
+  role="combobox"
+  aria-expanded="false"
+  aria-haspopup="listbox"
+  tabindex="0"
+  class="{{ classes }}"
+  :class="{'open': open }"
+  x-init='!options ? options = {{ options | json }} : null'
+  x-ref="select"
+  x-model="options[selectedIndex]"
+  x-trap="open"
+  @click="toggleDropdown"
+  @keyup.enter.prevent.stop="toggleDropdown"
+  @keydown.escape.prevent.stop="closeDropdown"
+>
+  <div
+    role="option"
+    aria-selected="true"
+    class="selected-item"
+    :class="{'open': open }"
+    x-ref="selectedItem">
+      <span x-text="options && options[selectedIndex] || ''"></span>
+      <span>{% render "svg__chevron-down" %}</span>
+  </div>
+  <div
+    role="listbox"
+    class="dropdown"
+    x-show="open"
+    x-trap="open"
+    x-ref="dropdown"
+    x-collapse
+  >
+    <div
+      class="pt-4 pb-2"
+      @keydown.down.prevent.stop="$focus.wrap().next()"
+      @keydown.home.prevent.stop="$focus.first()"
+      @keydown.page-up.prevent.stop="$focus.first()"
+      @keydown.up.prevent.stop="$focus.wrap().prev()"
+      @keydown.end.prevent.stop="$focus.last()"
+      @keydown.page-down.prevent.stop="$focus.last()"
+    >
+      <template x-for="(option, index) in options" :key="index">
+        <div
+          role="option"
+          :tabindex="0"
+          class="option outline-none"
+          :class="{'selected': selectedIndex === index }"
+          x-text="option"
+          @click.prevent.stop="selectOption(index)"
+          @keydown.enter.prevent.stop="selectOption(index)"
+        >
+        </div>
+      </template>
+    </div>
+  </div>
+</div>

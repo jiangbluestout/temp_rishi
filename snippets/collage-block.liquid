@@ -1,0 +1,36 @@
+<div class="{{ classes }} gap-y-9 gap-x-6">
+  {% if square %}
+    <div class="overflow-hidden w-full max-w-[30%] lg:max-w-[23vw] mb-5 lg:mb-9 rounded-4">
+      {% render 'image',
+        image_desktop: image,
+        width_desktop: '800x',
+        width_mobile: '500x',
+        ratio_desktop: '100%',
+        ratio_mobile: '100%',
+        lazy: true,
+        image_classes: ''
+      %}
+    </div>
+  {% else %}
+    <div class="overflow-hidden w-full max-w-[30%] lg:max-w-none mb-5 lg:mb-9 rounded-4">
+      {% render 'image',
+        image_desktop: image,
+        width_desktop: '800x',
+        width_mobile: '500x',
+        ratio_desktop: '75%',
+        ratio_mobile: '75%',
+        lazy: true,
+        image_classes: ''
+      %}
+    </div>
+  {% endif %}
+  <div class="w-full pt-5 lg:pt-0 lg:max-w-[34vw]">
+    <div class="text-xl lg:text-5xl leading-1.2 tracking-3pc pb-4 lg:pb-6 font-serif font-100">
+      {{ copy }}
+    </div>
+    <div>
+      <p class="para-sm leading-1.5">{{ label_one }}</p>
+      <p class="para-sm opacity-70 leading-1.5">{{ label_two }}</p>
+    </div>
+  </div>
+</div>

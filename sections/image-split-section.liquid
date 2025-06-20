@@ -1,0 +1,192 @@
+<section 
+  class="section-{{ section.id }} image-split-section__wrapper 
+    {{ section.settings.margin_top_desktop }} 
+    {{ section.settings.margin_bottom_desktop }} 
+    md:{{ section.settings.margin_top_mobile }} 
+    md:{{ section.settings.margin_bottom_mobile }}"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="col-span-2 lg:col-span-3 rounded-t-4 lg:rounded-4 flex flex-col lg:flex-row justify-between">
+    <div class="lg:w-[41.5%] flex flex-col justify-between pt-16 px-6 py-8 md:p-9 
+      {{ section.settings.text_alignment }} ">
+      {% if section.settings.title != blank %}
+        <{{ section.settings.title_heading }} 
+          style="color: {{ section.settings.text_color }};" 
+          class="text-8xl font-serif font-100 tracking-1pc leading-none md:pr-[20%] {{ section.settings.mobile_text_spacing }}">
+          {{ section.settings.title }}
+        </{{ section.settings.title_heading }}>
+      {% endif %}
+      {% if section.settings.copy != blank %}
+        <div 
+          class="text-base tracking-2pc leading-1.5 opacity-80 flex items-end md:pr-[20%] pt-8" 
+          style="color: {{ section.settings.text_color }};">
+          {{ section.settings.copy }}
+        </div>
+      {% endif %}
+    </div>
+    <div class="lg:w-[58.5%] flex items-center justify-center relative">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 1000 | image_tag }}
+      {% endif %}
+      {% if section.settings.button_text %}
+        <a 
+          href="{{ section.settings.button_link }}" 
+          class="button__primary absolute lg:block whitespace-nowrap z-10 white h-auto {{ section.settings.cta_padding }}" style="line-height: 0;">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.section-{{ section.id }}.small {
+  margin-bottom: 30px !important;
+}
+</style>
+
+{% schema %}
+{
+  "name": "Image Split - Alpha",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#A88667"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#fff"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "select",
+      "id": "title_heading",
+      "label": "Title Heading Size",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" },
+        { "value": "h4", "label": "H4" },
+        { "value": "h5", "label": "H5" },
+        { "value": "h6", "label": "H6" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "textarea",
+      "id": "copy",
+      "label": "Copy"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "cta_padding",
+      "label": "CTA Padding",
+      "options": [
+        { "value": "p-4", "label": "Small" },
+        { "value": "p-8", "label": "Medium" },
+        { "value": "p-12", "label": "Large" }
+      ],
+      "default": "p-4"
+    },
+    {
+      "type": "select",
+      "id": "mobile_text_spacing",
+      "label": "Text Spacing",
+      "options": [
+        { "value": "pb-4", "label": "Tight" },
+        { "value": "pb-8", "label": "Normal" },
+        { "value": "pb-12", "label": "Loose" }
+      ],
+      "default": "pb-4"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ],
+      "default": "text-left"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_desktop",
+      "label": "Margin Top (Desktop)",
+      "options": [
+        { "value": "mt-0", "label": "None" },
+        { "value": "mt-4", "label": "Small" },
+        { "value": "mt-8", "label": "Medium" },
+        { "value": "mt-12", "label": "Large" }
+      ],
+      "default": "mt-8"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_desktop",
+      "label": "Margin Bottom (Desktop)",
+      "options": [
+        { "value": "mb-0", "label": "None" },
+        { "value": "mb-4", "label": "Small" },
+        { "value": "mb-8", "label": "Medium" },
+        { "value": "mb-12", "label": "Large" }
+      ],
+      "default": "mb-8"
+    },
+    {
+      "type": "select",
+      "id": "margin_top_mobile",
+      "label": "Margin Top (Mobile)",
+      "options": [
+        { "value": "mt-0", "label": "None" },
+        { "value": "mt-4", "label": "Small" },
+        { "value": "mt-8", "label": "Medium" },
+        { "value": "mt-12", "label": "Large" }
+      ],
+      "default": "mt-4"
+    },
+    {
+      "type": "select",
+      "id": "margin_bottom_mobile",
+      "label": "Margin Bottom (Mobile)",
+      "options": [
+        { "value": "mb-0", "label": "None" },
+        { "value": "mb-4", "label": "Small" },
+        { "value": "mb-8", "label": "Medium" },
+        { "value": "mb-12", "label": "Large" }
+      ],
+      "default": "mb-4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Split - Alpha",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,80 @@
+{
+  "sections": {
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6": {
+      "type": "component__simple-header",
+      "custom_css": [],
+      "settings": {
+        "heading": "Wholesale",
+        "description": "",
+        "background_color": "#275b68",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "custom_app_section_PjNJjh": {
+      "type": "custom-app-section",
+      "blocks": {
+        "formful_app_block_form_eMezPt": {
+          "type": "shopify:\/\/apps\/formful\/blocks\/app-block-form\/be9de36b-78a1-4ce9-8de3-f1044fb2ee2e",
+          "settings": {
+            "form_id": "form_oaSa37K7kV",
+            "max_width": 75,
+            "column_gap": 2,
+            "row_gap": 1,
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "formful_app_block_form_eMezPt"
+      ],
+      "settings": {
+        "description": "<p><a href=\"https:\/\/rishi-tea.com\/\" title=\"https:\/\/rishi-tea.com\/\">Rishi Tea<\/a> is a Direct Trade importer of <a href=\"https:\/\/rishi-tea.com\/collections\/garden-direct-teas\" title=\"https:\/\/rishi-tea.com\/collections\/garden-direct-teas\">organic teas<\/a> and Botanicals from the very best sources. We sell bulk wholesale tea and botanicals to coffee shops, restaurants, specialty retailers, hotels, food service operators and more, across the US and Canada.<\/p><p>We are devoted to ongoing research and development alongside artisan farmers and specialist producers, with organic certification on over 95% of ingredients we import. Our passionate and knowledgeable team of tea specialists are uniquely qualified to help your business navigate the dynamic and exciting world of tea and botanicals.<\/p><p>Please fill out the form below to learn more about our wholesale programs and someone from our team will be in touch in about 48 hours.<\/p><p>If you are an existing wholesale customer, please contact our Account Management team at <a href=\"tel:+18444674744\">1-844-467-4744<\/a> or <a href=\"mailto:order@rishi-tea.com\" target=\"_blank\">order@rishi-tea.com<\/a>.<\/p>",
+        "heading": "Wholesale Inquiry Form"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "form_heading": "Wholesale Inquiry Form",
+        "html": "<div class=\"cs-form-parent-warp\" data-key=\"18ca3589-6831-4a38-b2fa-93e8cf02f528\"><\/div> <script src=\"https:\/\/ecf.cirkleinc.com\/public\/frontend\/js\/form-builder-helper-v2.js\" defer><\/script>"
+      }
+    },
+    "9c866494-880e-41b7-999c-3c115f8820dc": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "none"
+      }
+    },
+    "eb488230-b2c8-43b7-9e84-64f1f850985a": {
+      "type": "instafeed",
+      "settings": {
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": ""
+      }
+    },
+    "component_spacer_WBd8KG": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 72,
+        "height_mobile": 40
+      }
+    }
+  },
+  "order": [
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6",
+    "custom_app_section_PjNJjh",
+    "main",
+    "9c866494-880e-41b7-999c-3c115f8820dc",
+    "eb488230-b2c8-43b7-9e84-64f1f850985a",
+    "component_spacer_WBd8KG"
+  ]
+}

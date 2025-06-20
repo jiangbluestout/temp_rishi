@@ -1,0 +1,334 @@
+{% style %}
+  @media (min-width: 768px) and (max-width: 1025px) {
+    .ipad-flex-end {
+      justify-content: end;
+    }
+  }
+{% endstyle %}
+  
+<section
+  class="w-full section-p-b {{ section.settings.padding_bottom }} {% unless section.settings.full_width %} md:section-p-x {% endunless %}"
+  style="color: {{ section.settings.text_color }};{% if section.settings.hide_for_abtest %}display:none;{% endif %}"
+  {% if section.settings.flush_top %}
+    x-init="$store.main.removeHeaderSpacer()"
+  {% endif %}
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+>
+<a href="{{ section.settings.button_link }}">
+
+    <div
+      class="relative {% if section.settings.full_width %} xl:max-h-screen {% else %} container {% endif %} bg-dark"
+      style="animation: fadeIn 300ms ease-in-out;"
+    >
+
+      {% if section.settings.asset_type == 'image' %}
+        {% if section.settings.full_width %}
+          {% render 'image',
+            image_desktop: section.settings.image_desktop,
+            image_mobile: section.settings.image_mobile,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '56.25%',
+            ratio_mobile: '173%',
+            lazy: false,
+            image_classes: 'xl:max-h-screen'
+          %}
+        {% else %}
+          {% render 'image',
+            image_desktop: section.settings.image_desktop,
+            image_mobile: section.settings.image_mobile,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '56.25%',
+            ratio_mobile: '173%',
+            lazy: false,
+            image_classes: ''
+          %}
+        {% endif %}
+
+      {% else %}
+        {% assign desktop_url = section.settings.video_desktop.sources[1].url %}
+        {% assign mobile_url = section.settings.video_mobile.sources[1].url %}
+        {% if section.settings.full_width %}
+          <div>
+            <video
+              class="hidden md:block w-full h-full object-cover section-height-screen"
+              src="{{ desktop_url }}"
+              x-data
+              x-ref="video"
+              autoplay
+              muted
+            ></video>
+          </div>
+          <video
+            class="md:hidden w-full h-full object-cover section-height-screen"
+            src="{% if mobile_url != blank %}{{ mobile_url }}{% else %}{{ desktop_url }}{% endif %}"
+            x-data
+            x-ref="video"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        {% else %}
+          <video
+            class="hidden md:block w-full h-full object-cover"
+            src="{{ desktop_url }}"
+            x-data
+            x-ref="video"
+            autoplay
+            muted
+          ></video>
+          <video
+            class="md:hidden w-full h-full object-cover"
+            src="{% if mobile_url != blank %}{{ mobile_url }}{% else %}{{ desktop_url }}{% endif %}"
+            x-data
+            x-ref="video"
+            autoplay
+            muted
+          ></video>
+        {% endif %}
+      {% endif %}
+
+      <div class="absolute bottom-16 md:bottom-0 flex {% if section.settings.cta_orientation_vertical == 'middle' %} md:h-[65%] 2xl:h-[53%] {% else %} h-full pt-12 {% endif %} w-full items-center px-6 pt-10 md:px-10 pb-20 md:pb-12 {% if section.settings.cta_orientation == 'center' %} justify-center {% else %} justify-center md:justify-start {% endif %}">
+        <div class="flex flex-col items-start justify-between w-fit h-full {% if template == '404' %}ipad-flex-end{% endif %}" {% if template == '404' %}style="z-index:1;"{% endif %}>
+          <div
+            class="pb-10 max-w-[650px] xl:max-w-[800px] {% if section.settings.cta_orientation == 'center'%} text-center {% else %} text-center md:text-left {% endif %}"
+            style="animation: fadeIn 1000ms ease-in-out;"
+          >
+            {% if section.settings.superscript != blank %}
+              <p class="para-xs md:hidden">{{ section.settings.superscript }}</p>
+            {% endif %}
+            {% if section.settings.superscript != blank %}
+              <span class="hidden para-xs md:inline-block transform -translate-y-[8px] md:-translate-y-[22px] pr-1 md:pr-4">
+                {{- section.settings.superscript -}}
+              </span>
+            {% endif %}
+            <h2 class="heading-2xl md:heading-xl xl:heading-2xl inline">
+              {{ section.settings.heading | newline_to_br }}
+            </h2>
+          </div>
+          
+          {% if section.settings.button_link %}
+            <button class="{{ section.settings.button_color }} w-fit mx-auto md:mx-0 {% if section.settings.cta_orientation == 'center '%} md:mx-auto {% endif %}"
+            style="animation: fadeIn 1400ms ease-in-out;">
+              {{- section.settings.button_text -}}
+            </button>
+            {% comment %} <a
+              href="{{ section.settings.button_link }}"
+              class="{{ section.settings.button_color }} w-fit mx-auto md:mx-0 {% if section.settings.cta_orientation == 'center '%} md:mx-auto {% endif %}"
+              style="animation: fadeIn 1400ms ease-in-out;"
+            >
+              {{- section.settings.button_text -}}
+            </a> {% endcomment %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </a>
+
+</section>
+
+{% schema %}
+{
+  "name": "Hero | Full Width",
+  "class": "section-hero-full-width",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "select",
+      "id": "asset_type",
+      "label": "Asset Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Desktop",
+      "info": "Aspect Ratio: 16x9 / Min Width: 2500px / JPG"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image - Mobile",
+      "info": "This image will only be used on mobile devices. If blank, the desktop image will be used."
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Video - Desktop"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Video - Mobile",
+      "info": "This video will only be used on mobile devices. If blank, the desktop video will be used."
+    },
+    {
+      "type": "header",
+      "content": "A/B Test Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_for_abtest",
+      "label": "Hide for A/B Test",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "superscript",
+      "label": "Superscript",
+      "info": "This text shows up inline with the larger heading."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "CTA Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button Color",
+      "options": [
+        {
+          "value": "button__primary",
+          "label": "Dark"
+        },
+        {
+          "value": "button__primary dark filled",
+          "label": "Dark - Filled"
+        },
+        {
+          "value": "button__primary white",
+          "label": "Light"
+        },
+        {
+          "value": "button__primary white filled",
+          "label": "Light - Filled"
+        }
+      ],
+      "default": "button__primary white"
+    },
+    {
+      "type": "header",
+      "content": "Component Settings"
+    },
+    {
+      "type": "select",
+      "id": "cta_orientation",
+      "label": "CTA Orientation - Horizontal",
+      "options": [
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "left",
+          "label": "Left"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "select",
+      "id": "cta_orientation_vertical",
+      "label": "CTA Orientation - Vertical",
+      "info": "This indicates where the CTA should be vertically aligned. Top is not recommended if the component is used at the top of the page.",
+      "options": [
+        {
+          "value": "middle",
+          "label": "Middle"
+        },
+        {
+          "value": "top",
+          "label": "Top"
+        }
+      ],
+      "default": "middle"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": false,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "checkbox",
+      "id": "flush_top",
+      "label": "Flush To Top?",
+      "default": true,
+      "info": "If checked, the section will be flush to the top of the screen. This should only be selected if it's the first component on the page."
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero | Full Width",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

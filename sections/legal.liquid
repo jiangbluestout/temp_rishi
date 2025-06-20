@@ -1,0 +1,48 @@
+{% assign heading = section.settings.heading %}
+{% assign subheading = section.settings.last_updated %}
+
+{% if page.metafields.custom.legal_template_header %}
+  {% assign heading = page.metafields.custom.legal_template_header %}
+{% endif %}
+
+{% if page.metafields.custom.legal_template_subheading %}
+  {% assign subheading = page.metafields.custom.legal_template_subheading %}
+{% endif %}
+
+<section
+  class="section-p-b large"
+>
+  <div class="pt-16 md:pt-20 pb-8 md:pb-12 border-b border-dark border-opacity-[15%] border-t gap-5 lg:border-t-0 flex flex-col items-center justify-center mb-15 md:mb-12 w-full max-w-[660px] 2xl:max-w-[900px] mx-auto">
+    <h1 class="heading-xl">
+      {{ heading }}
+    </h1>
+    <p class="para-xs text-center opacity-50">{{ subheading }}</p>
+  </div>
+  <div class="section-p-x">
+    <div class="max-w-[570px] 2xl:max-w-[780px] mx-auto rte legal">
+      {{ page.content | preserve_newlines }}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Legal",
+  "class": "section-legal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Legal Template"
+    },
+    {
+      "type": "text",
+      "id": "last_updated",
+      "label": "Last Updated",
+      "default": "Last updated 6.15.2023"
+    }
+  ]
+}
+{% endschema %}

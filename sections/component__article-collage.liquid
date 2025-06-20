@@ -1,0 +1,129 @@
+<section
+  class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  x-cloak
+>
+  <div class="flex flex-col lg:flex-row">
+    <div class="w-full lg:w-1/2">
+      <div class="pl-[16.7%] lg:px-[16.7%] pb-12 md:pb-18 lg:pb-[316px]">
+        <span class="para-2xs pb-2 lg:pb-5">{{ section.settings.eyebrow }}</span>
+        <h4 class="heading-xl">{{ section.settings.heading | newline_to_br }}</h4>
+      </div>
+      <div>
+        {% for block in section.blocks %}
+          {% if forloop.index == 2 %}
+          {% assign tag = block.settings.label %}
+          {% if tag == blank %}
+            {% for tag in block.settings.article.tags %}
+              {% assign tag = tag %}
+              {% break %}
+            {% endfor %}
+          {% endif %}
+            <div class="hidden lg:block lg:w-1/2">
+              <p class="para-2xs pb-2">{{ tag }}</p>
+              {% render 'article__card', article: block.settings.article, hide_excerpt: true, static_arrow: true %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="lg:w-1/2">
+      {% for block in section.blocks %}
+        {% assign tag = block.settings.label %}
+        {% if tag == blank %}
+          {% for tag in block.settings.article.tags %}
+            {% assign tag = tag | replace: '-', ' ' %}
+            {% break %}
+          {% endfor %}
+        {% endif %}
+        {% if forloop.index == 1 %}
+          <div class="pr-[15%] lg:pr-[16.7%] lg:pt-28 pb-16 lg:pb-35">
+            <p class="para-2xs pb-2">{{ tag }}</p>
+            {% render 'article__card', article: block.settings.article, hide_excerpt: true, static_arrow: true %}
+          </div>
+        {% elsif forloop.index == 2 %}
+          <div class="lg:hidden pl-[33%] pb-12">
+            <p class="para-2xs pb-2">{{ tag }}</p>
+            {% render 'article__card', article: block.settings.article, hide_excerpt: true, static_arrow: true %}
+          </div>
+        {% elsif forloop.index == 3 %}
+          <div class="lg:pl-[33%] pr-[15%] lg:pr-0">
+            <p class="para-2xs pb-2">{{ tag }}</p>
+            {% render 'article__card', article: block.settings.article, hide_excerpt: true, static_arrow: true %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Article Collage",
+  "class": "section-article-collage",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Article",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Article"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "info": "If blank, the first tag on the article will be used."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Article Collage"
+    }
+  ]
+}
+{% endschema %}

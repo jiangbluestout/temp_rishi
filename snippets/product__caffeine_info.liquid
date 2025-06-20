@@ -1,0 +1,20 @@
+{% assign caffeineLevel = product.metafields.custom.caffeine_level_ref.value %}
+
+<section
+  class="px-3 lg:px-6 transition-opacity duration-[1100ms] ease section-p-b medium"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+  >
+  <hr class="text-brown/50 h-[1px]">
+  <div class="grid grid-cols-12 w-full mt-4 px-2">
+    <div class="col-span-12 lg:col-span-3 flex flex-col mb-12 lg:mb-0">
+      <h6 class="para-xs mb-4 lg:mb-12">Caffeine Level</h6>
+      <h3 class="heading-md lg:heading-xl mb-3 lg:mb-5">{{ caffeineLevel.level }}</h3>
+      <p class="para-md lg:para-sm leading-1.5 lg:leading-1.5">{{ caffeineLevel.description }}</p>
+    </div>
+    <div class="col-span-12 lg:col-start-5 lg:col-span-8 flex items-center h-full lg:px-12">
+      {% render 'caffeine-bar', level: caffeineLevel.level %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./node_modules/sass-loader/dist/cjs.js!./src/styles/components/swiper-custom.scss ***!
+  \*********************************************************************************************************************************************************************************************************/
+.swiper-button-disabled {
+  opacity: 0.5 !important;
+}
+
+.swiper-button-disabled {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.swiper__scale-effect .swiper-slide {
+  transition: transform 0.3s ease-in-out;
+}
+.swiper__scale-effect .swiper-slide-prev,
+.swiper__scale-effect .swiper-slide-next {
+  transform: scale(0.8);
+}
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY29tcG9uZW50LXN3aXBlci1jdXN0b20uY3NzIiwibWFwcGluZ3MiOiI7OztBQUFBO0VBQ0U7QUFFRjs7QUFIQTtFQUVFO0FBQ0Y7O0FBR0U7RUFDRTtBQUFKO0FBR0U7O0VBRUU7QUFESixDIiwic291cmNlcyI6WyJ3ZWJwYWNrOi8vYmYtc2hvcGlmeS1vczIvLi9zcmMvc3R5bGVzL2NvbXBvbmVudHMvc3dpcGVyLWN1c3RvbS5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIi5zd2lwZXItYnV0dG9uLWRpc2FibGVkIHtcbiAgb3BhY2l0eTogMC41ICFpbXBvcnRhbnQ7XG4gIHRyYW5zaXRpb246IG9wYWNpdHkgMC4zcyBlYXNlLWluLW91dDtcbn1cblxuLnN3aXBlcl9fc2NhbGUtZWZmZWN0IHtcbiAgLnN3aXBlci1zbGlkZSB7XG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDAuM3MgZWFzZS1pbi1vdXQ7XG4gIH1cblxuICAuc3dpcGVyLXNsaWRlLXByZXYsXG4gIC5zd2lwZXItc2xpZGUtbmV4dCB7XG4gICAgdHJhbnNmb3JtOiBzY2FsZSgwLjgpO1xuICB9XG59XG4iXSwibmFtZXMiOltdLCJzb3VyY2VSb290IjoiIn0=*/

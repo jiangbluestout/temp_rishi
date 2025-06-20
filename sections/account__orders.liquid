@@ -1,0 +1,106 @@
+<section class="section-p-x" style="animation: fadeIn 500ms ease-in-out">
+  <div class="md:grid grid-cols-12">
+    <div class="md:col-span-2 md:border-r border-dark/50">
+      {% render 'account__nav', section: 'account' %}
+    </div>
+    <div class="md:col-span-10 pb-32" style="animation: fadeIn 500ms ease-in-out">
+      <div class="px-10 xl:px-32 pt-12 md:pt-16">
+        <h2 class="heading-md text-dark mb-5">
+          Order History
+        </h2>
+
+
+        {% if customer.orders.size != 0 %}
+          <table class="table-auto w-full">
+            <thead>
+              <tr>
+                <th class="hidden md:table-cell para-xs border border-dark/50 p-6">
+                  Order
+                </th>
+                <th class="hidden md:table-cell para-xs border border-dark/50 p-6">
+                  Date
+                </th>
+                <th class="hidden md:table-cell para-xs border border-dark/50 p-6">
+                  Payment status
+                </th>
+                <th class="hidden md:table-cell para-xs border border-dark/50 p-6">
+                  Fulfillment status
+                </th>
+                <th class="hidden md:table-cell para-xs border border-dark/50 p-6">
+                  Total
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr class="border border-dark/50">
+                  <td class="md:border border-dark/50 px-3 py-2 md:py-4 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="para-lg md:hidden">
+                      Order
+                    </span>
+                    <span class="underline para-sm">
+                      {{ order.name | link_to: order.customer_url }}
+                    </span>
+                  </td>
+                  <td class="md:border border-dark/50 px-3 py-2 md:py-4 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="para-lg md:hidden">
+                      Date
+                    </span>
+                    <span class="para-sm">
+                      {{ order.created_at | time_tag: format: 'date' }}
+                    </span>
+                  </td>
+                  <td class="md:border border-dark/50 px-3 py-2 md:py-4 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="para-lg md:hidden">
+                      Payment Status
+                    </span>
+                    <span class="para-sm">
+                      {{ order.financial_status_label }}
+                    </span>
+                  </td>
+                  <td class="md:border border-dark/50 px-3 py-2 md:py-4 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="para-lg md:hidden">
+                      Fulfillment status
+                    </span>
+                    <span class="para-sm">
+                      {{ order.fulfillment_status_label }}
+                    </span>
+                  </td>
+                  <td class="md:border border-dark/50 px-3 py-2 md:py-4 md:p-2.5 flex justify-between md:table-cell">
+                    <span class="para-lg md:hidden">
+                      Total
+                    </span>
+                    <span class="para-sm">
+                      {{ order.total_price | money }}
+                    </span>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="para-sm">
+            No orders
+          </p>
+        {% endif %}
+
+        {% comment %} <p class="md:hidden text-center mt-10">
+          <a
+            href="/account/logout"
+            class="underline"
+          >
+            Logout
+          </a>
+        </p> {% endcomment %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "t:sections.account.name",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

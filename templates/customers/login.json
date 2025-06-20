@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "account__login",
+      "settings": {
+        "resetSuccessHeading": "THANK YOU!",
+        "resetSuccessText": "An email has been sent with password reset instructions."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,0 +1,186 @@
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
+
+
+{% capture categories %}{% for block in section.blocks %}{{ block.settings.category }},{% endfor %}{% endcapture %}
+{% assign categories = categories | split: ',' | uniq %}
+
+<section
+  class="section-p-x section-p-b medium pt-3 md:pt-20"
+  style="animation: fadeIn 500ms ease-in-out"
+  x-cloak
+  x-data="{
+    activeCategory: '{{ categories[0] | handleize }}',
+    changeCategory(category) {
+      function handleize(str) {
+        return str
+          .trim()
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric characters with hyphens
+          .replace(/^-+|-+$/g, ''); // Remove any leading or trailing hyphens
+      }
+      const el = window.innerWidth < 768 ? document.getElementById(handleize(category)) : document.getElementById(category);
+      const top = window.innerWidth < 768 ? 129 : 182;
+      const scrollPosition = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      const elementPosition = el.getBoundingClientRect().top + scrollPosition;
+      window.scrollTo({top: elementPosition - top, scrollBehavior: 'smooth' })
+    },
+    icons: {
+      {% for block in section.blocks %}
+        {% if block.type == 'icon' %}
+          '{{ block.settings.category | handleize }}': '{{ block.settings.icon | img_url: '100x' }}',
+        {% endif %}
+      {% endfor %}
+    },
+    iconsActive: {
+      {% for block in section.blocks %}
+        {% if block.type == 'icon' %}
+          '{{ block.settings.category | handleize }}': '{{ block.settings.icon_active | img_url: '100x' }}',
+        {% endif %}
+      {% endfor %}
+    },
+  }"
+>
+  <div class="flex flex-col md:flex-row section-container">
+    <div class="hidden md:block md:w-1/2 md:sticky top-[180px] h-full pb-15 text-center md:text-left border-b md:border-0 mb-15">
+      <ul class="flex flex-col gap-5">
+        {% for category in categories %}
+          <li class="relative" id="{{ category | handleize }}-link">
+            <button
+              class="para-xs flex items-center gap-3"
+              @click="changeCategory('{{ category | handleize }}')"
+              type="button"
+              :class="{ 'text-brown': activeCategory == '{{ category | handleize }}' }"
+            >
+              <div class="max-h-[20px] w-[20px] flex items-center justify-center" x-show="activeCategory != '{{ category | handleize }}'">
+                <img class="max-h-[20px] max-w-[20px] object-cover mx-auto" :src="icons['{{ category | handleize }}']" alt="{{ category | handleize }}-icon">
+              </div>
+              <div class="max-h-[20px] w-[20px] flex items-center justify-center" x-show="activeCategory == '{{ category | handleize }}'">
+                <img class="max-h-[20px] max-w-[20px] object-cover mx-auto" :src="iconsActive['{{ category | handleize }}']" alt="{{ category | handleize }}-icon">
+              </div>
+              {{ category }}
+            </button>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="md:hidden min-h-[120px]">
+      <label class="sr-only" for="category">Regarding</label>
+      <div class="select__primary-wrapper" x-data="customSelect" x-init="$nextTick(() => handler = changeCategory)">
+        <input type="hidden" name="category" id="category" x-model="options[selectedIndex]">
+        {% render 'input__select', options: categories, classes: 'select__primary absolute' %}
+      </div>
+    </div>
+    <div class="md:w-1/2">
+      {% for category in categories %}
+        <div
+          id="{{ category | handleize }}"
+          class="{% unless forloop.last %} pb-15 md:pb-25 {% endunless %}"
+          x-data="{
+            hasChildren: true,
+            checkChildren(el) {
+              const children = el.children;
+              if (children.length == 0) {
+                this.hasChildren = false;
+                const link = document.querySelector('#{{ category | handleize }}' + '-link');
+                link.remove()
+              }
+            }
+          }"
+          x-show="hasChildren"
+        >
+          <h2 class="text-xl md:text-5xl font-serif font-100 leading-none tracking-4pc pb-4 md:pb-6 border-b border-dark border-opacity-[15%]" x-intersect.margin.0px.0px.-50%="activeCategory = '{{ category | handleize }}'">
+            {{ category }}
+          </h2>
+          <div class="" x-init="$nextTick(() => checkChildren($el))">
+            {% for block in section.blocks %}
+              {% if block.type == 'faq' %}
+                {% if block.settings.category == category %}
+                  <div
+                    class="border-b border-dark border-opacity-[15%]"
+                    x-data="{ open: false }"
+                  >
+                    <div class="">
+                      <button
+                        class="py-4 flex justify-between items-center w-full font-500 text-left"
+                        @click="open = !open"
+                        @keydown.space.prevent="open = !open"
+                        :aria-expanded="open ? 'true' : 'false'"
+                        aria-label="Toggle FAQ"
+                      >
+                        <span class="pr-6 para-sm md:leading-1.5">{{ block.settings.title }}</span>
+                        <span class="block transform transition-all duration-200" :class="{ 'rotate-180': open }">{% render 'svg__chevron-down', class: "text-brown" %}</span>
+                      </button>
+                      <div
+                        x-show="open"
+                        x-collapse
+                      >
+                        <div class="rte page  md:pt-2 pb-9 md:pb-12 pr-15 para-sm leading-1.5">
+                          {{ block.settings.answer | newline_to_br }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "FAQ",
+  "class": "section-faq-category",
+  "settings": [],
+  "blocks": [
+    {
+      "name": "FAQ",
+      "type": "faq",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category",
+          "label": "FAQ Category"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "name": "Icon",
+      "type": "icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Category Icon",
+          "info": "This icon should be blue and is used on inactive states."
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_active",
+          "label": "Category Icon - Active",
+          "info": "This icon should be brown and is used on active states."
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": "Category Name"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

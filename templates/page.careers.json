@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "a35cee70-657f-4822-9d18-acb045faf923": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "Careers",
+        "description": "",
+        "background_color": "#283645",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "91b6cf20-b2aa-4a74-b48e-caf0c13cce9d": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 48,
+        "height_mobile": 160
+      }
+    },
+    "95103072-6f78-423f-9aef-426021ed7f1f": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/RishiSignOffice.jpg",
+        "richtext": "<h2>Become a Rishi<\/h2><p><\/p><p><\/p><p><\/p><p>We are always looking for the best and brightest to join our team. <\/p><p><\/p><p>Please apply via the links below or send your resume and cover letter to resume@rishi-tea.com.<\/p>",
+        "flip_orientation": true,
+        "horizontal_gap_size": "small",
+        "padding_bottom": "none"
+      }
+    },
+    "a8b5a0cb-abc5-4860-939f-dad6b5d6ef6f": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h6><\/h6><h6><\/h6><h6><\/h6><h6>Open Positions<\/h6><h5>No open roles at this time<\/h5>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a35cee70-657f-4822-9d18-acb045faf923",
+    "91b6cf20-b2aa-4a74-b48e-caf0c13cce9d",
+    "95103072-6f78-423f-9aef-426021ed7f1f",
+    "a8b5a0cb-abc5-4860-939f-dad6b5d6ef6f"
+  ]
+}

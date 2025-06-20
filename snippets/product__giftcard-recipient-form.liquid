@@ -1,0 +1,88 @@
+<form
+  id="gift-card-form"
+  x-data
+  class="pt-8"
+  x-show="showForm"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="opacity-0 transform"
+  x-transition:enter-end="opacity-100 transform"
+  x-transition:leave="transition ease-in duration-300"
+  x-transition:leave-start="opacity-100 transform"
+  x-transition:leave-end="opacity-0 transform"
+>
+  <div class="w-full pb-3 input-error-wrapper">
+    <label class="sr-only" for="name">Recipient Name</label>
+    <input
+      class="input__secondary"
+      :class="{ 'border-[#AF4F18]': errors['Recipient name'] }"
+      placeholder="Recipent Name"
+      type="text"
+      name="Recipient name"
+      id="name"
+    />
+  </div>
+  <div class="w-full pb-3 input-error-wrapper">
+    <label class="sr-only" for="email">Recipient Email</label>
+    <input
+      class="input__secondary"
+      :class="{ 'border-[#AF4F18]': errors['Recipient email'] }"
+      placeholder="Recipent Email"
+      type="email"
+      name="Recipient email"
+      id="email"
+    />
+  </div>
+  <div class="w-full pb-3 input-error-wrapper">
+    <label class="sr-only" for="text">Message</label>
+    <input
+      class="input__secondary"
+      :class="{ 'border-[#AF4F18]': errors['Message'] }"
+      placeholder="Message"
+      type="textarea"
+      name="Message"
+      id="message"
+    />
+  </div>
+  <div
+    class="w-full pb-3 input-error-wrapper flex flex-col gap-y-1 pt-1"
+    x-data="{
+      formatDate(date) {
+        let d = new Date(date),
+          month = '' + (d.getMonth() + 1),
+          day = '' + d.getDate(),
+          year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+      },
+      getToday() {
+        return this.formatDate(new Date());
+      },
+      getFutureDate(days) {
+        const date = new Date();
+        date.setDate(date.getDate() + days);
+        return this.formatDate(date);
+      }
+    }"
+  >
+    <label class="para-xs pb-2 pl-1" for="text">Send Date</label>
+    <input
+      x-data
+      class="input__secondary"
+      :class="{ 'border-[#AF4F18]': errors['Send on'] }"
+      placeholder="Send Date"
+      type="date"
+      name="Send on"
+      id="send-on"
+      :min="getToday()"
+      :max="getFutureDate(90)"
+    />
+  </div>
+  <div class="w-full flex flex-col gap-y-1 pt-1">
+    <template x-for="error in errors">
+      <p class="para-xs text-[#AF4F18] pl-1" x-text="error"></p>
+    </template>
+  </div>
+</form>

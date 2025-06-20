@@ -1,0 +1,344 @@
+<style>
+  .header__search.header__search-new {
+    width: 100%;
+    max-width: 293px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+    max-height: 500px;
+    display: block;
+  }
+  .header__search.header__search-new form {
+    background: #f7f5f0;
+    /* background: #f7f5f0; */
+    border: 1px solid #CCCCCC;
+    padding: 0;
+  }
+  header:hover .header__search.header__search-new form {
+    background: #f7f5f0;
+  }
+  .header__search.header__search-new form input[type="search"] {
+    font-size: 16px;
+    padding: 12px 8px;
+    outline-offset: 0;
+  }
+  .header__search.header__search-new form button {
+    position: absolute;
+    right: 13px;
+  }
+
+  .header-in .header__search.header__search-new {
+    background-color: #f7f5f0;
+    display: block;
+  }
+  @media screen and (min-width: 1280px) {
+    .header-on-hover .header__search.header__search-new {
+      background-color: #f7f5f0;
+      display: block;
+    }
+    .header .header__wrapper.initialized:not(.header-in) .result-popup-desktop {
+      margin: 24px 24px 0;
+      width: calc(100% - 48px);
+    }
+
+    .header-on-hover.header-on-hover--overflow-hidden {
+      overflow: hidden;
+    }
+    body.header-on-hover--overflow-hidden {
+      overflow: hidden;
+    }
+    
+    .header-on-hover .header .header__wrapper {
+      background-color: #f7f5f0;
+      color: #283645 !important;
+    }
+  }
+  @media screen and (max-width: 1280px) {
+    .header__search.header__search-new {
+      display: block;
+      max-width: 100%;
+      top: 0;
+      background-color: transparent;
+      border-bottom-left-radius: 0.25rem;
+      border-bottom-right-radius: 0.25rem;
+      border-top: 1px solid #CCCCCC;
+    }
+
+    .header-out .header__search.header__search-new {
+      display: none;
+    }
+    
+   
+    .header__search.header__search-new form input[type="search"] {
+      padding-left: 17px;
+    }
+    .header__search.header__search-new form {
+      border-top-left-radius: 0;
+      border: none;
+      border-top-right-radius: 0;
+    }
+    .header .header__wrapper.initialized {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .header-search__article-img {
+      max-width: 200px;
+    }
+  }
+</style>
+
+<div
+  class="header__search header__search-new"
+  x-transition.scale.origin.top.opacity.duration.200ms
+  x-cloak
+  x-data='{
+    query: null,
+    results: null,
+    search() {
+      this.results = null
+      Alpine.store("main").search(this.query, {
+        type: "query,product,article",
+        limit_scope: "each"
+      }).then((response) => {
+        document.querySelector("body").classList.remove("header-on-hover--overflow-hidden")
+        this.results = response.resources.results
+        document.querySelector("body").classList.add("header-on-hover--overflow-hidden")
+        this.results?.products?.slice(0, 3).forEach((product) => {
+          Alpine.store("main").graphQl(`{
+            product(handle: "${product.handle}") {
+              metafield(key: "tea_type", namespace: "my_fields") {
+                value
+              }
+            }
+          }`).then((graphQlResponse) => {
+            if (graphQlResponse?.data?.product?.metafield?.value) {
+              product.subtitles = JSON.parse(graphQlResponse?.data?.product?.metafield?.value)
+              console.log(product.subtitles)
+            }
+          })
+        })
+      })
+    }
+  }'
+>
+  <form
+    action="/search"
+    method="get"
+    class="bg-light text-dark rounded px-4 md:px-8 py-2.5 md:py-3 flex items-center gap-1 sticky top-0"
+  >
+    <input
+      type="search"
+      name="q"
+      class="text-xl md:text-6xl flex-1 bg-transparent font-serif font-100 px-1.5"
+      placeholder="Search Our Teas, Articles, Collections..."
+      @input.debounce="search()"
+      x-model="query"
+    >
+
+    <input type="hidden" name="type" value="product,article,collection" />
+
+    <button
+      type="submit"
+      class="text-brown font-500 tracking-8pc block text-sm align-middle"
+      x-transition.opacity.duration.300ms
+    >
+      <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3554_92)">
+        <path d="M16.2143 7.71429C16.2143 9.74741 15.6089 11.5387 14.3586 12.8199C13.1117 14.0976 11.1641 14.9286 8.35714 14.9286C5.55021 14.9286 3.60262 14.0976 2.35572 12.8199C1.10539 11.5387 0.5 9.74741 0.5 7.71429C0.5 5.67598 1.0822 3.88573 2.31822 2.60695C3.55027 1.33228 5.49565 0.5 8.35714 0.5C11.2186 0.5 13.164 1.33228 14.3961 2.60695C15.6321 3.88573 16.2143 5.67598 16.2143 7.71429Z" stroke="black"/>
+        <path d="M13.248 13.8305L18.3908 20.259" stroke="black"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_3554_92">
+        <rect width="19" height="21" fill="white"/>
+        </clipPath>
+        </defs>
+      </svg>
+    
+    </button>
+  </form>
+
+  <div
+    class="xl:hidden bg-light text-dark rounded p-4 grid grid-cols-1 mt-px gap-2 md:px-8 md:grid-cols-4 md:gap-0"
+    x-show="results"
+  >
+    <div
+      class="py-0 md:py-5"
+      x-show="results?.queries.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm">
+        Suggestions
+      </div>
+      <template x-for="querySuggestion in results?.queries">
+        <a
+          class="text-base tracking-2pc my-2 font-sans block"
+          :href="querySuggestion.url"
+          x-html="querySuggestion.styled_text"
+        ></a>
+      </template>
+    </div>
+
+    <div
+      class="border-t border-brown pt-4 pb-0 md:col-span-2 md:border-t-0 md:border-l md:px-4 md:py-5"
+      x-show="results?.products.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm">
+        Products
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 xl:grid-cols-1 gap-2.5">
+        <template x-for="product in results?.products?.slice(0, 3)">
+          <a
+            class="flex flex-row sm:flex-col gap-3"
+            :href="product.url"
+          >
+            <img
+              class="aspect-5/6 object-cover object-center rounded overflow-hidden w-13 sm:w-auto"
+              :src="product.featured_image.url"
+              :width="product.featured_image.width"
+              :height="product.featured_image.height"
+              :alt="product.featured_image.alt"
+              loading="lazy"
+            >
+            <div>
+              <h3
+                class="text-sm leading-1.5 tracking-4pc mb-1"
+                x-text="product.title"
+              ></h3>
+
+              <template x-for="subtitle in (product.subtitles ?? [])">
+                <h4
+                  class="text-sm text-dark text-opacity-75 mb-1"
+                  x-text="subtitle"
+                ></h4>
+              </template>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+
+    <div
+      class="border-t border-brown mt-4  pt-4 pb-0 md:border-t-0 md:border-l md:pl-4 md:mt-0 md:py-5"
+      x-show="results?.articles.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm md:text-base">
+        Articles
+      </div>
+      <div class="grid grid-cols-1 gap-2.5">
+        <template x-for="article in results?.articles?.slice(0, 1)">
+          <a
+            class="flex flex-col gap-3"
+            :href="article.url"
+          >
+            <img
+              class="rounded overflow-hidden header-search__article-img md:w-full"
+              :src="article.featured_image.url"
+              :width="article.featured_image.width"
+              :height="article.featured_image.height"
+              :alt="article.featured_image.alt"
+              loading="lazy"
+            >
+            <div>
+              <h3
+                class="text-base leading-1.5 tracking-4pc"
+                x-text="article.title"
+              ></h3>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div
+    class="result-popup-desktop hidden xl:grid fixed w-full left-0 bg-light top-[108px] max-h-[800px] max-widthoverflow-y-auto text-dark rounded p-4 md:px-8 grid grid-cols-1 md:grid-cols-4 mt-px gap-2 md:gap-0"
+    x-show="results"
+  >
+    <div
+      class="py-0 md:py-5"
+      x-show="results?.queries.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm md:text-base">
+        Suggestions
+      </div>
+      <template x-for="querySuggestion in results?.queries">
+        <a
+          class="text-base tracking-2pc my-2 font-sans block"
+          :href="querySuggestion.url"
+          x-html="querySuggestion.styled_text"
+        ></a>
+      </template>
+    </div>
+
+    <div
+      class="md:col-span-2 border-t md:border-t-0 md:border-l border-brown md:px-4 lg:px-8 pt-4 pb-0 md:py-5"
+      x-show="results?.products.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm md:text-base">
+        Products
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5 xl:gap-10">
+        <template x-for="product in results?.products?.slice(0, 3)">
+          <a
+            class="flex flex-row sm:flex-col gap-3"
+            :href="product.url"
+          >
+            <img
+              class="aspect-5/6 object-cover object-center rounded overflow-hidden w-13 sm:w-auto"
+              :src="product.featured_image.url"
+              :width="product.featured_image.width"
+              :height="product.featured_image.height"
+              :alt="product.featured_image.alt"
+              loading="lazy"
+            >
+            <div>
+              <h3
+                class="text-sm lg:text-base leading-1.5 tracking-4pc mb-1"
+                x-text="product.title"
+              ></h3>
+
+              <template x-for="subtitle in (product.subtitles ?? [])">
+                <h4
+                  class="text-sm text-dark text-opacity-75 mb-1"
+                  x-text="subtitle"
+                ></h4>
+              </template>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+
+    <div
+      class="border-t md:border-t-0 md:border-l border-brown md:pl-4 lg:pl-8 mt-4 md:mt-0 pt-4 pb-0 md:py-5"
+      x-show="results?.articles.length"
+    >
+      <div class="text-dark text-opacity-40 mb-4 tracking-4pc text-sm md:text-base">
+        Articles
+      </div>
+      <div class="grid grid-cols-1 gap-2.5 xl:gap-10">
+        <template x-for="article in results?.articles?.slice(0, 1)">
+          <a
+            class="flex flex-col gap-3"
+            :href="article.url"
+          >
+            <img
+              class="rounded overflow-hidden object-contain self-start"
+              :src="article.featured_image.url"
+              :alt="article.featured_image.alt"
+              loading="lazy"
+              style="height: 70%"
+            >
+            <div>
+              <h3
+                class="text-base md:text-md leading-1.5 tracking-4pc"
+                x-text="article.title"
+              ></h3>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+</div>

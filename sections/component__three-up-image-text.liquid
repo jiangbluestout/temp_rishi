@@ -1,0 +1,103 @@
+<section
+  class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="{% unless section.settings.full_width %} section-container {% endunless %}">
+    <div class="flex flex-col lg:flex-row lg:flex-nowrap gap-x-3 gap-y-12">
+      {% for block in section.blocks %}
+        <div class="flex-1">
+          <div class="flex flex-col items-center">
+            <img
+              class="w-full rounded-4"
+              src="{{ block.settings.image | img_url: 'master' }}"
+              alt="{{ block.settings.image.alt }}"
+            />
+            <div class="w-full pt-5 md:pt-8">
+              {% if block.settings.title %}
+                <h3 class="para-2xs pb-3">
+                  {{ block.settings.title }}
+                </h3>
+              {% endif %}
+              <div class="para-sm leading-1.5 rte">
+                {{ block.settings.copy }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Three Column Image + Text",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_width",
+        "label": "Full Width?",
+        "default": true,
+        "info": "If checked, the section will span the full width of the screen."
+      },
+      {
+        "type": "select",
+        "id": "padding_bottom",
+        "label": "Bottom Padding",
+        "info": "This indicates how much padding should be added to the bottom of the section.",
+        "options": [
+          {
+            "value": "none",
+            "label": "None"
+          },
+          {
+            "value": "small",
+            "label": "Small"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "large",
+            "label": "Large"
+          }
+        ],
+        "default": "medium"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "limit": 3,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "copy",
+            "label": "Copy",
+            "info": "Font styles are enabled / font sizes are disabled."
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Three Column Image + Text",
+        "category": "Components"
+      }
+    ]
+  }
+{% endschema %}

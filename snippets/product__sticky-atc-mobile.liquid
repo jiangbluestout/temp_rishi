@@ -1,0 +1,62 @@
+<div
+  class="lg:hidden fixed w-full px-4 pb-4 bottom-0 left-0 right-0 z-10 transform transition-all duration-300 ease-in-out bg-light show-sticky-atc translate-y-0"
+  x-cloak
+  :class="{
+    'show-sticky-atc translate-y-0': showStickyAtc && !$store.main.footerInView,
+    'translate-y-full': !showStickyAtc || $store.main.footerInView,
+  }"
+  x-data="{
+    optionsOpen: false,
+    handleOpenOptions() {
+      this.optionsOpen = !this.optionsOpen
+    },
+    watchButtons() {
+      const buttons = document.querySelectorAll('.product__option-selector-radio')
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          this.optionsOpen = false
+        })
+      })
+    },
+  }"
+  x-init="watchButtons()"
+>
+  <div class="min-h-[72px] w-full flex flex-col rounded-4 z-20">
+    <div class="flex flex-col p-2">
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          {%- capture optionIndex -%}option{{ forloop.index }}{%- endcapture -%}
+          <div class="flex items-center justify-between w-full py-3.5">
+            <label class="para-xs mr-7 text-dark/50 ">{{ option.name }}</label>
+            <button class="flex items-center gap-x-1.5" @click="handleOpenOptions">
+              <span style="font-size: 15px" class="leading-1.5 tracking-2pc" x-text="reactiveData.activeVariant.optionValues[0]"></span>
+              <span class="transform transition duration-200" :class="optionsOpen ? 'rotate-180' : ''">
+                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="4" viewBox="0 0 7 4" fill="none">
+                  <path d="M3.5 3.5L7 0L0 -3.0598e-07L3.5 3.5Z" fill="#A88667"/>
+                </svg>
+              </span>
+            </button>
+          </div>
+          <div
+            x-show="optionsOpen"
+            x-collapse
+            x-cloak
+            style="animation: fadeIn 500ms ease-in-out;"
+          >
+            <div class="flex flex-col gap-y-3 pb-4 pt-2">
+              {%
+                render 'product__option-selector-radio'
+                product: product,
+                activeVariant: activeVariant,
+                optionIndex: optionIndex,
+                option: option,
+              %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endunless %}
+    </div>
+
+    {% render 'product__page-atc' %}
+  </div>
+</div>

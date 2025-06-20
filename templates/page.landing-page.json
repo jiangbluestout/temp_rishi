@@ -1,0 +1,267 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_split_section_Vpdp7n": {
+      "type": "image-split-section",
+      "settings": {
+        "background_color": "#283645",
+        "text_color": "#ffffff",
+        "title": "A New Curated Tea, Each Month",
+        "title_heading": "h1",
+        "copy": "Join the Rishi Tea Club and receive monthly deliveries of our finest curated tea selections. Rishi hand selects a new tea each month and ships directly to your (or your gift recipient's) doorstep - plus, it comes with a free glass teapot in your first shipment! Simply choose from your preferred tea type and subscription duration, and you'll be on your way to an exciting exploration for the palate.",
+        "image": "shopify:\/\/shop_images\/Monthly_Tea_Club_Large_CTA_A_1.jpg",
+        "button_text": "SHOP NOW",
+        "button_link": "shopify:\/\/collections\/all",
+        "padding_bottom": "small"
+      }
+    },
+    "collection_slider_3y6jzz": {
+      "type": "collection-slider",
+      "blocks": {
+        "collection_KF4WyB": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/loose-leaf-teas",
+            "collection_image": "shopify:\/\/shop_images\/Photo.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Loose Leaf Teas",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_Ld6eEc": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/sachet-tea-bags",
+            "collection_image": "shopify:\/\/shop_images\/Photo_1.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Sachet Tea Bags",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_qbx8eL": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/tea-concentrates",
+            "collection_image": "shopify:\/\/shop_images\/Photo_2.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Tea Concentrates",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_Ytbejb": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/matcha-powders",
+            "collection_image": "shopify:\/\/shop_images\/Photo_3.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Matcha & Powder",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_wWVmzW": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/best-sellers",
+            "collection_image": "shopify:\/\/shop_images\/Collection_Best_Sellers_0ed34ee5-f306-4e56-a062-7c459e11e44a.jpg",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Best Sellers",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        }
+      },
+      "block_order": [
+        "collection_KF4WyB",
+        "collection_Ld6eEc",
+        "collection_qbx8eL",
+        "collection_Ytbejb",
+        "collection_wWVmzW"
+      ],
+      "settings": {
+        "header": "Quick Links",
+        "font_color": "#283645",
+        "background_color": "rgba(0,0,0,0)",
+        "padding_bottom": "none"
+      }
+    },
+    "collection_slider_PU4nhY": {
+      "type": "collection-slider",
+      "blocks": {
+        "collection_TfFztt": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/loose-leaf-teas",
+            "collection_image": "shopify:\/\/shop_images\/Photo.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Loose Leaf Teas",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_pwbVLE": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/sachet-tea-bags",
+            "collection_image": "shopify:\/\/shop_images\/Photo_1.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Sachet Tea Bags",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_4NzGg7": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "#fbf9f7",
+            "collection_item": "shopify:\/\/collections\/tea-concentrates",
+            "collection_image": "shopify:\/\/shop_images\/Photo_2.png",
+            "image_height": 90,
+            "image_object_fit": "cover",
+            "collection_title": "Tea Concentrates",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        }
+      },
+      "block_order": [
+        "collection_TfFztt",
+        "collection_pwbVLE",
+        "collection_4NzGg7"
+      ],
+      "settings": {
+        "header": "Quick Links",
+        "font_color": "#283645",
+        "background_color": "rgba(0,0,0,0)",
+        "padding_bottom": "none"
+      }
+    },
+    "collection_slider_BUhxVK": {
+      "type": "collection-slider",
+      "blocks": {
+        "collection_FWUGFP": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "rgba(0,0,0,0)",
+            "collection_item": "shopify:\/\/collections\/matcha-powders",
+            "collection_image": "shopify:\/\/shop_images\/Photo_3.png",
+            "image_height": 180,
+            "image_object_fit": "cover",
+            "collection_title": "",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        },
+        "collection_8djdMh": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "rgba(0,0,0,0)",
+            "collection_item": "shopify:\/\/collections\/matcha-powders",
+            "collection_image": "shopify:\/\/shop_images\/Photo_3.png",
+            "image_height": 90,
+            "image_object_fit": "contain",
+            "collection_title": "Matcha",
+            "text_align": "left",
+            "font_size": 36,
+            "font_padding": 30,
+            "font_color": "#ffffff"
+          }
+        },
+        "collection_drcPTz": {
+          "type": "collection",
+          "settings": {
+            "text_background_color": "rgba(0,0,0,0)",
+            "collection_item": "",
+            "collection_image": "shopify:\/\/shop_images\/Photo_3.png",
+            "image_height": 200,
+            "image_object_fit": "cover",
+            "collection_title": "",
+            "text_align": "center",
+            "font_size": 16,
+            "font_padding": 30,
+            "font_color": "#222222"
+          }
+        }
+      },
+      "block_order": [
+        "collection_FWUGFP",
+        "collection_8djdMh",
+        "collection_drcPTz"
+      ],
+      "disabled": true,
+      "settings": {
+        "header": "Quick Links",
+        "font_color": "#ffffff",
+        "background_color": "#283645",
+        "padding_bottom": "none"
+      }
+    },
+    "product_grid_HKyB9d": {
+      "type": "product-grid",
+      "blocks": {
+        "collection_frQUbE": {
+          "type": "collection",
+          "settings": {
+            "collection": "loose-leaf-teas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_frQUbE"
+      ],
+      "settings": {
+        "header": "",
+        "font_color": "#000000",
+        "max_products_to_show": 9,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_split_section_Vpdp7n",
+    "collection_slider_3y6jzz",
+    "collection_slider_PU4nhY",
+    "collection_slider_BUhxVK",
+    "product_grid_HKyB9d"
+  ]
+}

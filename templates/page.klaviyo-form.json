@@ -1,0 +1,103 @@
+{
+  "sections": {
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6": {
+      "type": "component__simple-header",
+      "custom_css": [],
+      "settings": {
+        "heading": "Sign Up & Save",
+        "description": "",
+        "background_color": "#87513b",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "component_spacer_f7YxfA": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 160
+      }
+    },
+    "component_html_block_3N3AC3": {
+      "type": "component__html-block",
+      "name": "HTML Block",
+      "settings": {
+        "html": "<div class=\"klaviyo-form-SuFBCZ\"><\/div>",
+        "full_width": true,
+        "padding_bottom": "small"
+      }
+    },
+    "f339d218-7eb4-4039-82c9-83715d3a2e63": {
+      "type": "component__rte-block",
+      "disabled": true,
+      "settings": {
+        "rich_text": "<p><\/p><p><\/p><p><\/p><p>We'd love to hear from you. Please fill out the form below with the email address used to place your order, and we'll get back to you as soon as possible. <\/p><p><\/p><p>You can also check out our <a href=\"\/pages\/faq\" title=\"FAQ\">FAQ page<\/a> to find answers to our most commonly asked questions.<\/p>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-left",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "disabled": true,
+      "settings": {
+        "form_heading": "",
+        "html": ""
+      }
+    },
+    "component_product_carousel_tabs_HAdyTY": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_JWqcbz": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_JWqcbz"
+      ],
+      "name": "Product Carousel + Tabs",
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Best Sellers",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "component_instafeed_UMiBMA": {
+      "type": "component__instafeed",
+      "name": "Instafeed",
+      "settings": {
+        "handle": "@rishi-tea",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6",
+    "component_spacer_f7YxfA",
+    "component_html_block_3N3AC3",
+    "f339d218-7eb4-4039-82c9-83715d3a2e63",
+    "main",
+    "component_product_carousel_tabs_HAdyTY",
+    "component_instafeed_UMiBMA"
+  ]
+}

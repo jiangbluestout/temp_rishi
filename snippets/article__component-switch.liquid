@@ -1,0 +1,47 @@
+{% comment %}
+
+  components
+
+  article__rich_text_block
+  article__large-headline
+  article__image-grid
+  article__image-full-width
+  article__dual-image
+  article__video
+  article__featured-products
+  article__prep-grid
+  article__image-text-split
+  article__cta-card-large
+  article__cta-card-small
+  article__preparation
+
+{% endcomment %}
+
+{% case type %}
+  {% when 'article_rich_text_block' %}
+    {% render 'article__rich-text-block', data: data %}
+  {% when 'article_large_headline' %}
+    {% render 'article__large-headline', data: data %}
+  {% when 'article_image_grid' %}
+    {% render 'article__image-grid', data: data %}
+  {% when 'article_image_full_width' %}
+    {% render 'article__image-full-width', data: data %}
+  {% when 'article_dual_image' %}
+    {% render 'article__dual-image', data: data %}
+  {% when 'article_video' %}
+    {% render 'article__video', data: data %}
+  {% when 'article_featured_products' %}
+    {% render 'article__featured-products', data: data %}
+  {% when 'article_prep_grid' %}
+    {% render 'article__prep-grid', data: data %}
+  {% when 'article_image_text_split' %}
+    {% render 'article__image-text-split', data: data %}
+  {% when 'article_cta_card_large' %}
+    {% render 'article__cta-card-large', data: data %}
+  {% when 'article_cta_card_small' %}
+    {% render 'article__cta-card-small', data: data %}
+  {% when 'article_preparation' %}
+    {% render 'article__preparation', data: data %}
+  {% else %}
+  <span class="hidden"></span>
+{% endcase %}

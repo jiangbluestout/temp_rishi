@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "disabled": true,
+      "settings": {}
+    },
+    "a19a9596-c9ed-47db-94dc-ef823032032b": {
+      "type": "component__hero-full-width",
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Hand_Pouring_Matcha_into_Cups.jpg",
+        "heading": "It might be the perfect time to take a minute for a quick brew.",
+        "superscript": "Page Not Found",
+        "text_color": "#4b4b4b",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/all-tea",
+        "button_color": "button__primary dark filled",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "ca8c3336-dcd7-4bbe-9ee6-18ba10f38556": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 48,
+        "height_mobile": 40
+      }
+    },
+    "6e91f9ea-1b3f-4620-91a3-a1fff0da92c5": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "b8194950-3eee-48b5-b269-e190eeda772f": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "b8194950-3eee-48b5-b269-e190eeda772f"
+      ],
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "You Might Also Like",
+        "full_width": true,
+        "button_text": "Shop Now",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#A88667",
+        "panel_text_color": "#FFFFFF",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "c7090fdf-93e0-473b-b8d0-f54265626659": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "a2c8e855-6d8b-4a73-b469-7dfcc193c8fa": {
+          "type": "collection",
+          "settings": {
+            "title": "Loose Leaf",
+            "desc": "",
+            "collection": "loose-leaf-teas",
+            "products": []
+          }
+        },
+        "35d27875-5607-4774-9739-d37b0cc4a8c9": {
+          "type": "collection",
+          "settings": {
+            "title": "Sachets",
+            "desc": "",
+            "collection": "sachet-tea-bags",
+            "products": []
+          }
+        },
+        "7e0d8d90-3f21-419c-9a54-4add0ce5409d": {
+          "type": "collection",
+          "settings": {
+            "title": "Powder",
+            "desc": "",
+            "collection": "matcha-powders",
+            "products": []
+          }
+        },
+        "21098027-eb12-4537-9ea0-b2f7c2ca7ff5": {
+          "type": "collection",
+          "settings": {
+            "title": "Concentrates",
+            "desc": "",
+            "collection": "tea-concentrates",
+            "products": []
+          }
+        },
+        "b1baa994-78a9-42de-b6f6-afb52d2898fe": {
+          "type": "collection",
+          "settings": {
+            "title": "Sparkling",
+            "desc": "",
+            "collection": "sparkling-botanicals",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "a2c8e855-6d8b-4a73-b469-7dfcc193c8fa",
+        "35d27875-5607-4774-9739-d37b0cc4a8c9",
+        "7e0d8d90-3f21-419c-9a54-4add0ce5409d",
+        "21098027-eb12-4537-9ea0-b2f7c2ca7ff5",
+        "b1baa994-78a9-42de-b6f6-afb52d2898fe"
+      ],
+      "settings": {
+        "layout": "tabs",
+        "heading": "Shop By Form",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "small",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#A88667",
+        "panel_text_color": "#FFFFFF",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "c4279aa3-fd12-4d22-9fe2-9505845f9aeb": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "a19a9596-c9ed-47db-94dc-ef823032032b",
+    "ca8c3336-dcd7-4bbe-9ee6-18ba10f38556",
+    "6e91f9ea-1b3f-4620-91a3-a1fff0da92c5",
+    "c7090fdf-93e0-473b-b8d0-f54265626659",
+    "c4279aa3-fd12-4d22-9fe2-9505845f9aeb"
+  ]
+}

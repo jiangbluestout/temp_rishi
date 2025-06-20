@@ -1,0 +1,111 @@
+<section
+  class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="relative flex gap-y-12  {% if section.settings.flip_orientation %} flex-col md:flex-row-reverse {% else %} flex-col-reverse md:flex-row {% endif %}">
+    <div class="md:w-1/2 h-fit {% if section.settings.flip_orientation %} md:pl-[17vw] {% else %} md:pr-[17vw] {% endif%}">
+      {% render 'image',
+        image_desktop: section.settings.image,
+        image_mobile: section.settings.image,
+        width_desktop: '1000x',
+        width_mobile: '800x',
+        ratio_desktop: '125%',
+        ratio_mobile: '125%',
+        lazy: true,
+        image_classes: 'rounded-4',
+      %}
+      <div class="para-md md:para-sm md:leading-1.3 2xl:para-md pt-2.5 opacity-80">{{ section.settings.image_caption }}</div>
+    </div>
+    <div class="image-text-split__text md:w-1/2 whitespace-pre-wrap heading-xl md:heading-md">
+      {{ section.settings.richtext }}
+      {% if section.settings.btn_url  != blank %}
+        <a class="button__primary brown whitespace-nowrap w-fit mt-5" href="{{ section.settings.btn_url }}">{{ section.settings.btn_label }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image + Text Split",
+  "class": "section-image-text-split",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "richtext",
+      "label": "Text",
+      "info": "Font sizes in the editor are disabled. Empty spaces entered into the editor are retained."
+    },
+    {
+      "type": "richtext",
+      "id": "image_caption",
+      "label": "Image Caption",
+      "info": "Font sizes in the editor are disabled. Empty spaces entered into the editor are retained."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button Url"
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_orientation",
+      "label": "Flip Orientation?",
+      "default": false,
+      "info": "If checked, the image and text orientation will be flipped"
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image + Text Split"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .image-text-split__text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+</style>

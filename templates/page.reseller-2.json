@@ -1,0 +1,71 @@
+{
+  "sections": {
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6": {
+      "type": "component__simple-header",
+      "custom_css": [],
+      "settings": {
+        "heading": "Authorized Reseller Website Registration Form",
+        "description": "",
+        "background_color": "#275b68",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "custom_app_section_PjNJjh": {
+      "type": "custom-app-section",
+      "blocks": {
+        "formful_app_block_form_eMezPt": {
+          "type": "shopify:\/\/apps\/formful\/blocks\/app-block-form\/be9de36b-78a1-4ce9-8de3-f1044fb2ee2e",
+          "settings": {
+            "form_id": "form_xN5YfAFFAm",
+            "max_width": 75,
+            "column_gap": 2,
+            "row_gap": 1,
+            "padding_top": 36,
+            "padding_bottom": 36,
+            "color_scheme": ""
+          }
+        }
+      },
+      "block_order": [
+        "formful_app_block_form_eMezPt"
+      ],
+      "settings": {
+        "description": "<p>If you purchase Rishi or Sparking Botanicals products (“<span style=\"text-decoration:underline\">Products<\/span>”) from a CHATSUBO Authorized Distributor for purposes of resale to end-user consumers and wish to sell Products on your own proprietary website, you must register your website with CHATSUBO. <strong>Please note you are <\/strong><span style=\"text-decoration:underline\"><strong>not<\/strong><\/span><strong> authorized to sell Products on or through your own proprietary website until you have registered that website with CHATSUBO using this form<\/strong>.  <\/p><p>To complete registration, please review the <a href=\"https:\/\/rishi-tea.com\/authorized-reseller-policy\" target=\"_blank\" title=\"https:\/\/rishi-tea.com\/authorized-reseller-policy\"><span style=\"text-decoration:underline\">CHATSUBO Holdings LLC Authorized Reseller Policy for the United States<\/span><\/a> (“Authorized Reseller Policy”), including the attached <span style=\"text-decoration:underline\">Online Sales Guidelines<\/span>, fill out the <span style=\"text-decoration:underline\">CHATSUBO Holdings LLC Authorized Reseller Website Registration Form<\/span> (“Form”) on this page, agree to the <span style=\"text-decoration:underline\">Legal Agreement<\/span>, and click SUBMIT.<\/p><p>This Form is only used to register “Permissible Public Websites,” as defined in the Authorized Reseller Policy.  The Authorized Reseller Policy prohibits you from selling Products on online marketplaces (such as Amazon, eBay, and Walmart Marketplace) without CHATSUBO’s prior written consent.  <strong>Consent to sell CHATSUBO products on online marketplaces is <\/strong><span style=\"text-decoration:underline\"><strong>not<\/strong><\/span><strong> granted through this website registration process.<\/strong><\/p><p>This website registration process and the Authorized Reseller Policy are applicable only in the United States of America.<\/p><p>*Fields marked with an asterisk are required.<\/p>",
+        "heading": "CHATSUBO Holdings LLC Authorized Reseller Website Registration Form"
+      }
+    },
+    "main": {
+      "type": "contact",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "form_heading": "Wholesale Inquiry Form",
+        "html": "<div class=\"cs-form-parent-warp\" data-key=\"18ca3589-6831-4a38-b2fa-93e8cf02f528\"><\/div> <script src=\"https:\/\/ecf.cirkleinc.com\/public\/frontend\/js\/form-builder-helper-v2.js\" defer><\/script>"
+      }
+    },
+    "9c866494-880e-41b7-999c-3c115f8820dc": {
+      "type": "component__instafeed",
+      "settings": {
+        "handle": "@rishitea",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "none"
+      }
+    },
+    "eb488230-b2c8-43b7-9e84-64f1f850985a": {
+      "type": "instafeed",
+      "settings": {
+        "heading_size": 20,
+        "feed_width": 100,
+        "html_area": ""
+      }
+    }
+  },
+  "order": [
+    "9d27872d-1a94-4fb2-ae69-c3d0f3b1e0e6",
+    "custom_app_section_PjNJjh",
+    "main",
+    "9c866494-880e-41b7-999c-3c115f8820dc",
+    "eb488230-b2c8-43b7-9e84-64f1f850985a"
+  ]
+}

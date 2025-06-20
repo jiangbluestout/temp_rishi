@@ -1,0 +1,177 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "ce43e740-2d8a-4f12-af67-e6a507ea2430": {
+      "type": "component__hero-dual-image-split",
+      "settings": {
+        "variant": "button",
+        "image_one": "shopify:\/\/shop_images\/stangel-msl-shed-2016-11_247e65e1-973e-429d-94e5-7e197962b4b6.jpg",
+        "text_color": "#FFFFFF",
+        "button_text": "View Openings",
+        "button_link": "",
+        "button_color": "button__primary white",
+        "background_color": "#33432e",
+        "flip_orientation": false,
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "aa9c22fe-4e2e-4d62-bf55-12eed8705dad": {
+      "type": "component__image-rte-split",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screenshot_2023-06-07_at_12.28_1_162bf678-09bf-475f-89a3-e3941ec0061e.jpg",
+        "richtext": "<h6><\/h6><h6><\/h6><h6>Our Mission<br\/><\/h6><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada consequat ex vulputate molestie. Nunc vel blandit dolor. Proin consequat et mauris mattis ullamcorper. Cras consequat ipsum mi, in dignissim urna rutrum nec.<br\/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas malesuada consequat ex vulputate molestie. Nunc vel blandit dolor. Proin consequat et mauris mattis ullamcorper. Cras consequat ipsum mi, in dignissim urna rutrum nec.<\/p>",
+        "flip_orientation": true,
+        "horizontal_gap_size": "small",
+        "padding_bottom": "medium"
+      }
+    },
+    "d0b714fa-3b8c-409b-8e0d-f0384c2ac26a": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "50d5bbac-050a-4e2b-817a-f718290c8cdf": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1010_2f7414f5-1ca5-498f-9b05-2b56aff873e0.jpg",
+            "title": "lorem Ipsum",
+            "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed nisl metus. Ut mattis dapibus enim. Integer vel venenatis erat, eu ullamcorper odio. Nam quis elit id diam ultrices scelerisque.<\/p>"
+          }
+        },
+        "1495659a-9f1d-4db8-bd52-b305b27b4cd4": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1012_f596d3c0-b686-457b-b64b-0b2827788f89.jpg",
+            "title": "Dolor Sit",
+            "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed nisl metus. Ut mattis dapibus enim. Integer vel venenatis erat, eu ullamcorper odio. Nam quis elit id diam ultrices scelerisque.<\/p>"
+          }
+        },
+        "9b4ade15-6184-475a-b37e-8424dcaa3024": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1008_42e9e709-8e1e-4210-88aa-adefd35f9152.jpg",
+            "title": "Lorem Ipsum",
+            "copy": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sed nisl metus. Ut mattis dapibus enim. Integer vel venenatis erat, eu ullamcorper odio. Nam quis elit id diam ultrices scelerisque.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "50d5bbac-050a-4e2b-817a-f718290c8cdf",
+        "1495659a-9f1d-4db8-bd52-b305b27b4cd4",
+        "9b4ade15-6184-475a-b37e-8424dcaa3024"
+      ],
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "9216d850-c2fd-46f7-9c2b-82a5a99ff22e": {
+      "type": "component__image-collage",
+      "blocks": {
+        "9d864374-1226-4d39-8aa1-3e17fc878d49": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1175.jpg",
+            "copy": "<p>“Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Nam elementum diam vel diam aliquam, ac euismod justo cursus.”<\/p>",
+            "label_one": "Jane Doe",
+            "label_two": "Head Of Marketing"
+          }
+        },
+        "7454b1f1-7603-4548-a2d4-8e5768fad3ae": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1176.jpg",
+            "copy": "<p>“Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Nam elementum diam vel.<\/p>",
+            "label_one": "Jane Doe",
+            "label_two": "Head Of Marketing"
+          }
+        },
+        "42bb55ec-bf01-4a8d-a76e-4804f266a46a": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rectangle_1177.jpg",
+            "copy": "<p>“Lorem ipsum dolor sit amet, conse ctetur adipiscing elit. Nam elementum diam vel.<\/p>",
+            "label_one": "Jane Doe",
+            "label_two": "Head Of Marketing"
+          }
+        }
+      },
+      "block_order": [
+        "9d864374-1226-4d39-8aa1-3e17fc878d49",
+        "7454b1f1-7603-4548-a2d4-8e5768fad3ae",
+        "42bb55ec-bf01-4a8d-a76e-4804f266a46a"
+      ],
+      "settings": {
+        "padding_bottom": "medium"
+      }
+    },
+    "96e62be4-f278-43a8-bfc0-6c4afa13c245": {
+      "type": "component__careers-list",
+      "blocks": {
+        "8df02fae-c3dc-43ac-b52c-655e592ea63b": {
+          "type": "position",
+          "settings": {
+            "position": "Demand Planner",
+            "department": "Inventory",
+            "location": "Colorado (Hybrid)",
+            "status": "Full-Time",
+            "link": "shopify:\/\/pages\/about"
+          }
+        },
+        "1f3140a1-627c-4f04-ad8d-fa19414a10a7": {
+          "type": "position",
+          "settings": {
+            "position": "Designer",
+            "department": "Product",
+            "location": "New York",
+            "status": "Part-Time",
+            "link": "shopify:\/\/pages\/about"
+          }
+        }
+      },
+      "block_order": [
+        "8df02fae-c3dc-43ac-b52c-655e592ea63b",
+        "1f3140a1-627c-4f04-ad8d-fa19414a10a7"
+      ],
+      "settings": {
+        "heading": "Open Positions",
+        "col_one_label": "Position",
+        "col_two_label": "Dept",
+        "col_three_label": "Location",
+        "col_four_label": "Status",
+        "padding_bottom": "medium"
+      }
+    },
+    "3e75b80d-6373-4558-845a-53c2565b4322": {
+      "type": "component__hero-full-width",
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Rectangle_763_169338b2-4e4c-466b-9c54-b2b339986647.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Rectangle_763_fcb8229a-1feb-4bd4-84cc-d53e2b718ef9.jpg",
+        "heading": "Don't see your dream job listed? Sign up to stay in touch.",
+        "superscript": "",
+        "text_color": "#FFFFFF",
+        "button_text": "Sign Up",
+        "button_link": "shopify:\/\/pages\/about",
+        "button_color": "button__primary white",
+        "cta_orientation": "left",
+        "full_width": true,
+        "flush_top": false,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ce43e740-2d8a-4f12-af67-e6a507ea2430",
+    "aa9c22fe-4e2e-4d62-bf55-12eed8705dad",
+    "d0b714fa-3b8c-409b-8e0d-f0384c2ac26a",
+    "9216d850-c2fd-46f7-9c2b-82a5a99ff22e",
+    "96e62be4-f278-43a8-bfc0-6c4afa13c245",
+    "3e75b80d-6373-4558-845a-53c2565b4322"
+  ]
+}

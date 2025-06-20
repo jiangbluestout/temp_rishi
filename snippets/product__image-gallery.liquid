@@ -1,0 +1,165 @@
+<button-slider
+  data-slider-options='{
+    "breakpoints": {
+      "(max-width: 1024px)": {
+        "mode": "snap",
+        "rtl": false,
+        "slides": { "perView": "1.2", "spacing": 0 }
+      },
+      "(min-width: 1024px)": {
+        "disabled": true
+      }
+    }
+  }'
+  class="block overflow-x-hidden"
+>
+  <div class="lg:hidden section-p-x ">
+    {% render 'product__title-and-price', product: product %}
+  </div>
+
+  {% assign variant_images_count = 0 %}
+  {% for variant in product.variants %}
+    {% if variant.featured_image %}
+      {% assign variant_images_count = variant_images_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  {% assign variants_count = product.variants | size %}
+
+  {% if variant_images_count > 1 %}
+    <div
+      class="w-full hidden lg:block"
+      x-data="{
+        activeImageId: null,
+      }"
+      x-cloak
+    >
+      {% for variant in product.variants %}
+        <div
+          class="relative pt-[100%] transition-opacity duration-300 ease-in-out opacity-0"
+          :class="reactiveData.activeVariant.id === {{ variant.id }} ? 'animate-fade-in' : 'opacity-0'"
+          x-show="reactiveData.activeVariant.id === {{ variant.id }}"
+          x-init="$watch('reactiveData.activeVariant', value => value.id === {{ variant.id }} ? activeImageId = {{ variant.featured_image.id }} : null );"
+        >
+          <img
+            src="{{ variant.featured_image | img_url: '1500x' }}"
+            alt="{{ product.title }}"
+            x-init="reactiveData.activeVariant.id === {{ variant.id }} ? activeImageId = {{ variant.featured_image.id }} : null"
+            loading="lazy"
+            class="absolute inset-0 w-full h-full object-cover rounded-4"
+            width="{{ image.width }}"
+            height="{{ image.height }}"
+          />
+        </div>
+      {% endfor %}
+      <div class="flex lg:grid lg:grid-cols-2 lg:gap-3 w-full">
+        {% for image in product.images %}
+          {% if forloop.index == 4 %}
+            <div
+              x-cloak
+              x-show="activeImageId !== {{ image.id }}"
+              class="col-span-2">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  alt="{{ product.title }}"
+                  src="{{ image | img_url: '2000x' }}"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                />
+              </div>
+            </div>
+          {% else %}
+            <div
+              x-cloak
+              x-show="activeImageId !== {{ image.id }}"
+              class="col-span-1">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  alt="{{ product.title }}"
+                  src="{{ image | img_url: '1000x' }}"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                />
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+    <div class="keen-slider flex w-full" x-ref="slides" data-use-index-btns="true">
+      {% for variant in product.variants %}
+        <div
+          x-cloak
+          class="keen-slider__slide"
+          :data-active-slide="reactiveData.activeVariant.id === {{ variant.id }} ? {{ forloop.index0 }} : null"
+        >
+          <div class="ml-2.5">
+            <div class="relative pt-[100%]">
+              <img
+                loading="lazy"
+                alt="{{ variant.title }}"
+                src="{{ variant.featured_image | img_url: '600x' }}"
+                class="absolute inset-0 w-full h-full object-cover rounded-4"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              />
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      {% for image in product.images %}
+        {% unless image.variants != blank %}
+          <div
+            x-cloak
+            class="keen-slider__slide"
+          >
+            <div class="ml-2.5">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  alt="{{ product.title }}"
+                  src="{{ image | img_url: '600x' }}"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                />
+              </div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="keen-slider flex lg:grid lg:grid-cols-2 lg:gap-3 w-full lg:[&>*:nth-child(4n-3)]:col-span-2 lg:[&>*:nth-child(4n)]:col-span-2" x-ref="slides">
+      {% for image in product.images %}
+          {% assign remainder = forloop.index0 | modulo: 4 %}
+          <div
+            x-cloak
+            class="keen-slider__slide col-span-1">
+            <div class="ml-2.5">
+              <div class="relative pt-[100%]">
+                <img
+                  loading="lazy"
+                  alt="{{ product.title }}"
+                  src="{{ image | img_url: '1000x' }}"
+                  srcset="{{ image | img_url: '480x' }} 480w,
+                          {{ image | img_url: '800x' }} 800w,
+                          {{ image | img_url: '1500x' }} 1500w"
+                  sizes="(max-width: 480px) 480px,
+                          (max-width: 800px) 800px,
+                          1500px"
+                  class="absolute inset-0 w-full h-full object-cover rounded-4"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+
+                />
+              </div>
+            </div>
+          </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</button-slider>

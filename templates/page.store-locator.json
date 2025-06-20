@@ -1,0 +1,68 @@
+{
+  "sections": {
+    "0aaf5c4c-7e70-443e-9b4d-8a6630ef42a0": {
+      "type": "component__simple-header",
+      "disabled": true,
+      "settings": {
+        "heading": "Where to Find Rishi",
+        "description": "<p>All products are subject to availability. Please contact your retailer to ensure products are in stock.<\/p>",
+        "background_color": "#f7f5f0",
+        "header_text_color": "#222222"
+      }
+    },
+    "main": {
+      "type": "component__store-locator",
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "none"
+      }
+    },
+    "f2a01375-9e06-401e-8b98-dc4abfc24322": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 60,
+        "height_mobile": 52
+      }
+    },
+    "abfe9770-3e29-4dfd-af7c-61b5c9dd0bd8": {
+      "type": "component__large-newsletter-signup",
+      "settings": {
+        "heading": "Sign up For the Latest News, \nOffers and Recipes",
+        "padding_bottom": "none"
+      }
+    },
+    "ebc3f2a4-65c1-482d-9f20-ef55ed223e29": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 60,
+        "height_mobile": 60
+      }
+    },
+    "d8390493-8378-4f5c-9374-561045ec1868": {
+      "type": "component__cta-panel",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-BaoZhong_1c457b69-4605-437b-afcf-7d48a3bd9ffb.jpg",
+        "heading": "Discover Our\nTeas",
+        "superscript": "BROWSE THE FULL COLLECTION",
+        "text_color": "#ffffff",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/all-tea",
+        "button_color": "button__primary white",
+        "background_color": "#419271",
+        "full_width": true,
+        "flip_orientation": false,
+        "padding_bottom": "small"
+      }
+    }
+  },
+  "order": [
+    "0aaf5c4c-7e70-443e-9b4d-8a6630ef42a0",
+    "main",
+    "f2a01375-9e06-401e-8b98-dc4abfc24322",
+    "abfe9770-3e29-4dfd-af7c-61b5c9dd0bd8",
+    "ebc3f2a4-65c1-482d-9f20-ef55ed223e29",
+    "d8390493-8378-4f5c-9374-561045ec1868"
+  ]
+}

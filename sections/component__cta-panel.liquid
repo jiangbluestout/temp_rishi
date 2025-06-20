@@ -1,0 +1,155 @@
+<section
+  class="w-full section-p-b {{ section.settings.padding_bottom }} section-p-x rounded-4 overflow-hidden"
+  style="color: {{ section.settings.text_color }};"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+>
+  <div class="relative flex flex-col {% if section.settings.flip_orientation %} md:flex-row-reverse {% else %} md:flex-row  {% endif %} rounded-4 overflow-hidden {% unless section.settings.full_width %} section-container {% endunless %}" style="animation: fadeIn 300ms ease-in-out; background-color: {{ section.settings.background_color }}">
+    {% if section.settings.image %}
+      <div class="md:w-1/2">
+        {% render 'image',
+          image_desktop: section.settings.image,
+          image_mobile: section.settings.image,
+          width_desktop: '2000x',
+          width_mobile: '800x',
+          ratio_desktop: '80%',
+          ratio_mobile: '100%',
+          lazy: true,
+          image_classes: '',
+        %}
+      </div>
+    {% endif %}
+    <div class="flex-1 p-5 md:p-8">
+      <div class="flex flex-col gap-y-17 {% if section.settings.image == blank %} md:gap-y-20 {% else %} md:gap-y-10 {% endif %} items-center justify-between w-full h-full" style="animation: fadeIn 800ms ease-in-out;">
+        <p class="para-xs">{{ section.settings.superscript }}</p>
+        <h2 class="heading-2xl md:heading-md xl:heading-2xl text-center pt-2 md:pt-0">{{ section.settings.heading | newline_to_br }}</h2>
+        <a href="{{ section.settings.button_link }}" class="{{ section.settings.button_color }} w-fit mx-auto md:mx-0 {% if section.settings.cta_orientation == 'center '%} mx-auto {% endif %}" style="animation: fadeIn 1400ms ease-in-out;">{{ section.settings.button_text }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "CTA Panel",
+  "class": "section-cta-panel",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Aspect Ratio: 16x9 / Min Width: 2500px / JPG"
+    },
+    {
+      "type": "header",
+      "content": "Text Settings"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "superscript",
+      "label": "Superscript",
+      "info": "This text shows up at the top of the component."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "CTA Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_color",
+      "label": "Button Color",
+      "options": [
+        {
+          "value": "button__primary",
+          "label": "Dark"
+        },
+        {
+          "value": "button__primary white",
+          "label": "Light"
+        }
+      ],
+      "default": "button__primary white"
+    },
+    {
+      "type": "header",
+      "content": "Component Settings"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#A88667"
+    },
+    {
+      "type": "checkbox",
+      "id": "full_width",
+      "label": "Full Width?",
+      "default": false,
+      "info": "If checked, the section will span the full width of the screen."
+    },
+    {
+      "type": "checkbox",
+      "id": "flip_orientation",
+      "label": "Flip Orientation?",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "padding_bottom",
+      "label": "Bottom Padding",
+      "info": "This indicates how much padding should be added to the bottom of the section.",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "medium"
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA Panel",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,56 @@
+{
+  "sections": {
+    "5613008c-8bf6-4ed8-a985-0c13c86b4872": {
+      "type": "component__simple-header",
+      "settings": {
+        "heading": "",
+        "description": "",
+        "background_color": "#283645",
+        "header_text_color": "#ffffff"
+      }
+    },
+    "8e69590a-b67a-494d-ac7c-df2167dfbb99": {
+      "type": "component__html-block",
+      "settings": {
+        "html": "",
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    },
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2": {
+      "type": "component__rte-block",
+      "settings": {
+        "rich_text": "<h2>        Direct trade source of <em>organic<\/em>, <em>premium<\/em> teas and botanicals. We are selectors, importers and makers.<\/h2>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "section-container",
+        "alignment": "text-left",
+        "padding_right": 5,
+        "padding_left": 15,
+        "padding_bottom": "medium"
+      }
+    },
+    "e9e89639-f63a-49e4-afaf-1ce66922a6ef": {
+      "type": "component__cta-panel",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-PeachBlossom-LS-2_d71dfc82-dcca-4168-8188-bb9477d394a1.jpg",
+        "heading": "Shop By Mood",
+        "superscript": "A Tea for Every State of Mind",
+        "text_color": "#ffffff",
+        "button_text": "Shop All",
+        "button_link": "shopify:\/\/collections\/shop-all-tea-moods",
+        "button_color": "button__primary white",
+        "background_color": "#ea9d4c",
+        "full_width": true,
+        "flip_orientation": false,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "5613008c-8bf6-4ed8-a985-0c13c86b4872",
+    "8e69590a-b67a-494d-ac7c-df2167dfbb99",
+    "4917bed4-dd0f-4c61-a08f-a033f77241b2",
+    "e9e89639-f63a-49e4-afaf-1ce66922a6ef"
+  ]
+}

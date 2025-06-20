@@ -1,0 +1,308 @@
+<!doctype html>
+<html class="no-js" lang="{{- request.locale.iso_code -}}" dir="ltr">
+  <head>{% render 'skio-head' %}
+  <script>
+    window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
+    window._template = {
+        directory: "{{ template.directory }}",
+        name: "{{ template.name }}",
+        suffix: "{{ template.suffix }}"
+    };
+  </script>
+  <script type="module" blocking="render" fetchpriority="high" src="https://cdn.intelligems.io/esm/c76e2b44cdb4/bundle.js" async></script>
+    {% render 'gcm-integration-script' %}
+    {%- if content_for_header contains 'elevateab.app' -%}
+      {%- unless request.design_mode -%}
+        <script>try{window.eab_data={selectors:JSON.parse(`{{shop.metafields.elevateab.select}}`)||{},allTests:JSON.parse(`{{shop.metafields.elevateab.tests}}`)||{},currencyCode:"{{cart.currency.iso_code}}"};}catch(error){console.log(error);window.eab_data={selectors:{},allTests:{},currencyCode:"{{cart.currency.iso_code}}"};}
+        </script>
+        <script src="https://ds0wlyksfn0sb.cloudfront.net/redirect.js"></script>
+        <script async src="https://ds0wlyksfn0sb.cloudfront.net/element.js"></script>
+        <script>
+          document.addEventListener("DOMContentLoaded",function(){try{if((typeof sessionStorage!=="undefined"&&sessionStorage.getItem("abwidget"))||(typeof URLSearchParams!=="undefined"&&new URLSearchParams(window.location.search).has("abwidget"))){var script=document.createElement("script");script.src="https://ds0wlyksfn0sb.cloudfront.net/widget.js";script.async=true;document.body.appendChild(script);}}catch(error){console.error("Eab err:",error);}})
+        </script>
+      {%- endunless -%}
+    {%- endif -%}
+    {% render 'remove_eab' %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+    <link rel="preload" href="{{ 'base.css' | asset_url }}" as="style">
+    <link rel="preload" href="{{ 'base.js' | asset_url }}" as="script">
+
+    {%- liquid
+      render 'head__seo'
+      render 'head__metas'
+      render 'head__integration-scripts'
+      render 'head__fonts'
+    -%}
+
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="https://rishi-tea.com/cdn/shop/files/Website_Homepage_Banner_Option_1_2000x.jpg?v=1707318795"
+    >
+
+    {% if request.path contains '/pages/contact' %}
+      <script></script>
+    {% endif %}
+
+    {{ 'base.css' | asset_url | stylesheet_tag }}
+    {% render custom-css %}
+    <script src="{{- 'base.js' | asset_url -}}" defer></script>
+
+    <!-- Start Tailwind UI Library Font -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- End Tailwind UI Library Font -->
+
+    <!-- Sliders -->
+    <script src="{{ 'component-button-slider.js' | asset_url }}" defer></script>
+
+    <!-- Header hook for plugins -->
+    {{ content_for_header }}
+
+
+
+    <!-- Bing webmaster tools -->
+    <meta name="msvalidate.01" content="1EEA7613DDCD7D2C141616ECE6BF4017">
+    <!-- Bing webmaster tools ends -->
+
+    <!-- Start of TrueVault Polaris Code Block -->
+    <script>
+    window.polarisOptions = {
+    GoogleAnalyticsTrackingId: "G-CE4ESQETJC",
+    };
+    </script>
+    <script src="https://polaris.truevaultcdn.com/static/pc/QP7ZWXU3R/polaris.js"></script>
+    <!-- End of TrueVault Polaris Code Block -->
+    
+    
+    <script type="text/javascript">
+    var _conv_page_type = "{{ request.page_type }}";
+    var _conv_category_id = "{{ collection.id }}";
+    var _conv_category_name = "{{ collection.title }}";
+    var _conv_product_sku = "{{ product.selected_or_first_available_variant.sku }}";
+    var _conv_product_name = '{{ product.title }}';
+    var _conv_product_price = "{{ product.price_min | money_without_currency }}";
+    var _conv_customer_id = "{{ customer.id }}";
+    var _conv_custom_v1 = "{{ product.tags.first }}";
+    var _conv_custom_v2 = "{{ collection.current_type }}";
+    var _conv_custom_v3 = "{{ cart.item_count }}";
+    var _conv_custom_v4 = "{{ cart.total_price | money_without_currency }}";
+    </script>
+    {% render 'convert' %}
+
+  <script>
+    if (window.location.href.indexOf('/?discover-video') > -1) {
+      window.history.pushState({}, document.title, "/discover-video");
+    } else if (window.location.href.indexOf('/?discover') > -1) {
+      window.history.pushState({}, document.title, "/discover");
+    } else if (window.location.href.indexOf('/?summer') > -1) {
+      window.history.pushState({}, document.title, "/summer");
+    } else if (window.location.href.indexOf('/?first-flush') > -1) {
+      window.history.pushState({}, document.title, "/first-flush");
+    }
+  </script>
+
+  <script>
+    window.polarisOptions = {
+    GoogleAnalyticsTrackingId: "G-CE4ESQETJC",
+  };
+  </script>
+  <script src="https://polaris.truevaultcdn.com/static/pc/QP7ZWXU3R/polaris.js"></script>
+
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nmb7wck9e0");
+  </script>
+  {% if template == 'product' %}
+    <script>
+      window.productVariants = {{ product.variants | json }};
+      window.defaultVariantId = {{ product.variants.first.id }};
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        const variantIdFromURL = urlParams.get('variant');
+        const validVariants = window.productVariants.map(variant => variant.id.toString());
+
+        if (variantIdFromURL && !validVariants.includes(variantIdFromURL)) {
+          window.location.href = window.location.pathname + '?variant=' + window.defaultVariantId;
+        }
+      })
+    </script>
+  {% endif %}
+  <script src="https://track.getgobot.com/gobot/js/shopify.js?key=-NbmabFDQIiRzZkDAddT"></script>
+  <script type="text/javascript">(function(G,O,b,o,t){G[b]=G[b]||function(){(G[b].queue=G[b].queue||[]).push(arguments)}
+    o=O.createElement('script')
+    o.async=1
+    o.src='https://new.getgobot.com/client/v1/gobot-client.js'
+    t=O.getElementsByTagName('script')[0]
+    t.parentNode.insertBefore(o,t)})(window,document,'gobot')
+    gobot('create','-NbmabFDQIiRzZkDAddT')
+    gobot('pageview')
+  </script>
+</head>
+  <body
+    x-data
+    :class="
+      {
+        'header-opened':  $store.main.isNavOpen || $store.main.isMobileNavOpen || $store.main.isSearchOpen || $store.mapPopup?.popupOpen,
+        'scrolled': $store.main.isScrolled
+      } 
+    "
+    class="layout-theme header-on-hover template-{{- template.name -}}{%- if template.suffix -%}-{{- template.suffix -}}{%- endif -%}" data-customer-id="{% if customer.id %}{{ customer.id }}{% else %}7295795396858{% endif %}"
+  >
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id={{ settings.gtm_id }}"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    {% section 'header' %}
+    
+    {% comment %} Shopify Native Cart Drawer {% endcomment %}
+    {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
+    
+    <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+    {%- render 'cart__drawer' -%}
+
+    <main id="main-content" role="main" class="{% if request.path contains 'account/login' %}account__template{% endif %} u-focus-none" tabindex="-1">
+      {{ content_for_layout }}
+      {% if request.path contains 'account/login' %}
+        <div class="account-login__message">
+          <p>
+            Are you an existing wholesale customer? Please contact our Account Management team at
+            <a href="tel:+18444674744">1-844-467-4744</a> or&nbsp;<a
+              href="mailto:order@rishi-tea.com"
+              target="_blank"
+              rel="noreferrer"
+              >order@rishi-tea.com</a
+            >.
+          </p>
+        </div>
+      {% endif %}
+    </main>
+
+    {% render 'hydrate' %}
+
+    {% section 'footer' %}
+
+    {% if template == 'cart' %}
+      <script>
+        window.location.href = '/?viewcart=true';
+      </script>
+    {% endif %}
+
+    {% render 'junip-store-key' %}
+    {% render 'accessibility-widget' %}
+    {% render 'rebuy-extensions' %}
+    <div data-rebuy-id="116496"></div>
+
+    
+
+    <script>
+      var dataLayer = window.dataLayer || [];
+
+      var initGorgiasChatPromise = (window.GorgiasChat) ? window.GorgiasChat.init() : new Promise(function (resolve) { window.addEventListener('gorgias-widget-loaded', function () { resolve();})});
+      initGorgiasChatPromise.then(initGorgiasChatEvents)
+
+      function initGorgiasChatEvents() {
+        GorgiasChat.on('message:sent', function () {
+          dataLayer.push({
+            event: 'gorgias_message_sent',
+          });
+        });
+        GorgiasChat.on('widget:opened', function () {
+          dataLayer.push({
+            event: 'gorgias_widget_opened',
+          });
+        });
+        GorgiasChat.on('widget:closed', function () {
+          dataLayer.push({
+            event: 'gorgias_widget_closed',
+          });
+        });
+      }
+
+      document.body.addEventListener('submit', function(e) {
+        if (e.target.matches('klaviyo-form form')) {
+          dataLayer.push({
+            event: 'ct_newsletter_signup',
+          });
+        }
+      });
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Function to detect Firefox browser
+        function isFirefox() {
+          return navigator.userAgent.toLowerCase().includes('firefox');
+        }
+
+        // Run only in Firefox
+        if (isFirefox()) {
+          // alert("Ok");
+          const fireboxPolicySection = document.querySelector('.firebox-policy');
+          const btn = document.querySelector('.firebox-policy__button');
+          let firefoxPolicy = localStorage.getItem('firefox-policy');
+          if (!firefoxPolicy) {
+            fireboxPolicySection.classList.add('active');
+          } else {
+            fireboxPolicySection.classList.remove('active');
+          }
+
+          btn.addEventListener('click', () => {
+            if (!localStorage.getItem('firefox-policy')) {
+              fireboxPolicySection.classList.remove('active');
+              localStorage.setItem('firefox-policy', true);
+            } else {
+              fireboxPolicySection.classList.add('active');
+            }
+          });
+
+        const targetElement = document.querySelector('.hidden.fixed.duration-300');
+        const productFirefox = document.querySelector('body.template-product .firebox-policy');
+        const addClassButton = document.getElementById('add-class');
+
+          // Function to monitor class addition
+          const observer = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+              if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                if (targetElement.classList.contains('show-sticky-atc')) {
+                  productFirefox.style.bottom = "5rem";
+                } else {
+                  productFirefox.style.bottom = 0;
+                }
+              }
+            }
+          });
+
+          // Start observing the target element for attribute changes
+          observer.observe(targetElement, { attributes: true });
+        }
+      });
+    </script>
+  </body>
+  <div class="firebox-policy">
+      <div class="firebox-policy__container">
+        <div class="firebox-policy__content">
+          <p>If you’re using Firefox with Enhanced Tracking Protection, certain features may be blocked.
+            Please disable strict tracking settings or switch browsers for the best experience.</p>
+        </div>
+        <div class="firebox-policy__button">
+          Got It
+        </div>
+      </div>
+    </div>
+</html>

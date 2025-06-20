@@ -1,0 +1,85 @@
+{% assign image_alt_desktop = '' %}
+{% assign image_alt_mobile = '' %}
+{% assign image_mobile = image_mobile  %}
+{% assign lazy_loading = 'lazy' %}
+{% assign aspect_image = true %}
+{% assign desktop_breakpoint = 'hidden md:block' %}
+{% assign mobile_breakpoint = 'md:hidden' %}
+
+{% unless image_mobile %}
+  {% assign image_mobile = image_desktop %}
+{% endunless %}
+
+{% if ratio_desktop == blank and ratio_mobile == blank %}
+  {% assign aspect_image = false %}
+{% endif %}
+
+{% if alt %}
+  {% assign image_alt_desktop = alt %}
+{% else %}
+  {% assign image_alt_desktop = image_desktop.alt %}
+{% endif %}
+
+{% if alt %}
+  image_alt_mobile = {{ alt }}
+{% else %}
+  {% if image_mobile %}
+    {% assign image_alt_mobile = image_mobile.alt %}
+  {% else %}
+    {% assign image_alt_mobile = image_desktop.alt %}
+  {% endif %}
+{% endif %}
+
+{% if lazy != true %}
+  {% assign lazy_loading = 'eager' %}
+{% endif %}
+
+{% if breakpoint == 'lg' %}
+  {% assign desktop_breakpoint = 'hidden lg:block' %}
+  {% assign mobile_breakpoint = 'lg:hidden' %}
+{% endif %}
+
+{% style %}
+  @media (min-width: 768px) and (max-width: 1025px) {
+    .ipad-ratio {
+      padding-top: 65%!important;
+      justify-content: end;
+    }
+  }
+{% endstyle %}
+
+{% if aspect_image %}
+  <div x-data class="relative w-full h-full {% if template == '404' %}ipad-ratio{% endif %} {{ classes }} {{ desktop_breakpoint }}" style="padding-top: {{ ratio_desktop }}" >
+    <img
+      class="absolute inset-0 w-full h-full object-cover {{ image_classes }}"
+      src="{{ image_desktop | img_url: width_desktop }}"
+      alt="{{ image_alt_desktop }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+  </div>
+  <div class="relative w-full h-full {{ classes }} {{ mobile_breakpoint }}" style="padding-top: {{ ratio_mobile }}">
+    <img
+      class="absolute inset-0 w-full h-full object-cover {{ image_classes }}"
+      src="{{ image_mobile | img_url: width_mobile }}"
+      alt="{{ image_alt_mobile }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+  </div>
+{% else %}
+    <img
+      class="{{ image_classes }} {{ desktop_breakpoint }}"
+      src="{{ image_desktop | img_url: width_desktop }}"
+      alt="{{ image_alt_desktop }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+    <img
+      class="{{ image_classes }} {{ mobile_breakpoint }}"
+      src="{{ image_mobile | img_url: width_mobile }}"
+      alt="{{ image_alt_mobile }}"
+      loading="{{ lazy_loading }}"
+      draggable="false"
+    />
+{% endif %}

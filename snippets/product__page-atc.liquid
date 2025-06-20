@@ -1,0 +1,19 @@
+{% comment %} If product is available, OR if product is not available but can be pre ordered, OR if product is not available and can't be preordered and not eligible for waitlist {% endcomment %}
+<template x-if="reactiveData.activeVariant?.inventory > 0 || (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ||  (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order' && !reactiveData.activeVariant?.enableWaitlist)">
+  <div class="atc-button__wrapper flex flex-1 xl:flex-initial 2xl:flex-1 h-full">
+    <button
+      class="button__atc sticky mobile w-full h-full"
+      @click.prevent="$store.main.addVariant({
+        variantId: $store.main.activeProductVariantId ? $store.main.activeProductVariantId : '{{ product.first_available_variant.id }}',
+        openCart: true,
+        quantity,
+        button: 'pdp',
+      })"
+      :disabled="reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order' && reactiveData.activeVariant?.inventoryPolicy !== 'continue'"
+    >
+      <span
+        x-text="(reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order') && reactiveData.activeVariant?.inventoryPolicy !== 'continue' ? 'Sold Out' : (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ? 'Pre Order&nbsp;&nbsp;•&nbsp;&nbsp;' : 'Add to cart&nbsp;&nbsp;•&nbsp;&nbsp;'"></span></span>
+      <span x-show="reactiveData.activeVariant?.inventory > 0 || reactiveData.activeVariant?.oosStatus === 'Pre Order' || reactiveData.activeVariant?.inventoryPolicy === 'continue'" x-price="reactiveData.activeVariant?.variantPrice * quantity" class="skio-product-price"></span>
+    </button>
+  </div>
+</template>
