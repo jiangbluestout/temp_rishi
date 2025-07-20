@@ -28,8 +28,7 @@
         "h3.faq-copy-title {text-align: center;}"
       ],
       "settings": {
-        "category": "{{ article.metafields.custom.faq_heading.value }}",
-        "description": "{{ article.metafields.custom.faq_description | metafield_tag }}"
+        "category": "{{ article.metafields.custom.faq_heading.value }}"
       }
     },
     "08f04a6f-8c8d-46ac-b0d8-ec7c03a30841": {

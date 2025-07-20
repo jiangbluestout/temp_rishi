@@ -50,7 +50,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
           v-html="message"
         ></div>
       </div>
-
+      <ig-shipping-progress-container></ig-shipping-progress-container>
       <div
         class="rebuy-cart__flyout-shipping-bar"
         v-if="freeShippingEnabled()"
