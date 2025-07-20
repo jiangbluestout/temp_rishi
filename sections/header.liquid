@@ -50,8 +50,12 @@
       document.body.classList.add('has-banner');
       $store.main.showBanner = true;setTimeout(() => {
       const element = document.querySelector('#collection-banner-top-padding');
+      const productTop = document.querySelector('#product-banner-top-padding');
         if (element) {
-          element.classList.add('mt-16');
+          element.classList.add('mt-8');
+        }
+        if (productTop) {
+          productTop.classList.add('mt-16');
         }
       }, 200);
     },

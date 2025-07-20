@@ -194,12 +194,18 @@
             x-init="
               window.addEventListener('scroll', () => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                console.log(scrollTop)
+                const TocBar = document.querySelector('.tabs-navigation__inner')
                 hasSeenAtcButton = true;
                 if (scrollTop > 500 && showStickyAtc) {
-                  showStickyAtc = true;
+                  showStickyAtc = true;        
+                  if (TocBar.classList.contains('hidden')) {
+                    TocBar.classList.remove('hidden');
+                  }   
                 } else {
                   showStickyAtc = false;
+                  if (!TocBar.classList.contains('hidden')) {
+                    TocBar.classList.add('hidden');
+                  }     
                 }
               });
             "
@@ -240,7 +246,7 @@
         </template>
       </div>
       {% render 'product__inventory-note' %}
-      {% unless product.has_only_default_variant %}
+      {% comment %} {% unless product.has_only_default_variant %}
         <div class="tabs-navigation__inner mobile">
         <hr class="text-dark/[0.15] mb-[13px] lg:mb-6">
         <label class="para-xs uppercase font-[500] text-dark/50">Info:</label>
@@ -283,7 +289,7 @@
                 </ul>
             </nav>
         </div>
-      {% endunless %}
+      {% endunless %} {% endcomment %}
     {% if product.metafields.custom.show_rebuy_dynamic_bundle_widget %}
       <div class="pt-10 lg:max-w-[550px] mx-0">
         <div data-rebuy-id="{{ product.metafields.custom.show_rebuy_dynamic_bundle_widget }}" data-rebuy-shopify-product-ids="{{ product.id }}"></div>

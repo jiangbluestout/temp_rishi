@@ -1,0 +1,311 @@
+<style>
+  .tabs-navigation__inner {
+    background: #faf9f7;
+    z-index: 2000;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    transform: translateY(-150%);
+    pointer-events: none; 
+  }
+
+  .tabs-navigation__inner.visible {
+    transform: translateY(0);
+    pointer-events: auto; /* Enable interaction when visible */
+  }
+
+  .tabs-navigation__inner nav ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 10px 20px;
+    margin: 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .tabs-navigation__inner nav ul li a.tab-link {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 300;
+    text-decoration: none;
+    {% comment %} border-bottom: 2px solid transparent; {% endcomment %}
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    color: #9ba3a2;
+  }
+
+  .tabs-navigation__inner nav ul li a.tab-link:hover {
+    {% comment %} border-bottom-color: rgba(0, 0, 0, 0.3); {% endcomment %}
+  }
+
+  .tabs-navigation__inner nav ul li a.tab-link.active {
+    font-weight: 300;
+    color: #000;
+    border-bottom-color: rgb(168, 134, 103);
+  }
+
+  @media (max-width: 768px) {
+    .tabs-navigation__inner {
+      border-radius: 3px;
+    }
+    
+    .tabs-navigation__inner nav ul {
+      justify-content: flex-start;
+      gap: 0px;
+      padding: 5px 10px;
+    }
+  }
+
+  .tabs-zIndex {
+    z-index: 2000;
+  }
+  .tabNav-in {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .tabNav-out {
+    transform: translateY(-120%);
+    pointer-events: none;
+  }
+</style>
+<div class="px-2 md:px-6 fixed top-0 left-0 right-0 tabs-zIndex">
+  <div class="tabs-navigation__inner "
+    x-data="{
+      handleScrollInit() {
+        const tabsZindex = document.querySelector('.tabs-zIndex');
+        this.$watch('$store.main.isNavScrolled', (value) => {
+          if (value) {
+            $el.classList.add('tabNav-in');
+            $el.classList.remove('tabNav-out');
+            tabsZindex.style.zIndex = '2000'; 
+          } else {
+            $el.classList.add('tabNav-out');
+            $el.classList.remove('tabNav-in');
+            tabsZindex.style.zIndex = '500';
+          }
+        });
+      }
+    }"
+    x-init="handleScrollInit()"
+    x-cloak
+  >
+    {% comment %} <hr class="text-dark/[0.15] mb-[13px] lg:mb-6"> {% endcomment %}
+    {% comment %} <label class="para-xs uppercase font-[500] text-dark/50">Info:</label> {% endcomment %}
+    {% assign text_image_split_exists = false %}
+    {% assign ingredients_exists = false %}
+    {% assign prep_exists = false %}
+    {% assign origin_exists = false %}
+    
+    {% for component in product.metafields.custom.sections.value %}
+      {% assign type = component.system.type %}
+      {% if type != blank %}
+        {% case type %}
+          {% when 'text_image_split' %}
+            {% assign text_image_split_exists = true %}
+          {% when 'ingredients' %}
+            {% assign ingredients_exists = true %}
+          {% when 'prep' %}
+            {% assign prep_exists = true %}
+          {% when 'origin' %}
+            {% assign origin_exists = true %}
+        {% endcase %}
+      {% endif %}
+    {% endfor %}
+    <nav>
+      <ul>
+        <li><a href="#" class="tab-link active" id="details-product-tab">Details</a></li>
+        {% if text_image_split_exists %}
+          <li><a href="#about-product" class="tab-link" id="about-product-tab">About</a></li>
+        {% endif %}
+        {% if origin_exists %}
+          <li><a href="#product-origin" class="tab-link" id="origin-product-tab">Origin</a></li>
+        {% endif %}
+        {% if ingredients_exists %}
+          <li><a href="#product-ingredients" class="tab-link" id="ingredients-product-tab">Ingredients</a></li>
+        {% endif %}
+        {% if prep_exists %}
+          <li><a href="#product-preparation" class="tab-link" id="preparation-product-tab">Preparation</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabsNav = document.querySelector('.tabs-navigation__inner');
+    const headerWrapper = document.querySelector('.header__wrapper');
+    const tabsZindex = document.querySelector('.tabs-zIndex');
+    const tabLinks = document.querySelectorAll('.tab-link');
+    let lastScrollTop = 0;
+    let isTabClickBool = false; // Flag to detect tab link click
+
+    const tabsNav_about = document.getElementById('about-product');
+    const tabsNav_origin = document.getElementById('product-origin');
+    const tabsNav_ingredients = document.getElementById('product-ingredients');
+    const tabsNav_preparation = document.getElementById('product-preparation');
+
+    const tabsNav_details_tab = document.getElementById('details-product-tab');
+    const tabsNav_about_tab = document.getElementById('about-product-tab');
+    const tabsNav_origin_tab = document.getElementById('origin-product-tab');
+    const tabsNav_ingredients_tab = document.getElementById('ingredients-product-tab');
+    const tabsNav_preparation_tab = document.getElementById('preparation-product-tab');
+    
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    
+    {% comment %} First Loading {% endcomment %}
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    // Handle scroll behavior for showing/hiding the tabs-navigation__inner
+    window.addEventListener('scroll', function () {
+      
+      //if (isTabClickBool) return; // Skip scroll logic if triggered by a tab link click
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (tabsNav.classList.contains('tabNav-out') || tabsNav.classList.contains('hidden')){
+        if (headerWrapper.classList.contains('header-out')) {
+          headerWrapper.classList.add('header-in');
+          headerWrapper.classList.remove('header-out');
+        }
+      }
+      else if(tabsNav.classList.contains('tabNav-in')){
+        if (headerWrapper.classList.contains('header-in')) {
+          headerWrapper.classList.remove('header-in');
+          headerWrapper.classList.add('header-out');
+        }
+      }
+
+      if (scrollTop <= 200 && scrollTop < lastScrollTop) {
+        if(tabsNav) {
+          tabsNav.classList.add('tabNav-out');
+        }
+        if(headerWrapper) {
+          headerWrapper.classList.add('header-in');
+          headerWrapper.classList.remove('header-out');
+        }
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Prevent negative scroll values
+
+
+      //process tab active
+      if (isTabClickBool) return; // Skip scroll logic if triggered by a tab link click
+      if(tabsNav_details_tab)
+      {
+        if (window.scrollY < 1500) {
+          removeTabsActive();
+          tabsNav_details_tab.classList.add('active');
+        } else {
+          if (tabsNav_details_tab.classList.contains('active'))
+            tabsNav_details_tab.classList.remove('active');
+        }
+      }
+      if(tabsNav_about && tabsNav_about_tab)
+      {
+        var tav_rect = tabsNav_about.getBoundingClientRect();
+
+       
+        // if (tav_rect.top >= 0 && tav_rect.top <= 400 && tav_rect.bottom <= window.innerHeight) { 
+        if (tav_rect.top <= window.innerHeight-400 && tav_rect.top >= (tav_rect.bottom - tav_rect.top) * (-1)) { 
+          removeTabsActive();
+          tabsNav_about_tab.classList.add('active');
+        } else {
+          if (tabsNav_about_tab.classList.contains('active'))
+            tabsNav_about_tab.classList.remove('active');
+        }
+      }
+      if(tabsNav_origin && tabsNav_origin_tab)
+      {
+        var tav_rect = tabsNav_origin.getBoundingClientRect();
+        // if (tav_rect.top >= 0  && tav_rect.top <= 400 && tav_rect.bottom <= window.innerHeight) {
+        if (tav_rect.top <= window.innerHeight-400 && tav_rect.top >= (tav_rect.bottom - tav_rect.top) * (-1)) { 
+          removeTabsActive();
+          tabsNav_origin_tab.classList.add('active');
+        } else {
+          if (tabsNav_origin_tab.classList.contains('active'))
+            tabsNav_origin_tab.classList.remove('active');
+        }
+      }
+      if(tabsNav_ingredients && tabsNav_ingredients_tab)
+      {
+        var tav_rect = tabsNav_ingredients.getBoundingClientRect();
+        // if (tav_rect.top >= 0  && tav_rect.top <= 400 && tav_rect.bottom <= window.innerHeight) {
+        if (tav_rect.top <= window.innerHeight-400 && tav_rect.top >= (tav_rect.bottom - tav_rect.top) * (-1)) { 
+          removeTabsActive();
+          tabsNav_ingredients_tab.classList.add('active');
+        } else {
+          if (tabsNav_ingredients_tab.classList.contains('active'))
+            tabsNav_ingredients_tab.classList.remove('active');
+        }
+      }
+      if(tabsNav_preparation && tabsNav_preparation_tab)
+      {
+        var tav_rect = tabsNav_preparation.getBoundingClientRect();
+        // if (tav_rect.top >= 0  && tav_rect.top <= 400 && tav_rect.bottom <= window.innerHeight) {
+        if (tav_rect.top <= window.innerHeight-400 && tav_rect.top >= (tav_rect.bottom - tav_rect.top) * (-1)) { 
+          removeTabsActive();
+          tabsNav_preparation_tab.classList.add('active');
+        } else {
+          if (tabsNav_preparation_tab.classList.contains('active'))
+            tabsNav_preparation_tab.classList.remove('active');
+        }
+      }
+    }); 
+    function removeTabsActive()
+    {
+      if (tabsNav_details_tab && tabsNav_details_tab.classList.contains('active'))
+        tabsNav_details_tab.classList.remove('active');
+      if (tabsNav_about_tab && tabsNav_about_tab.classList.contains('active'))
+        tabsNav_about_tab.classList.remove('active');
+      if (tabsNav_origin_tab && tabsNav_origin_tab.classList.contains('active'))
+        tabsNav_origin_tab.classList.remove('active');
+      if (tabsNav_ingredients_tab && tabsNav_ingredients_tab.classList.contains('active'))
+        tabsNav_ingredients_tab.classList.remove('active');
+      if (tabsNav_preparation_tab && tabsNav_preparation_tab.classList.contains('active'))
+        tabsNav_preparation_tab.classList.remove('active');
+    }
+
+    // Adjust scroll position when clicking tab links
+    tabLinks.forEach(link => {
+      link.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        isTabClickBool = true; // Set flag to true on tab link click
+        const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+
+        if (targetId === '') {
+          // If href is "#", scroll to the top of the page
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Smooth scrolling
+          });
+        } else {
+          const targetElement = document.getElementById(targetId);
+
+          if (targetElement) {
+            const headerHeight = tabsNav.offsetHeight || 100; // Dynamically get the height of the fixed header
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Get the target element's position
+            let offset = headerHeight + 100; // Adjust scroll offset (header height + 100px)
+
+            if (targetId == 'about-product') {
+              offset = headerHeight + 130; // Adjust to move 50px above the target
+            }
+
+            window.scrollTo({
+              top: targetPosition - offset,
+              behavior: 'smooth' // Smooth scrolling
+            });
+          }
+        }
+
+        // Reset the flag after scrolling completes
+        
+        setTimeout(() => {
+         isTabClickBool = false;
+        },1000);
+        
+      });
+    });
+  });
+</script>

@@ -283,13 +283,13 @@
           {% endif %}
         {% when 3 %}
         {% else %}
-          {% if product.metafields.custom.usecase.value == blank %}
+          {% comment %} {% if product.metafields.custom.usecase.value == blank %}
             {% if size_count > 1 %}
               Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
             {% else %}
               Also available in <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
             {% endif %}
-          {% endif %}
+          {% endif %} {% endcomment %}
       {% endcase %}
     </div>
     <div class="best-sellers__product-card-price hidden self-end leading-1.5	md:self-end text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end">

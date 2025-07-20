@@ -4,9 +4,10 @@
     x-data="{ fadeIn: false }"
     x-intersect.threshold.10="fadeIn = true"
     :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+    id="product-ingredients"
   >
     <hr class="text-brown/50 h-[1px] mb-[14px] lg:mb-5">
-    <h3 id="product-ingredients" class="para-2xs pb-4 md:pb-12">Ingredients</h3>
+    <h3  class="para-2xs pb-4 md:pb-12">Ingredients</h3>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-3 gap-y-[14px] lg:gap-5 w-full px-[4px] lg:px-0">
       {% for ingredient in data.ingredients.value %}
         <div class="col-span-1 grid grid-cols-6 gap-3 lg:gap-5">

@@ -3509,9 +3509,9 @@ video {
 }
 .pt-\[68\%\]{
   padding-top: 68%;
-}
+} 
 .pt-\[var\(--nav-height\)\]{
-  padding-top: var(--nav-height);
+  padding-top: var(--nav-height-update);
 }
 .pt-30 {
   padding-top: 7.5rem;
@@ -4139,6 +4139,7 @@ body {
   --nav-height-mobile: 68px;
   --banner-height-desktop: 0px;
   --banner-height-mobile: 0px;
+  --nav-height-search-bar: 46px;
   --nav-height-desktop-banner: calc(
     var(--nav-height-desktop) + var(--banner-height-desktop)
   );
@@ -4147,6 +4148,9 @@ body {
   );
   --nav-height-mobile-banner: calc(
     var(--nav-height-mobile) + var(--banner-height-mobile)
+  );
+  --nav-height-update: calc(
+    var(--nav-height-mobile) + var(--banner-height-mobile) + var(--nav-height-search-bar)
   );
   --nav-height: var(--nav-height-mobile-banner);
   --container-padding: var(--container-padding-mobile);
@@ -4257,11 +4261,11 @@ input[type=search]::-webkit-search-results-decoration {
   }
 }
 .header-out {
-  animation: headerOut 150ms ease-in-out forwards;
+  animation: headerOut 0ms ease-in-out forwards;
 }
 
 .header-in {
-  animation: headerIn 250ms ease-in-out forwards;
+  animation: headerIn 0ms ease-in-out forwards;
 }
 
 .junip-product-review-container {
@@ -6533,9 +6537,9 @@ a.tab-link {
   display: block;
 }
 
-.tabs-navigation__inner {
+/* .tabs-navigation__inner {
   margin-top: 30px;
-}
+} */
 
 .dimenstion-and-volume {
   margin-top: 5px;
@@ -6607,12 +6611,12 @@ a.tab-link {
   }
 }
 /* Helpful accessories */
-.tabs-navigation__inner.mobile {
+/* .tabs-navigation__inner.mobile {
   display: none;
-}
+} */
 
 @media (max-width: 1024px) {
-  .tabs-navigation__inner.desktop {
+  /* .tabs-navigation__inner.desktop {
     display: none;
   }
   .tabs-navigation__inner.mobile {
@@ -6626,7 +6630,7 @@ a.tab-link {
     padding-bottom: 10px;
     flex-wrap: nowrap;
     justify-content: space-between;
-  }
+  } */
   .tabs-navigation__inner.mobile {
     text-align: center;
   }
@@ -6634,9 +6638,9 @@ a.tab-link {
     padding: 12px 25px;
     border-radius: 50%;
   }
-  .tabs-navigation__inner {
+  /* .tabs-navigation__inner {
     margin-top: 15px;
-  }
+  } */
 }
 .sticky-qty-variant__wrapper .product-tooltip {
   display: none !important;
@@ -6712,7 +6716,7 @@ a.tab-link {
 
 @media (max-width: 1023px) {
   body:has(.header-in) .pdp-title {
-    margin-top: 48px;
+    /* margin-top: 48px; */
   }
 }
 /* custom-404-search bar ends */
@@ -7634,6 +7638,10 @@ a.tab-link {
   .md\:px-4{
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+  .md\:px-6{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
   .md\:px-7{
     padding-left: 1.75rem;

@@ -4,6 +4,7 @@
     x-intersect.threshold.10="fadeIn = true"
     class="transition-opacity duration-[1100ms] ease section-p-b medium"
     :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
+    id="product-preparation"
   >
     <div class="pt-6 px-6 pb-[38px] lg:p-16 xl:p-[120px] bg-green">
       <div
@@ -22,7 +23,7 @@
         <div class="col-span-10 lg:col-span-4 flex flex-col">
             <div class="flex flex-col bg-white py-5 px-5 lg:px-6 rounded-4 {% if data.display.value != 'Quote' %} h-full {% else %} h-fit {% endif %}">
             <div class="flex justify-between items-center w-full mb-8">
-                <h6 id="product-preparation" class="para-xs">Preparation</h6>
+                <h6  class="para-xs">Preparation</h6>
                 <div x-data="{ open: false }" class="relative para-sm bg-white w-[80px]">
                   <button class="toggle flex justify-between items-center w-fit" @click="open = !open">
                     <span x-text="system" class="mr-1.5"></span>
