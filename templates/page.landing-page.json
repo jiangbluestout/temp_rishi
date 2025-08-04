@@ -15,7 +15,8 @@
         "copy": "Join the Rishi Tea Club and receive monthly deliveries of our finest curated tea selections. Rishi hand selects a new tea each month and ships directly to your (or your gift recipient's) doorstep - plus, it comes with a free glass teapot in your first shipment! Simply choose from your preferred tea type and subscription duration, and you'll be on your way to an exciting exploration for the palate.",
         "image": "shopify:\/\/shop_images\/Monthly_Tea_Club_Large_CTA_A_1.jpg",
         "button_text": "SHOP NOW",
-        "button_link": "shopify:\/\/collections\/all"
+        "button_link": "shopify:\/\/collections\/all",
+        "padding_bottom": "small"
       }
     },
     "collection_slider_3y6jzz": {

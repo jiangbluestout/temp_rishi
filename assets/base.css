@@ -6663,7 +6663,7 @@ a.tab-link {
   text-decoration: underline;
 }
 
-.template-article .rte.article p a {
+.template-article .rte.article p a,.template-article .rte.article li a,.template-article .rte.article ol a {
   -webkit-text-decoration: underline;
   text-decoration: underline;
 }

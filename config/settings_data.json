@@ -48,11 +48,11 @@
           "discover_blog_title": "Tea Education",
           "discover_url": "https:\/\/rishi-tea.com\/blogs\/journal\/why-water-temperature-is-important-when-brewing-tea",
           "show_announcement_banner": true,
-          "announcement_banner_background_color": "#233747",
-          "announcement_banner_text_color": "#ffffff",
-          "announcement_banner_text": "<p>Free standard shipping on orders over $60: <a href=\"\/collections\/shop-all-tea-types\" title=\"All Tea\">Shop Now<\/a><\/p>",
-          "announcement_banner_text_home": "<p>Over 65,000 tea lovers have tried us.<\/p>",
-          "announcement_banner_text_mobile": "<p>Free standard shipping on orders over $60: <a href=\"\/collections\/shop-all-tea-types\" title=\"All Tea\">Shop Now<\/a><\/p>"
+          "announcement_banner_background_color": "#5d6342",
+          "announcement_banner_text_color": "#f5f4ed",
+          "announcement_banner_text": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_home": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_mobile": "<p>Enjoy 15% Off Sitewide, no code needed: <a href=\"\/pages\/shop-the-sale\" title=\"Shop The Sale\">Shop Now<\/a><\/p>"
         }
       },
       "footer": {

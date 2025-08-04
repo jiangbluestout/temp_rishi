@@ -45,7 +45,8 @@
             <div class="relative pt-[100%]">
               <img
                 loading="lazy"
-                alt="{{ variant.title }}"
+                {% comment %} alt="{{ variant.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
                 src="{{ variant.featured_image | img_url: '600x' }}"
                 class="absolute inset-0 w-full h-full object-cover rounded-4"
                 width="{{ image.width }}"
@@ -62,7 +63,8 @@
               <div class="relative pt-[100%]">
                 <img
                   loading="lazy"
-                  alt="{{ product.title }}"
+                  {% comment %} alt="{{ product.title }}" {% endcomment %}
+                  alt="{{ image.alt }}"
                   src="{{ image | img_url: '600x' }}"
                   class="absolute inset-0 w-full h-full object-cover rounded-4"
                   width="{{ image.width }}"
@@ -171,7 +173,8 @@
             <div class="relative pt-[100%] w-full">
               <img
                 loading="lazy"
-                alt="{{ product.title }}"
+                {% comment %} alt="{{ product.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
                 :src="image.src"
                 :srcset="image.srcset"
                 :sizes="image.sizes"
@@ -229,7 +232,8 @@
               <div class="relative pt-[100%]">
                 <img
                   loading="lazy"
-                  alt="{{ product.title }}"
+                  {% comment %} alt="{{ product.title }}" {% endcomment %}
+                  alt="{{ image.alt }}"
                   src="{{ image | img_url: '1000x' }}"
                   srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
                   sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
@@ -285,7 +289,8 @@
             <div class="relative pt-[100%] w-full">
               <img
                 loading="lazy"
-                alt="{{ product.title }}"
+                {% comment %} alt="{{ product.title }}" {% endcomment %}
+                alt="{{ image.alt }}"
                 src="{{ image | img_url: '1000x' }}"
                 srcset="{{ image | img_url: '480x' }} 480w, {{ image | img_url: '800x' }} 800w, {{ image | img_url: '1500x' }} 1500w"
                 sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"

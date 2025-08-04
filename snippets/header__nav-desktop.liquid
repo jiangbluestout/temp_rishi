@@ -377,7 +377,7 @@
             {{ section.settings.discover_heading_left }}
           </div>
 
-          <div>
+          <div class="fs-discover-mega">
             {% for block in section.blocks %}
               <div class="w-64 mr-4 inline-block">
                 {% render 'header__nav-article-card', article: block.settings.article, blog_title: block.settings.blog_title, optional_url: block.settings.url %}
@@ -407,6 +407,22 @@
 <style>
   .header-nav__wrapper button.bg-dark.text-white {
     background-color: #283645;
-}
-
+  }
+  @media (min-width: 1330px)
+  {
+    .fs-discover-mega{
+      display: flex;
+    }
+  }
+  @media(min-width: 750px)
+  {
+    .submenu-hover-btn .main-menu__parent,
+    #parent-menu-item a{
+      pointer-events: none;
+    }
+    .header__desktop-menu
+    {
+      margin-top: 30px;
+    }
+  }
 </style>

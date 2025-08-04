@@ -1,5 +1,13 @@
 {
   "sections": {
+    "36051a49-e685-43f8-8671-b879863fd66d": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#5d6342",
+        "height_desktop": 0,
+        "height_mobile": 48
+      }
+    },
     "f31131f5-be00-42f2-9e41-720ba3fdeec1": {
       "type": "component__hero-full-width",
       "disabled": true,
@@ -25,7 +33,7 @@
       "type": "component__simple-header",
       "settings": {
         "heading": "Summer Solstice Sale",
-        "description": "<p>Shop your favorite teas and botanicals and get 15% off with code <strong>SUMMER15<\/strong>.<\/p>",
+        "description": "<p>Savor the season with <strong>15% off<\/strong> all your favorite teas and botanicals, no code required. From refreshing cold brews to steamy steeps, there's a tea for every mood and every moment of the day.<\/p>",
         "background_color": "#5d6342",
         "header_text_color": "#f5f4ed"
       }
@@ -340,15 +348,6 @@
         "panel_background_color": "#a88667",
         "panel_text_color": "#ffffff",
         "panel_button_color": "button__primary white"
-      }
-    },
-    "36051a49-e685-43f8-8671-b879863fd66d": {
-      "type": "component__spacer",
-      "disabled": true,
-      "settings": {
-        "color": "#ffffff",
-        "height_desktop": 40,
-        "height_mobile": 40
       }
     },
     "e9023f74-6d3e-472a-92b9-77115a871ffb": {
@@ -736,6 +735,7 @@
     }
   },
   "order": [
+    "36051a49-e685-43f8-8671-b879863fd66d",
     "f31131f5-be00-42f2-9e41-720ba3fdeec1",
     "0b68ff36-45ea-43f6-a903-d97b79c09514",
     "917930d9-f47d-4b4b-a382-5723c3e27a5c",
@@ -744,7 +744,6 @@
     "component_collection_grid_gPGY3b",
     "d824a171-c9bb-45f9-a028-f45129b63657",
     "631080cc-3ae9-43b9-bac8-1ccfacf0e905",
-    "36051a49-e685-43f8-8671-b879863fd66d",
     "e9023f74-6d3e-472a-92b9-77115a871ffb",
     "d783a720-5c84-40bd-af9d-d26f7583f6e7",
     "7538f951-b5bf-4b0a-a689-bac13662802a",
