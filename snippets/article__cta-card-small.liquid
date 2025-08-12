@@ -2,7 +2,6 @@
   class="section-p-x md:max-w-[740px] mx-auto section-p-b medium"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   {% if data.link != blank %}
     <a href="{{ data.link }}">

@@ -3,7 +3,6 @@
     class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
     x-data="{ fadeIn: false }"
     x-intersect.threshold.10="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
   >
     {% if section.settings.article_configuration == 'config_one' %}
       <div class="grid grid-cols-12 gap-x-3 pb-12 lg:pb-0">

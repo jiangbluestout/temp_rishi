@@ -4,7 +4,6 @@
     style="background-color: {{ data.background_color }};"
     x-data="{ fadeIn: false }"
     x-intersect.threshold.10="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
   >
     <div class="rte component text-center max-w-5xl px-5 md:px-0">
       {{ data.headline | metafield_tag }}

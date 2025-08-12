@@ -31,7 +31,6 @@
 
 body.header-opened {
   overflow: hidden;
-  width: 99vw;
 }
 @media (min-width: 768px) {
   body.header-opened .header__wrapper {

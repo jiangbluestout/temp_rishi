@@ -21,7 +21,6 @@
       class="md:section-p-x pb-16 md:pb-30"
       x-data="{ fadeIn: false }"
       x-intersect.threshold.10="fadeIn = true"
-      :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
     >
       <div class="keen-slider flex overflow-x-hidden md:justify-center {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight {% endif %}">
         {% if data.image_one %}

@@ -15,7 +15,6 @@
     x-data="{ fadeIn: false }"
     class="grid grid-cols-12 w-full lg:px-6 overflow-x-hidden transition-opacity duration-[1100ms] ease section-p-b {{ padding_bottom }}"
     x-intersect.threshold.10="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
   >
     <div class="col-span-12 xl:col-span-4 flex flex-col px-3 lg:pr-0">
       <h6 class="para-xs pb-4 indent-15 md:indent-30">{{ data.eyebrow }}</h6>

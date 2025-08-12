@@ -5,7 +5,6 @@
   class="section-p-x pb-16 md:pb-20 relative"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   <div class="rte article {% if data.max_width == 'Editorial' or data.max_width == blank %} article-container {% else %} section-container tight {% endif %} whitespace-pre-wrap {{ rich_text_class | handleize }}">
     {{ rich_text | newline_to_br }}

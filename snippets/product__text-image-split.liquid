@@ -9,13 +9,11 @@
   class="flex flex-col lg:grid lg:grid-cols-12 w-full px-3 lg:px-6 transition-opacity duration-[1100ms] ease section-p-b {{ padding_bottom }}"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
-  id="about-product"
 >
   <div class="{% if data.image == blank %} col-span-12 {% else %} lg:col-span-7 {% endif %} flex flex-col">
     <div class="lg:flex flex-col w-full">
       {% if data.eyebrow %}
-        <h6  class="para-2xs mb-3">{{ data.eyebrow }}</h6>
+        <h6 id="about-product" class="para-2xs mb-3">{{ data.eyebrow }}</h6>
       {% endif %}
       {% if data.body_text %}
         <p class="font-serif text-xl lg:text-3xl tracking-4pc leading-1.5 font-100 mb-8 lg:mb-[56px]">

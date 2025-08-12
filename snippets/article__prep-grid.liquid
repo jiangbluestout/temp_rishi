@@ -2,7 +2,6 @@
   class="section-p-x pb-25 md:pb-30"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   {% if data.heading %}
     <h2 class="text-3xl md:text-5xl md:leading-1.1 pb-6 md:pb-9 text-center font-serif font-100">{{ data.heading }}</h2>

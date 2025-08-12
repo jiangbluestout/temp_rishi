@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="{{- request.locale.iso_code -}}" dir="ltr">
-  <head>{% render 'skio-head' %}
+  <head>
+{% render 'replo-head' %}{% render 'skio-head' %}
   <script>
     window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
     window._template = {

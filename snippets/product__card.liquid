@@ -1,24 +1,29 @@
 <style>
+  .best-sell-add-info
+  {
+    display: flex !important;
+    
+  }
+  @media ( min-width: 750px){
+    .best-sell-add-info
+    {
+      flex-direction: row !important;
+    }
+  }
   .best-sellers__additional-info {
     display: block;
   }
-  .best-sellers .best-sellers__product-card-price {
-    display: flex;
+  .best-sellers__product-card-price {
+    display: block;
   }
-  .product-card-price {
-    display: flex;
+  @media ( max-width: 749px){
+    .product-card-price{
+      text-align: right;
+    }
+    .best-sellers__product-card-price{
+      text-align: right;
+    }
   }
-  .best-sellers .product-card-price {
-    display: none;
-  }
-  /* .best-sellers .product-card-container-mobile {
-    position: relative;
-  }
-  .best-sellers .product-card-price {
-    position: absolute;
-    right: 0;
-    bottom: -18px;
-  } */
 </style>
 
 {% unless activeVariant %}
@@ -197,7 +202,7 @@
           {{ product.metafields.my_fields.tasting_notes }}
         </div>
       </div>
-      <div class="product-card-price hidden text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end pt-1.5">
+      <div class="product-card-price fs-ori-product-card-price-{{ product.id }} hidden text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end pt-1.5">
         {% if product.compare_at_price > product.price %}
           <div class="sale-product-wrapper">
             <span class="actual__price compare-price-strikethrough">{{ product.compare_at_price | money }}</span>
@@ -260,7 +265,7 @@
     {% assign underline_title = formatted_tag %}
   {% endif %}
 
-  <div class="flex flex-col xl:flex-row items-start md:items-start gap-1	xl:gap-0 justify-between">
+  <div class="best-sell-add-info flex flex-col xl:flex-row items-start md:items-start gap-1	xl:gap-0 justify-between">
     {% comment %} <div class="best-sellers__additional-info hidden text-xs md:text-base tracking-4pc leading-1.5">
     {% if size_count > 1 %}
       Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
@@ -282,7 +287,25 @@
             Available in {{ size_count }} sizes
           {% endif %}
         {% when 3 %}
+           <style>
+            .fs-product-card-price-{{ product.id }}{
+              display: none !important;
+            }
+            .fs-ori-product-card-price-{{ product.id }}{
+              display: block !important;
+              padding-bottom: 4px;
+            }
+           </style>
         {% else %}
+          <style>
+            .fs-product-card-price-{{ product.id }} {
+              display: none !important;
+            }
+            .fs-ori-product-card-price-{{ product.id }}{
+              display: block !important;
+              padding-bottom: 4px;
+            }
+           </style>
           {% comment %} {% if product.metafields.custom.usecase.value == blank %}
             {% if size_count > 1 %}
               Available in {{ size_count }} sizes and <a href="{{ url_link }}" class="capitalize underline">{{ underline_title }}</a>
@@ -292,7 +315,7 @@
           {% endif %} {% endcomment %}
       {% endcase %}
     </div>
-    <div class="best-sellers__product-card-price hidden self-end leading-1.5	md:self-end text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end">
+    <div class="best-sellers__product-card-price fs-product-card-price-{{ product.id }} self-end leading-1.5	md:self-end text-sm md:text-base w-24 text-dark text-opacity-75 tracking-2pc md:text-right flex justify-end md:justify-end">
         {% if product.compare_at_price > product.price %}
           <div class="sale-product-wrapper">
             <span class="actual__price compare-price-strikethrough">{{ product.compare_at_price | money }}</span>

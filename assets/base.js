@@ -4637,7 +4637,6 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
   isNavigatingToCheckout: false,
   isSearchOpen: false,
   isScrolled: false,
-  isTabClick: false,
   isNavScrolled: false,
   scrollPosition: 0,
   isNewsletterPopupOpened: false,
@@ -4661,40 +4660,18 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
     document.addEventListener("scroll", () => {
       this.onScroll();
     });
-    
-    let tabTimeoutId = null;
-    // Add tab-link click listeners ONCE
-    document.querySelectorAll('.tab-link').forEach(tab => {
-      tab.addEventListener('click', (event) => {
-        event.preventDefault();
-        this.isTabClick = true;
-        this.isNavScrolled = true;
-
-        // If a timeout is already running, clear it
-        if (tabTimeoutId !== null) {
-          clearTimeout(tabTimeoutId);
+    if (location.hash) {
+      addEventListener("load", () => {
+        const el = document.getElementById(location.hash.replace("#", ""));
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({
+              behavior: "smooth"
+            });
+          }, 100);
         }
-
-        // Start a new timeout and store its ID
-        tabTimeoutId = window.setTimeout(() => {
-          this.isTabClick = false;
-          tabTimeoutId = null; // Reset after completion
-        }, 1000);
       });
-    });
-
-    // if (location.hash) {
-    //   addEventListener("load", () => {
-    //     const el = document.getElementById(location.hash.replace("#", ""));
-    //     if (el) {
-    //       setTimeout(() => {
-    //         el.scrollIntoView({
-    //           behavior: "smooth"
-    //         });
-    //       }, 100);
-    //     }
-    //   });
-    // }
+    }
     this.bindRebuyEvents();
     alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].effect(() => {
       const cart = this.cart;
@@ -4709,37 +4686,15 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
       };
     });
   },
-  // onScroll() {
-    
-  //   var diff = 0;
-  //   if (window.scrollY > 100) {
-  //     this.isScrolled = true;
-  //     diff = this.scrollPosition - window.scrollY;
-  //     // console.log("diff : ", diff);
-  //     if (this.scrollPosition > window.scrollY && diff > 32) {
-  //       this.isNavScrolled = false;
-  //     } else if (this.scrollPosition < window.scrollY && diff < -32) {
-  //       this.isNavScrolled = true;
-  //     }
-  //     this.scrollPosition = window.scrollY;
-      
-  //   } else {
-  //     this.isScrolled = false;
-  //     this.isNavScrolled = false;
-  //   }
-  // },
   onScroll() {
-    console.log(window.scrollY);
-    // Only block scroll logic if a tab was just clicked
-    if (this.isTabClick) {
-      return;
-    }
-
+    var diff = 0;
     if (window.scrollY > 100) {
       this.isScrolled = true;
-      if (this.scrollPosition > window.scrollY) {
+      diff = this.scrollPosition - window.scrollY;
+      // console.log("diff : ", diff);
+      if (this.scrollPosition > window.scrollY && diff > 32) {
         this.isNavScrolled = false;
-      } else if (this.scrollPosition < window.scrollY) {
+      } else if (this.scrollPosition < window.scrollY && diff < -32) {
         this.isNavScrolled = true;
       }
       this.scrollPosition = window.scrollY;
@@ -4748,9 +4703,6 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
       this.isScrolled = false;
       this.isNavScrolled = false;
     }
-  },
-  onTabLinkClick() {
-    this.isTabClick = true;
   },
   toggleMobileNav() {
     this.isMobileNavOpen = !this.isMobileNavOpen;

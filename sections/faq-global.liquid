@@ -40,18 +40,10 @@
 >
  
   <div class="section-container">
-    {% assign answer = section.settings.description | strip_html %}
-    {% assign title = section.settings.category| strip_html %}
-
-    {% if title != blank %}
+    {% if section.settings.category != blank %}
       <h3 class="faq-copy-title">
         {{ section.settings.category }}
       </h3>
-    {% endif %}
-    {% if answer != blank %}
-      <div class="rte text-center">
-        {{ section.settings.description }}
-      </div>
     {% endif %}
     <div class="flex flex-col">
           
@@ -101,11 +93,6 @@
       "type": "text",
       "id": "category",
       "label": "FAQ Title"
-    },
-    {
-      "type": "richtext",
-      "id": "description",
-      "label": "FAQ Description"
     }
   ],
   "blocks": [

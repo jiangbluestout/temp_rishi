@@ -1,5 +1,5 @@
 <style>
-  .tabs-navigation__inner {
+  .bs-cro-hidden .tabs-navigation__inner {
     background: #faf9f7;
     z-index: 2000;
     transition: transform 0.3s ease-in-out;
@@ -8,12 +8,12 @@
     pointer-events: none; 
   }
 
-  .tabs-navigation__inner.visible {
+  .bs-cro-hidden .tabs-navigation__inner.visible {
     transform: translateY(0);
     pointer-events: auto; /* Enable interaction when visible */
   }
 
-  .tabs-navigation__inner nav ul {
+  .bs-cro-hidden .tabs-navigation__inner nav ul {
     display: flex;
     gap: 10px;
     list-style: none;
@@ -24,7 +24,7 @@
     justify-content: center;
   }
 
-  .tabs-navigation__inner nav ul li a.tab-link {
+  .bs-cro-hidden .tabs-navigation__inner nav ul li a.tab-link {
     display: inline-block;
     font-size: 14px;
     font-weight: 300;
@@ -35,22 +35,22 @@
     color: #9ba3a2;
   }
 
-  .tabs-navigation__inner nav ul li a.tab-link:hover {
+  .bs-cro-hidden .tabs-navigation__inner nav ul li a.tab-link:hover {
     {% comment %} border-bottom-color: rgba(0, 0, 0, 0.3); {% endcomment %}
   }
 
-  .tabs-navigation__inner nav ul li a.tab-link.active {
+  .bs-cro-hidden .tabs-navigation__inner nav ul li a.tab-link.active {
     font-weight: 300;
     color: #000;
     border-bottom-color: rgb(168, 134, 103);
   }
 
   @media (max-width: 768px) {
-    .tabs-navigation__inner {
+    .bs-cro-hidden .tabs-navigation__inner {
       border-radius: 3px;
     }
     
-    .tabs-navigation__inner nav ul {
+    .bs-cro-hidden .tabs-navigation__inner nav ul {
       justify-content: flex-start;
       gap: 0px;
       padding: 5px 10px;
@@ -61,19 +61,35 @@
     z-index: 2000;
   }
   .tabNav-in {
-    transform: translateY(0);
-    pointer-events: auto;
+    transform: translateY(0)!important;
+    pointer-events: auto !important;
   }
   .tabNav-out {
-    transform: translateY(-120%);
-    pointer-events: none;
+    transform: translateY(-150%)!important;
+    pointer-events: none !important;
   }
+  .bs-cro-hidden{
+    display: none !important;
+  }
+
+  .bs-cro-hidden .tabs-navigation__inner {
+    opacity: 1!important;
+  }
+
+  .bs-cro-hidden .tabs-navigation__inner.hidden {
+    opacity: 0!important;
+  }
+
+  .bs-cro-hidden .tabs-navigation__inner {
+    margin-top: 0!important;
+  }
+  
 </style>
-<div class="px-2 md:px-6 fixed top-0 left-0 right-0 tabs-zIndex">
+<div class="px-2 md:px-6 fixed top-0 left-0 right-0 tabs-zIndex bs-cro-hidden">
   <div class="tabs-navigation__inner "
     x-data="{
       handleScrollInit() {
-        const tabsZindex = document.querySelector('.tabs-zIndex');
+        const tabsZindex = document.querySelector('.bs-cro-hidden.tabs-zIndex');
         this.$watch('$store.main.isNavScrolled', (value) => {
           if (value) {
             $el.classList.add('tabNav-in');
@@ -134,9 +150,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const tabsNav = document.querySelector('.tabs-navigation__inner');
+    const tabsNav = document.querySelector('.bs-cro-hidden .tabs-navigation__inner');
     const headerWrapper = document.querySelector('.header__wrapper');
-    const tabsZindex = document.querySelector('.tabs-zIndex');
+    const tabsZindex = document.querySelector('.bs-cro-hidden.tabs-zIndex');
     const tabLinks = document.querySelectorAll('.tab-link');
     let lastScrollTop = 0;
     let isTabClickBool = false; // Flag to detect tab link click
@@ -164,7 +180,7 @@
       //if (isTabClickBool) return; // Skip scroll logic if triggered by a tab link click
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      if (tabsNav.classList.contains('tabNav-out') || tabsNav.classList.contains('hidden')){
+      if (tabsNav.classList.contains('tabNav-out')){
         if (headerWrapper.classList.contains('header-out')) {
           headerWrapper.classList.add('header-in');
           headerWrapper.classList.remove('header-out');
@@ -286,10 +302,10 @@
           if (targetElement) {
             const headerHeight = tabsNav.offsetHeight || 100; // Dynamically get the height of the fixed header
             const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset; // Get the target element's position
-            let offset = headerHeight + 100; // Adjust scroll offset (header height + 100px)
+            let offset = headerHeight + 0; // Adjust scroll offset (header height + 100px)
 
             if (targetId == 'about-product') {
-              offset = headerHeight + 130; // Adjust to move 50px above the target
+              offset = headerHeight + 0; // Adjust to move 50px above the target
             }
 
             window.scrollTo({

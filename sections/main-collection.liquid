@@ -29,7 +29,7 @@
 
 {% if cta_block_small == blank %}
   {% assign paginate_count = 18 %}
-{% endif  %}
+{% endif 
 
   {% assign elevate_variant_ids = '' %} <!-- Initialize an empty string -->
 {%- assign elevate_tests = shop.metafields.elevateab.tests.value -%}
@@ -99,13 +99,13 @@
       {% paginate collection.products by paginate_count %}
         <div class="product-grid grid grid-cols-2 lg:grid-cols-3 gap-y-8 md:gap-y-10 gap-x-2 md:gap-x-3 pb-12 md:pb-20">
           {% for product in collection.products %}
-            {% comment %} {% unless product.metafields.seo.hidden == 1 %} {% endcomment %}
+            {% unless product.metafields.seo.hidden == 1 %}
 
               {% assign string_product_id = product.id | append: '' %} <!-- Convert product ID to string -->
 
-              {% if elevate_variant_ids contains string_product_id %}
-                {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
-              {% endif %}
+                {% if elevate_variant_ids contains string_product_id %}
+                  {% continue %} <!-- Skip this iteration if product ID is in variant_ids -->
+                {% endif %}
               
               {% if paginate.current_page == 1 %}
                 {% if forloop.index == 5 or forloop.index == 10 %}
@@ -188,7 +188,7 @@
                 {% endif %}
               {% endif %}
 
-              {% for val in elevate_tests %}
+     {% for val in elevate_tests %}
                   {% assign testID = val[0] %}
                   {%- assign testData = val[1] -%}
                   {% if testID == 'settings' or testData.data.isLive == false %}
@@ -209,8 +209,10 @@
                         </div>
                     {% endfor %}
                   {% endif %}
-              {% endfor %}
-            {% comment %} {% endunless %} {% endcomment %}
+                {% endfor %}
+
+        
+            {% endunless %}
           {% endfor %}
         </div>
         {% render 'pagination', paginate: paginate %}

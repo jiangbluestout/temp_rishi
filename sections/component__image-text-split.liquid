@@ -2,7 +2,6 @@
   class="section-p-x section-p-b {{ section.settings.padding_bottom }}"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   <div class="relative flex gap-y-12  {% if section.settings.flip_orientation %} flex-col md:flex-row-reverse {% else %} flex-col-reverse md:flex-row {% endif %}">
     <div class="md:w-1/2 h-fit {% if section.settings.flip_orientation %} md:pl-[17vw] {% else %} md:pr-[17vw] {% endif%}">

@@ -2,7 +2,6 @@
   class="section-p-x pb-16 md:pb-25"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   <div class="flex flex-col md:flex-row gap-3 {% if data.max_width == 'Container' or data.max_width == blank %} section-container tight{% endif %}">
     <div>

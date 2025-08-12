@@ -55,7 +55,6 @@
     class="section-p-b md:p-6 md:pb-px p-2 pb-px {{ section.settings.padding_bottom }}"
     x-data="{ fadeIn: false }"
     x-intersect.threshold.10="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
   >
     <div
       class="overflow-x-hidden"

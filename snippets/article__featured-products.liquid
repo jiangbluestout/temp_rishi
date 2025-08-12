@@ -26,7 +26,6 @@
     class="md:section-p-x pb-16 md:pb-25"
     x-data="{ fadeIn: false }"
     x-intersect.threshold.10="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
   >
     <div class="section-container tight">
       {% if data.heading != blank %}

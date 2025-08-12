@@ -2,7 +2,6 @@
   class="px-7 section-container flex flex-col lg:flex-row transition-opacity duration-[1100ms] ease section-p-b small overflow-x-hidden"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   {% assign textDesktop = data.text | metafield_tag %}
   {% assign textMobile = data.text_mobile | metafield_tag %}

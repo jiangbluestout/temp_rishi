@@ -2,7 +2,6 @@
   class="section-p-b section-p-x {{ section.settings.padding_bottom }} transition-opacity duration-800 ease"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   <div class="pb-8 md:pb-9 flex justify-start md:justify-between">
     <div class="heading-xl whitespace-pre-wrap">{{ section.settings.heading | newline_to_br }}</div>

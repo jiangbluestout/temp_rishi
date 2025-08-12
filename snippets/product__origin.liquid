@@ -24,8 +24,6 @@
     class="transition-opacity duration-[1100ms] ease section-p-b small"
     x-data="{ fadeIn: false }"
     x-intersect="fadeIn = true"
-    :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
-    id="product-origin"
   >
   <div class="relative lg:bg-green/20">
     {% if background_map_desktop %}
@@ -49,7 +47,7 @@
         <div>
           {% if data.eyebrow_text %}
             <div class="lg:border-b border-brown pb-6">
-              <h4  class="para-2xs">{{ data.eyebrow_text }}</h4>
+              <h4 id="product-origin" class="para-2xs">{{ data.eyebrow_text }}</h4>
             </div>
           {% endif %}
           <div class="lg:pt-6">

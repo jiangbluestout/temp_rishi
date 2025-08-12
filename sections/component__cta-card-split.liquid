@@ -2,7 +2,6 @@
   class="section-p-b {{ section.settings.padding_bottom }} section-p-x"
   x-data="{ fadeIn: false }"
   x-intersect.threshold.10="fadeIn = true"
-  :class="fadeIn ? 'animate-fade-in' : 'opacity-0'"
 >
   <div class="{% unless section.settings.full_width %} container {% endunless %}">
     <div class="hidden lg:flex flex-row gap-3">
