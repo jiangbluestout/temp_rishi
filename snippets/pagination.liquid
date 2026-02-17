@@ -2,8 +2,9 @@
   <div class="flex justify-between items-center w-full mt-12 md:mt-14 max-w-3xl mx-auto text-brown">
     <div>
       <a
-        class="text-brown uppercase text-md tracking-8pc font-500 {% unless paginate.previous %} opacity-50 pointer-events-none cursor-not-allowed {% endunless %}"
+        class="text-brown uppercase text-md tracking-8pc font-500 {% unless paginate.previous %} opacity-100 pointer-events-none cursor-not-allowed {% endunless %}"
         href="{% if template.suffix == 'new' and paginate.previous %}{{ request.path }}?view=new&page={{ paginate.current_page | minus: 1 }}{% else %}{{ paginate.previous.url }}{% endif %}"
+        style="color: #866b53 !important"
       >
         Prev
       </a>
@@ -12,21 +13,21 @@
       <div class="flex flex-row text-md font-500 gap-2.5">
         {%- for part in paginate.parts -%}
           {%- if part.is_link -%}
-            <a class="text-brown p-1.5"
+            <a class="text-brown p-1.5" style="color: #866b53;"
               href="{% if template.suffix == 'new' %}{{ request.path }}?view=new&page={{ part.title }}{% else %}{{ part.url }}{% endif %}">
               {{ part.title }}
             </a>
           {%- elsif part.is_dots -%}
-            <span class="text-brown p-1.5">...</span>
+            <span class="text-brown p-1.5" style="color: #866b53;">...</span>
           {%- elsif part.is_truncated -%}
             <span class="text-brown p-1.5">{{ part.title }}</span>
           {%- else -%}
             {%- if part.title == paginate.current_page -%}
-              <div class="border rounded-[100%] p-1.5" aria-current="page">
+              <div class="border rounded-[100%] p-1.5" aria-current="page" style=" color: #866b53 !important; border-color: #866b53 !important; ">
                 {{ part.title }}
               </div>
             {%- else -%}
-              <div class="text-brown p-1.5">
+              <div class="text-brown p-1.5" style="color: #866b53;">
                 {{ part.title }}
               </div>
             {%- endif -%}
@@ -36,8 +37,9 @@
     </div>
     <div>
       <a
-        class="text-brown uppercase text-md tracking-8pc font-500 {% unless paginate.next %} opacity-50 pointer-events-none cursor-not-allowed {% endunless %}"
+        class="text-brown uppercase text-md tracking-8pc font-500 {% unless paginate.next %} opacity-100 pointer-events-none cursor-not-allowed {% endunless %}"
         href="{% if template.suffix == 'new' and paginate.next %}{{ request.path }}?view=new&page={{ paginate.current_page | plus: 1 }}{% else %}{{ paginate.next.url }}{% endif %}"
+        style="color: #866b53 !important"
       >
         Next
       </a>

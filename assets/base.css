@@ -1056,6 +1056,8 @@ video {
   font-family: neue-haas-grotesk-text, ui-sans, sans;
   color: rgba(40, 54, 69, 0.8);
   color: rgba(40, 54, 69, var(--tw-text-opacity));
+  color: #4b4f56;
+  opacity: 1 !important;
   --tw-text-opacity: 0.8;
     height: 40px;
     line-height: 35px;
