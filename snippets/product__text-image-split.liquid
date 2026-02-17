@@ -16,9 +16,9 @@
         <h6 id="about-product" class="para-2xs mb-3">{{ data.eyebrow }}</h6>
       {% endif %}
       {% if data.body_text %}
-        <p class="font-serif text-xl lg:text-3xl tracking-4pc leading-1.5 font-100 mb-8 lg:mb-[56px]">
+        <div class="font-serif text-xl lg:text-3xl tracking-4pc leading-1.5 font-100 mb-8 lg:mb-[56px]">
           {{ data.body_text | newline_to_br }}
-        </p>
+        </div>
       {% endif %}
       <div class="hidden lg:flex w-full">
         {% if origin %}

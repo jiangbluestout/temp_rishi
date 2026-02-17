@@ -34,3 +34,98 @@
 {% else %}
  <div class="h-4 lg:h-5 xl:hidden"></div>
 {% endif %}
+
+
+{% comment %} CRO: COLLECTION LIST START {% endcomment %}
+<style>
+  .collection-list-image-with-title_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30px;
+  }
+  .collection-list-image-with-title_lists {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    overflow-x: auto;
+  }
+  .collection-list-image-with-title_item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-height: 88px;
+    border-radius: 4px;
+  }
+  .collection-list-image-with-title_item p {
+    font-size: 13px;
+    color: #283645;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 19px;
+  }
+  .collection-list-image-with-title_item {
+    width: 100%;
+    max-width: 88px;
+    min-width: 88px;
+  }
+
+  @media only screen and (max-width: 1023px) {
+    .collection-list-image-with-title {
+      width: 100%;
+      overflow: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .elemcollection-list-image-with-title::-webkit-scrollbar {
+      display: none;
+    }
+    .collection-list-image-with-title_container {
+      justify-content: flex-start;
+      padding-inline: 15px;
+
+    }
+  }
+  @media only screen and (max-width: 767px) {
+    .collection-list-image-with-title_item {
+      max-width: 78px;
+      min-width: 78px;
+    }
+    .collection-list-image-with-title_item img {
+      height: 78px;
+      width: 78px;
+    }
+    .collection-list-image-with-title_lists {
+      gap: 15px;
+    }
+  }
+</style>
+
+<div class="collection-list-image-with-title cro_collection_list_mini" style="display: none;">
+  <div class="collection-list-image-with-title_container">
+    <ul class="collection-list-image-with-title_lists">
+      {% for link in submenu.links %}
+        {% assign link_handle = link.url | split: '/' | last %}
+        {% if link_handle %}
+          {% assign current_collection = collections[link_handle] %}
+          {% if current_collection %}
+            <li class="collection-list-image-with-title_item">
+              <a href="{{ current_collection.url }}">
+                {% if current_collection.featured_image %}
+                  <img
+                    src="{{ current_collection.featured_image | img_url: '400x400' }}"
+                    alt="{{ current_collection.title }}"
+                  >
+                {% elsif current_collection.image %}
+                  <img src="{{ current_collection.image | img_url: '400x400' }}" alt="{{ current_collection.title }}">
+                {% endif %}
+                <p>{{ current_collection.title }}</p>
+              </a>
+            </li>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+{% comment %} CRO: COLLECTION LIST END {% endcomment %}

@@ -1,6 +1,9 @@
 {% assign current_handle = collection.handle %}
 
-<nav aria-label="{{ parent_collection.metafields.custom.submenu_label }} Navigation Menu" class="hidden xl:flex flex-col items-center">
+<nav
+  aria-label="{{ parent_collection.metafields.custom.submenu_label }} Navigation Menu"
+  class="hidden xl:flex flex-col items-center"
+>
   <h3 class="pb-4 opacity-60 para-xs">{{ submenu_label }}</h3>
   <ul class="flex items-center justify-center gap-2">
     {% for link in submenu.links %}

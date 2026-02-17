@@ -1,6 +1,6 @@
 {% if product.metafields.custom.product_redirect_url %}
   <script>
-      window.location.href = "{{ product.metafields.custom.product_redirect_url }}";
+    window.location.href = '{{ product.metafields.custom.product_redirect_url }}';
   </script>
 {% endif %}
 
@@ -13,7 +13,7 @@
 {%- endcapture -%}
 
 <div
-  class="grid grid-cols-6 lg:grid-cols-12 lg:gap-5 pb-16 md:pb-30"
+  class="grid grid-cols-6 lg:grid-cols-12 lg:gap-5"
   x-init="$store.main.setHeaderColors('#FFF', ''); $watch('$store.main.isScrolled', value => value ? $store.main.setHeaderColors('#F7F5F0') : $store.main.setHeaderColors('#FFF'))"
   x-data="productForm({{ productCardVariants | strip }}, {{ activeVariant.id }}, true)"
 >
@@ -22,9 +22,11 @@
   </div>
   <div
     class="col-span-6 section-p-x"
-    x-data="{
-      showStickyAtc: false,
-    }"
+    x-data="
+      {
+        showStickyAtc: false,
+      }
+    "
     x-cloak
   >
     {%- if product.gift_card? -%}
@@ -38,8 +40,9 @@
       {% render 'product__sticky-atc-mobile', product: product %}
     {%- endif -%}
   </div>
-
 </div>
+
+{% render 'custom-media-thumbnails', product: product %}
 
 {% schema %}
 {

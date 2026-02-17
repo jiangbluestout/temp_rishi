@@ -151,6 +151,8 @@ class ButtonSlider extends HTMLElement {
     const slideCurrent = this.querySelector(".slide-current");
     const slideTotal = this.querySelector(".slide-total");
     const slider = new keen_slider__WEBPACK_IMPORTED_MODULE_0__["default"](this.slidesContainer, options);
+    // Store slider instance on the component for external access
+    this.slider = slider;
     slider.on("updated", () => {
       this.slides.forEach(slide => {
         if (slideCurrent) {

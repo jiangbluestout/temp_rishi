@@ -8,26 +8,60 @@
         "image_desktop": "shopify:\/\/shop_images\/CM_-_Website_LP_Banner.jpg",
         "image_mobile": "shopify:\/\/shop_images\/CM_-_Website_LP_Banner_Mobile.jpg",
         "hide_for_abtest": false,
-        "heading": "",
-        "superscript": "",
+        "head_icon_layout_desktop": "center",
+        "head_icon_layout_mobile": "center",
+        "banner_superscript": "",
+        "text_one_size": 12,
+        "text_one_font": "neue-haas-grotesk-text",
+        "text_one_layout_desktop": "center",
+        "text_one_layout_mobile": "center",
+        "banner_heading_1": "",
+        "banner_heading_font_1": "neue-haas-grotesk-text",
+        "heading_text_size_1": 52,
+        "banner_heading_1_layout_desktop": "center",
+        "banner_heading_1_layout_mobile": "center",
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 52,
+        "banner_heading_2_layout_desktop": "center",
+        "banner_heading_2_layout_mobile": "center",
+        "banner_superscript_two": "",
+        "text_two_size": 14,
+        "text_two_font": "neue-haas-grotesk-text",
         "text_color": "#ffffff",
+        "text_two_layout_desktop": "center",
+        "text_two_layout_mobile": "center",
         "button_text": "",
         "button_link": "",
         "button_color": "button__primary white",
+        "button_text_color": "#000000",
+        "button_hover_text_color": "#000000",
+        "button_text_size": 12,
+        "button_layout_desktop": "center",
+        "button_layout_mobile": "center",
         "cta_orientation": "left",
         "cta_orientation_vertical": "middle",
+        "cta_ori_vert_mob": "middle",
         "full_width": true,
         "flush_top": true,
         "padding_bottom": "none"
       }
     },
+    "component_spacer_qb9Cbe": {
+      "type": "component__spacer",
+      "settings": {
+        "color": "#172b3b",
+        "height_desktop": 8,
+        "height_mobile": 60
+      }
+    },
     "0b68ff36-45ea-43f6-a903-d97b79c09514": {
       "type": "component__simple-header",
       "settings": {
-        "heading": "Summer Solstice Sale",
-        "description": "<p>Shop your favorite teas and botanicals and get 15% off with code <strong>SUMMER15<\/strong>.<\/p>",
-        "background_color": "#5d6342",
-        "header_text_color": "#f5f4ed"
+        "heading": "Black Friday Sale",
+        "description": "<p>Treat yourself and the ones you love to organic, Direct Trade teas from off the beaten path. Enjoy 20% off orders $125+ | 15% off orders under $125, no code needed.<\/p>",
+        "background_color": "#172b3b",
+        "header_text_color": "#ffffff"
       }
     },
     "917930d9-f47d-4b4b-a382-5723c3e27a5c": {
@@ -105,6 +139,7 @@
       "disabled": true,
       "settings": {
         "heading": "<p>Shop By Form<\/p>",
+        "description": "",
         "button_link": "shopify:\/\/collections\/shop-all-tea-types",
         "button_text": "Shop All",
         "padding_bottom": "medium"
@@ -139,15 +174,6 @@
             "products": []
           }
         },
-        "collection_8ALDga": {
-          "type": "collection",
-          "settings": {
-            "title": "Iced Teas",
-            "desc": "",
-            "collection": "iced-teas",
-            "products": []
-          }
-        },
         "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7": {
           "type": "collection",
           "settings": {
@@ -179,7 +205,6 @@
       "block_order": [
         "407a150b-0c0f-4b18-9276-9b4ced503231",
         "74f87119-4d90-40e0-bc00-9b79a063f613",
-        "collection_8ALDga",
         "41d2eaaa-eb50-4c0c-86ad-304fc13b16d7",
         "5941fc05-8048-4bfc-ade3-64c48837405e",
         "46bd4564-82b1-476e-8a0a-9ee96a5dd551"
@@ -187,6 +212,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Shop By Format",
+        "description": "",
         "full_width": true,
         "button_text": "Shop Now",
         "padding_bottom": "small",
@@ -203,8 +229,8 @@
         "collection_E3ERBe": {
           "type": "collection",
           "settings": {
-            "collection": "summer-teas",
-            "overlay_color": "#c17d8a",
+            "collection": "gifts-under-50",
+            "overlay_color": "#395125",
             "alt_title": "",
             "superscript": "",
             "count_label": "Teas"
@@ -213,8 +239,8 @@
         "collection_bU9btY": {
           "type": "collection",
           "settings": {
-            "collection": "new-arrivals",
-            "overlay_color": "#daba23",
+            "collection": "breakfast-teas",
+            "overlay_color": "#db9500",
             "alt_title": "",
             "superscript": "",
             "count_label": "Teas"
@@ -223,8 +249,8 @@
         "collection_VFGgQx": {
           "type": "collection",
           "settings": {
-            "collection": "caffeine-free",
-            "overlay_color": "#9fbc94",
+            "collection": "evening-teas",
+            "overlay_color": "#8e0001",
             "alt_title": "",
             "superscript": "",
             "count_label": "Teas"
@@ -238,7 +264,8 @@
       ],
       "name": "Collection Grid",
       "settings": {
-        "heading": "<p>Summertime Collections<\/p>",
+        "heading": "<p>Tea Gifts for All<\/p>",
+        "description": "",
         "button_link": "",
         "button_text": "Shop All",
         "padding_bottom": "medium"
@@ -270,7 +297,7 @@
           "settings": {
             "title": "",
             "desc": "",
-            "collection": "summer-teas",
+            "collection": "winter-teas",
             "products": []
           }
         },
@@ -279,7 +306,7 @@
           "settings": {
             "title": "",
             "desc": "",
-            "collection": "iced-teas",
+            "collection": "matcha-tea",
             "products": []
           }
         },
@@ -303,6 +330,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Shop Featured Collections",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "small",
@@ -332,6 +360,7 @@
       "settings": {
         "layout": "no_tabs",
         "heading": "Recommended for You",
+        "description": "",
         "full_width": true,
         "button_text": "Shop Customer Favorites",
         "padding_bottom": "small",
@@ -357,22 +386,22 @@
         "a20465b4-1cd5-4606-93f8-45564f913d02": {
           "type": "cta_card",
           "settings": {
-            "image_desktop": "shopify:\/\/shop_images\/Origin-PDP-Carousel-OrangeBlossomPuer.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Shop-the-Sale-LP-2025-Loose-Leaf-Teas-1000x1000.png",
             "superscript_left": "",
             "superscript_right": "",
             "title": "Loose Leaf Teas",
             "description": "",
-            "text_color": "#ffffff",
+            "text_color": "#283645",
             "flip_footer_orientation": false,
             "button_link": "shopify:\/\/collections\/loose-leaf-teas",
             "button_text": "Shop All Loose Leaf",
-            "button_color": "button__primary white"
+            "button_color": "button__primary"
           }
         },
         "571ee108-aca2-4432-8c6f-1bcce807d8ac": {
           "type": "cta_card",
           "settings": {
-            "image_desktop": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-RTTB-TG.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Shop-the-Sale-LP-2025-Sachet-Tea-Bags-1000x1000.png",
             "superscript_left": "",
             "superscript_right": "",
             "title": "Sachet Tea Bags",
@@ -481,6 +510,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Shop By Tea Type",
+        "description": "",
         "full_width": true,
         "button_text": "Shop Now",
         "padding_bottom": "small",
@@ -497,12 +527,12 @@
         "8bb74f53-6b52-4d57-a893-b6a528c1e959": {
           "type": "cta_card",
           "settings": {
-            "image_desktop": "shopify:\/\/shop_images\/Origin-Carousel-Lincang-1.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Shop-the-Sale-LP-2025-Garden-Direct-1000x1000.png",
             "superscript_left": "",
             "superscript_right": "",
             "title": "Garden Direct Teas",
             "description": "",
-            "text_color": "#222222",
+            "text_color": "#ffffff",
             "flip_footer_orientation": false,
             "button_link": "shopify:\/\/collections\/garden-direct-teas",
             "button_text": "Shop All Garden Direct",
@@ -512,16 +542,16 @@
         "8e867386-8e82-4c26-871f-7b1b7cf137af": {
           "type": "cta_card",
           "settings": {
-            "image_desktop": "shopify:\/\/shop_images\/PDP-Everday-Matcha-Teaware-Bundle-4.jpg",
+            "image_desktop": "shopify:\/\/shop_images\/Shop-the-Sale-LP-2025-Teaware-Essentials-1000x1000.png",
             "superscript_left": "",
             "superscript_right": "",
             "title": "Teaware Essentials",
             "description": "",
-            "text_color": "#f3f3f3",
+            "text_color": "#283645",
             "flip_footer_orientation": false,
             "button_link": "shopify:\/\/collections\/teaware",
             "button_text": "Shop All Teaware",
-            "button_color": "button__primary"
+            "button_color": "button__primary white"
           }
         }
       },
@@ -530,7 +560,7 @@
         "8e867386-8e82-4c26-871f-7b1b7cf137af"
       ],
       "settings": {
-        "full_width": true,
+        "full_width": false,
         "padding_bottom": "small"
       }
     },
@@ -553,6 +583,7 @@
       "settings": {
         "layout": "no_tabs",
         "heading": "Gifts for All",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All Gifts",
         "padding_bottom": "none",
@@ -580,7 +611,7 @@
         "button_text": "Shop All Products",
         "button_link": "shopify:\/\/collections\/all-products",
         "button_color": "button__primary white",
-        "background_color": "#5d6342",
+        "background_color": "#172b3b",
         "full_width": false,
         "flip_orientation": false,
         "padding_bottom": "none"
@@ -712,19 +743,10 @@
         "category": "CashBack FAQs"
       }
     },
-    "component_spacer_qb9Cbe": {
-      "type": "component__spacer",
-      "disabled": true,
-      "settings": {
-        "color": "#ffffff",
-        "height_desktop": 160,
-        "height_mobile": 160
-      }
-    },
     "e901fdc3-42b7-49f8-902f-31ce6b429e5f": {
       "type": "component__rte-block",
       "settings": {
-        "rich_text": "<h6><strong>Sale Terms<\/strong>: The Summer Solstice Sale (valid 6\/13\/2025 12:00 AM PST to 6\/20\/2025 11:59 PM PST) cannot be combined with other offers and discount codes. Discount requires code SUMMER15 and will be reflected on eligible items upon checkout. Rishi Tea reserves the right to modify or cancel this offer at any time. Sorry, no rain checks. Offer applies to orders placed at rishi-tea.com. Discount cannot be used towards digital gift cards, Tea Club or wholesale orders.<\/h6><h6><\/h6><h6><\/h6><h6><\/h6>",
+        "rich_text": "<p><strong>Sale Terms: <\/strong>The Black Friday Sale (valid 11\/26\/2025 12:00 AM PST to 11\/30\/2025 11:59 PM PST) cannot be combined with other offers and discount codes. Discount is automatic and will be reflected on eligible items upon checkout. Rishi Tea reserves the right to modify or cancel this offer at any time. Offer applies to orders placed at rishi-tea.com. Discount cannot be used towards digital gift cards, Tea Club, wholesale orders or specially excluded products.<\/p>",
         "rte_variant": "page",
         "text_color": "#283645",
         "component_width": "w-full",
@@ -737,6 +759,7 @@
   },
   "order": [
     "f31131f5-be00-42f2-9e41-720ba3fdeec1",
+    "component_spacer_qb9Cbe",
     "0b68ff36-45ea-43f6-a903-d97b79c09514",
     "917930d9-f47d-4b4b-a382-5723c3e27a5c",
     "d8644151-c791-4ac3-abfb-1d7dcc114a7a",
@@ -755,7 +778,6 @@
     "2afc811a-800f-4852-bfbd-8f067614dde8",
     "faq_collection_copy_AVchgg",
     "faq_global_PXGn8b",
-    "component_spacer_qb9Cbe",
     "e901fdc3-42b7-49f8-902f-31ce6b429e5f"
   ]
 }

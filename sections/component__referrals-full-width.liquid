@@ -1,0 +1,175 @@
+ <style>
+  .fs-referrals-widget{
+    position: absolute; 
+    top: 50%; 
+    right: 5%;
+    transform: translate(0, -50%);
+  }
+  .c-okeReferralsApp .c-headerText-title[data-v-51b2b3a9]{
+    color: #283645;
+    text-align: center;
+    font-family: "IvyPresto Headline";
+    font-size: 56px;
+    font-style: normal;
+    font-weight: 100;
+    line-height: 28px;
+    letter-spacing: 0.24px;
+  }
+  [data-oke-referrals-widget] .c-okeReferralsApp .c-headerText-subtitle{
+    color: #283645;
+    text-align: center;
+    font-family: "Neue Haas Grotesk Display Pro";
+    font-size: 13.6px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 21px;
+    margin-top: 40px;
+    max-width: 360px;
+  }
+  @media (max-width: 1024px){
+    .fs-referrals-widget{
+      margin-top: 0;
+      top: 40%;
+      right: 0;
+      scale: 0.8;
+
+    } 
+  }
+
+  @media (max-width: 749px){
+    .fs-referrals-widget{
+      position: relative;
+      margin-top: 40px;
+      top: 0;
+      right: 0;
+      transform: translate(0px, 0px);
+      scale: 1;
+    }
+    .c-okeReferralsApp .c-headerText-title[data-v-51b2b3a9]{
+      font-size: 30px;
+    }
+    [data-oke-referrals-widget] .c-okeReferralsApp .c-headerText--centredOnMobile.c-headerText{
+          margin-bottom: 0;
+    }
+    [data-oke-referrals-widget] .c-okeReferralsApp .c-headerText-subtitle{
+          margin-top: 0;
+    }
+  }
+ </style>
+<section
+  class="w-full section-p-b"
+  style=""
+   x-init="$store.main.removeHeaderSpacer()"
+  x-data="{ fadeIn: false }"
+  x-intersect.threshold.10="fadeIn = true"
+>
+<a href="#">
+
+    <div
+      class="relative xl:max-h-screen bg-dark"
+      style="animation: fadeIn 300ms ease-in-out;"
+    >
+
+      {% if section.settings.asset_type == 'image' %}
+          {% render 'image',
+            image_desktop: section.settings.image_desktop,
+            image_mobile: section.settings.image_mobile,
+            width_desktop: '2000x',
+            width_mobile: '800x',
+            ratio_desktop: '100%',
+            ratio_mobile: '100%',
+            lazy: false,
+            image_classes: 'xl:max-h-screen'
+          %}
+      {% else %}
+        {% assign desktop_url = section.settings.video_desktop.sources[1].url %}
+        {% assign mobile_url = section.settings.video_mobile.sources[1].url %}
+          <div>
+            <video
+              class="hidden md:block w-full h-full object-cover section-height-screen"
+              src="{{ desktop_url }}"
+              x-data
+              x-ref="video"
+              autoplay
+              muted
+            ></video>
+          </div>
+          <video
+            class="md:hidden w-full h-full object-cover section-height-screen"
+            src="{% if mobile_url != blank %}{{ mobile_url }}{% else %}{{ desktop_url }}{% endif %}"
+            x-data
+            x-ref="video"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+      {% endif %}
+    </div>
+  </a>
+  {% comment %} {{section.settings.widget_code}} {% endcomment %}
+<div data-oke-referrals-widget class="fs-referrals-widget"></div>
+</section>
+
+{% schema %}
+{
+  "name": "Referrals | Full Width",
+  "class": "section-hero-full-width",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image Settings"
+    },
+    {
+      "type": "select",
+      "id": "asset_type",
+      "label": "Asset Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image - Desktop",
+      "info": "Aspect Ratio: 16x9 / Min Width: 2500px / JPG"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image - Mobile",
+      "info": "Aspect Ratio: 1x1 / Min Width: 500px / JPG, This image will only be used on mobile devices. If blank, the desktop image will be used."
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Video - Desktop"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Video - Mobile",
+      "info": "This video will only be used on mobile devices. If blank, the desktop video will be used."
+    },
+    {
+      "type": "text",
+      "id": "widget_code",
+      "label": "Widget Code adding fs-referrals-widget class"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Referrals | Full Width",
+      "category": "Components"
+    }
+  ]
+}
+{% endschema %}

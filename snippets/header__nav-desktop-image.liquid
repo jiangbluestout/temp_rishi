@@ -1,5 +1,5 @@
 {% if link.object.featured_image %}
-  {% if teaware_menu == true %}
+  {% if teaware_menu == true or top_picks_menu == true %}
     <div
       x-show="hoverLinkHandle == '{{ link.handle }}'"
       x-transition.opacity.duration.300ms

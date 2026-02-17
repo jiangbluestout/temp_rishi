@@ -4,8 +4,8 @@
       "type": "component__simple-header",
       "custom_css": [],
       "settings": {
-        "heading": "Ambassadors",
-        "description": "<p>Rishi Tea & Botanicals has cultivated a curated community of inspired tea drinkers. If you are interested in working with us, please submit an inquiry and our team will be in touch.<\/p>",
+        "heading": "Rishi Tastemaker Community",
+        "description": "<p>Sip. Share. Inspire. Rishi Tea & Botanicals is cultivating a curated community of tea lovers and storytellers—and this could be your opportunity to join us. Whether you’re a seasoned tea drinker or an everyday enthusiast, we invite you to share your love for Rishi tea, deepen your knowledge and earn commissions along the way.<\/p>",
         "background_color": "#886360",
         "header_text_color": "#ffffff"
       }
@@ -40,36 +40,36 @@
           "type": "collection",
           "settings": {
             "collection": "",
-            "description": "<p>Customized discount links to share an offer with your audience<\/p><p><\/p>",
+            "description": "<p>Share personalized discount links with your audience.<\/p>",
             "alt_title": "Custom Discount Links",
-            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-MasalaChai-1_f113f1e2-53e4-42d1-9599-2287aa402119.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/Custom_Discount_Links.png"
           }
         },
         "acf34385-36db-48f4-b4d7-2bfc48998ef5": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "description": "<p>Receive competitive commissions and monthly payments<\/p>",
+            "description": "<p>Earn competitive commissions with monthly payouts.<\/p>",
             "alt_title": "Paid Commissions",
-            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-SweetThaiPowder_1.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/Paid_Commissions.png"
           }
         },
         "8e69471a-80dc-48a6-a328-ee6cb0f3ca9f": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "description": "<p>Be the first to know about new product launches, programs, and invites to private events<\/p>",
-            "alt_title": "Early Access",
-            "lifestyle_image": "shopify:\/\/shop_images\/230624_Ruby_Oolong_28572.jpg"
+            "description": "<p>Be the first to know about new product launches and programs to expand your tea knowledge.<\/p>",
+            "alt_title": "Exclusive Access",
+            "lifestyle_image": "shopify:\/\/shop_images\/Early_Access.png"
           }
         },
         "14f3bed2-28cc-4585-8298-9883fdad2ced": {
           "type": "collection",
           "settings": {
             "collection": "",
-            "description": "<p>Make connections and grow your network with other thought leaders and inspired tea drinkers<\/p>",
+            "description": "<p>Connect with other inspired tea drinkers and creators in our growing community. <\/p>",
             "alt_title": "Community Connections",
-            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-BaristaMatcha.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/Community_Connections.png"
           }
         }
       },
@@ -81,11 +81,54 @@
       ],
       "settings": {
         "variant": "italic",
-        "header": "AMBASSADOR BENEFITS",
+        "header": "TASTEMAKER BENEFITS",
         "background_color": "#283645",
         "text_color": "#a88667",
         "accent_color": "light",
         "padding_bottom": "medium"
+      }
+    },
+    "faq_global_6KCYPP": {
+      "type": "faq-global",
+      "blocks": {
+        "faq_aAiV9K": {
+          "type": "faq",
+          "settings": {
+            "title": "Does it matter how many followers I have?",
+            "answer": "<p>Not at all. We value authentic and intentional storytellers—no matter the size of your audience.<\/p>"
+          }
+        },
+        "faq_38PVRe": {
+          "type": "faq",
+          "settings": {
+            "title": "What kind of creator is Rishi Tea looking for?",
+            "answer": "<p>We’re looking for authentic creators with an active Instagram or TikTok presence and a meaningful connection to their community. If you live with intention and show up as a positive force, you’re just the kind of person we want to work with.<\/p>"
+          }
+        },
+        "faq_aQerAm": {
+          "type": "faq",
+          "settings": {
+            "title": "Do I need to know a lot about tea to apply?",
+            "answer": "<p>Not at all. All we ask is that you’re curious and passionate about exploring the world of tea. We’ll help you learn as you go.<\/p>"
+          }
+        },
+        "faq_yrUGtw": {
+          "type": "faq",
+          "settings": {
+            "title": "Can influencers around the world apply?",
+            "answer": "<p>At this time, we’re only partnering with creators based in the U.S. Please stay tuned for future opportunities.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_aAiV9K",
+        "faq_38PVRe",
+        "faq_aQerAm",
+        "faq_yrUGtw"
+      ],
+      "name": "FAQ (Global)",
+      "settings": {
+        "category": "FAQs"
       }
     },
     "a4bfbd92-26de-4df6-81fa-0da9358297df": {
@@ -103,6 +146,15 @@
         "heading": "Follow Along On Our Journey",
         "padding_bottom": "small"
       }
+    },
+    "component_spacer_86XtHg": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 160,
+        "height_mobile": 160
+      }
     }
   },
   "order": [
@@ -110,6 +162,8 @@
     "1743788161fbc094d5",
     "main",
     "fda6a610-8dfd-4d45-a062-eeefcc4babef",
+    "faq_global_6KCYPP",
+    "component_spacer_86XtHg",
     "a4bfbd92-26de-4df6-81fa-0da9358297df",
     "527a3193-0278-4c18-9cf2-bc3929739f32"
   ]

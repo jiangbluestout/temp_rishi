@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "component_spacer_zzPTnx": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 40,
+        "height_mobile": 56
+      }
+    },
+    "17621565382f5915f6": {
+      "type": "apps",
+      "blocks": {
+        "prettydamnquick_pdq_tracking_page_QgWTix": {
+          "type": "shopify:\/\/apps\/prettydamnquick-pdq\/blocks\/tracking-page\/a668eab0-b569-4206-8f4c-a0f244820a6b",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "prettydamnquick_pdq_tracking_page_QgWTix"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "component_spacer_zzPTnx",
+    "17621565382f5915f6"
+  ]
+}

@@ -95,6 +95,8 @@
     </div>
   </form>
   <form class="" x-ref="filter_form_desktop">
+    <!-- Hidden sort input to sync with mobile form -->
+    <input type="hidden" name="sort_by" :value="sortBy" x-show="false">
     <div style="animation: fadeIn 500ms ease-in-out">
       <div
         class="transition-opacity duration-300 section-p-x md:grid md:grid-cols-4 md:gap-4"

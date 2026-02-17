@@ -198,49 +198,19 @@
           }]
         {%- endif -%}
       {%- endif -%}
-    }
-  </script>
-{%- endif -%}
-
-{%- if request.page_type == 'article' -%}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Article",
-      "articleBody": {{ article.content | strip_html | json }},
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": {{ shop.url | append: page.url | json }}
-      },
-      "headline": {{ article.title | json }},
-      {% if article.excerpt != blank %}
-        "description": {{ article.excerpt | strip_html | json }},
-      {% endif %}
-      {% if article.image %}
-        {% assign image_size = article.image.width | append: 'x' %}
-        "image": [
-          {{ article | img_url: image_size | prepend: "https:" | json }}
-        ],
-      {% endif %}
-      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-      "dateCreated": {{ article.created_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
-      "author": {
-        "@type": "Person",
-        "name": {{ article.author | json }}
-      },
-      "publisher": {
-        "@type": "Organization",
-        {% if settings.share_image %}
-          {% assign image_size = settings.share_image.width | append: 'x' %}
-          "logo": {
-            "@type": "ImageObject",
-            "height": {{ settings.share_image.height | json }},
-            "url": {{ settings.share_image | img_url: image_size | prepend: "https:" | json }},
-            "width": {{ settings.share_image.width | json }}
-          },
-        {% endif %}
-        "name": {{ shop.name | json }}
-      }
+      {% if product.metafields.okendo.summaryData.reviewCount > 0 %}
+        ,"aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ product.metafields.okendo.summaryData.reviewAverageValue }}",
+          "ratingCount": "{{ product.metafields.okendo.summaryData.reviewCount }}"
+        }
+      {% elsif product.metafields.okendo.ReviewCount > 0 %}
+        ,"aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "{{ product.metafields.okendo.ReviewAverageValue }}",
+          "ratingCount": "{{ product.metafields.okendo.ReviewCount }}"
+        }
+      {% endif %}      
     }
   </script>
 {%- endif -%}
@@ -275,3 +245,57 @@
 {% if request.path contains '/pages/reseller-website-registration' %}
   <meta name="robots" content="noindex">
 {% endif %}
+
+{%- if request.page_type == 'article' -%}
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ shop.url }}{{ article.url }}"
+      },
+      "headline": {{ article.title | json }},
+      {% if article.excerpt != blank %}"description": {{ article.excerpt | strip_html | json }},{% else %}"description": {{ article.content | strip_html | json }},{% endif %}
+      "author": {
+        "@type": "Organization",
+        "name": {{ article.author | json }},
+        "url": "{{ shop.url }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": {{ shop.name | json }},
+        "url": "{{ shop.url }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cdn.shopify.com/s/files/1/0645/3788/6970/files/Top_logoheader_white.jpg?v=1653414412"
+        }
+      },
+      {% if article.image %}"image": "{{ article.image | image_url }}",{% endif %}
+      "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      "dateModified": {{ article.updated_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }},
+      "about": {
+        "@type": "Thing",
+        "name": "Tea Brewing Science",
+        "sameAs": "{{ shop.url }}{{ article.url }}"
+      },
+      "license": "https://www.rishi-tea.com/pages/terms-conditions",
+      "citation": {
+        "@type": "CreativeWork",
+        "name": "{{ article.title }}",
+        "author": {
+          "@type": "Organization",
+          "name": {{ article.author | json }}
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": {{ article.author | json }}
+        },
+        "url": "{{ shop.url }}{{ article.url }}",
+        "datePublished": {{ article.published_at | date: '%Y-%m-%dT%H:%M:%SZ' | json }}
+      },
+      "articleBody":  {{ article.content | strip_html | json }},
+      {% assign word_count = article.content | strip_html | split: ' ' | size %}"wordCount": {{  word_count }}
+    }
+  </script>
+{%- endif -%}

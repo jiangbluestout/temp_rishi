@@ -22,6 +22,9 @@
     padding: 12px 8px;
     outline-offset: 0;
   }
+  .header__search.header__search-new form input[type="search"]::placeholder{
+    font-size: 15px !important;
+  }
   .header__search.header__search-new form button {
     position: absolute;
     right: 13px;
@@ -31,6 +34,47 @@
     background-color: #f7f5f0;
     display: block;
   }
+  
+  .fs-search-overlay{
+    position: fixed;
+  }
+ 
+  .fs-overlay{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 50000px;
+    height: 50000px;
+    background: #000;
+    opacity: 0.3;
+    z-index: 1;
+  } 
+  @media screen and (max-width: 1024px) {
+    .fs-search-overlay{
+      position: fixed;
+      left: -500px;
+      top: 108px;
+      width: 50000px;
+      height: 50000px;
+      background: #000;
+      opacity: 0.3;
+      z-index: -1;
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .fs-search-overlay{
+      position: fixed;
+      left: -500px;
+      top: 95px;
+      width: 50000px;
+      height: 50000px;
+      background: #000;
+      opacity: 0.3;
+      z-index: -1;
+    }
+  }
+
   @media screen and (min-width: 1280px) {
     .header-on-hover .header__search.header__search-new {
       background-color: #f7f5f0;
@@ -42,10 +86,10 @@
     }
 
     .header-on-hover.header-on-hover--overflow-hidden {
-      overflow: hidden;
+      /* overflow: hidden; */
     }
     body.header-on-hover--overflow-hidden {
-      overflow: hidden;
+      /* overflow: hidden; */
     }
     
     .header-on-hover .header .header__wrapper {
@@ -53,6 +97,7 @@
       color: #283645 !important;
     }
   }
+  
   @media screen and (max-width: 1280px) {
     .header__search.header__search-new {
       display: block;
@@ -70,7 +115,7 @@
     
    
     .header__search.header__search-new form input[type="search"] {
-      padding-left: 17px;
+      padding-left: 5px;
     }
     .header__search.header__search-new form {
       border-top-left-radius: 0;
@@ -83,6 +128,11 @@
     }
     .header-search__article-img {
       max-width: 200px;
+    }
+  }
+  @media screen and (min-width:1280px) and (max-width: 1300px) {
+    .header__search.header__search-new form button{
+      right: 1px;
     }
   }
 </style>
@@ -121,6 +171,7 @@
     }
   }'
 >
+<div class="fs-search-overlay" id="fs-search-overlay" x-show="results"></div> 
   <form
     action="/search"
     method="get"
@@ -133,14 +184,16 @@
       placeholder="Search Our Teas, Articles, Collections..."
       @input.debounce="search()"
       x-model="query"
+      id="fs-search-input"
     >
 
     <input type="hidden" name="type" value="product,article,collection" />
 
     <button
+      id="fs-seach-svg"
       type="submit"
       class="text-brown font-500 tracking-8pc block text-sm align-middle"
-      x-transition.opacity.duration.300ms
+      x-show="!results"
     >
       <svg width="19" height="21" viewBox="0 0 19 21" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_3554_92)">
@@ -153,11 +206,25 @@
         </clipPath>
         </defs>
       </svg>
-    
     </button>
+    <div
+      id="fs-close-svg"
+      style="display:none; 
+        position: absolute;
+        right: 13px;
+        cursor: pointer;"
+      class="text-brown font-500 tracking-8pc block text-sm align-middle"
+      x-show="results?.queries.length"
+    >
+      <svg   xmlns="http://www.w3.org/2000/svg" width="11" height="12" viewBox="0 0 11 12" fill="none">
+        <path d="M0.50692 0.580006L10.6165 11.0051" stroke="#233747"/>
+        <path d="M10.3737 0.352851L0.754712 11.2322" stroke="#233747"/>
+      </svg>
+    </div>
   </form>
 
   <div
+    id="fs-mob-search-result"
     class="xl:hidden bg-light text-dark rounded p-4 grid grid-cols-1 mt-px gap-2 md:px-8 md:grid-cols-4 md:gap-0"
     x-show="results"
   >
@@ -252,6 +319,7 @@
 
 
   <div
+    id="fs-desktop-search-result"
     class="result-popup-desktop hidden xl:grid fixed w-full left-0 bg-light top-[108px] max-h-[800px] max-widthoverflow-y-auto text-dark rounded p-4 md:px-8 grid grid-cols-1 md:grid-cols-4 mt-px gap-2 md:gap-0"
     x-show="results"
   >
@@ -342,3 +410,130 @@
     </div>
   </div>
 </div>
+<script>
+
+  let scrollCount = 0;
+  let lastScrollTop = 0;
+
+  document.querySelectorAll("#fs-close-svg")?.forEach(el => {
+     el.addEventListener("click", function () {
+      el.parentNode.querySelector("#fs-search-input").value = "";
+
+      document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+        el.style.display = "none";
+      });
+      document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+        el.style.display = "none"; 
+      });
+
+      document.querySelectorAll("#fs-search-overlay")?.forEach(el => {
+        el.style.display = "none";
+      });
+
+      document.querySelectorAll("#fs-close-svg")?.forEach(el => {
+        el.style.display = "none";
+      });
+      document.querySelectorAll("#fs-seach-svg")?.forEach(el => {
+        el.style.display = "block"; 
+      });
+
+     })
+  });
+
+  let is_search_on = 0;
+
+  setInterval(() => {
+    document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+      if(el.style.display === "none"){      }
+      else{
+        is_search_on = 1;
+      }
+    }); 
+
+    document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+      if(el.style.display === "none"){      }
+      else{
+        is_search_on = 1;
+      }
+    });
+  }, 500);
+
+  window.addEventListener("scroll", function () {
+
+    if(is_search_on === 1 && scrollCount > 2)
+      scrollCount = 0;
+    if(is_search_on === 1 && scrollCount < 3)
+    {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      if (Math.abs(scrollTop - lastScrollTop) > 200) {
+        scrollCount++;
+        lastScrollTop = scrollTop;
+        if (scrollCount === 2) {
+            console.log('User has scrolled twice!');
+            document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+              el.style.display = "none";
+            });
+
+            document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+              el.style.display = "none"; 
+            });
+
+            document.querySelectorAll("#fs-search-overlay")?.forEach(el => {
+              el.style.display = "none";
+            });
+            is_search_on = 0;
+        }
+      }
+    }
+  });
+
+  document.addEventListener('click', function(event) {
+    document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+      if (!el.contains(event.target)) {
+        //console.log('Clicked outside #fs-desktop-search-result');
+        el.style.display = 'none';
+        document.querySelectorAll("#fs-search-overlay")?.forEach(ol => {
+          ol.style.display = "none";
+        });
+      }
+    });
+
+    document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+      if (!el.contains(event.target)) {
+        //console.log('Clicked outside #fs-mob-search-result');
+        el.style.display = 'none';
+        document.querySelectorAll("#fs-search-overlay")?.forEach(ol => {
+          ol.style.display = "none";
+        });
+
+      }
+    });
+  });
+  // document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+  //   el.addEventListener("click", function () {
+  //     document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+  //       el.style.display = "none";
+  //     });
+  //     document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+  //       el.style.display = "none"; 
+  //     });
+  //   })
+  // });
+  // document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+  //   el.addEventListener("click", function () {
+  //     document.querySelectorAll("#fs-desktop-search-result")?.forEach(el => {
+  //       el.style.display = "none";
+  //     });
+  //     document.querySelectorAll("#fs-mob-search-result")?.forEach(el => {
+  //       el.style.display = "none"; 
+  //     });
+  //   })
+  // });
+  function updateDisplay() {
+    // Get the computed display property of #fs-search-overlay
+    var searchOverlayDisplay = window.getComputedStyle(document.getElementById('fs-search-overlay')).display;
+    // Set the display property of #fs-overlay to be the same
+    document.getElementById('fs-overlay').style.display = searchOverlayDisplay;
+  }
+  setInterval(updateDisplay, 100);
+</script>

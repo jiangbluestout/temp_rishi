@@ -35,7 +35,7 @@
   @click="$store.main.closeMenus()"
   @mouseover="$store.main.setDesktopHeaderOpened(false)"
 ></div>
-
+<div class="fs-overlay" id="fs-overlay"></div>  
 <header
   class="header md:p-6 md:pb-px p-2 pb-px {% if transparent_header %} transparent-banner {% endif %}"
   x-data="{
@@ -129,29 +129,145 @@
       "info": "If enabled, the header will be transparent on the homepage. You can control this on other pages using page metafields."
     },
     {
+      "type": "text",
+      "id": "primary_menu_1_text",
+      "label": "Primary Menu1 text"
+    },
+    {
       "type": "link_list",
       "id": "tea_menu",
-      "label": "Tea menu"
+      "label": "Primary Menu1"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_2_text",
+      "label": "Primary Menu2 text (930px-1024px Width)"
     },
     {
       "type": "link_list",
       "id": "teaware_menu",
-      "label": "Teaware menu"
+      "label": "Primary Menu2 (930px-1024px Width)"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_3_text",
+      "label": "Primary Menu3 text"
     },
     {
       "type": "link_list",
       "id": "discover_menu",
-      "label": "Discover menu"
+      "label": "Primary Menu3"
+    },
+    {
+      "type": "text",
+      "id": "top_picks_menu_text",
+      "label": "Top Picks Menu text"
+    },
+    {
+      "type": "link_list",
+      "id": "top_picks_menu",
+      "label": "Top Picks Menu"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_4_text",
+      "label": "Primary Menu4 text (930px-1024px Width)"
+    },
+    {
+      "type": "link_list",
+      "id": "metcha_menu",
+      "label": "Primary Menu4 (930px-1024px Width)"
     },
     {
       "type": "text",
       "id": "left_link_label",
-      "label": "Left Link Label"
+      "label": "Primary Single Menu1 text"
     },
     {
       "type": "url",
       "id": "left_link_url",
-      "label": "Left Link URL"
+      "label": "Primary Single Menu1"
+    },
+    {
+      "type": "text",
+      "id": "left_link_label_2",
+      "label": "Primary Single Menu2 text (930px-1024px Width)"
+    },
+    {
+      "type": "url",
+      "id": "left_link_url_2",
+      "label": "Primary Single Menu2 (930px-1024px Width)"
+    },
+
+    {  
+      "type": "text",
+      "id": "primary_menu_1_text_mob",
+      "label": "Primary Menu1 text(Mobile)"
+    },
+    {
+      "type": "link_list",
+      "id": "tea_menu_mob",
+      "label": "Primary Menu1(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_2_text_mob",
+      "label": "Primary Menu2 text(Mobile)"
+    },
+    {
+      "type": "link_list",
+      "id": "teaware_menu_mob",
+      "label": "Primary Menu2(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_3_text_mob",
+      "label": "Primary Menu3 text(Mobile)"
+    },
+    {
+      "type": "link_list",
+      "id": "discover_menu_mob",
+      "label": "Primary Menu3(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "top_picks_menu_text_mob",
+      "label": "Top Picks Menu text(Mobile)"
+    },
+    {
+      "type": "link_list",
+      "id": "top_picks_menu_mob",
+      "label": "Top Picks Menu(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "primary_menu_4_text_mob",
+      "label": "Primary Menu4 text(Mobile)"
+    },
+    {
+      "type": "link_list",
+      "id": "metcha_menu_mob",
+      "label": "Primary Menu4(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "left_link_label_mob",
+      "label": "Primary Single Menu1 text(Mobile)"
+    },
+    {
+      "type": "url",
+      "id": "left_link_url_mob",
+      "label": "Primary Single Menu1(Mobile)"
+    },
+    {
+      "type": "text",
+      "id": "left_link_label_2_mob",
+      "label": "Primary Single Menu2 text(Mobile)"
+    },
+    {
+      "type": "url",
+      "id": "left_link_url_2_mob",
+      "label": "Primary Single Menu2(Mobile)"
     },
     {
       "type": "text",
@@ -172,6 +288,17 @@
       "type": "url",
       "id": "mobile_additional_link_url_2",
       "label": "Addional link URL 2(mobile)"
+    },
+    {
+      "type": "text",
+      "id": "mobile_meet_your_matcha_text",
+      "label": "Rich button text (mobile)",
+      "info": "This button will appear below the main links in mobile menu drawer."
+    },
+    {
+      "type": "url",
+      "id": "mobile_meet_your_matcha_link",
+      "label": "Rich button link (mobile)"
     },
     {
       "type": "article",

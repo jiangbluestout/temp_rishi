@@ -1,17 +1,19 @@
 <nav
   x-cloak
-  x-data="{
-    menu: null,
-    level1: null,
-    level2: null,
-    resetMenu() {
-      setTimeout(() => {
-        this.menu = null;
-        this.level1 = null;
-        this.level2 = null;
-      }, 200);
-    },
-  }"
+  x-data="
+    {
+      menu: null,
+      level1: null,
+      level2: null,
+      resetMenu() {
+        setTimeout(() => {
+          this.menu = null;
+          this.level1 = null;
+          this.level2 = null;
+        }, 200);
+      },
+    }
+  "
   x-show="$store.main.isMobileNavOpen"
   x-transition.scale.origin.top.opacity.duration.200ms
   class="z-[var(--z-index-header-mobile-panels)] h-screen fixed top-0 z-header left-0 bg-light text-dark p-container overflow-y-auto flex flex-col overflow-hidden tablet:hidden"
@@ -40,57 +42,138 @@
 
   <div class="flex-1">
     <div class="border-t border-t-brown border-opacity-25 mb-5">
-      {% if section.settings.tea_menu != blank %}
+      {% if section.settings.tea_menu_mob != blank %}
         <button
           class="mob-first-parent border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
           type="button"
           @click="menu = (menu === 'tea' ? '' : 'tea')"
         >
-          Shop
+          {% if section.settings.primary_menu_1_text_mob != blank %}
+            {{ section.settings.primary_menu_1_text_mob }}
+          {% else %}
+            Shop
+          {% endif %}
           <div class="text-brown transform" :class="{'-rotate-90': menu !== 'tea'}">
             {% render 'svg__chevron-down' %}
           </div>
         </button>
-      <div class="">
-        {% render 'header__mobile-nav-pane', link_handle: 'tea', link_title: 'Shop', links: section.settings.tea_menu.links %}
-      </div>
+        <div class="">
+          {% render 'header__mobile-nav-pane',
+            link_handle: 'tea',
+            link_title: 'Shop',
+            links: section.settings.tea_menu_mob.links
+          %}
+        </div>
       {% endif %}
-      {% if section.settings.teaware_menu != blank %}
+      {% if section.settings.teaware_menu_mob != blank %}
         <button
           class="border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
           @click="menu = (menu === 'teaware' ? '' : 'teaware')"
           type="button"
         >
-          Teaware
-         <div class="text-brown transform" :class="{'-rotate-90': menu !== 'teaware'}">
+          {% if section.settings.primary_menu_2_text_mob != blank %}
+            {{ section.settings.primary_menu_2_text_mob }}
+          {% else %}
+            Teaware
+          {% endif %}
+          <div class="text-brown transform" :class="{'-rotate-90': menu !== 'teaware'}">
             {% render 'svg__chevron-down' %}
           </div>
         </button>
         <div class="">
-          {% render 'header__mobile-nav-pane', link_handle: 'teaware', link_title: 'Teaware', links: section.settings.teaware_menu.links, auto_expand: true %}
+          {% render 'header__mobile-nav-pane',
+            link_handle: 'teaware',
+            link_title: 'Teaware',
+            links: section.settings.teaware_menu_mob.links,
+            auto_expand: true
+          %}
         </div>
-      {% endif%}
-      {% if section.settings.discover_menu != blank %}
+      {% endif %}
+      {% if section.settings.top_picks_menu_mob != blank %}
         <button
-          class="border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
+          class="top-picks hidden border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
+          @click="menu = (menu === 'bf-top-picks' ? '' : 'bf-top-picks')"
+          type="button"
+        >
+          {% if section.settings.top_picks_menu_text_mob != blank %}
+            {{ section.settings.top_picks_menu_text_mob }}
+          {% else %}
+            Top Picks
+          {% endif %}
+          <div class="text-brown transform" :class="{'-rotate-90': menu !== 'bf-top-picks'}">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+        <div class="">
+          {% render 'header__mobile-nav-pane',
+            link_handle: 'bf-top-picks',
+            link_title: 'Top Picks',
+            links: section.settings.top_picks_menu_mob.links
+          %}
+        </div>
+      {% endif %}
+      {% if section.settings.discover_menu_mob != blank %}
+        <button
+          class="discover border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
           @click="menu = (menu === 'discover' ? '' : 'discover')"
           type="button"
         >
-          Discover
+          {% if section.settings.primary_menu_3_text_mob != blank %}
+            {{ section.settings.primary_menu_3_text_mob }}
+          {% else %}
+            Discover
+          {% endif %}
           <div class="text-brown transform" :class="{'-rotate-90': menu !== 'discover'}">
             {% render 'svg__chevron-down' %}
           </div>
         </button>
         <div class="">
-          {% render 'header__mobile-nav-discover-pane', link_handle: 'discover', link_title: 'Discover', links: section.settings.discover_menu.links[0].links, section: section %}
+          {% render 'header__mobile-nav-discover-pane',
+            link_handle: 'discover',
+            link_title: 'Discover',
+            links: section.settings.discover_menu_mob.links[0].links,
+            section: section
+          %}
         </div>
       {% endif %}
-      {% if section.settings.left_link_label != blank %}
+      {% if section.settings.metcha_menu_mob != blank %}
+        <button
+          class="border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
+          @click="menu = (menu === 'metcha' ? '' : 'metcha')"
+          type="button"
+        >
+          {% if section.settings.primary_menu_4_text_mob != blank %}
+            {{ section.settings.primary_menu_4_text_mob }}
+          {% else %}
+            Metcha
+          {% endif %}
+          <div class="text-brown transform" :class="{'-rotate-90': menu !== 'metcha'}">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+        <div class="">
+          {% render 'header__mobile-nav-pane',
+            link_handle: 'metcha',
+            link_title: 'Metcha',
+            links: section.settings.metcha_menu_mob.links,
+            auto_expand: true
+          %}
+        </div>
+      {% endif %}
+      {% if section.settings.left_link_label_mob != blank %}
         <a
-          href="{{ section.settings.left_link_url }}"
+          href="{{ section.settings.left_link_url_mob }}"
+          class="border-b border-b-brown {{ section.settings.left_link_label_mob }} border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
+        >
+          {{ section.settings.left_link_label_mob }}
+        </a>
+      {% endif %}
+      {% if section.settings.left_link_label_2_mob != blank %}
+        <a
+          href="{{ section.settings.left_link_url_2_mob }}"
           class="border-b border-b-brown border-opacity-25 pt-3 pb-4 font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full px-3"
         >
-          {{ section.settings.left_link_label }}
+          {{ section.settings.left_link_label_2_mob }}
         </a>
       {% endif %}
       {% if section.settings.mobile_additional_link_1 != blank %}
@@ -109,22 +192,33 @@
           {{ section.settings.mobile_additional_link_2 }}
         </a>
       {% endif %}
+
+      {% if section.settings.mobile_meet_your_matcha_link != blank %}
+        <div class="flex justify-center items-center mt-5 meet-you-matcha-button">
+          <a
+            href="{{ section.settings.mobile_meet_your_matcha_link }}"
+            class="border border-black border-solid flex justify-center mx-3.5 p-4 rounded-[8px] text-[12px] text-capitalize text-center w-full"
+          >
+            {{- section.settings.mobile_meet_your_matcha_text -}}
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </nav>
 
 <style>
-  .sub-menu-new {
-    margin-left: 15px;
-}
-.sub-menu-new  button.font-serif {
-    font-size: 26px;
-}
-.sub-menu-new a.font-serif {
-    font-size: 26px;
-}
+    .sub-menu-new {
+      margin-left: 15px;
+  }
+  .sub-menu-new  button.font-serif {
+      font-size: 26px;
+  }
+  .sub-menu-new a.font-serif {
+      font-size: 26px;
+  }
 
-  .sub-menu-new div div a.font-serif {
-    font-size: 20px;
-}
+    .sub-menu-new div div a.font-serif {
+      font-size: 20px;
+  }
 </style>

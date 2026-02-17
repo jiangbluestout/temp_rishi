@@ -2,7 +2,9 @@
   "sections": {
     "main": {
       "type": "account__register",
-      "settings": {}
+      "settings": {
+        "heading": "Create Your Account"
+      }
     }
   },
   "order": [

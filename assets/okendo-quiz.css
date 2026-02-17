@@ -1,0 +1,366 @@
+/* Quiz */
+div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-questions-header-title, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-startPanel-title,
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultBlock-title {
+    font-weight: 100;
+    font-family: ivypresto-headline, ui-serif, serif;
+    font-size: 48px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-questions-header-title {
+    font-size: 36px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-subtitle.c-startPanel-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes .c-subtitle.c-questions-header-subtitle {
+    font-weight: 400;
+    font-family: neue-haas-grotesk-text, ui-sans, sans;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label-text {
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-startPanel-button.c-button {
+    font-size: 0;
+    width: 420px;
+    height: 46px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-startPanel-button.c-button::before {
+    content: "LET'S GO";
+    font-size: 12px;
+    font-weight: 500;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="How often do you drink tea?"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred caffeine level?"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="I drink tea to...."] .c-tagInput-label-text {
+    padding: 15px 12px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-progressBar[data-v-97d29dc6] {
+    height: 8px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-progressBar--bar-short[data-v-97d29dc6] {
+    width: 440px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-back--withDefaultBorder {
+    background-image: url("data:image/svg+xml,%3Csvg width='55' height='38' viewBox='0 0 55 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35.5 19.5H19M19 19.5L22 16.5M19 19.5L22 22.5M27.5 37.125C34.9043 37.125 41.5508 35.7214 46.3286 32.7623C51.0802 29.8195 54 25.3331 54 19.0625C54 12.7919 51.0802 8.30547 46.3286 5.36267C41.5508 2.4036 34.9043 0.999999 27.5 1C20.0923 1 13.4463 2.34677 8.6696 5.27679C3.9218 8.18907 1 12.6736 1 19.0625C1 25.4514 3.9218 29.9359 8.6696 32.8482C13.4463 35.7782 20.0923 37.125 27.5 37.125Z' stroke='%23A88667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");    
+    background-repeat: no-repeat;
+    font-size: 0;
+    border: 0;
+    box-shadow: none;
+    width: 56px;
+    height: 42px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .l-button-holder .c-questionsForm-next {
+    background-image: url("data:image/svg+xml,%3Csvg width='55' height='38' viewBox='0 0 55 38' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M19.5 19.5H36M36 19.5L33 16.5M36 19.5L33 22.5M27.5 37.125C20.0957 37.125 13.4492 35.7214 8.67138 32.7623C3.9198 29.8195 1 25.3331 1 19.0625C1 12.7919 3.9198 8.30547 8.67138 5.36267C13.4492 2.4036 20.0957 0.999999 27.5 1C34.9077 1 41.5537 2.34677 46.3304 5.27679C51.0782 8.18907 54 12.6736 54 19.0625C54 25.4514 51.0782 29.9359 46.3304 32.8482C41.5537 35.7782 34.9077 37.125 27.5 37.125Z' stroke='%23A88667' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    font-size: 0;
+    border: 0;
+    box-shadow: none;
+    width: 56px;
+    height: 42px;
+    background-color: transparent;  
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionsForm .l-button-center--showBackButton .c-questionsForm-back--withDefaultBorder:hover {
+    box-shadow: none; 
+    background-color: transparent;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center.c-questionNavigationButtons--stacked .l-button-holder>.c-questionNavigationButtons-right .c-button {
+    width: 56px;
+    height: 42px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label-image {
+    height: 200px !important;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .c-questionNavigationButtons-right,
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .c-questionNavigationButtons-left {
+    order: 1;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionNavigationButtons .c-questionNavigationButtons-content {
+    order: 2;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-holder {
+    position: relative;
+    flex-direction: column;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .c-questionNavigationButtons-right {
+    position: absolute;
+    right: 58px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--withDivider,
+div.okeConnect.okeQuizzes .c-resultPanel-section {
+    border: 0;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-questionNavigationButtons {
+    padding-top: 50px;   
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .c-questionNavigationButtons-left {
+    padding-left: 54px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+@media all and (max-width: 500px) {
+    div.okeConnect.okeQuizzes.okeQuizzes .c-startPanel-button.c-button {
+        width: 332px;
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred flavor profiles?"] .c-tagInput-container--stacked,
+    div.okeConnect.okeQuizzes.okeQuizzes [aria-label="How do you typically enjoy your tea?"] .c-tagInput-container--stacked,
+    div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Any flavor profiles you don't like?"] .c-tagInput-container--stacked {
+        display: grid;
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes .l-button-center--showBackButton .c-questionNavigationButtons-left {
+        padding-bottom: 10px;
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-questions-header-title,
+    div.okeConnect.okeQuizzes.okeQuizzes .c-resultBlock-title {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-label-image {
+        height: auto !important;
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes .c-title.c-startPanel-title {
+        font-size: 40px;
+        line-height: 1.2;
+    }
+}
+
+@media all and (max-width: 1296px) {
+    div.okeConnect.okeQuizzes.okeQuizzes .c-pageContent--question,
+    div.okeConnect.okeQuizzes.okeQuizzes .c-pageContent--result.c-resultPanel {
+        padding-top: 51px;
+    }
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="How do you typically enjoy your tea?"] .c-questions-header-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="When and how often do you drink tea?"] .c-questions-header-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred caffeine level?"] .c-questions-header-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred flavor profiles?"] .c-questions-header-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Any flavor profiles you don't like?"] .c-questions-header-subtitle,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="I drink tea to...."] .c-questions-header-subtitle {
+    font-size: 0;
+}
+
+div.okeConnect.okeQuizzes [aria-label="How do you typically enjoy your tea?"] .c-questions-header-subtitle:before,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Any flavor profiles you don't like?"] .c-questions-header-subtitle:before,
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred flavor profiles?"] .c-questions-header-subtitle:before, div.okeConnect.okeQuizzes.okeQuizzes [aria-label="I drink tea to...."] .c-questions-header-subtitle:before {
+    content: "Choose up to five options";
+    font-size: var(--oke-quiz-subtitle-font-size);
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="When and how often do you drink tea?"] .c-questions-header-subtitle:before {
+    content: "Choose one option";
+    font-size: var(--oke-quiz-subtitle-font-size);
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes [aria-label="Preferred caffeine level?"] .c-questions-header-subtitle:before {
+    content: "Choose one or more options";
+    font-size: var(--oke-quiz-subtitle-font-size);
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-container--stacked,
+div.okeConnect.okeQuizzes.okeQuizzes .c-tagInput-container--side-by-side {
+    max-width: 1000px;
+    margin: 0 auto;
+    justify-content: center;
+    place-content: center;
+    place-items: center;
+    display: flex;
+}
+
+div.okeConnect.okeQuizzes .l-products {
+    max-width: 1240px;
+    margin: 30px auto;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-progressBar-background {
+    opacity: 1;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-button, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-button:disabled {
+    font-weight: 500;
+    letter-spacing: 0.96px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-secondary, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-secondary:disabled,
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-primary, 
+div.okeConnect.okeQuizzes.okeQuizzes .c-resultButton.c-resultButton-primary:disabled {
+    font-weight: 500;
+    letter-spacing: 0.96px;
+    font-size: 12px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes .c-quiz.c-quiz--embed  > div {
+    scroll-margin-top: var(--nav-height);
+}
+
+/* Tea Quiz > Profile Questions */
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-questionContent,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-questionContent,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-questionContent {
+    max-width: unset;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-container,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-container,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    max-width: 900px;
+    margin: auto;
+}   
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag {
+    flex: 1 1 calc(25% - 4px);
+    max-width: calc(25% - 4px);
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-label,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-label,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-label,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-label-text {
+    width: 100%;
+    height: 100%;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-label-text,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-label-text {
+    text-align: center;
+    padding: 8px;
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-label-text:before {
+    content: '';
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    aspect-ratio: 4 / 3;
+    display: block;
+    min-height: 200px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* Q7 */
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(1) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/80055115-bd00-4480-86da-58dc97f10761.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(2) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/7bf25199-2029-42c6-9eac-63bd538f0fbf.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(3) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/36be0857-e856-425a-819a-82d71718f943.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(4) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/62669213-18bf-482c-8020-828a322ea2b8.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(5) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/2dde6b53-b7a5-47ce-ac4a-3624c6c9b605.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(6) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/344a21d8-895e-4e80-ae0c-e4f88b453f3e.jpg?d=500x500&crop=center');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag:nth-child(7) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/ef17976a-9963-4251-b130-c70ed9fccddb.jpg?d=500x500&crop=center');
+}
+
+/* Q10/11 */
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(1) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(1) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/423df238-229d-44b0-97b0-2323b4eb8943.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(2) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(2) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/a8f62256-c91c-463f-be68-6f992ef31974.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(3) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(3) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/096264b6-3da4-4406-9080-26b5a7586f15.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(4) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(4) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/56c69685-f920-4074-90ba-20936bfcb0ca.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(5) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(5) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/4d49315a-13b5-4378-95ff-36c20cfa4b55.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(6) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(6) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/30b84589-bf92-4f96-aeb4-9eb8d5851001.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(7) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(7) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/705a3655-bd32-4ffc-9c90-1b7c2ad50dfd.jpg?d=500x500');
+}
+
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag:nth-child(8) .c-tagInput-label-text:before,
+div.okeConnect.okeQuizzes.okeQuizzes div[questionid="be399c18-8867-4ec2-91d2-00e4bce1b3ee"] .c-tagInput-tag:nth-child(8) .c-tagInput-label-text:before {
+    background-image: url('https://d3g5hqndtiniji.cloudfront.net/subscriber_content/images/292e3335-9bc5-448d-a5d3-b4ee44383a84/30a9f21a-08a4-4a02-8786-0c2f761177b7.jpg?d=500x500');
+}
+
+@media all and (max-width: 500px) {
+    div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-tag,
+    div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-tag {
+        flex: 1 1 calc(50% - 4px);
+        max-width: calc(50% - 4px);
+    }
+
+    div.okeConnect.okeQuizzes.okeQuizzes div[questionid="7354670a-9b96-414b-b802-33b5bb842ed4"] .c-tagInput-label-text:before,
+    div.okeConnect.okeQuizzes.okeQuizzes div[questionid="aa6b4b3d-e226-4bf8-add3-b2f1e7feccf9"] .c-tagInput-label-text:before {
+        min-height: 110px;
+    }
+}

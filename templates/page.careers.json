@@ -34,7 +34,7 @@
     "a8b5a0cb-abc5-4860-939f-dad6b5d6ef6f": {
       "type": "component__rte-block",
       "settings": {
-        "rich_text": "<h6><\/h6><h6><\/h6><h6><\/h6><h6>Open Positions<\/h6><h5>No open roles at this time<\/h5>",
+        "rich_text": "<h6><\/h6><h6><\/h6><h6><\/h6><h6>Open Positions<\/h6>",
         "rte_variant": "page",
         "text_color": "#283645",
         "component_width": "w-full",

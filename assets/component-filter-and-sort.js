@@ -76,6 +76,7 @@ document.addEventListener("alpine:init", () => {
       this.sortBy = sortValue;
       this.sortByLabel = sortByLabel;
       this.sortOpen = false;
+      this.$dispatch('filter-updated');
     },
     // update the url with the new filter values
     updateForm: {
@@ -130,8 +131,15 @@ document.addEventListener("alpine:init", () => {
       this.sortBy = sortBy;
       this.collectionHandle = collectionHandle;
       this.pageType = pageType;
+
+      // Check URL parameters for sort_by value
+      const urlParams = new URLSearchParams(location.search);
+      const urlSortBy = urlParams.get('sort_by');
+      if (urlSortBy) {
+        this.sortBy = urlSortBy;
+      }
+
       if (pageType === "search") {
-        const urlParams = new URLSearchParams(location.search);
         for (const [key, value] of urlParams) {
           if (key === "q" && value) {
             this.searchParams = `q=${value.replace(/\s+/g, "+")}`;

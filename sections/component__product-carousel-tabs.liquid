@@ -59,7 +59,7 @@
         selectedId: '{{ first_block_id }}',
         slideCount: 0,
         buttonUrl: '{{ first_url }}',
-        buttonText: '{{ first_title }}',
+        buttonText: '{{ first_title | replace: 'All', "" }}',
         handleTabClick(id, url, text) {
           this.selectedId = id
           this.buttonUrl = url
@@ -72,7 +72,12 @@
       x-cloak
     >
       <div class="flex flex-col md:flex-row justify-between w-full h-fit pb-2 md:pb-11 fade-right section-p-x">
-        <h2 class="heading-sm text-center md:text-left pb-4 md:pb-0">{{ section.settings.heading }}</h2>
+         <div class="pb-4 md:pb-0">
+        <h2 class="heading-sm text-center md:text-left">{{ section.settings.heading }}</h2>
+        <div class="panel-description">
+        {{ section.settings.description }}
+        </div>
+        </div>
         <div class="overflow-x-scroll hide-scrollbars">
           <ul
             x-ref="tablist"
@@ -529,7 +534,12 @@
   >
     <div class="relative {% unless section.settings.full_width %} section-container {% endunless %}">
       <div class="section-p-x flex flex-col md:flex-row justify-between items-center w-full h-fit pb-2 md:pb-8">
-        <h3 class="heading-sm text-center md:text-left pb-6 md:pb-0">{{ section.settings.heading }}</h3>
+        <div class="pb-4 md:pb-0">
+        <h3 class="heading-sm text-center md:text-left">{{ section.settings.heading }}</h3>
+        <div class="panel-description">
+        {{ section.settings.description }}
+        </div>
+        </div>
         {% if section.settings.button_text != "" %}<a href="{{ first_url }}" class="button__primary brown whitespace-nowrap hidden md:block">{{ section.settings.button_text }}</a>{% endif %}
       </div>
       {% for block in section.blocks %}
@@ -759,6 +769,11 @@
       "type": "text",
       "id": "heading",
       "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
     },
     {
       "type": "checkbox",

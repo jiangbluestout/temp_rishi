@@ -1,0 +1,54 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "component_rte_block_e4BwdC": {
+      "type": "component__rte-block",
+      "name": "Rich Text Block",
+      "settings": {
+        "rich_text": "<h2>Reviews<\/h2>",
+        "rte_variant": "page",
+        "text_color": "#283645",
+        "component_width": "w-full",
+        "alignment": "text-center",
+        "padding_right": 0,
+        "padding_left": 0,
+        "padding_bottom": "none"
+      }
+    },
+    "175618691713cd2c2a": {
+      "type": "apps",
+      "blocks": {
+        "okendo_reviews_widget_7Yexzj": {
+          "type": "shopify:\/\/apps\/okendo\/blocks\/reviews-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "product": "",
+            "widget_type": "reviews_widget"
+          }
+        }
+      },
+      "block_order": [
+        "okendo_reviews_widget_7Yexzj"
+      ],
+      "settings": {}
+    },
+    "component_html_block_FKbx3c": {
+      "type": "component__html-block",
+      "name": "HTML Block",
+      "settings": {
+        "html": "",
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_rte_block_e4BwdC",
+    "175618691713cd2c2a",
+    "component_html_block_FKbx3c"
+  ]
+}

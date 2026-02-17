@@ -1,12 +1,30 @@
 {
   "sections": {
     "main": {
-      "type": "main-collection",
+      "type": "main-collection-update",
       "custom_css": [
         ".collection.pb-20.md\\:pb-30 {padding-bottom: 40px;}",
         ".product-grid.grid {padding-bottom: 40px;}"
       ],
       "settings": {}
+    },
+    "collection_list_image_title_CeqNC4": {
+      "type": "collection_list_image_title",
+      "disabled": true,
+      "custom_css": [],
+      "name": "Collection List Mini",
+      "settings": {
+        "collection_list": [
+          "best-sellers",
+          "loose-leaf-teas",
+          "sachet-tea-bags",
+          "herbal-tea-botanicals",
+          "matcha-tea",
+          "green-tea",
+          "black-tea",
+          "chai-tea"
+        ]
+      }
     },
     "04bedae4-9c1a-4306-8913-1ba31bce6b8d": {
       "type": "component__reviews-carousel",
@@ -87,6 +105,7 @@
       "settings": {
         "superscript": "Reviews",
         "header": "What Rishi Tea Drinkers \n          Are Saying",
+        "description": "",
         "background_color": "#33432e",
         "padding_bottom": "none",
         "button_text": "Shop Now",
@@ -181,6 +200,7 @@
   },
   "order": [
     "main",
+    "collection_list_image_title_CeqNC4",
     "04bedae4-9c1a-4306-8913-1ba31bce6b8d",
     "bottom_collection_copy_wcpYYr",
     "faq_collection_copy_jxyQmk",

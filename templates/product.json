@@ -13,7 +13,7 @@
     "components": {
       "type": "product__sections",
       "custom_css": [
-        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; max-height: none; padding: inherit !important;}"
+        ".metafield-rich_text_field p.content_hide,.metafield-rich_text_field p {transition: none; overflow: auto; padding: inherit !important;}"
       ],
       "settings": {
         "collection": "best-sellers",

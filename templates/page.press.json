@@ -19,11 +19,11 @@
         "press_item_F3TaVA": {
           "type": "press_item",
           "settings": {
-            "image": "shopify:\/\/shop_images\/WSJ_Article_Image_-_June_2024.jpg",
-            "logo": "shopify:\/\/shop_images\/The-Wall-Street-Journal-logo_5.png",
-            "title": "This Summer’s Best Iced Teas Come in Bright Colors and Bold Flavors",
-            "date": "6.5.2024",
-            "link": "https:\/\/www.wsj.com\/arts-culture\/food-cooking\/best-iced-teas-come-in-bright-colors-and-bold-flavors-6c2b0250"
+            "image": "shopify:\/\/shop_images\/PDP-Carousel-Sachet-Sampler-1.jpg",
+            "logo": "shopify:\/\/shop_images\/Food_Wine_vector_logo.svg",
+            "title": "The 40 Best Gifts Under $50, Including Some of Our Tested Favorites",
+            "date": "10.30.2025",
+            "link": "https:\/\/www.foodandwine.com\/best-gifts-under-50-8398853"
           }
         }
       },
@@ -39,6 +39,76 @@
       "type": "press__grid",
       "blocks": {
         "press_item_Jg7y34": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-EnglishBreakfast-LS-1_8b0e6d3f-0599-4230-b040-1f2d6ba3af18.jpg",
+            "title": "59 Gifts Under $50 for Every Type of Co-worker",
+            "date": "12.5.2025",
+            "logo": "shopify:\/\/shop_images\/The_Strategist_logo.jpg",
+            "link": "https:\/\/nymag.com\/strategist\/article\/best-gifts-for-co-workers.html"
+          }
+        },
+        "press_item_jazDYi": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Rishi_LooseLeafFavorites-4.jpg",
+            "title": "We Found the 30 Best Gifts for Everyone in Your Life—Including Cozy Clothing, Gourmet Foods, and Luxe Cookware",
+            "date": "11.17.2025",
+            "logo": "shopify:\/\/shop_images\/logo_Real_Simple_6277eb7c8fc5efe391150bc9.png",
+            "link": "https:\/\/www.realsimple.com\/featured\/original\/holiday-gifts-for-everyone-2025"
+          }
+        },
+        "press_item_XykM8c": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rishi-premium-sachet-collection-with-tea-in-glass-mug.jpg",
+            "title": "The 40 Best Gifts Under $50, Including Some of Our Tested Favorites",
+            "date": "10.30.2025",
+            "logo": "shopify:\/\/shop_images\/Food_Wine_vector_logo.svg",
+            "link": "https:\/\/www.foodandwine.com\/best-gifts-under-50-8398853"
+          }
+        },
+        "press_item_PBYggn": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rishi-tea-club-loose-leaf-tea-of-the-month-subscription-box.jpg",
+            "title": "15 Best Curated Gift Boxes Or Subscriptions From Sustainable Brands (2025)",
+            "date": "10.30.2025",
+            "logo": "shopify:\/\/shop_images\/the_good_trade_logo.webp",
+            "link": "https:\/\/www.thegoodtrade.com\/features\/ethical-subscription-box-gifts\/"
+          }
+        },
+        "press_item_GNgLAr": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/rishi-premium-sachet-collection-with-tea-in-glass-mug.jpg",
+            "title": "The 28 Best Housewarming Gifts to Make Their New Place Feel Like Home",
+            "date": "10.28.2025",
+            "logo": "shopify:\/\/shop_images\/cnn_underscored_logo.png",
+            "link": "https:\/\/www.cnn.com\/cnn-underscored\/gifts\/housewarming-gifts"
+          }
+        },
+        "press_item_d8kArQ": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RishiJanuarySelects-16_2000x_be4e78ee-3426-47cb-99c6-30e9ab8a73e5.jpg",
+            "title": "I Talked to Stylish Tea Connoisseurs to Find the 9 Best Teapots",
+            "date": "10.21.2025",
+            "logo": "shopify:\/\/shop_images\/The_Strategist_logo.jpg",
+            "link": "https:\/\/nymag.com\/strategist\/article\/best-teapots.html"
+          }
+        },
+        "press_item_hV3pxU": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RishiMatchaTinsShoot-Everyday_Matcha_Bowl.jpg",
+            "title": "The 20 Best Stocking Stuffers for the Food Lovers in Your Life",
+            "date": "10.16.2025",
+            "logo": "shopify:\/\/shop_images\/logo_serious_eats.png",
+            "link": "https:\/\/www.seriouseats.com\/best-stocking-stuffers-7972557"
+          }
+        },
+        "press_item_qFNthb": {
           "type": "press_item",
           "settings": {
             "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-Peppermint.jpg",
@@ -58,6 +128,16 @@
             "link": "https:\/\/www.seriouseats.com\/best-matcha-powder-8757655"
           }
         },
+        "press_item_YnWnry": {
+          "type": "press_item",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Food-and-Wine-feature-I-Drink-Matcha-Daily--August-2024.webp",
+            "title": "I Drink Matcha Daily — This Is the Best Matcha Powder, According to My Tests",
+            "date": "3.21.2025",
+            "logo": "shopify:\/\/shop_images\/logo_Food___Wine.svg",
+            "link": "https:\/\/www.foodandwine.com\/best-matcha-powder-8695612#toc-best-value-matcha-powder-rishi-tea-everyday-matcha-powder"
+          }
+        },
         "press_item_zVXr7B": {
           "type": "press_item",
           "settings": {
@@ -66,16 +146,6 @@
             "date": "2.26.2025",
             "logo": "shopify:\/\/shop_images\/logo_Food___Wine.svg",
             "link": "https:\/\/www.foodandwine.com\/best-gifts-under-50-8398853"
-          }
-        },
-        "press_item_YnWnry": {
-          "type": "press_item",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/Food-and-Wine-feature-I-Drink-Matcha-Daily--August-2024.webp",
-            "title": "I Drink Matcha Daily — This Is the Best Matcha Powder, According to My Tests",
-            "date": "1.10.2025",
-            "logo": "shopify:\/\/shop_images\/logo_Food___Wine.svg",
-            "link": "https:\/\/www.foodandwine.com\/best-matcha-powder-8695612#toc-best-value-matcha-powder-rishi-tea-everyday-matcha-powder"
           }
         },
         "press_item_ebH3Vq": {
@@ -90,6 +160,7 @@
         },
         "press_item_zkFmg9": {
           "type": "press_item",
+          "disabled": true,
           "settings": {
             "image": "shopify:\/\/shop_images\/Monthly-Tea-Club-PDP-1.jpg",
             "title": "36 Last-Minute Mother’s Day Gifts That’ll Arrive Just In Time",
@@ -292,9 +363,16 @@
       },
       "block_order": [
         "press_item_Jg7y34",
+        "press_item_jazDYi",
+        "press_item_XykM8c",
+        "press_item_PBYggn",
+        "press_item_GNgLAr",
+        "press_item_d8kArQ",
+        "press_item_hV3pxU",
+        "press_item_qFNthb",
         "press_item_feC3ay",
-        "press_item_zVXr7B",
         "press_item_YnWnry",
+        "press_item_zVXr7B",
         "press_item_ebH3Vq",
         "press_item_zkFmg9",
         "press_item_xzkKkw",

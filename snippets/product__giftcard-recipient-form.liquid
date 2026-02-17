@@ -1,8 +1,21 @@
+{% comment %} <form
+  id="gift-card-form"
+  x-data
+  class="pt-8 fs-gift-form"
+  x-show="showForm"
+  x-transition:enter="transition ease-out duration-300"
+  x-transition:enter-start="opacity-0 transform"
+  x-transition:enter-end="opacity-100 transform"
+  x-transition:leave="transition ease-in duration-300"
+  x-transition:leave-start="opacity-100 transform"
+  x-transition:leave-end="opacity-0 transform"
+> {% endcomment %}
+
 <form
   id="gift-card-form"
   x-data
   class="pt-8"
-  x-show="showForm"
+
   x-transition:enter="transition ease-out duration-300"
   x-transition:enter-start="opacity-0 transform"
   x-transition:enter-end="opacity-100 transform"
@@ -67,7 +80,7 @@
       }
     }"
   >
-    <label class="para-xs pb-2 pl-1" for="text">Send Date</label>
+    <label class="para-xs pb-2 pl-1" for="text">please select a date in the future</label>
     <input
       x-data
       class="input__secondary"
@@ -86,3 +99,237 @@
     </template>
   </div>
 </form>
+<style>
+  @media screen and (max-width: 1285px) {
+    #send-on{
+      width: 100%;
+      box-sizing: border-box;
+      min-width: 350px;
+    }
+  }
+  .fs-form-unchecked,
+  .fs-form-unchecked:checked,
+  .fs-form-unchecked:checked:hover{
+    background-color: #f7f5f0 !important; 
+  }
+
+  .fs-form-checked,
+  .fs-form-checked:checked,
+  .fs-form-checked:checked:hover{
+    background-color: #283645 !important; 
+  }
+
+  .form-checkbox:checked:focus{
+    background-color: #283645;
+  }
+
+  .form-checkbox{
+    cursor: initial;
+    border: 1px solid #283645 !important;
+  }
+
+</style>
+<script>
+  const dateInput = document.getElementById('send-on');
+  dateInput.addEventListener('keydown', function(event) {
+    event.preventDefault();
+  });
+  dateInput.addEventListener('click', function() {
+    dateInput.showPicker();
+  });
+
+  document.querySelectorAll("#show-form")?.forEach(el => {
+    el.addEventListener('click', function () {
+
+      if(el.classList.contains('fs-form-checked'))
+      {
+        el.classList.remove("fs-form-checked");
+        if(!el.classList.contains('fs-form-unchecked'))
+          el.classList.add("fs-form-unchecked");
+        el.setAttribute('checked', 'false');
+
+        document.querySelectorAll("#name")?.forEach(eel => {
+          eel.value = ''
+        });
+        document.querySelectorAll("#email")?.forEach(eel => {
+          eel.value = ''
+        });
+        document.querySelectorAll("#message")?.forEach(eel => {
+          eel.value = ''
+        });
+        document.querySelectorAll("#send-on")?.forEach(eel => {
+          eel.value = ''
+        });
+      }
+      else{
+        el.classList.add("fs-form-checked");
+        if(el.classList.contains('fs-form-unchecked'))
+          el.classList.remove("fs-form-unchecked");
+        el.setAttribute('checked', 'true');
+      }
+    });
+  });
+
+  document.querySelectorAll("#name")?.forEach(el => {
+    el.addEventListener('input', function () {
+      if (el.value.trim() !== '') {
+        //starting input
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(!cel.classList.contains('fs-form-checked'))
+            cel.classList.add("fs-form-checked");
+          if(cel.classList.contains('fs-form-unchecked'))
+            cel.classList.remove("fs-form-unchecked");
+          cel.setAttribute('checked', 'true');
+        });
+      } else {
+        
+        var is_empty = true;
+        document.querySelectorAll("#email")?.forEach(eel => {
+          if (eel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+        document.querySelectorAll("#message")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+        
+        document.querySelectorAll("#send-on")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+        
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(is_empty == true)
+          {
+            //all empty now
+          }
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll("#email")?.forEach(el => {
+    el.addEventListener('input', function () {
+      if (el.value.trim() !== '') {
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(!cel.classList.contains('fs-form-checked'))
+            cel.classList.add("fs-form-checked");
+          if(cel.classList.contains('fs-form-unchecked'))
+            cel.classList.remove("fs-form-unchecked");
+          cel.setAttribute('checked', 'true');
+        });
+      } else {
+
+        var is_empty = true;
+
+        document.querySelectorAll("#name")?.forEach(nel => {
+          if (nel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#message")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#send-on")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(is_empty == true){
+            
+          }
+        });
+        
+      }
+    });
+  });
+
+  document.querySelectorAll("#message")?.forEach(el => {
+    el.addEventListener('input', function () {
+      if (el.value.trim() !== '') {
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(!cel.classList.contains('fs-form-checked'))
+            cel.classList.add("fs-form-checked");
+          if(cel.classList.contains('fs-form-unchecked'))
+            cel.classList.remove("fs-form-unchecked");
+          cel.setAttribute('checked', 'true');
+        });
+      } else {
+
+        var is_empty = true;
+        document.querySelectorAll("#name")?.forEach(nel => {
+          if (nel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#email")?.forEach(eel => {
+          if (eel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#send-on")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(is_empty == true){
+            
+          }
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll("#send-on")?.forEach(el => {
+    el.addEventListener('input', function () {
+      if (el.value.trim() !== '') {
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(!cel.classList.contains('fs-form-checked'))
+            cel.classList.add("fs-form-checked");
+          if(cel.classList.contains('fs-form-unchecked'))
+            cel.classList.remove("fs-form-unchecked");
+          cel.setAttribute('checked', 'true');
+        });
+      } else {
+ 
+        var is_empty = true;
+        document.querySelectorAll("#name")?.forEach(nel => {
+          if (nel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#email")?.forEach(eel => {
+          if (eel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#message")?.forEach(mel => {
+          if (mel.value.trim() !== '') {
+            is_empty = false;
+          }
+        });
+
+        document.querySelectorAll("#show-form")?.forEach(cel => {
+          if(is_empty == true){
+         
+          }
+        });
+      }
+    });
+  });
+</script>

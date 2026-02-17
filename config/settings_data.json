@@ -1,8 +1,9 @@
 {
   "current": {
+    "gtm_id": "GTM-MMSCJRK7",
     "klaviyo_list_id": "VGu4Mt",
     "favicon": "shopify:\/\/shop_images\/Rishi-Favicon_1.png",
-    "nav_featured_collection": "summer-teas",
+    "nav_featured_collection": "winter-teas",
     "sections": {
       "header": {
         "type": "header",
@@ -10,7 +11,7 @@
           "792734d3-1aff-4de0-b2c1-a322efb1ffe3": {
             "type": "recipe",
             "settings": {
-              "article": "journal\/what-is-shincha-discover-japans-first-harvest-green-tea-of-the-year",
+              "article": "journal\/holiday-gift-guide",
               "blog_title": "",
               "url": ""
             }
@@ -18,7 +19,7 @@
           "fb6f63f2-aab3-42d5-a30a-22d960ca2b8e": {
             "type": "recipe",
             "settings": {
-              "article": "journal\/garden-direct-spring-harvest-field-report",
+              "article": "journal\/what-is-sencha",
               "blog_title": "",
               "url": ""
             }
@@ -33,26 +34,51 @@
         ],
         "settings": {
           "transparent_header": false,
+          "primary_menu_1_text": "Shop",
           "tea_menu": "tea-menu",
+          "primary_menu_2_text": "",
           "teaware_menu": "",
+          "primary_menu_3_text": "Discover",
           "discover_menu": "discover-menu",
+          "top_picks_menu_text": "Top Picks",
+          "top_picks_menu": "bf-top-picks",
+          "primary_menu_4_text": "",
+          "metcha_menu": "",
           "left_link_label": "Tea Club",
           "left_link_url": "shopify:\/\/products\/monthly-tea-club",
+          "left_link_label_2": "",
+          "left_link_url_2": "",
+          "primary_menu_1_text_mob": "Shop",
+          "tea_menu_mob": "tea-menu",
+          "primary_menu_2_text_mob": "",
+          "teaware_menu_mob": "",
+          "primary_menu_3_text_mob": "Discover",
+          "discover_menu_mob": "discover-menu",
+          "top_picks_menu_text_mob": "Top Picks",
+          "top_picks_menu_mob": "bf-top-picks",
+          "primary_menu_4_text_mob": "",
+          "metcha_menu_mob": "",
+          "left_link_label_mob": "Tea Club",
+          "left_link_url_mob": "shopify:\/\/products\/monthly-tea-club",
+          "left_link_label_2_mob": "",
+          "left_link_url_2_mob": "",
           "mobile_additional_link_1": "Best Sellers",
           "mobile_additional_link_url_1": "shopify:\/\/collections\/best-sellers",
           "mobile_additional_link_2": "New Arrivals",
           "mobile_additional_link_url_2": "shopify:\/\/collections\/new-arrivals",
+          "mobile_meet_your_matcha_text": "",
+          "mobile_meet_your_matcha_link": "",
           "discover_article": "journal\/why-water-temperature-is-important-when-brewing-tea",
           "discover_heading_right": "New to Tea? Start Here",
           "discover_heading_left": "Origins & Travel",
           "discover_blog_title": "Tea Education",
           "discover_url": "https:\/\/rishi-tea.com\/blogs\/journal\/why-water-temperature-is-important-when-brewing-tea",
           "show_announcement_banner": true,
-          "announcement_banner_background_color": "#233747",
-          "announcement_banner_text_color": "#ffffff",
-          "announcement_banner_text": "<p>Free standard shipping on orders over $50: <a href=\"\/collections\/shop-all-tea-types\" title=\"All Tea\">Shop Now<\/a><\/p>",
-          "announcement_banner_text_home": "<p>Over 65,000 tea lovers have tried us.<\/p>",
-          "announcement_banner_text_mobile": "<p>Free standard shipping on orders over $50: <a href=\"\/collections\/shop-all-tea-types\" title=\"All Tea\">Shop Now<\/a><\/p>"
+          "announcement_banner_background_color": "#b71211",
+          "announcement_banner_text_color": "#ffce2c",
+          "announcement_banner_text": "<p>15% Off Lunar New Year Teas | <a href=\"\/collections\/lunar-new-year-sale\" title=\"Lunar New Year Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_home": "<p>15% Off Lunar New Year Teas | <a href=\"\/collections\/lunar-new-year-sale\" title=\"Lunar New Year Sale\">Shop Now<\/a><\/p>",
+          "announcement_banner_text_mobile": "<p>15% Off Lunar New Year Teas | <a href=\"\/collections\/lunar-new-year-sale\" title=\"Lunar New Year Sale\">Shop Now<\/a><\/p>"
         }
       },
       "footer": {
@@ -109,6 +135,18 @@
       },
       "10840395464443086010": {
         "type": "shopify:\/\/apps\/alia\/blocks\/customer-app-frame\/51f1d398-3e41-44da-b81e-defd5804b292",
+        "disabled": false,
+        "settings": {}
+      },
+      "733389323033596483": {
+        "type": "shopify:\/\/apps\/okendo\/blocks\/theme-settings\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+        "disabled": false,
+        "settings": {
+          "show_preview_data": true
+        }
+      },
+      "4087582241319980836": {
+        "type": "shopify:\/\/apps\/ground\/blocks\/ground_script\/33606432-4610-4a99-a33b-7bec990f60ef",
         "disabled": false,
         "settings": {}
       }

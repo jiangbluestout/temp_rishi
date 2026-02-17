@@ -1,25 +1,68 @@
 <!doctype html>
 <html class="no-js" lang="{{- request.locale.iso_code -}}" dir="ltr">
   <head>
-{% render 'replo-head' %}{% render 'skio-head' %}
-  <script>
-    window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
-    window._template = {
-        directory: "{{ template.directory }}",
-        name: "{{ template.name }}",
-        suffix: "{{ template.suffix }}"
-    };
-  </script>
-  <script type="module" blocking="render" fetchpriority="high" src="https://cdn.intelligems.io/esm/c76e2b44cdb4/bundle.js" async></script>
+    <script type="text/javascript" experiment_id= "monitoring_06012026" src="https://pdq-scripts.pdqprod.link/pdq-text-abtest.js" id="pdq_custom_ab_test_script"></script>
+
+    <!-- Start of TrueVault Polaris Code Block -->
+    {% comment %} <script>
+      window.polarisOptions = {
+        GoogleAnalyticsTrackingId: 'G-CE4ESQETJC',
+      };
+    </script> {% endcomment %}
+    <script src="https://polaris.truevaultcdn.com/static/pc/QP7ZWXU3R/polaris.js"></script>
+    <!-- End of TrueVault Polaris Code Block -->
+
+    {% render 'head__integration-scripts' %}
+    {% render 'replo-head' %}
+    {% render 'skio-head' %}
+    <script>
+      window.Shopify = window.Shopify || {theme: {id: {{ theme.id }}, role: '{{ theme.role }}' } };
+      window._template = {
+          directory: "{{ template.directory }}",
+          name: "{{ template.name }}",
+          suffix: "{{ template.suffix }}"
+      };
+    </script>
+    <script
+      type="module"
+      blocking="render"
+      fetchpriority="high"
+      src="https://cdn.intelligems.io/esm/c76e2b44cdb4/bundle.js"
+      async
+    ></script>
     {% render 'gcm-integration-script' %}
     {%- if content_for_header contains 'elevateab.app' -%}
       {%- unless request.design_mode -%}
-        <script>try{window.eab_data={selectors:JSON.parse(`{{shop.metafields.elevateab.select}}`)||{},allTests:JSON.parse(`{{shop.metafields.elevateab.tests}}`)||{},currencyCode:"{{cart.currency.iso_code}}"};}catch(error){console.log(error);window.eab_data={selectors:{},allTests:{},currencyCode:"{{cart.currency.iso_code}}"};}
+        <script>
+          try {
+            window.eab_data = {
+              selectors: JSON.parse(`{{shop.metafields.elevateab.select}}`) || {},
+              allTests: JSON.parse(`{{shop.metafields.elevateab.tests}}`) || {},
+              currencyCode: '{{cart.currency.iso_code}}',
+            };
+          } catch (error) {
+            console.log(error);
+            window.eab_data = { selectors: {}, allTests: {}, currencyCode: '{{cart.currency.iso_code}}' };
+          }
         </script>
         <script src="https://ds0wlyksfn0sb.cloudfront.net/redirect.js"></script>
         <script async src="https://ds0wlyksfn0sb.cloudfront.net/element.js"></script>
         <script>
-          document.addEventListener("DOMContentLoaded",function(){try{if((typeof sessionStorage!=="undefined"&&sessionStorage.getItem("abwidget"))||(typeof URLSearchParams!=="undefined"&&new URLSearchParams(window.location.search).has("abwidget"))){var script=document.createElement("script");script.src="https://ds0wlyksfn0sb.cloudfront.net/widget.js";script.async=true;document.body.appendChild(script);}}catch(error){console.error("Eab err:",error);}})
+          document.addEventListener('DOMContentLoaded', function () {
+            try {
+              if (
+                (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('abwidget')) ||
+                (typeof URLSearchParams !== 'undefined' && new URLSearchParams(window.location.search).has('abwidget'))
+              ) {
+                var script = document.createElement('script');
+                script.src = 'https://ds0wlyksfn0sb.cloudfront.net/widget.js';
+                script.async = true;
+                document.body.appendChild(script);
+              }
+            } catch (error) {
+              console.error('Eab err:', error);
+            }
+          });
         </script>
       {%- endunless -%}
     {%- endif -%}
@@ -35,7 +78,6 @@
     {%- liquid
       render 'head__seo'
       render 'head__metas'
-      render 'head__integration-scripts'
       render 'head__fonts'
     -%}
 
@@ -64,100 +106,100 @@
     <!-- Header hook for plugins -->
     {{ content_for_header }}
 
-
-
     <!-- Bing webmaster tools -->
     <meta name="msvalidate.01" content="1EEA7613DDCD7D2C141616ECE6BF4017">
     <!-- Bing webmaster tools ends -->
 
-    <!-- Start of TrueVault Polaris Code Block -->
-    <script>
-    window.polarisOptions = {
-    GoogleAnalyticsTrackingId: "G-CE4ESQETJC",
-    };
-    </script>
-    <script src="https://polaris.truevaultcdn.com/static/pc/QP7ZWXU3R/polaris.js"></script>
-    <!-- End of TrueVault Polaris Code Block -->
-    
-    
     <script type="text/javascript">
-    var _conv_page_type = "{{ request.page_type }}";
-    var _conv_category_id = "{{ collection.id }}";
-    var _conv_category_name = "{{ collection.title }}";
-    var _conv_product_sku = "{{ product.selected_or_first_available_variant.sku }}";
-    var _conv_product_name = '{{ product.title }}';
-    var _conv_product_price = "{{ product.price_min | money_without_currency }}";
-    var _conv_customer_id = "{{ customer.id }}";
-    var _conv_custom_v1 = "{{ product.tags.first }}";
-    var _conv_custom_v2 = "{{ collection.current_type }}";
-    var _conv_custom_v3 = "{{ cart.item_count }}";
-    var _conv_custom_v4 = "{{ cart.total_price | money_without_currency }}";
+      var _conv_page_type = '{{ request.page_type }}';
+      var _conv_category_id = '{{ collection.id }}';
+      var _conv_category_name = '{{ collection.title }}';
+      var _conv_product_sku = '{{ product.selected_or_first_available_variant.sku }}';
+      var _conv_product_name = '{{ product.title }}';
+      var _conv_product_price = '{{ product.price_min | money_without_currency }}';
+      var _conv_customer_id = '{{ customer.id }}';
+      var _conv_custom_v1 = '{{ product.tags.first }}';
+      var _conv_custom_v2 = '{{ collection.current_type }}';
+      var _conv_custom_v3 = '{{ cart.item_count }}';
+      var _conv_custom_v4 = '{{ cart.total_price | money_without_currency }}';
     </script>
     {% render 'convert' %}
 
-  <script>
-    if (window.location.href.indexOf('/?discover-video') > -1) {
-      window.history.pushState({}, document.title, "/discover-video");
-    } else if (window.location.href.indexOf('/?discover') > -1) {
-      window.history.pushState({}, document.title, "/discover");
-    } else if (window.location.href.indexOf('/?summer') > -1) {
-      window.history.pushState({}, document.title, "/summer");
-    } else if (window.location.href.indexOf('/?first-flush') > -1) {
-      window.history.pushState({}, document.title, "/first-flush");
-    }
-  </script>
-
-  <script>
-    window.polarisOptions = {
-    GoogleAnalyticsTrackingId: "G-CE4ESQETJC",
-  };
-  </script>
-  <script src="https://polaris.truevaultcdn.com/static/pc/QP7ZWXU3R/polaris.js"></script>
-
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "nmb7wck9e0");
-  </script>
-  {% if template == 'product' %}
     <script>
-      window.productVariants = {{ product.variants | json }};
-      window.defaultVariantId = {{ product.variants.first.id }};
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const urlParams = new URLSearchParams(window.location.search);
-        const variantIdFromURL = urlParams.get('variant');
-        const validVariants = window.productVariants.map(variant => variant.id.toString());
-
-        if (variantIdFromURL && !validVariants.includes(variantIdFromURL)) {
-          window.location.href = window.location.pathname + '?variant=' + window.defaultVariantId;
-        }
-      })
+      if (window.location.href.indexOf('/?discover-video') > -1) {
+        window.history.pushState({}, document.title, '/discover-video');
+      } else if (window.location.href.indexOf('/?discover') > -1) {
+        window.history.pushState({}, document.title, '/discover');
+      } else if (window.location.href.indexOf('/?summer') > -1) {
+        window.history.pushState({}, document.title, '/summer');
+      } else if (window.location.href.indexOf('/?first-flush') > -1) {
+        window.history.pushState({}, document.title, '/first-flush');
+      }
     </script>
-  {% endif %}
-  <script src="https://track.getgobot.com/gobot/js/shopify.js?key=-NbmabFDQIiRzZkDAddT"></script>
-  <script type="text/javascript">(function(G,O,b,o,t){G[b]=G[b]||function(){(G[b].queue=G[b].queue||[]).push(arguments)}
-    o=O.createElement('script')
-    o.async=1
-    o.src='https://new.getgobot.com/client/v1/gobot-client.js'
-    t=O.getElementsByTagName('script')[0]
-    t.parentNode.insertBefore(o,t)})(window,document,'gobot')
-    gobot('create','-NbmabFDQIiRzZkDAddT')
-    gobot('pageview')
-  </script>
-</head>
+
+    <script type="text/javascript">
+      (function (c, l, a, r, i, t, y) {
+        c[a] =
+          c[a] ||
+          function () {
+            (c[a].q = c[a].q || []).push(arguments);
+          };
+        t = l.createElement(r);
+        t.async = 1;
+        t.src = 'https://www.clarity.ms/tag/' + i;
+        y = l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t, y);
+      })(window, document, 'clarity', 'script', 'nmb7wck9e0');
+    </script>
+    {% if template == 'product' %}
+      <script>
+        window.productVariants = {{ product.variants | json }};
+        window.defaultVariantId = {{ product.variants.first.id }};
+
+        document.addEventListener("DOMContentLoaded", function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          const variantIdFromURL = urlParams.get('variant');
+          const validVariants = window.productVariants.map(variant => variant.id.toString());
+
+          if (variantIdFromURL && !validVariants.includes(variantIdFromURL)) {
+            // Preserve all existing query parameters and update variant
+            const url = new URL(window.location.href);
+            url.searchParams.set('variant', window.defaultVariantId);
+            window.location.href = url.toString();
+          }
+        })
+      </script>
+    {% endif %}
+    <script src="https://track.getgobot.com/gobot/js/shopify.js?key=-NbmabFDQIiRzZkDAddT"></script>
+    <script type="text/javascript">
+      (function (G, O, b, o, t) {
+        G[b] =
+          G[b] ||
+          function () {
+            (G[b].queue = G[b].queue || []).push(arguments);
+          };
+        o = O.createElement('script');
+        o.async = 1;
+        o.src = 'https://new.getgobot.com/client/v1/gobot-client.js';
+        t = O.getElementsByTagName('script')[0];
+        t.parentNode.insertBefore(o, t);
+      })(window, document, 'gobot');
+      gobot('create', '-NbmabFDQIiRzZkDAddT');
+      gobot('pageview');
+    </script>
+  </head>
   <body
     x-data
     :class="
       {
         'header-opened':  $store.main.isNavOpen || $store.main.isMobileNavOpen || $store.main.isSearchOpen || $store.mapPopup?.popupOpen,
         'scrolled': $store.main.isScrolled
-      } 
+      }
     "
-    class="layout-theme header-on-hover template-{{- template.name -}}{%- if template.suffix -%}-{{- template.suffix -}}{%- endif -%}" data-customer-id="{% if customer.id %}{{ customer.id }}{% else %}7295795396858{% endif %}"
+    class="layout-theme header-on-hover template-{{- template.name -}}{%- if template.suffix -%}-{{- template.suffix -}}{%- endif -%}"
+    data-customer-id="{% if customer.id %}{{ customer.id }}{% else %}7295795396858{% endif %}"
   >
+    <!-- Google Tag Manager (noscript) -->
     <!-- Google Tag Manager (noscript) -->
     <noscript
       ><iframe
@@ -167,18 +209,22 @@
         style="display:none;visibility:hidden"
       ></iframe
     ></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     {% section 'header' %}
-    
+
     {% comment %} Shopify Native Cart Drawer {% endcomment %}
     {{ 'component-cart-drawer.css' | asset_url | stylesheet_tag }}
-    
+
     <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- render 'cart__drawer' -%}
 
-    <main id="main-content" role="main" class="{% if request.path contains 'account/login' %}account__template{% endif %} u-focus-none" tabindex="-1">
+    <main
+      id="main-content"
+      role="main"
+      class="{% if request.path contains 'account/login' %}account__template{% endif %} u-focus-none"
+      tabindex="-1"
+    >
       {{ content_for_layout }}
       {% if request.path contains 'account/login' %}
         <div class="account-login__message">
@@ -210,13 +256,17 @@
     {% render 'rebuy-extensions' %}
     <div data-rebuy-id="116496"></div>
 
-    
-
     <script>
       var dataLayer = window.dataLayer || [];
 
-      var initGorgiasChatPromise = (window.GorgiasChat) ? window.GorgiasChat.init() : new Promise(function (resolve) { window.addEventListener('gorgias-widget-loaded', function () { resolve();})});
-      initGorgiasChatPromise.then(initGorgiasChatEvents)
+      var initGorgiasChatPromise = window.GorgiasChat
+        ? window.GorgiasChat.init()
+        : new Promise(function (resolve) {
+            window.addEventListener('gorgias-widget-loaded', function () {
+              resolve();
+            });
+          });
+      initGorgiasChatPromise.then(initGorgiasChatEvents);
 
       function initGorgiasChatEvents() {
         GorgiasChat.on('message:sent', function () {
@@ -236,7 +286,7 @@
         });
       }
 
-      document.body.addEventListener('submit', function(e) {
+      document.body.addEventListener('submit', function (e) {
         if (e.target.matches('klaviyo-form form')) {
           dataLayer.push({
             event: 'ct_newsletter_signup',
@@ -272,16 +322,16 @@
             }
           });
 
-        const targetElement = document.querySelector('.hidden.fixed.duration-300');
-        const productFirefox = document.querySelector('body.template-product .firebox-policy');
-        const addClassButton = document.getElementById('add-class');
+          const targetElement = document.querySelector('.hidden.fixed.duration-300');
+          const productFirefox = document.querySelector('body.template-product .firebox-policy');
+          const addClassButton = document.getElementById('add-class');
 
           // Function to monitor class addition
           const observer = new MutationObserver((mutationsList) => {
             for (const mutation of mutationsList) {
               if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
                 if (targetElement.classList.contains('show-sticky-atc')) {
-                  productFirefox.style.bottom = "5rem";
+                  productFirefox.style.bottom = '5rem';
                 } else {
                   productFirefox.style.bottom = 0;
                 }
@@ -296,14 +346,14 @@
     </script>
   </body>
   <div class="firebox-policy">
-      <div class="firebox-policy__container">
-        <div class="firebox-policy__content">
-          <p>If you’re using Firefox with Enhanced Tracking Protection, certain features may be blocked.
-            Please disable strict tracking settings or switch browsers for the best experience.</p>
-        </div>
-        <div class="firebox-policy__button">
-          Got It
-        </div>
+    <div class="firebox-policy__container">
+      <div class="firebox-policy__content">
+        <p>
+          If you’re using Firefox with Enhanced Tracking Protection, certain features may be blocked. Please disable
+          strict tracking settings or switch browsers for the best experience.
+        </p>
       </div>
+      <div class="firebox-policy__button">Got It</div>
     </div>
+  </div>
 </html>

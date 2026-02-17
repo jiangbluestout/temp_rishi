@@ -5,7 +5,7 @@
 {% endif %}
 
 <a
-  class="inline-block w-full"
+  class="inline-block w-full fs-mob-nav-img-menu"
   href="{{ url }}"
 >
   <img
@@ -15,10 +15,12 @@
     height="{{ article.image.height }}"
     loading="lazy"
   >
-  <div class="tracking-4pc text-dark text-opacity-40 mb-1 text-sm">
-    {{ blog_title }}
-  </div>
-  <div class="leading-1.5 text-md tracking-0.3pc">
-    {{ article.title }}
+  <div class="fs-mob-img-menu-block">
+    <div class="tracking-4pc text-dark text-opacity-40 mb-1 text-sm fs-menu-block-title">
+      {{ blog_title }}
+    </div>
+    <div class="leading-1.5 text-md tracking-0.3pc">
+      {{ article.title }}
+    </div>
   </div>
 </a>

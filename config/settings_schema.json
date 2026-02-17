@@ -215,5 +215,15 @@
         "label": "Select a Collection"
       }
     ]
+  },
+  {
+    "name": "Navigation Featured Collection 2",
+    "settings": [
+      {
+        "type": "collection",
+        "id": "nav_featured_collection_2",
+        "label": "Select a Collection"
+      }
+    ]
   }
 ]

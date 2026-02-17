@@ -41,7 +41,7 @@
   }
 {% endstyle %} {% endcomment %}
 <div class="mb-4 lg:mb-0">
-  <span class="hidden lg:flex">{% render 'junip-product-summary', product: product %}</span>
+  <span class="hidden lg:flex">{% render 'okendo-reviews-product-rating-summary', product: product %}</span>
   <div class="pdp-title flex items-end justify-between gap-8 mt-4 lg:mt-0" id="collection-banner-top-padding">
     <div class="heading-lg">{{ product.title }}</div>
     {% if product.compare_at_price > product.price %}
@@ -86,7 +86,7 @@
     <div class="text-dark/75 leading-[21px] para-sm mt-2 lg:mt-4 mb-2.5 lg:mb-0">{{ section.settings.buy_box_testimonials }}</div>
   {%- endif -%}
 
-  <span class="lg:hidden">{% render 'junip-product-summary', product: product %}</span>
+  <span class="lg:hidden">{% render 'okendo-reviews-product-rating-summary', product: product %}</span>
 </div>
 
 <script>

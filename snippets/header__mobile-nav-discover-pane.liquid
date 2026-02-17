@@ -23,7 +23,7 @@
           {{ section.settings.discover_heading_left }}
         </div>
 
-        <div>
+        <div class="fs-mobile-nav"> 
           {% for block in section.blocks %}
             {% render 'header__nav-article-card', article: block.settings.article, blog_title: block.settings.blog_title, optional_url: block.settings.url %}
           {% endfor %}

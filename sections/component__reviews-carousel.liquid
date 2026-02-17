@@ -31,7 +31,8 @@
       <div class="flex justify-between items-center pb-11">
         <div class="text-white">
           <h2 class="text-xs tracking-8pc leading-1.5 font-500 uppercase font-sans pb-2.5 md:pb-3">{{ section.settings.superscript }}</h2>
-          <h2 class="heading-sm">{{ section.settings.header | newline_to_br }}</h2>
+          <h3 class="heading-sm">{{ section.settings.header | newline_to_br }}</h3>
+          <div class="panel-description">{{ section.settings.description }}</div>
         </div>
         <a href="{{ section.settings.button_link }}" class="{{ section.settings.button_color }} hidden md:block">{{ section.settings.button_text }}</a>
       </div>
@@ -85,6 +86,11 @@
         "id": "header",
         "label": "Heading",
         "default": "Reviews Lorem Ipsum Headline Here"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "description"
       },
       {
         "type": "color",

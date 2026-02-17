@@ -1,0 +1,183 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
+    "component_spacer_LKpf9y": {
+      "type": "component__spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 160,
+        "height_mobile": 160
+      }
+    },
+    "1759235904975c2a61": {
+      "type": "apps",
+      "blocks": {
+        "okendo_quizzes_widget_MFihjV": {
+          "type": "shopify:\/\/apps\/okendo\/blocks\/quizzes-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {
+            "channel_quiz_id": "cad22f9a-3284-4094-8156-99a323b5260b",
+            "full_screen": false,
+            "header_offset": 0
+          }
+        }
+      },
+      "block_order": [
+        "okendo_quizzes_widget_MFihjV"
+      ],
+      "settings": {}
+    },
+    "component_spacer_wxMwUk": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 52,
+        "height_mobile": 52
+      }
+    },
+    "component_three_up_image_text_bXHyWb": {
+      "type": "component__three-up-image-text",
+      "blocks": {
+        "column_r7Uy8C": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RTB_Relationships.jpg",
+            "title": "OUR CLOSE, LONG-TERM RELATIONSHIPS",
+            "copy": "<p>We cultivate direct, long-term partnerships with growers and artisans across the world to bring you an authentic and meaningful experience of tea. This approach ensures a stable source of income for producers—and preserves a legacy of extraordinary craftsmanship.<\/p>"
+          }
+        },
+        "column_xrEbHC": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/RTB_Selector.jpg",
+            "title": "WE SELECT ONLY THE BEST, FROM THE BEST",
+            "copy": "<p>We provide an unparalleled and immersive sensory experience, traveling each year to remote, pristine growing regions—where tea cultivation spans generations—in pursuit of the finest, purest ingredients.<\/p>"
+          }
+        },
+        "column_hpwnBQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/D2_LIFESTYLE_11_RITUALGREEN_2276_FINAL_1.jpg",
+            "title": "OUR BALANCE OF TRADITION AND INNOVATION",
+            "copy": "<p>We offer a beautiful, balanced cup that calms and captivates the mind, infusing modern culinary creativity with ancient botanical wisdom in our original, innovative blends.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "column_r7Uy8C",
+        "column_xrEbHC",
+        "column_hpwnBQ"
+      ],
+      "name": "Three Column Image + Text",
+      "settings": {
+        "full_width": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_spacer_JE7fXx": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 52,
+        "height_mobile": 52
+      }
+    },
+    "replo_press_eigEeF": {
+      "type": "replo-press",
+      "name": "Press",
+      "settings": {}
+    },
+    "replo_brand_rtb_section_NFWmHE": {
+      "type": "replo-brand-rtb-section",
+      "disabled": true,
+      "name": "Brand RTB Section",
+      "settings": {
+        "replo_text_e2f669bc-9641-49af-91d9-38093586c460": "<p>We offer premium tea and botanicals imported directly from growers across the world and draw inspiration from ancient artisanal practices that use organic cultivation techniques<\/p>",
+        "replo_text_82401179-66da-4e1a-bdbd-d29720bb9cd3": "<p>CERTIFIED ORGANIC<\/p>",
+        "replo_text_1519d059-f905-4662-b137-46e8f3360904": "<p>Organic teas are healthier for the planet and people who grow, craft and enjoy steeping them. That's why over 95% of Rishi's ingredients are certified organic.<\/p>",
+        "replo_text_900a78ae-2b4d-43d4-a1af-680bd6b45afd": "<p>DIRECT TRADE<\/p>",
+        "replo_text_f85c9700-df24-4a5a-8ade-f0cf8c7b4c1d": "<p>Ethically sourced directly from artisan tea and botanical farmers around the world. Our deep relationships are the foundation of the authentic tea experiences you can expect from Rishi.<\/p>",
+        "replo_text_0ddc6829-4c08-4de0-8e21-22dce2167edb": "<p>BEAUTIFUL INGREDIENTS<\/p>",
+        "replo_text_439172d5-d485-4de1-a541-5ca5440a1b7c": "<p>Rishi teas are inspired by equal parts: ancient herbal medicinal traditions and modern culinary innovation. Discover new teas and botanicals in exciting, fresh and artfully crafted blends<\/p>"
+      }
+    },
+    "component_spacer_4epg9V": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 52,
+        "height_mobile": 52
+      }
+    },
+    "component_product_carousel_tabs_XkgpNq": {
+      "type": "component__product-carousel-tabs",
+      "blocks": {
+        "collection_L9W6XL": {
+          "type": "collection",
+          "settings": {
+            "title": "",
+            "desc": "",
+            "collection": "best-sellers",
+            "products": []
+          }
+        }
+      },
+      "block_order": [
+        "collection_L9W6XL"
+      ],
+      "name": "Product Carousel + Tabs",
+      "settings": {
+        "layout": "no_tabs",
+        "heading": "Explore Best Sellers",
+        "description": "",
+        "full_width": true,
+        "button_text": "Shop All",
+        "padding_bottom": "none",
+        "panel_eyebrow": "",
+        "panel_desc": "",
+        "panel_background_color": "#a88667",
+        "panel_text_color": "#ffffff",
+        "panel_button_color": "button__primary white"
+      }
+    },
+    "component_spacer_6fBptg": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 52,
+        "height_mobile": 52
+      }
+    },
+    "liquid_section_6qqEQX": {
+      "type": "liquid-section",
+      "name": "Custom Liquid Section",
+      "settings": {
+        "custom_liquid": "{{ 'okendo-quiz.css' | asset_url | stylesheet_tag }}",
+        "full_width": true,
+        "padding_bottom": "medium"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "component_spacer_LKpf9y",
+    "1759235904975c2a61",
+    "component_spacer_wxMwUk",
+    "component_three_up_image_text_bXHyWb",
+    "component_spacer_JE7fXx",
+    "replo_press_eigEeF",
+    "replo_brand_rtb_section_NFWmHE",
+    "component_spacer_4epg9V",
+    "component_product_carousel_tabs_XkgpNq",
+    "component_spacer_6fBptg",
+    "liquid_section_6qqEQX"
+  ]
+}

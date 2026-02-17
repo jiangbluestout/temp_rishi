@@ -1,0 +1,264 @@
+{{ 'swiper.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper.min.js' | asset_url }}"></script>
+
+{% style %}
+  .custom-slider-wrapper {
+    display: none;
+    justify-content: space-between;
+    gap: 5px;
+    padding-right: 5px;
+  }
+
+  .gallery-thumbs {
+    float: left;
+    width: calc(20% - 0px);
+    position: relative;
+  }
+
+  .gallery-thumbs .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+
+  .gallery-thumbs .swiper-slide-active {
+    border: 1px solid #a88667;
+  }
+
+  .gallery-thumbs .swiper-slide:hover {
+    border: 1px solid #e2d6ca;
+  }
+
+  .gallery-top {
+    float: right;
+    width: 85%;
+  }
+
+  .gallery-top .swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  /* Thumbnail navigation arrows */
+  .thumb-nav-btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+  }
+  .button-sub-wrapper {
+    position: relative;
+    z-index: 9;
+  }
+  .button-sub-wrapper:before {
+    background: linear-gradient(180deg, #f6f6f400 0, #f5f5f3);
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 100%;
+    height: 50px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+  .thumb-nav-btn.next {
+    bottom: 5px;
+  }
+
+  .thumb-nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+{% endstyle %}
+
+<div class="custom-slider-wrapper">
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+      {% for image in product.images %}
+        <div class="swiper-slide">
+          <div class="relative w-full main-image-element">
+            <img
+              loading="lazy"
+              alt="{{ product.title }}"
+              src="{{ image | image_url: width: 1000 }}"
+              srcset="{{ image | image_url: width: 480 }} 480w, {{ image | image_url: width: 800 }} 800w, {{ image | image_url: width: 1500 }} 1500w"
+              sizes="(max-width: 480px) 480px, (max-width: 800px) 800px, 1500px"
+              class="w-full h-full object-cover"
+              style="min-height: 350px;"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+            >
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="swiper-container gallery-thumbs">
+    <!-- Previous arrow -->
+    <button class="thumb-nav-btn prev" id="thumbPrevBtn" style="display: none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="18,15 12,9 6,15"></polyline>
+      </svg>
+    </button>
+
+    <div class="swiper-wrapper">
+      {% for image in product.images %}
+        <div class="swiper-slide">
+          <div class="relative w-full h-full">
+            <img
+              loading="lazy"
+              alt="{{ product.title }}"
+              src="{{ image | image_url: width: 200 }}"
+              class="w-full h-full object-cover"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+            >
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Next arrow -->
+    <div class="button-sub-wrapper">
+      <button class="thumb-nav-btn next" id="thumbNextBtn">
+        <svg
+          fill="#000000"
+          version="1.1"
+          id="Capa_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="20px"
+          height="20px"
+          viewBox="0 0 30.727 30.727"
+          xml:space="preserve"
+        >
+          <g>
+          	<path d="M29.994,10.183L15.363,24.812L0.733,10.184c-0.977-0.978-0.977-2.561,0-3.536c0.977-0.977,2.559-0.976,3.536,0
+          		l11.095,11.093L26.461,6.647c0.977-0.976,2.559-0.976,3.535,0C30.971,7.624,30.971,9.206,29.994,10.183z"/>
+          </g>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Function to sync heights between main image and thumbnails
+    function syncHeights() {
+      const mainImageElement = document.querySelector('.main-image-element');
+      const galleryThumbs = document.querySelector('.gallery-thumbs .swiper-wrapper');
+      
+      if (mainImageElement && galleryThumbs) {
+        const mainImageHeight = mainImageElement.offsetHeight;
+        galleryThumbs.style.height = mainImageHeight + 'px';
+      }
+    }
+
+    // Function to initialize the slider
+    function initializeSlider() {
+      // Small delay to ensure DOM is ready and visible
+      setTimeout(function() {
+        var galleryThumbs = new Swiper('.gallery-thumbs', {
+          direction: 'vertical',
+          slidesPerView: 4,
+          slideToClickedSlide: true,
+          spaceBetween: 5,
+          loopedSlides: {{ product.images.size }},
+          loop: {{ product.images.size | times: 1 | at_least: 4 }},
+          watchSlidesProgress: true,
+          watchSlidesVisibility: true,
+        });
+
+        var galleryTop = new Swiper('.gallery-top', {
+          slidesPerView: 1,
+          loop: {{ product.images.size | times: 1 | at_least: 4 }},
+          loopedSlides: {{ product.images.size }},
+          thumbs: {
+            swiper: galleryThumbs,
+          },
+        });
+
+        // Sync the galleries
+        galleryTop.controller.control = galleryThumbs;
+        galleryThumbs.controller.control = galleryTop;
+
+        // Thumbnail navigation arrows functionality
+        const prevBtn = document.getElementById('thumbPrevBtn');
+        const nextBtn = document.getElementById('thumbNextBtn');
+
+        // Update arrow states based on current position
+        function updateArrowStates() {
+          if (galleryThumbs.isBeginning) {
+            prevBtn.disabled = true;
+          } else {
+            prevBtn.disabled = false;
+          }
+
+          if (galleryThumbs.isEnd) {
+            nextBtn.disabled = true;
+          } else {
+            nextBtn.disabled = false;
+          }
+        }
+
+        // Event listeners for arrow buttons
+        prevBtn.addEventListener('click', function() {
+          galleryThumbs.slidePrev();
+        });
+
+        nextBtn.addEventListener('click', function() {
+          galleryThumbs.slideNext();
+        });
+
+        // Update arrow states on slide change
+        galleryThumbs.on('slideChange', updateArrowStates);
+
+        // Initial state
+        updateArrowStates();
+
+        // Sync heights after initialization
+        syncHeights();
+
+        // Force update after initialization to ensure proper sizing
+        galleryThumbs.update();
+        galleryTop.update();
+      }, 100);
+    }
+
+    // Initialize the slider
+    initializeSlider();
+
+    // Also reinitialize on window resize to handle any layout changes
+    window.addEventListener('resize', function() {
+      // Debounce resize events
+      clearTimeout(window.resizeTimeout);
+      window.resizeTimeout = setTimeout(function() {
+        // Sync heights first
+        syncHeights();
+        
+        const galleryThumbs = document.querySelector('.gallery-thumbs').swiper;
+        const galleryTop = document.querySelector('.gallery-top').swiper;
+        
+        if (galleryThumbs && galleryTop) {
+          // Then update the sliders
+          galleryThumbs.update();
+          galleryTop.update();
+        }
+      }, 250);
+    });
+  });
+</script>

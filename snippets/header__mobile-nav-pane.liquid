@@ -3,7 +3,6 @@
   x-show="menu == '{{ link_handle }}'"
   x-transition.opacity.duration.200ms
 >
-
   <div class="flex-1 flex flex-col justify-between gap-5 h-full">
     <div>
       {% for l1_link in links %}
@@ -44,6 +43,19 @@
               </div>
             </div>
           </div>
+        {% else %}
+          {% unless l1_link.title == 'Shop All ' %}
+            {% if link_handle == 'teaware' or link_handle == 'bf-top-picks' %}
+              <div class="border-b border-b-brown border-opacity-25 pt-3 pb-4 px-3 w-full">
+                <a
+                  class="font-serif text-5xl tracking-4pc font-100 flex justify-between items-center w-full"
+                  href="{{ l1_link.url }}"
+                >
+                  {{ l1_link.title }}
+                </a>
+              </div>
+            {% endif %}
+          {% endunless %}
         {% endif %}
       {% endfor %}
     </div>

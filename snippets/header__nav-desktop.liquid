@@ -9,7 +9,15 @@
           @mouseover="openedDesktopMenu = 'tea'; openedDesktopSubMenu = '{{ section.settings.tea_menu.links[0].handle }}'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
           :class="openedDesktopMenu == 'tea' ? 'bg-dark text-white' : 'bg-transparent text-current'"
         >
-          <a href="https://rishi-tea.com/collections/all-products">Shop</a>
+          
+            <a href="https://rishi-tea.com/collections/all-products">
+            {% if section.settings.primary_menu_1_text != blank %}
+              {{ section.settings.primary_menu_1_text }}
+            {% else %}
+              SHOP
+            {% endif %}
+            </a>
+          
           <div class="text-brown">
             {% render 'svg__chevron-down' %}
           </div>
@@ -18,12 +26,17 @@
       {% if section.settings.teaware_menu != blank %}
         <button
           id="parent-menu-item"
-          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          class="parent-menu-item fs-hide-md flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
           @mouseover="openedDesktopMenu = 'teaware'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
           :class="openedDesktopMenu == 'teaware' ? 'bg-dark text-white' : 'bg-transparent text-current'"
           type="button"
         >
-          Teaware
+          
+          {% if section.settings.primary_menu_2_text != blank %}
+            {{ section.settings.primary_menu_2_text }}
+          {% else %}
+            Teaware
+          {% endif %}
           <div class="text-brown">
             {% render 'svg__chevron-down' %}
           </div>
@@ -37,11 +50,33 @@
           :class="openedDesktopMenu == 'discover' ? 'bg-dark text-white' : 'bg-transparent text-current'"
           type="button"
         >
-          Discover
+          {% if section.settings.primary_menu_3_text != blank %}
+            {{ section.settings.primary_menu_3_text }}
+          {% else %}
+            Discover
+          {% endif %}
           <div class="text-brown">
             {% render 'svg__chevron-down' %}
           </div>
         </button>
+      {% endif %}
+      {% if section.settings.metcha_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item fs-hide-md flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          @mouseover="openedDesktopMenu = 'metcha'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'metcha' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+          type="button"
+        >
+          {% if section.settings.primary_menu_4_text != blank %}
+            {{ section.settings.primary_menu_4_text }}
+          {% else %}
+            Metcha
+          {% endif %}
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button> 
       {% endif %}
       {% if section.settings.left_link_label != blank %}
         <a
@@ -49,6 +84,14 @@
           href="{{ section.settings.left_link_url }}"
         >
           {{ section.settings.left_link_label }}
+        </a>
+      {% endif %}
+      {% if section.settings.left_link_label_2 != blank %}
+        <a
+          class="parent-menu-item fs-hide-md flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 hover:bg-dark hover:text-white"
+          href="{{ section.settings.left_link_url_2 }}"
+        >
+          {{ section.settings.left_link_label_2 }}
         </a>
       {% endif %}
     </div>
@@ -63,6 +106,55 @@
       </a>
     </div>
 
+    <div class="flex-1 fs-show-only-md flex gap-4 lg:gap-7">
+      
+      {% if section.settings.teaware_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          @mouseover="openedDesktopMenu = 'teaware'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'teaware' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+          type="button"
+        >
+          
+          {% if section.settings.primary_menu_2_text != blank %}
+            {{ section.settings.primary_menu_2_text }}
+          {% else %}
+            Teaware
+          {% endif %}
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button>
+      {% endif %}
+      {% if section.settings.metcha_menu != blank %}
+        <button
+          id="parent-menu-item"
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300"
+          @mouseover="openedDesktopMenu = 'metcha'; $store.main.setDesktopHeaderOpened(true); hoverLinkHandle = null;"
+          :class="openedDesktopMenu == 'metcha' ? 'bg-dark text-white' : 'bg-transparent text-current'"
+          type="button"
+        >
+          {% if section.settings.primary_menu_4_text != blank %}
+            {{ section.settings.primary_menu_4_text }}
+          {% else %}
+            Metcha
+          {% endif %}
+          <div class="text-brown">
+            {% render 'svg__chevron-down' %}
+          </div>
+        </button> 
+      {% endif %}
+      {% if section.settings.left_link_label_2 != blank %}
+        <a
+          class="parent-menu-item flex items-center uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 hover:bg-dark hover:text-white"
+          href="{{ section.settings.left_link_url_2 }}"
+        >
+          {{ section.settings.left_link_label_2 }}
+        </a>
+      {% endif %}
+    </div>
+    
     <div class="flex-1 flex justify-end text-left gap-4 lg:gap-3">
       <div class="hidden relative w-full xl:block" style="top: -1px;">
         {% render 'header__search' %}
@@ -150,9 +242,9 @@
   >
     <div
       x-show="openedDesktopMenu == 'tea'"
-      class="px-8 py-2 grid grid-cols-2 xl:grid-cols-[1fr_1.5fr_.5fr] 2xl:grid-cols-[1fr_1.3fr_.7fr] gap-6 header__desktop-menu relative"
+      class="px-8 py-2 flex gap-6 header__desktop-menu relative"
     >
-      <div class="flex flex-col gap-4 border-r border-r-brown border-opacity-50 py-6 pr-6 submenu-items-wrapper">
+      <div class="fs-drop-left flex flex-col gap-4 border-r border-r-brown border-opacity-50 py-6 pr-6 submenu-items-wrapper" > 
         {% for l1_link in section.settings.tea_menu.links %}
           {% if l1_link.links.size > 0 %}
             <button
@@ -162,7 +254,7 @@
             >
               <a class="main-menu__parent" href="{{ l1_link.url }}">{{ l1_link.title }}</a>
               <div
-                class="text-brown transform -rotate-90 inline-block float-right h-full transition-opacity"
+                class="fs-sub-menu-arrow text-brown transform -rotate-90 inline-block h-full transition-opacity"
                 :class="openedDesktopSubMenu == '{{ l1_link.handle }}' ? 'opacity-100' : 'opacity-0'"
               >
                 {% render 'svg__chevron-down' %}
@@ -179,7 +271,7 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div class="relative h-full ss">
+      <div class="fs-drop-center relative h-full ss" >
         {% for l1_link in section.settings.tea_menu.links %}
           {% assign cols = 1 %}
           {% if l1_link.links.size > 6 %}
@@ -248,7 +340,7 @@
           {% endif %}
         {% endfor %}
       </div>
-      <div class="relative hidden items-start justify-end py-6 xl:flex">
+      <div class="fs-drop-right relative items-start justify-end py-6 xl:flex" >
         <div>
           <a class="text-[14px]" href="{{ settings.nav_featured_collection.url }}" style="font-weight: 500;">
             <img class="mb-[14px] object-cover max-w-[256px] h-[256px]" src="{{settings.nav_featured_collection.image.src | image_url: width: 256}}" alt="">
@@ -377,7 +469,7 @@
             {{ section.settings.discover_heading_left }}
           </div>
 
-          <div>
+          <div class="fs-discover-mega">
             {% for block in section.blocks %}
               <div class="w-64 mr-4 inline-block">
                 {% render 'header__nav-article-card', article: block.settings.article, blog_title: block.settings.blog_title, optional_url: block.settings.url %}
@@ -405,18 +497,105 @@
 </div>
 
 <style>
+  .fs-sub-menu-arrow svg{
+    margin-top: 30px;
+    margin-right: 15px; 
+  }
   .header-nav__wrapper button.bg-dark.text-white {
     background-color: #283645;
   }
+  .fs-show-only-md{
+    display: none !important;
+  }
+  @media (min-width: 1330px)
+  {
+    .fs-discover-mega{
+      display: flex;
+    }
+  }
   @media(min-width: 750px)
   {
-    .submenu-hover-btn .main-menu__parent, #parent-menu-item a{
+    .submenu-hover-btn .main-menu__parent,
+    #parent-menu-item a{
       pointer-events: none;
     }
     .header__desktop-menu
     {
       margin-top: 30px;
     }
+    .fs-discover-mega > div{
+      margin-bottom: 30px;
+    }
+  }
+  @media (max-width: 749px){
+    .fs-mob-nav-img-menu{
+      display: flex;
+      width: 100%;
+      /* align-items: center; */
+    }
+    .fs-mob-nav-img-menu img{
+      flex: 1 1 50%;
+      width: 50%;
+    }
+    .fs-mob-nav-img-menu .fs-mob-img-menu-block{
+      padding: 0 10px 10px;
+      margin-top: -7px;
+    }
+    .fs-mob-nav-img-menu .fs-mob-img-menu-block .fs-menu-block-title{
+      margin-top: 7px;
+    }
+    .fs-mob-nav-img-menu:first-child{
+      margin-bottom: 10px;
+    }
+
+    .pb-safari{
+      padding-bottom: 50px;
+    }
+  }
+  
+  @media (min-width: 750px) and (max-width: 920px){
+    .fs-mobile-nav{
+      display: flex;
+      align-items: baseline;
+    }
+    .fs-mob-nav-img-menu{
+      max-width: 254px;
+      margin-right: 10px;
+    }
+    .pb-safari{
+      padding-bottom: 40px;
+    }
+  }
+  @media (min-width: 930px) and (max-width: 1240px){
+    .fs-show-only-md{
+      display: flex !important;
+    }
+    .fs-hide-md{
+      display: none !important;
+    }
+  }
+  .fs-drop-left{
+    width: 350px;
+  }
+  .fs-drop-center{
+    flex: 1 1; 
+    min-height: 610px;
+  }
+  .fs-drop-center .submenu-child-items{
+    padding-left: 40px;
   }
 
+  @media (min-width: 930px) and (max-width: 1350px){ 
+    .fs-drop-center .submenu-child-items{
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .fs-drop-center .submenu-child-items a{
+      font-size: 33px !important;
+
+    }
+    .fs-drop-right img{
+        max-width: 150px !important;
+        max-height: 150px !important;
+    }
+  }
 </style>

@@ -134,7 +134,7 @@
       "
       x-init="images = removeDuplicateImages(images)"
     >
-      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px]">
+      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px] old_media_thumbnails">
         <template x-for="image in images">
           <div
             x-init="
@@ -182,7 +182,7 @@
             </div>
           </div>
         </template>
-        <div class="flex xl:hidden gap-x-[9px] h-[86px]">
+        <div class="flex xl:hidden gap-x-[9px] h-[86px] old_media_thumbnails_horizontal">
           <template x-for="image in images">
             <div
               x-init="reactiveData.activeVariant.id === image.variantId ? activeImageId = image.id : null"
@@ -206,7 +206,7 @@
       </div>
     </div>
   {% else %}
-    <div class="lg:hidden">
+    <div class="lg:hidden media-slider-container">
       <div
         class="keen-slider flex lg:grid lg:grid-cols-2 lg:gap-3 w-full lg:[&>*:nth-child(4n-3)]:col-span-2 lg:[&>*:nth-child(4n)]:col-span-2"
         x-ref="slides"
@@ -242,14 +242,18 @@
           </div>
         {% endfor %}
       </div>
-      <div class="md:hidden flex justify-center mt-4 gap-1.5">
-        {% for image in product.images %}
-          <div class="dot large bg-[#283645]"></div>
-        {% endfor %}
-      </div>
+      
+    <div class="mobile_media_thumbnails_horizontal">
+      {% render 'custom-media-thumbnails-mobile', product: product %}
     </div>
+
+    </div>
+
+
+    {% render 'custom-media-gallery-vertical', product: product %}
+
     <div x-data="{ activeImage: 1 }" class="desktop-gallery__wrapper hidden lg:flex gap-x-[30px]">
-      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px]">
+      <div class="hidden xl:flex flex-col gap-y-[9px] w-[86px] old_media_thumbnails">
         {% for image in product.images %}
           <div
             @click="activeImage = {{ forloop.index }}"
@@ -270,7 +274,7 @@
       </div>
       <div class="flex flex-col xl:flex-row gap-y-[16px] flex-grow relative">
         {% for image in product.images %}
-          <div x-show="activeImage == {{ forloop.index }}" class="relative w-full bg-gray/20 rounded-4">
+          <div x-show="activeImage == {{ forloop.index }}" class="relative w-full bg-gray/20 rounded-4 gallery-main-parent-element">
             {% if product.metafields.custom.list_badge and forloop.index == 1 %}
               <img
                 class="absolute left-5 top-5 w-20 z-10 hidden xl:block"
@@ -282,7 +286,7 @@
                 loading="lazy"
               >
             {% endif %}
-            <div class="relative pt-[100%] w-full">
+            <div class="relative pt-[100%] w-full image-parent-wrapper">
               <img
                 loading="lazy"
                 alt="{{ product.title }}"
@@ -296,7 +300,7 @@
             </div>
           </div>
         {% endfor %}
-        <div class="flex xl:hidden gap-x-[9px] h-[86px]">
+        <div class="flex xl:hidden gap-x-[9px] h-[86px] old_media_thumbnails_horizontal">
           {% for image in product.images %}
             <div
               @click="activeImage = {{ forloop.index }}"
@@ -318,61 +322,63 @@
       </div>
     </div>
   {% endif %}
-  <div class="tabs-navigation__inner old_quick_nav desktop">
-    <nav>
-      {% assign text_image_split_exists = false %}
-      {% assign ingredients_exists = false %}
-      {% assign prep_exists = false %}
-      {% assign origin_exists = false %}
-      
-      {% for component in product.metafields.custom.sections.value %}
-          {% assign type = component.system.type %}
-          {% if type != blank %}
-              {% case type %}
-                  {% when 'text_image_split' %}
-                      {% assign text_image_split_exists = true %}
-                  {% when 'ingredients' %}
-                      {% assign ingredients_exists = true %}
-                  {% when 'prep' %}
-                      {% assign prep_exists = true %}
-                  {% when 'origin' %}
-                      {% assign origin_exists = true %}
-                  
-              {% endcase %}
+  {% comment %}
+    <div class="tabs-navigation__inner old_quick_nav desktop">
+      <nav>
+        {% assign text_image_split_exists = false %}
+        {% assign ingredients_exists = false %}
+        {% assign prep_exists = false %}
+        {% assign origin_exists = false %}
+
+        {% for component in product.metafields.custom.sections.value %}
+            {% assign type = component.system.type %}
+            {% if type != blank %}
+                {% case type %}
+                    {% when 'text_image_split' %}
+                        {% assign text_image_split_exists = true %}
+                    {% when 'ingredients' %}
+                        {% assign ingredients_exists = true %}
+                    {% when 'prep' %}
+                        {% assign prep_exists = true %}
+                    {% when 'origin' %}
+                        {% assign origin_exists = true %}
+
+                {% endcase %}
+            {% endif %}
+        {% endfor %}
+
+        <ul>
+          <li><a href="#" class="tab-link active">Details</a></li>
+
+          {% if text_image_split_exists %}
+            <li><a href="#about-product" class="tab-link">About</a></li>
           {% endif %}
-      {% endfor %}
-
-      <ul>
-        <li><a href="#" class="tab-link active">Details</a></li>
-
-        {% if text_image_split_exists %}
-          <li><a href="#about-product" class="tab-link">About</a></li>
-        {% endif %}
-        {% if origin_exists %}
-          <li><a href="#product-origin" class="tab-link">Origin</a></li>
-        {% endif %}
-        {% if ingredients_exists %}
-          <li><a href="#product-ingredients" class="tab-link">Ingredients</a></li>
-        {% endif %}
-        {% if prep_exists %}
-          <li><a href="#product-preparation" class="tab-link">Preparation</a></li>
-        {% endif %}
-      </ul>
-    </nav>
-  </div>
+          {% if origin_exists %}
+            <li><a href="#product-origin" class="tab-link">Origin</a></li>
+          {% endif %}
+          {% if ingredients_exists %}
+            <li><a href="#product-ingredients" class="tab-link">Ingredients</a></li>
+          {% endif %}
+          {% if prep_exists %}
+            <li><a href="#product-preparation" class="tab-link">Preparation</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  {% endcomment %}
 </button-slider>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var tabs = document.querySelectorAll('.tab-link');
+  document.addEventListener('DOMContentLoaded', function () {
+    var tabs = document.querySelectorAll('.tab-link');
 
-      tabs.forEach(function(tab) {
-          tab.addEventListener('click', function(e) {
-              tabs.forEach(function(item) {
-                  item.classList.remove('active');
-              });
-              this.classList.add('active');
-          });
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function (e) {
+        tabs.forEach(function (item) {
+          item.classList.remove('active');
+        });
+        this.classList.add('active');
       });
+    });
   });
 </script>

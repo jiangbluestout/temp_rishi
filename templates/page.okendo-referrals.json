@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "component_spacer_96PWXC": {
+      "type": "component__spacer",
+      "disabled": true,
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 160,
+        "height_mobile": 160
+      }
+    },
+    "component_referrals_full_width_hGmitp": {
+      "type": "component__referrals-full-width",
+      "name": "Referrals | Full Width",
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Referral_Background_Desktop.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Referral_Background_Mobile.jpg",
+        "widget_code": ""
+      }
+    },
+    "1756865152484c5e8a": {
+      "type": "apps",
+      "blocks": {
+        "okendo_referral_widget_H39pge": {
+          "type": "shopify:\/\/apps\/okendo\/blocks\/referral-widget\/bb689e69-ea70-4661-8fb7-ad24a2e23c29",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "okendo_referral_widget_H39pge"
+      ],
+      "settings": {}
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "component_instafeed_PDRNEe": {
+      "type": "component__instafeed",
+      "name": "Instafeed",
+      "settings": {
+        "handle": "@RISHITEA",
+        "link": "",
+        "heading": "Follow Along On Our Journey",
+        "padding_bottom": "none"
+      }
+    },
+    "component_spacer_tCUDjm": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 44,
+        "height_mobile": 44
+      }
+    }
+  },
+  "order": [
+    "component_spacer_96PWXC",
+    "component_referrals_full_width_hGmitp",
+    "1756865152484c5e8a",
+    "main",
+    "component_instafeed_PDRNEe",
+    "component_spacer_tCUDjm"
+  ]
+}

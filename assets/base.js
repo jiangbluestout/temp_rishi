@@ -4770,7 +4770,10 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
 
     // Set query param if we haven't already
     if (window.history && window.history.replaceState) {
-      window.history.replaceState({}, window.title, `${window.location.pathname}?variant=${activeProductVariantId}`);
+      // Preserve all existing query parameters and update/add variant
+      const url = new URL(window.location.href);
+      url.searchParams.set('variant', activeProductVariantId);
+      window.history.replaceState({}, window.title, url.toString());
     }
   },
   gtagItemFromLine(lineItem) {
@@ -5034,6 +5037,14 @@ alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main", {
     }
   }
 });
+
+// Make cart available in global context for Alpine expressions (Rebuy compatibility)
+Object.defineProperty(window, 'cart', {
+  get() {
+    return alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].store("main").cart;
+  }
+});
+
 alpinejs__WEBPACK_IMPORTED_MODULE_0__["default"].data("select", () => {
   return {
     init() {

@@ -9,6 +9,24 @@
         "header_text_color": "#ffffff"
       }
     },
+    "component_spacer_Pbbawq": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 28,
+        "height_mobile": 16
+      }
+    },
+    "component_html_block_XDdqGE": {
+      "type": "component__html-block",
+      "name": "HTML Block",
+      "settings": {
+        "html": "<script defer src=\"https:\/\/help-center.gorgias.help\/api\/help-centers\/loader.js?v=2\" data-gorgias-loader-help-center=\"\" data-gorgias-help-center-uid=\"wq2e5kqn\"><\/script>",
+        "full_width": true,
+        "padding_bottom": "none"
+      }
+    },
     "main": {
       "type": "faq",
       "blocks": {
@@ -82,7 +100,7 @@
           "settings": {
             "category": "Shipping & Returns",
             "title": "Do you ship outside North America?",
-            "answer": "<p>At this time, we do not ship internationally outside of the U.S. or Canada.<\/p><p> <\/p><p>If you are interested in Rishi products outside of North America, please <a href=\"https:\/\/rishi-tea.com\/pages\/contact\" target=\"_blank\" title=\"https:\/\/rishi-tea.com\/pages\/contact\">contact us<\/a> and we will evaluate the possibility of international shipping.<\/p>"
+            "answer": "<p>At this time, we do not ship internationally outside of the U.S. or Canada.<\/p>"
           }
         },
         "4c4b09a3-d556-48a9-96db-cfbc51e73241": {
@@ -394,10 +412,12 @@
         "5ff42173-5abc-445e-8015-c1524eabac37",
         "76cb07de-d086-4c53-817b-dc67a58d7ff4"
       ],
+      "disabled": true,
       "settings": {}
     },
     "4af38a61-8827-4e5c-a67c-2a9541e53435": {
       "type": "component__cta-panel",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/Rishi-PDP-Preparation-MatchaSuperGreen-1.jpg",
         "heading": "Still have \nquestions?",
@@ -424,6 +444,8 @@
   },
   "order": [
     "030dbd8c-ec68-4541-8249-26010c973f65",
+    "component_spacer_Pbbawq",
+    "component_html_block_XDdqGE",
     "main",
     "4af38a61-8827-4e5c-a67c-2a9541e53435",
     "8e344624-89fa-444a-bbc4-7ebd8e0eb689"

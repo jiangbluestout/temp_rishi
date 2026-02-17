@@ -1,119 +1,145 @@
 {
   "sections": {
-    "e7f3b678-ff0f-440d-ba0c-dcec0f03d643": {
+    "component_hero_full_width_Kb4xib": {
       "type": "component__hero-full-width",
       "disabled": true,
-      "custom_css": [
-        "@media (max-width: 768px) {.section-height-screen {min-height: auto; }}"
-      ],
       "settings": {
-        "asset_type": "video",
-        "video_desktop": "shopify:\/\/files\/videos\/Homepage Origins Video Desktop (compressed).mp4",
-        "video_mobile": "shopify:\/\/files\/videos\/Homepage Origins Video Mobile (compressed).mp4",
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Homepage_Hero_2025_Q1_Reset_to_Reimagine_Desktop.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/Homepage_Hero_2025_Q1_Reset_to_Reimagine_Mobile.png",
         "hide_for_abtest": false,
-        "heading": "Direct Trade Organic Teas from Off the Beaten Path",
-        "superscript": "DISCOVER",
-        "text_color": "#ffffff",
-        "button_text": "Explore Our Teas",
-        "button_link": "shopify:\/\/collections\/shop-all-tea-types",
-        "button_color": "button__primary white",
-        "cta_orientation": "left",
-        "cta_orientation_vertical": "middle",
-        "full_width": true,
-        "flush_top": true,
-        "padding_bottom": "none"
-      }
-    },
-    "component_hero_dual_image_split_db64Jk": {
-      "type": "component__hero-dual-image-split",
-      "disabled": true,
-      "settings": {
-        "champion": "unset",
-        "variant": "button",
-        "image_one": "shopify:\/\/shop_images\/Screenshot_2024-09-24_at_9.30.58_AM_2.jpg",
-        "image_two": "shopify:\/\/shop_images\/image_25.jpg",
-        "banner_heading_1": "<h1>TEA IS FOR<\/h1>",
-        "banner_heading_font_1": "ivypresto-headline",
-        "heading_text_size_1": 52,
-        "banner_heading_2": "<h1><strong>CELEBRATING<\/strong><\/h1>",
-        "banner_heading_font_2": "neue-haas-grotesk-text",
-        "heading_text_size_2": 52,
-        "banner_superscript": "<p>WINTERTIME TEAS<\/p>",
+        "head_icon_layout_desktop": "center",
+        "head_icon_layout_mobile": "center",
+        "banner_superscript": "",
         "text_one_size": 12,
-        "banner_superscript_two": "<p>Raise a cup to the vibrant flavors and uplifting rituals that make each moment worth savoring. Discover teas that bring joy to any celebration.<\/p>",
-        "text_two_size": 14,
-        "text_color": "#233747",
-        "button_text": "SHOP WINTER TEAS",
-        "button_text_size": 12,
-        "button_link": "shopify:\/\/collections\/winter-teas",
-        "button_colors": "rgba(0,0,0,0)",
-        "button_border_image": "shopify:\/\/shop_images\/gold_dd540477-98cd-4c1c-a288-c75688640179.jpg",
-        "button_border_color": "#ffffff",
-        "button_color": "button__primary",
-        "background_color": "rgba(0,0,0,0)",
-        "flip_orientation": false,
-        "full_width": true,
-        "flush_top": true,
-        "padding_bottom": "none"
-      }
-    },
-    "collection_list_image_title_AQQRLe": {
-      "type": "collection_list_image_title",
-      "disabled": true,
-      "custom_css": [
-        ".section-collection-list-mini {display: none;}",
-        "@media only screen and (max-width: 1024px) {.section-collection-list-mini {display: block; margin-top: 150px; margin-bottom: 15px; }}",
-        "@media only screen and (max-width: 1023px) {.section-collection-list-mini {display: block; margin-top: 120px; margin-bottom: 15px; }}",
-        "@media only screen and (max-width: 767px) {.section-collection-list-mini {margin-top: 83px; }}"
-      ],
-      "settings": {
-        "collection_list": [
-          "best-sellers",
-          "loose-leaf-teas",
-          "sachet-tea-bags",
-          "herbal-tea-botanicals",
-          "matcha-tea",
-          "green-tea",
-          "black-tea",
-          "chai-tea"
-        ]
-      }
-    },
-    "component_hero_full_width_J4cdfg": {
-      "type": "component__hero-full-width",
-      "settings": {
-        "asset_type": "image",
-        "image_desktop": "shopify:\/\/shop_images\/Homepage_Hero_-_Iced_Teas_-_Desktop.png",
-        "image_mobile": "shopify:\/\/shop_images\/Homepage_Hero_-_Iced_Teas_-_Mobile.png",
-        "hide_for_abtest": false,
-        "heading": "",
-        "superscript": "",
-        "text_color": "#283645",
-        "button_text": "Shop Iced Teas",
-        "button_link": "shopify:\/\/collections\/iced-teas",
-        "button_color": "button__primary dark filled",
-        "cta_orientation": "left",
-        "cta_orientation_vertical": "middle",
-        "full_width": true,
-        "flush_top": true,
-        "padding_bottom": "none"
-      }
-    },
-    "component_hero_full_width_J4cUJi": {
-      "type": "component__hero-full-width",
-      "settings": {
-        "asset_type": "image",
-        "image_desktop": "shopify:\/\/shop_images\/Desktop.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/Mobile.png",
-        "hide_for_abtest": true,
-        "heading": "Embrace spring days with fresh tea rituals",
-        "superscript": "",
+        "text_one_font": "neue-haas-grotesk-text",
+        "text_one_layout_desktop": "center",
+        "text_one_layout_mobile": "center",
+        "banner_heading_1": "<p>Reset to<br\/>Reimagine<\/p>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 65,
+        "heading_text_size_1_mob": 52,
+        "banner_heading_1_layout_desktop": "left",
+        "banner_heading_1_layout_mobile": "center",
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 18,
+        "banner_heading_2_layout_desktop": "left",
+        "banner_heading_2_layout_mobile": "center",
+        "banner_superscript_two": "",
+        "text_two_size": 18,
+        "text_two_font": "neue-haas-grotesk-text",
         "text_color": "#ffffff",
-        "button_text": "Explore Garden Direct",
-        "button_link": "shopify:\/\/collections\/garden-direct-teas",
-        "button_color": "button__primary dark filled",
+        "text_two_layout_desktop": "left",
+        "text_two_layout_mobile": "center",
+        "button_text": "Shop Winter Teas",
+        "button_link": "shopify:\/\/collections\/winter-teas",
+        "button_color": "button__primary white",
+        "button_text_color": "#ffffff",
+        "button_hover_text_color": "#412314",
+        "button_text_size": 16,
+        "button_layout_desktop": "left",
+        "button_layout_mobile": "center",
         "cta_orientation": "left",
         "cta_orientation_vertical": "middle",
+        "cta_ori_vert_mob": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_hero_full_width_VXehjM": {
+      "type": "component__hero-full-width",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Homepage-Hero-Valentines-Day-2026-Desktop-DTS_MISC_3__Maddie_Spanier__Madeline_Spanier_Photos_ID5857_2.png",
+        "image_mobile": "shopify:\/\/shop_images\/Homepage-Hero-Valentines-Day-2026-Mobile-DTS_MISC_3__Maddie_Spanier__Madeline_Spanier_Photos_ID5857_3.png",
+        "hide_for_abtest": false,
+        "head_icon_layout_desktop": "center",
+        "head_icon_layout_mobile": "center",
+        "banner_superscript": "<p>WITH LOVE FROM RISHI<\/p>",
+        "text_one_size": 18,
+        "text_one_font": "neue-haas-grotesk-text",
+        "text_one_layout_desktop": "center",
+        "text_one_layout_mobile": "center",
+        "banner_heading_1": "<p>Tea for <em>You<\/em> and <em>Yours<\/em><\/p>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 80,
+        "heading_text_size_1_mob": 60,
+        "banner_heading_1_layout_desktop": "center",
+        "banner_heading_1_layout_mobile": "center",
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 18,
+        "banner_heading_2_layout_desktop": "left",
+        "banner_heading_2_layout_mobile": "center",
+        "banner_superscript_two": "",
+        "text_two_size": 18,
+        "text_two_font": "neue-haas-grotesk-text",
+        "text_color": "#ffec44",
+        "text_two_layout_desktop": "center",
+        "text_two_layout_mobile": "center",
+        "button_text": "Shop Valentine's Day",
+        "button_link": "shopify:\/\/collections\/valentines-day",
+        "button_color": "button__primary",
+        "button_text_color": "#ffec44",
+        "button_hover_text_color": "#ffec44",
+        "button_text_size": 16,
+        "button_layout_desktop": "center",
+        "button_layout_mobile": "center",
+        "cta_orientation": "center",
+        "cta_orientation_vertical": "middle",
+        "cta_ori_vert_mob": "middle",
+        "full_width": true,
+        "flush_top": true,
+        "padding_bottom": "none"
+      }
+    },
+    "component_hero_full_width_x4bLgD": {
+      "type": "component__hero-full-width",
+      "custom_css": [],
+      "settings": {
+        "asset_type": "image",
+        "image_desktop": "shopify:\/\/shop_images\/Lunar_New_Year_2026_-_Homepage_Hero_-_Desktop.png",
+        "image_mobile": "shopify:\/\/shop_images\/Lunar_New_Year_2026_-_Homepage_Hero_-_Mobile.png",
+        "hide_for_abtest": false,
+        "head_icon_layout_desktop": "center",
+        "head_icon_layout_mobile": "center",
+        "banner_superscript": "",
+        "text_one_size": 16,
+        "text_one_font": "neue-haas-grotesk-text",
+        "text_one_layout_desktop": "center",
+        "text_one_layout_mobile": "center",
+        "banner_heading_1": "<p>15% Off<\/p>",
+        "banner_heading_font_1": "ivypresto-headline",
+        "heading_text_size_1": 80,
+        "heading_text_size_1_mob": 50,
+        "banner_heading_1_layout_desktop": "left",
+        "banner_heading_1_layout_mobile": "center",
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 18,
+        "banner_heading_2_layout_desktop": "left",
+        "banner_heading_2_layout_mobile": "center",
+        "banner_superscript_two": "<p>Lunar New Year Teas<\/p>",
+        "text_two_size": 18,
+        "text_two_font": "neue-haas-grotesk-text",
+        "text_color": "#ffec44",
+        "text_two_layout_desktop": "left",
+        "text_two_layout_mobile": "center",
+        "button_text": "Shop Now",
+        "button_link": "shopify:\/\/collections\/lunar-new-year-sale",
+        "button_color": "button__primary",
+        "button_text_color": "#ffec44",
+        "button_hover_text_color": "#ffec44",
+        "button_text_size": 16,
+        "button_layout_desktop": "left",
+        "button_layout_mobile": "center",
+        "cta_orientation": "left",
+        "cta_orientation_vertical": "middle",
+        "cta_ori_vert_mob": "middle",
         "full_width": true,
         "flush_top": true,
         "padding_bottom": "none"
@@ -266,6 +292,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Featured Selections",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "none",
@@ -506,6 +533,7 @@
       "settings": {
         "superscript": "Reviews",
         "header": "What Rishi Tea Drinkers \n          Are Saying",
+        "description": "",
         "background_color": "#33432e",
         "padding_bottom": "none",
         "button_text": "Shop Now",
@@ -529,7 +557,7 @@
           "settings": {
             "title": "",
             "desc": "",
-            "collection": "summer-teas",
+            "collection": "winter-teas",
             "products": []
           }
         }
@@ -539,7 +567,8 @@
       ],
       "settings": {
         "layout": "no_tabs",
-        "heading": "Summer Teas",
+        "heading": "Winter Teas",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "none",
@@ -558,6 +587,11 @@
         "height_mobile": 60
       }
     },
+    "replo_press_AWaAtq": {
+      "type": "replo-press",
+      "name": "Press",
+      "settings": {}
+    },
     "b247de15-4a6f-49a2-9867-a3f191be9969": {
       "type": "component__collection-list",
       "blocks": {
@@ -567,8 +601,8 @@
             "collection": "black-tea",
             "description": "<p>\"Black Tea,\" as it's called in the West, is known as <em>Hong Cha <\/em>or \"Red Tea\" in Asia due to the reddish pigments that are produced when the tea leaves are rolled and <em>oxidized<\/em>.<\/p>",
             "alt_title": "Black & Red",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Black_Tea.jpg",
-            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-EnglishBreakfast-Infusion.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Black.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Black.jpg"
           }
         },
         "a2a819dc-8ae2-4715-b07a-cb9730f0b83f": {
@@ -577,7 +611,8 @@
             "collection": "herbal-tea-botanicals",
             "description": "<p>Premium <em>botanicals<\/em> including roots, fruits, flowers, seeds, barks, stems and <em>leaves<\/em> sourced from organic farms around the world. Rishi's Botanical blends are inspired by our travels and passion for <em>herbalism<\/em> and the <em>culinary arts<\/em>.<\/p>",
             "alt_title": "Botanical",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Botanical_Herbal_Tea.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Botanical.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Botanical.jpg"
           }
         },
         "9adaef89-0fbb-4715-bd47-118a8940924f": {
@@ -586,8 +621,8 @@
             "collection": "chai-tea",
             "description": "<p>Masala Chai, or \"mixed-spices tea\" originated in India and is traditionally prepared by <em>simmering<\/em> tea and spices in water, milk to create a <em>rich<\/em>, <em>comforting <\/em>cup sweetened to taste.<\/p>",
             "alt_title": "",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Warming_Spicy_Teas.jpg",
-            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-SpicyMasalaChai-Infusion.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Chai.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Chai.jpg"
           }
         },
         "7c95e0f3-748a-42fc-93a5-89f4a99ee823": {
@@ -596,8 +631,8 @@
             "collection": "green-tea",
             "description": "<p>The <em>least oxidized<\/em> of all tea types, Green Tea is crafted with the application of heat in a step called <em>Sha Qing <\/em>or \"firing\" which halts the enzyme that causes oxidation and locks in the green leaf color.<\/p>",
             "alt_title": "Green",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Green_Tea.jpg",
-            "tea_image": "shopify:\/\/shop_images\/original_250e364c110adf66dd710850da86e12b1440x1150_ac484d3e-75ed-4bd2-a327-f2ec6b05b2a7.png"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Green.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Green.jpg"
           }
         },
         "96b63b10-ee97-4fa5-9d2d-8021eafc2920": {
@@ -606,8 +641,8 @@
             "collection": "matcha-tea",
             "description": "<p>Matcha is the <em>shade grown<\/em>, <em>stone ground <\/em>green tea powder of Japan. Matcha is special in that the entire tea leaf is consumed, giving <em>clean energy<\/em> balanced with a <em>sense of focus<\/em> attributed to the amino acid L-theanine.<\/p>",
             "alt_title": "Matcha",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Matcha_Tea.jpg",
-            "tea_image": "shopify:\/\/shop_images\/ma30-rp_tsujisans-matcha-asahi-looseleaf.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Matcha.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Matcha.jpg"
           }
         },
         "288108ae-e9d9-4b40-88e1-aeecc059f8d6": {
@@ -616,8 +651,8 @@
             "collection": "oolong-tea",
             "description": "<p>Oolong Teas are “semi-oxidized\" through <em>artisanal crafting<\/em> techniques, and are highly sought-after by tea connoisseurs for their wonderfully <em>complex aromatic <\/em>profiles.<\/p>",
             "alt_title": "Oolong",
-            "lifestyle_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-IronGoddessofMercy-LS-1.jpg",
-            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-IronGoddessofMercy-Infusion.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Oolong.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Oolong.jpg"
           }
         },
         "2f872845-1b15-4c18-96ab-48c97d99dfdc": {
@@ -626,8 +661,8 @@
             "collection": "puer-tea",
             "description": "<p>Dark Teas undergo special kinds of <em>fermentation <\/em>resulting in <em>beneficial transformations<\/em> of tea leaf polyphenols and robust, pungent flavors. The most popular style, Pu'er Tea, is produced with sun-dried green tea grown from <em>ancient heirloom<\/em> broad leaf tea trees.<\/p>",
             "alt_title": "Pu'er & Dark",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_Puer_Tea.jpg",
-            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-GoldenYunnan-Infusion.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_Puer.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_Puer.jpg"
           }
         },
         "ce5ba475-a8b9-4ee5-880a-604d5f4e0cc4": {
@@ -636,8 +671,8 @@
             "collection": "white-tea",
             "description": "<p>Picked in small batches exclusively in the early spring, White Teas are coated in s<em>ilvery-white<\/em> trichomes. Known as the <em>Scholar's Tea, <\/em>white teas inspire with fresh energy and <em>sweetness<\/em> of spring.<\/p>",
             "alt_title": "White",
-            "lifestyle_image": "shopify:\/\/shop_images\/Collection_White_Tea.jpg",
-            "tea_image": "shopify:\/\/shop_images\/Rishi-PDP-Carousel-Ginger-Infusion.jpg"
+            "lifestyle_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Horizontal_-_White.jpg",
+            "tea_image": "shopify:\/\/shop_images\/HP_Tea_Type_-_Vertical_-_White.jpg"
           }
         }
       },
@@ -687,6 +722,7 @@
       "settings": {
         "layout": "panel",
         "heading": "Garden Direct Teas",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "none",
@@ -695,6 +731,55 @@
         "panel_background_color": "#a88667",
         "panel_text_color": "#ffffff",
         "panel_button_color": "button__primary white"
+      }
+    },
+    "component_collection_grid_gDaqz8": {
+      "type": "component__collection-grid",
+      "blocks": {
+        "collection_F8cUYL": {
+          "type": "collection",
+          "settings": {
+            "collection": "energizing-awakening",
+            "overlay_color": "#ac9268",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "collection_Rp6mgq": {
+          "type": "collection",
+          "settings": {
+            "collection": "calming-restful",
+            "overlay_color": "#283645",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        },
+        "collection_XhN7tF": {
+          "type": "collection",
+          "settings": {
+            "collection": "detox-digestion",
+            "overlay_color": "#395125",
+            "alt_title": "",
+            "superscript": "",
+            "count_label": "Teas"
+          }
+        }
+      },
+      "block_order": [
+        "collection_F8cUYL",
+        "collection_Rp6mgq",
+        "collection_XhN7tF"
+      ],
+      "disabled": true,
+      "name": "Collection Grid",
+      "settings": {
+        "heading": "<h2>Shop by Benefit<\/h2>",
+        "description": "<p>Support for all your goals and intentions in 2026<\/p>",
+        "button_link": "",
+        "button_text": "Shop All",
+        "padding_bottom": "medium"
       }
     },
     "4b3e8dc7-bbe3-474e-ad67-a03f219d6a19": {
@@ -728,11 +813,9 @@
     }
   },
   "order": [
-    "e7f3b678-ff0f-440d-ba0c-dcec0f03d643",
-    "component_hero_dual_image_split_db64Jk",
-    "collection_list_image_title_AQQRLe",
-    "component_hero_full_width_J4cdfg",
-    "component_hero_full_width_J4cUJi",
+    "component_hero_full_width_Kb4xib",
+    "component_hero_full_width_VXehjM",
+    "component_hero_full_width_x4bLgD",
     "component_rte_block_9Q4dm3",
     "cw_customizable_slider_nw9jmD",
     "81ee1ae6-36ca-42a8-8908-33148343c630",
@@ -747,9 +830,11 @@
     "fb0e1f0e-aa48-45bf-b7f3-49e756fe3e00",
     "component_product_carousel_tabs_GWMM7m",
     "78058d83-57f9-458d-81af-60aa6f80b002",
+    "replo_press_AWaAtq",
     "b247de15-4a6f-49a2-9867-a3f191be9969",
     "dac5db11-a012-4d09-a3e8-fe102fa6b90a",
     "2f2ee58e-6845-4366-ab4b-627ef97588a4",
+    "component_collection_grid_gDaqz8",
     "4b3e8dc7-bbe3-474e-ad67-a03f219d6a19",
     "483942f5-4e3b-4696-aa11-150e85349c57",
     "4d78a388-89fb-4a5b-854e-ec917372d012"

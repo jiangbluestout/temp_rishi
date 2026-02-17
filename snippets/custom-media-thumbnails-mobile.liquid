@@ -1,0 +1,202 @@
+{% comment %}
+  Custom Media Thumbnails Component
+  Integrates with mobile slider in product__image-gallery-b.liquid
+  Shows additional thumbnail navigation for product images
+{% endcomment %}
+
+{% assign variant_images_count = 0 %}
+{% for variant in product.variants %}
+  {% if variant.featured_image %}
+    {% assign variant_images_count = variant_images_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+<div class="custom-media-thumbnails-mobile px-3 lg:px-6 w-full pt-3" style="display: none;">
+  {% if variant_images_count > 1 %}
+    <div
+      class="flex gap-3 w-full overflow-x-auto scroll-smooth"
+      x-data="
+        {
+          handleThumbnailClick(slideIndex, variantId) {
+            console.log('Thumbnail clicked, moving to slide:', slideIndex);
+            
+            // Find the mobile slider (button-slider element)
+            const buttonSlider = document.querySelector('button-slider');
+            if (buttonSlider) {
+              // Method 1: Try to simulate dot click (most reliable fallback)
+              const dots = buttonSlider.querySelectorAll('.dot');
+              if (dots[slideIndex]) {
+                console.log('Clicking dot at index:', slideIndex);
+                dots[slideIndex].click();
+              } else {
+                // Method 2: Try to access slider instance through various paths
+                const sliderContainer = buttonSlider.querySelector('.keen-slider');
+                let sliderInstance = null;
+                
+                // Check multiple possible locations for the slider instance
+                if (buttonSlider.slider) {
+                  sliderInstance = buttonSlider.slider;
+                } else if (sliderContainer) {
+                  // Try different property names where the slider might be stored
+                  sliderInstance = sliderContainer.slider || 
+                                   sliderContainer._slider || 
+                                   sliderContainer._keenSlider ||
+                                   sliderContainer.keenSlider;
+                }
+                
+                if (sliderInstance && typeof sliderInstance.moveToIdx === 'function') {
+                  console.log('Found slider instance, moving to index:', slideIndex);
+                  sliderInstance.moveToIdx(slideIndex, true);
+                } else {
+                  console.log('Could not find slider instance or dots');
+                }
+              }
+            }
+
+            // Also update variant if provided
+            if (variantId && window.Alpine && window.Alpine.store('main')) {
+              window.Alpine.store('main').setActiveVariantId(variantId);
+            }
+          },
+          handleThumbnailHover(slideIndex) {
+            // Optional: Add hover effect for mobile slider
+            console.log('Hovering over thumbnail for slide:', slideIndex);
+          }
+        }
+      "
+    >
+      {% for variant in product.variants %}
+        {% if variant.featured_image %}
+          <div
+            class="thumbnail-item cursor-pointer flex-none w-1/4"
+            style="min-width: 24.5%; max-width: 24.5%;"
+            @click="handleThumbnailClick({{ forloop.index0 }}, {{ variant.id }})"
+            @mouseover="handleThumbnailHover({{ forloop.index0 }})"
+          >
+            <div class="relative overflow-hidden aspect-square">
+              <img
+                src="{{ variant.featured_image | image_url: width: variant.featured_image.width, height: variant.featured_image.height }}"
+                alt="{{ variant.title }}"
+                class="w-full h-full object-cover"
+                loading="lazy"
+                width="{{ variant.featured_image.width }}"
+                height="{{ variant.featured_image.height }}"
+              >
+              <div class="absolute inset-0 bg-black opacity-0 hover:opacity-10 transition-opacity duration-200"></div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% assign variant_slide_count = 0 %}
+      {% for variant in product.variants %}
+        {% if variant.featured_image %}
+          {% assign variant_slide_count = variant_slide_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% for image in product.images %}
+        {% assign is_variant_image = false %}
+        {% for variant in product.variants %}
+          {% if variant.featured_image.id == image.id %}
+            {% assign is_variant_image = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+        {% unless is_variant_image %}
+          {% assign slide_index = variant_slide_count | plus: forloop.index0 %}
+          <div
+            class="thumbnail-item cursor-pointer flex-none w-1/4"
+            style="min-width: 24.5%; max-width: 24.5%;"
+            @click="handleThumbnailClick({{ slide_index }}, null)"
+            @mouseover="handleThumbnailHover({{ slide_index }})"
+          >
+            <div class="relative overflow-hidden aspect-square">
+              <img
+                src="{{ image | image_url: width: image.width, height: image.height }}"
+                alt="{{ product.title }}"
+                class="w-full h-full object-cover"
+                loading="lazy"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              >
+              <div class="absolute inset-0 bg-black opacity-0 hover:opacity-10 transition-opacity duration-200"></div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <div
+      class="flex gap-3 w-full scroll-smooth"
+      style="overflow-x: auto;"
+      x-data="
+        {
+          handleThumbnailClick(slideIndex) {
+            console.log('Thumbnail clicked, moving to slide:', slideIndex);
+            
+            // Find the mobile slider (button-slider element)
+            const buttonSlider = document.querySelector('button-slider');
+            if (buttonSlider) {
+              // Method 1: Try to simulate dot click (most reliable fallback)
+              const dots = buttonSlider.querySelectorAll('.dot');
+              if (dots[slideIndex]) {
+                console.log('Clicking dot at index:', slideIndex);
+                dots[slideIndex].click();
+              } else {
+                // Method 2: Try to access slider instance through various paths
+                const sliderContainer = buttonSlider.querySelector('.keen-slider');
+                let sliderInstance = null;
+                
+                // Check multiple possible locations for the slider instance
+                if (buttonSlider.slider) {
+                  sliderInstance = buttonSlider.slider;
+                } else if (sliderContainer) {
+                  // Try different property names where the slider might be stored
+                  sliderInstance = sliderContainer.slider || 
+                                   sliderContainer._slider || 
+                                   sliderContainer._keenSlider ||
+                                   sliderContainer.keenSlider;
+                }
+                
+                if (sliderInstance && typeof sliderInstance.moveToIdx === 'function') {
+                  console.log('Found slider instance, moving to index:', slideIndex);
+                  sliderInstance.moveToIdx(slideIndex, true);
+                } else {
+                  console.log('Could not find slider instance or dots');
+                }
+              }
+            }
+          },
+          handleThumbnailHover(slideIndex) {
+            // Optional: Add hover effect for mobile slider
+            console.log('Hovering over thumbnail for slide:', slideIndex);
+          }
+        }
+      "
+    >
+      {% for image in product.images %}
+        <div
+          class="thumbnail-item cursor-pointer flex-none w-1/4"
+          style="min-width: 24.5%; max-width: 24.5%;"
+          @click="handleThumbnailClick({{ forloop.index0 }})"
+          @mouseover="handleThumbnailHover({{ forloop.index0 }})"
+        >
+          <div class="relative overflow-hidden aspect-square">
+            <img
+              src="{{ image | image_url: width: image.width, height: image.height }}"
+              alt="{{ product.title }}"
+              class="w-full h-full object-cover"
+              loading="lazy"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+            >
+            <div class="absolute inset-0 bg-black opacity-0 hover:opacity-10 transition-opacity duration-200"></div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>

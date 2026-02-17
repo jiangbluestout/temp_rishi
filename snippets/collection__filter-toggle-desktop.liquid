@@ -6,7 +6,7 @@
       :class="{'bg-dark text-white': filtersOpen }"
       disabled
     >
-      Filters
+      Filters <span class="pl-1" x-text="'(' + filterCount + ')'" x-show="filterCount > 0"></span>
       {% comment %} <div class="transform transition-all duration-150 ml-2" :class="{ 'rotate-180': filtersOpen }">
         {% render 'svg__chevron-down', class: 'text-brown' %}
       </div> {% endcomment %}

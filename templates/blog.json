@@ -153,13 +153,13 @@
         "article_mJq438": {
           "type": "article",
           "settings": {
-            "article": "journal\/prickly-pear-sweet-tea"
+            "article": "journal\/cinnamon-plum-infused-apple-cider"
           }
         },
         "article_3EBXWc": {
           "type": "article",
           "settings": {
-            "article": "journal\/earth-sky-matcha-latte"
+            "article": "journal\/sparkle-spice-matcha"
           }
         }
       },
@@ -247,6 +247,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Discover Our Teas",
+        "description": "",
         "full_width": true,
         "button_text": "",
         "padding_bottom": "medium",
