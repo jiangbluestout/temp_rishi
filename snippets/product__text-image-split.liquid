@@ -13,7 +13,7 @@
   <div class="{% if data.image == blank %} col-span-12 {% else %} lg:col-span-7 {% endif %} flex flex-col">
     <div class="lg:flex flex-col w-full">
       {% if data.eyebrow %}
-        <h6 id="about-product" class="para-2xs mb-3">{{ data.eyebrow }}</h6>
+        <h2 id="about-product" class="para-2xs mb-3">{{ data.eyebrow }}</h2>
       {% endif %}
       {% if data.body_text %}
         <div class="font-serif text-xl lg:text-3xl tracking-4pc leading-1.5 font-100 mb-8 lg:mb-[56px]">
@@ -23,7 +23,7 @@
       <div class="hidden lg:flex w-full">
         {% if origin %}
           <div class="flex flex-col w-1/2">
-            <h6 class="para-2xs mb-3">Origin</h6>
+            <h3 class="para-2xs mb-3">Origin</h3>
             <p class="heading-xs pb-7">{{ origin.name }}</p>
             {% if product.metafields.custom.cultivar
               or product.metafields.custom.harvest
@@ -56,7 +56,7 @@
         {% endif %}
         {% if product.metafields.custom.ingredients_list or product.metafields.custom.certifications.value %}
           <div class="flex flex-col w-1/2">
-            <h6 class="para-2xs mb-3">Ingredients</h6>
+            <h3 class="para-2xs mb-3">Ingredients</h3>
             {% if product.metafields.custom.ingredients_list %}
               <p class="inline heading-xs mb-5">
                 {{ product.metafields.custom.ingredients_list }}
@@ -76,7 +76,7 @@
             {% if product.metafields.custom.certifications %}
               <div class="flex gap-3 p-[14px] bg-light w-fit rounded-4">
                 {% for icon in product.metafields.custom.certifications.value %}
-                  <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}">
+                  <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}" alt="logo">
                 {% endfor %}
               </div>
             {% endif %}
@@ -86,25 +86,25 @@
        <div class="volume-dimension-material-volume__wrapper"> 
           {% if product.metafields.custom.volume != blank %}
             <div class="volume-dimension-material-volume__item">
-              <h6  class="para-2xs mb-3">Volume</h6>
+              <h3  class="para-2xs mb-3">Volume</h3>
               <p class="heading-xs pb-7">{{ product.metafields.custom.volume }}</p>
             </div>
           {% endif %}
         {% if product.metafields.custom.dimensions != blank %}
           <div class="volume-dimension-material-volume__item">
-            <h6 class="para-2xs mb-3">Dimensions</h6>
+            <h3 class="para-2xs mb-3">Dimensions</h3>
             <p class="heading-xs pb-7">{{ product.metafields.custom.dimensions }}</p>
           </div>
         {% endif %}
           {% if product.metafields.custom.materials != blank %}
             <div class="volume-dimension-material-volume__item">
-              <h6 class="para-2xs mb-3">Material</h6>
+              <h3 class="para-2xs mb-3">Material</h3>
               <p class="heading-xs pb-7">{{ product.metafields.custom.materials }}</p>
             </div>
           {% endif %}
           {% if product.metafields.custom.care != blank %}
             <div class="volume-dimension-material-volume__item">
-              <h6 class="para-2xs mb-3">Care</h6>
+              <h3 class="para-2xs mb-3">Care</h3>
               <p class="heading-xs pb-7">{{ product.metafields.custom.care }}</p>
             </div>
         {% endif %}
@@ -136,7 +136,7 @@
   {% if origin.name or product.metafields.custom.ingredients_list or product.metafields.custom.certifications.value %}
     <div  class="lg:hidden flex flex-col w-full mt-[36px]">
       {% if product.metafields.custom.ingredients_list %}
-        <h6 id="product-ingredients-mobile" class="para-2xs mb-3">Ingredients</h6>
+        <h3 id="product-ingredients-mobile" class="para-2xs mb-3">Ingredients</h3>
         <p class="inline heading-xs mb-5">
           {{ product.metafields.custom.ingredients_list }}
         </p>
@@ -155,12 +155,12 @@
       {% if product.metafields.custom.certifications.value %}
         <div class="flex gap-3 p-[14px] bg-light w-fit rounded-4 mb-5">
           {% for icon in product.metafields.custom.certifications.value %}
-            <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}">
+            <img class="w-[36px] h-[36px] object-contain" src="{{ icon.image | img_url: '500x' }}" alt="logo"> 
           {% endfor %}
         </div>
       {% endif %}
       {% if origin.name %}
-        <h6 id="product-origin-mobile" class="para-2xs mb-3">Origin</h6>
+        <h3 id="product-origin-mobile" class="para-2xs mb-3">Origin</h3>
         <p class="font-serif text-xl leading-1.3 tracking-[0.4px] font-100">{{ origin.name }}</p>
         {% if product.metafields.custom.cultivar
           or product.metafields.custom.harvest

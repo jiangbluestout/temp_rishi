@@ -39,7 +39,7 @@
         @click="handleClick()"
       >
         <span
-          x-text="(reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order') && reactiveData.activeVariant?.inventoryPolicy !== 'continue' ? 'Sold Out' : (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ? 'Pre Order&nbsp;&nbsp;•&nbsp;&nbsp;' : 'Add to cart&nbsp;&nbsp;•&nbsp;&nbsp;'"></span></span>
+          x-text="(reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus !== 'Pre Order') && reactiveData.activeVariant?.inventoryPolicy !== 'continue' ? 'Sold Out' : (reactiveData.activeVariant?.inventory < 1 && reactiveData.activeVariant?.oosStatus === 'Pre Order') ? 'Pre Order&nbsp;&nbsp;•&nbsp;&nbsp;' : 'Add to cart&nbsp;&nbsp;•&nbsp;&nbsp;'"></span>
         <span x-show="reactiveData.activeVariant?.inventory > 0 || reactiveData.activeVariant?.oosStatus === 'Pre Order' || reactiveData.activeVariant?.inventoryPolicy === 'continue'" x-price="reactiveData.activeVariant?.variantPrice" class="skio-product-price"></span>
       </button>
     </div>

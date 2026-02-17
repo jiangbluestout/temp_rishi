@@ -3,6 +3,7 @@
   aria-label="breadcrumbs"
   x-data="{ childrenCount: $el.children.length }"
   class="flex items-center gap-x-1.5 text-dark/50 para-sm md:relative md:top-0 md:mb-4 md:left-0 mt-4"
+  style="color: #686c74;"
 >
   {% assign parent_collection = collection.metafields.custom.parent_collection.value %}
   {% if parent_collection %}
@@ -21,5 +22,5 @@
     </li>
     <span x-show="childrenCount > 1">•</span>
   {% endif %}
-  <span>{{ product.title }}</span>
+  <li>{{ product.title }}</li>
 </ul>

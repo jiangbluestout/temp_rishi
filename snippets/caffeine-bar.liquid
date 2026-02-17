@@ -27,8 +27,8 @@
     x-intersect.margin.-5%="animate = true"
 >
     <div class="flex justify-between para-xs mb-2.5 w-full px-[2px]">
-        <h6>0 MG</h6>
-        <h6>100 MG</h6>
+        <h3>0 MG</h3>
+        <h3>100 MG</h3>
     </div>
     <div x-ref="bar" class="h-[1px] bg-dark w-full relative">
         <div class="absolute top-1/2 left-[10px] transform -translate-y-1/2 flex justify-center items-center w-[9px] h-[9px] bg-white">
@@ -50,7 +50,8 @@
         >
             <div class="relative w-full h-full">
                 <div class="bg-brown w-full h-full rounded-[73px]"></div>
-                <div class="absolute top-[-25px] left-1/2 transform -translate-x-1/2 para-xs text-brown {% if level == 'none' %} ml-6 md:ml-0 {% endif %}">
+                <div class="absolute top-[-25px] left-1/2 transform -translate-x-1/2 para-xs text-brown {% if level == 'none' %} ml-6 md:ml-0 {% endif %}"
+                 style="color: #866b53;">
                     {{ level }}
                 </div>
             </div>

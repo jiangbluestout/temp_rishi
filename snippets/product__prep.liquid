@@ -21,7 +21,7 @@
         <div class="col-span-10 lg:col-span-4 flex flex-col">
             <div class="flex flex-col bg-white py-5 px-5 lg:px-6 rounded-4 {% if data.display.value != 'Quote' %} h-full {% else %} h-fit {% endif %}">
             <div class="flex justify-between items-center w-full mb-8">
-                <h6 id="product-preparation" class="para-xs">Preparation</h6>
+                <h3 id="product-preparation" class="para-xs">Preparation</h3>
                 <div x-data="{ open: false }" class="relative para-sm bg-white w-[80px]">
                   <button class="toggle flex justify-between items-center w-fit" @click="open = !open">
                     <span x-text="system" class="mr-1.5"></span>
@@ -39,7 +39,7 @@
             <div class="grid grid-cols-2 gap-y-6 w-full {% if data.display.value != 'Quote' %} mb-12 lg:mb-16 {% else %} mb-6 {% endif %}">
               <div class="flex justify-start items-center text-left">
                 <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px] lg:rounded-4 mr-4">{% render 'svg__leaf', classes: 'scale-[0.8] lg:scale-1' %}</div>
-                <h6 class="relative">
+                <h3 class="relative">
                   <span
                     x-show="system === 'Imperial'"
                     x-text="'{{ data.amount_imperial }}'"
@@ -50,11 +50,11 @@
                     x-text="'{{ data.amount_metric }}'"
                     x-bind="opacityTransition"
                     class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
-                </h6>
+                </h3>
               </div>
               <div class="flex justify-start items-center text-left">
                 <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px]  lg:rounded-4 mr-4">{% render 'svg__teapot', classes: 'scale-[0.8] lg:scale-1' %}</div>
-                <h6 class="relative">
+                <h3 class="relative">
                   <span
                     x-show="system === 'Imperial'"
                     x-text="'{{ data.water_imperial }}'"
@@ -65,11 +65,11 @@
                     x-text="'{{ data.water_metric }}'"
                     x-bind="opacityTransition"
                     class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
-                </h6>
+                </h3>
               </div>
               <div class="flex justify-start items-center text-left">
                 <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px]  lg:rounded-4 mr-4">{% render 'svg__thermometer', classes: 'scale-[0.8] lg:scale-1' %}</div>
-                <h6 class="relative">
+                <h3 class="relative">
                   <span
                     x-show="system === 'Imperial'"
                     x-text="'{{ data.temp_fahrenheit }}'"
@@ -80,16 +80,16 @@
                     x-text="'{{ data.temp_celsius }}'"
                     x-bind="opacityTransition"
                     class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
-                </h6>
+                </h3>
               </div>
               <div class="flex justify-start items-center text-left">
                 <div class="flex justify-center items-center w-12 lg:w-16 min-w-12 lg:min-w-16 h-12 lg:h-16 min-h-12 lg:min-h-16 bg-gray-dark/50 rounded-[8px] lg:rounded-4 mr-4">{% render 'svg__clock', classes: 'scale-[0.8] lg:scale-1' %}</div>
-                <h6 class="relative">
+                <h3 class="relative">
                   <span
                     x-text="'{{ data.time }}'"
                     x-bind="opacityTransition"
                     class="absolute top-1/2 left-0 transform -translate-y-1/2 flex text-left w-max"></span>
-                </h6>
+                </h3>
               </div>
             </div>
             {% if data.display.value != 'Quote' and data.instructions %}
@@ -101,9 +101,11 @@
           </div>
           {% if data.display.value == 'Quote' and data.quote %}
             <div class="flex flex-col flex-grow bg-white py-5 px-6 rounded-4 mt-3">
-              <h6 class="para-xs mb-8">{{ data.subheading }}</h6>
+               {% if data.subheading and data.subheading.value != '' %}
+                <h6 class="para-xs mb-8">{{ data.subheading }}</h6>
+              {% endif %}
               <p class="heading-xs text-[20px] leading-[120%] mb-3">{{ data.quote }}</p>
-              <p class="para-sm text-dark/50 leading-[120%]">— {{ data.quote_attribution }}</p>
+              <p class="para-sm text-dark/50 leading-[120%]" style="color: #686c74;">— {{ data.quote_attribution }}</p>
             </div>
           {% endif %}
 
@@ -164,7 +166,7 @@
                 </div>
             {% else %}
               {% if data.image %}
-                <img class="w-full h-full object-cover rounded-4" src="{{ data.image | img_url: '1000x' }}">
+                <img class="w-full h-full object-cover rounded-4" src="{{ data.image | img_url: '1000x' }}"  alt="img">
               {% endif %}
             {% endif %}
         </div>
@@ -178,7 +180,7 @@
               <a href = "{{shop.url | append: "/products/" | append: helpful_accessories.handle }}"> 
                 <div class = "helpful-accessories"> 
                   <div class = "helpful-accessories-image"> 
-                    <img src = "{{helpful_accessories.featured_image | img_url: 'medium' }}" /> 
+                    <img src = "{{helpful_accessories.featured_image | img_url: 'medium' }}" alt="img" /> 
                   </div> 
                   <div class="helpful-accessories__content">
                     <div class = "helpful-accessories-name">{{helpful_accessories.title}}</div> 

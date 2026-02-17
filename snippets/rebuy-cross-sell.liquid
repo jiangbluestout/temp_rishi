@@ -107,7 +107,7 @@
 
                 <h4 class="super-title" v-if="config.language.super_title != ''" v-html="config.language.super_title"></h4>
 
-                <h3 class="heading-xs text-brown text-center pb-6" v-if="config.language.title != ''" v-html="config.language.title"></h3>
+                <h3 class="heading-xs text-brown text-center pb-6" v-if="config.language.title != ''" v-html="config.language.title" style="color: #866b53;"></h3>
 
                 <div class="description" v-if="config.language.description != ''" v-html="config.language.description"></div>
 
@@ -149,7 +149,8 @@
                                 :class="{ hide : settings.view_options.variant_selector == 'buttons' }"
                                 class="rebuy-select"
                                 v-model="product.selected_variant_id"
-                                v-on:change="selectVariant(product)">
+                                v-on:change="selectVariant(product)"
+                                aria-label="Select weight of product" title="Choose the weight for the product">
                                 <option v-for="variant in product.variants" v-bind:value="variant.id">{{ variant.title }}</option>
                             </select>
 

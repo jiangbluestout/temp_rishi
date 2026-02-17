@@ -37,7 +37,7 @@
               <label class="para-xs uppercase font-[500] text-dark/50">{{ option.name }}:</label>
             </div>
             <div class="flex items-start lg:items-center justify-between w-full">
-              <label class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0">{{ option.name }}:</label>
+              <label class="hidden md:block para-xs uppercase font-[500] text-dark/50 mr-5 mt-[13px] lg:mt-0"  style="color: #686c74;">{{ option.name }}:</label>
               <div class="flex justify-center md:justify-end flex-wrap w-full gap-y-2">
                 {%
                   render 'product__option-selector'
@@ -80,6 +80,7 @@
                     x-model="quantity"
                     class="text-center w-[40px] max-w-[40px] md:w-[50px] md:max-w-[50px] h-[50px] md:h-[70px] border-0 bg-transparent"
                     readonly
+                    aria-label="Quantity"
                   />
                   <button
                     type="button"
