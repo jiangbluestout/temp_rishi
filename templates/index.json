@@ -377,8 +377,11 @@
     },
     "b2fbbec4-ddb3-4276-997c-12fecb27e3fb": {
       "type": "component__rte-block",
+      "custom_css": [
+        ".section-rich-text-block h2 {font-size: 36px;}"
+      ],
       "settings": {
-        "rich_text": "<h5>Begin Your Tea Journey with Rishi<\/h5>",
+        "rich_text": "<h2>Begin Your Tea Journey with Rishi<\/h2>",
         "rte_variant": "page",
         "text_color": "#283645",
         "component_width": "w-full",
@@ -728,7 +731,7 @@
         "padding_bottom": "none",
         "panel_eyebrow": "Seasonal single origin selections",
         "panel_desc": "<p>Our Garden Direct Teas are the most exquisite teas available in our store. We carefully curate the highest quality examples of these limited edition teas, reflecting the unique environment and terroir of the regions these teas are sourced from.<\/p>",
-        "panel_background_color": "#a88667",
+        "panel_background_color": "#866b53",
         "panel_text_color": "#ffffff",
         "panel_button_color": "button__primary white"
       }

@@ -87,7 +87,7 @@
             @keydown.left.prevent.stop="$focus.wrap().prev()"
             @keydown.end.prevent.stop="$focus.last()"
             @keydown.page-down.prevent.stop="$focus.last()"
-            role="tablist"
+            {% comment %} role="tablist" {% endcomment %}
             class="flex w-fit"
           >
             {% for block in section.blocks %}
@@ -104,12 +104,13 @@
                       @focus="handleTabClick('{{ block.id }}', '{{ collection.url }}', '{{ title }}')"
                       type="button"
                       :tabindex="isSelected('{{ block.id }}') ? 0 : -1"
-                      :aria-selected="isSelected('{{ block.id }}')"
-                      role="tab"
+                      {% comment %} :aria-selected="isSelected('{{ block.id }}')"
+                      role="tab" {% endcomment %}
                       x-data
                       x-cloak
                       class="button__tab para-md font-400 whitespace-nowrap {% if forloop.last %} mr-10 md:mr-0 {% endif %} {{ section.id }}"
                       :class="isSelected('{{ block.id }}') ? 'active' : ''"
+                      aria-label="button"
                     >
                       {{ title }}
                     </button>
@@ -122,12 +123,13 @@
                     @focus="handleTabClick('{{ block.id }}', '{{ block.settings.tab_button_url }}', '{{ block.settings.tab_button_text }}')"
                     type="button"
                     :tabindex="isSelected('{{ block.id }}') ? 0 : -1"
-                    :aria-selected="isSelected('{{ block.id }}')"
-                    role="tab"
+                    {% comment %} :aria-selected="isSelected('{{ block.id }}')"
+                    role="tab" {% endcomment %}
                     x-data
                     x-cloak
                     class="button__tab para-md font-400 whitespace-nowrap {% if forloop.last %} mr-10 md:mr-0 {% endif %} {{ section.id }}"
                     :class="isSelected('{{ block.id }}') ? 'active' : ''"
+                    aria-label="button"
                   >
                     {{ block.settings.tab_button_text }}
                   </button>
@@ -165,7 +167,7 @@
               <div
                 x-data
                 x-cloak
-                role="tabpanels"
+                {% comment %} role="tabpanels" {% endcomment %}
                 class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab"
               >
                 {% assign title = block.settings.title %}
@@ -305,7 +307,7 @@
               <div
                 x-data
                 x-cloak
-                role="tabpanels"
+                {% comment %} role="tabpanels" {% endcomment %}
                 class="keen-slider overflow-x-hidden overflow-y-hidden relative h-fit cursor-grab"
               >
                 <!-- Panel -->
@@ -450,7 +452,7 @@
                   </section>
                 </div>
                 <div class="hidden md:block w-fit absolute bottom-6 right-6 z-[2000]">
-                  <button class="slider-btn hidden">
+                  <button class="slider-btn hidden"  aria-label="slider button">
                     {% render 'carousel-btn-left' %}
                   </button>
                   <button class="slider-btn">
@@ -506,7 +508,7 @@
                   </section>
                 </div>
                 <div class="hidden md:block w-fit absolute bottom-6 right-6 z-[2000]">
-                  <button class="slider-btn hidden">
+                  <button class="slider-btn hidden"  aria-label="slider button">
                     {% render 'carousel-btn-left' %}
                   </button>
                   <button class="slider-btn">

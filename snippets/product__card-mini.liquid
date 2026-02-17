@@ -22,7 +22,7 @@
         <p class="para-sm opacity-75">{{ product.metafields.my_fields.tasting_notes }}</p>
         <p class="para-sm opacity-75 hidden md:block">from {{ product.price_min | money_without_trailing_zeros }}</p>
       </div>
-      <button class="fill-brown stroke-brown md:hidden group-hover:scale-105 transition-all duration-300">
+      <button class="fill-brown stroke-brown md:hidden group-hover:scale-105 transition-all duration-300" aria-label="Search">
         {% render "svg__arrow-button", classes: "stroke-inherit", arrow_fill: '#A88667' %}
       </button>
     </div>

@@ -33,6 +33,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
         type="button"
         v-on:click="hide()"
         aria-label="Close Cart"
+        style="color: #634f3d;"
       >
         <i class="fal fa-times" aria-hidden="true"></i>
         <span class="sr-only">Close Cart</span>
@@ -116,7 +117,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
               </div>
             </div>
 
-            <div id="rebuy-cart__progress-bar-meter-label" class="rebuy-cart__progress-bar-prompt" v-if="hasProgressPrompt(bar)" v-html="getTierFeedbackText(bar)"></div>
+            <div id="rebuy-cart__progress-bar-meter-label" class="rebuy-cart__progress-bar-prompt" v-if="hasProgressPrompt(bar)" v-html="getTierFeedbackText(bar)" style="color: #634f3d;"></div>
           </div>
 
           <div class="rebuy-cart__progress-free-products" v-if="getBarLayout(bar) == 'above' && earnedProducts(bar).length > 0">

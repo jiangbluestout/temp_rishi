@@ -10,13 +10,14 @@
           :class="openedDesktopMenu == 'tea' ? 'bg-dark text-white' : 'bg-transparent text-current'"
         >
           
-            <a href="https://rishi-tea.com/collections/all-products">
+            {% comment %} <a href="https://rishi-tea.com/collections/all-products"> {% endcomment %}
+             <span>
             {% if section.settings.primary_menu_1_text != blank %}
               {{ section.settings.primary_menu_1_text }}
             {% else %}
               SHOP
             {% endif %}
-            </a>
+            </span>
           
           <div class="text-brown">
             {% render 'svg__chevron-down' %}
@@ -170,6 +171,7 @@
         <a
           class="uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 flex items-center"
           href="/a/account/login"
+          aria-label="login"
         >
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_3554_100)">
@@ -188,6 +190,7 @@
         <a
           class="uppercase gap-1.5 tracking-2pc text-sm px-3 py-1.5 rounded-full transition-colors duration-300 flex items-center"
           href="/a/account/login"
+          aria-label="login"
         >
         <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_3554_100)">

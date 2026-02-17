@@ -88,14 +88,16 @@
     </div>
     <button
       @click="closeBanner"
-      class="p-2 absolute right-0.5 opacity-70 hover:opacity-100 transition-all duration-200
+      class="p-2 absolute right-0.5 opacity-100 hover:opacity-100 transition-all duration-200
         {% if is_collection_or_blog %}
           {% if collection.metafields.custom.text_color == 'Dark' %} stroke-dark {% else %} stroke-white {% endif %} group-hover:stroke-dark
         {% endif %}
       "
       {% unless is_collection_or_blog %}style="stroke: {{ section.settings.announcement_banner_text_color }};"{% endunless %}
+      aria-label="close banner"
       >
-      <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="inherit">
+      X
+      {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none" stroke="inherit">
         <g clip-path="url(#clip0_3012_1961)">
           <path d="M7.8125 2.1875L2.1875 7.8125" stroke="inherit" stroke-linecap="square" stroke-linejoin="round"/>
           <path d="M7.8125 7.8125L2.1875 2.1875" stroke="inherit" stroke-linecap="square" stroke-linejoin="round"/>
@@ -105,7 +107,7 @@
             <rect width="10" height="10" fill="white"/>
           </clipPath>
         </defs>
-      </svg>
+      </svg> {% endcomment %}
     </button>
   </div>
 </div>

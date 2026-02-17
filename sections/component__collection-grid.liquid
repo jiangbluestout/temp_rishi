@@ -17,15 +17,17 @@
         {% assign title = block.settings.alt_title %}
       {% endif %}
       <a href="{{ block.settings.collection.url }}" class="relative group">
-        <div class="md:opacity-0 flex flex-col items-center justify-between py-8 absolute inset-0 w-full h-full rounded-4 text-white hover:opacity-100 transition-opacity duration-300 z-20">
+        <div class="md:opacity-0 flex flex-col items-center justify-between py-8 absolute inset-0 w-full h-full rounded-4 text-white hover:opacity-100 transition-opacity duration-300 z-20"
+          style="background-color: {{ block.settings.overlay_color }}">
           <p class="para-xs">{{ block.settings.superscript}}</p>
-          <h4 class="mobile-collection-grid-text mobile-collection-grid-text-{{ block.id }} heading-3xl text-center">{{ title }}</h4>
+          {% comment %} <h4 class="mobile-collection-grid-text mobile-collection-grid-text-{{ block.id }} heading-3xl text-center">{{ title }}</h4> {% endcomment %}
+          <h3 class="mobile-collection-grid-text mobile-collection-grid-text-{{ block.id }} heading-3xl text-center">{{ title }}</h3> 
           <div class="flex items-center gap-2.5">
             <div class="para-xs flex justify-center border-white border rounded-full px-2 py-1 min-w-[37px]">{{ block.settings.collection.products_count }}</div>
             <span class="para-sm">{{ block.settings.count_label }}</span>
           </div>
         </div>
-        <div class="hidden z-10 md:block absolute w-full h-full inset-0 opacity-0 group-hover:opacity-95" style="background-color: {{ block.settings.overlay_color }}"></div>
+        <div class="hidden z-10 md:block absolute w-full h-full inset-0 opacity-0 group-hover:opacity-100" style="background-color: {{ block.settings.overlay_color }}"></div>
         <style>
           @media(max-width: 768px){
             .mobile-collection-grid-text-{{ block.id }} {

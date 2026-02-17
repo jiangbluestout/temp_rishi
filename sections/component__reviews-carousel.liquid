@@ -55,7 +55,7 @@
         {% endfor %}
       </div>
       <div class="w-full flex justify-between items-center min-h-[90px]">
-        <button class="fill-brown py-5 pr-4 slider-btn">
+        <button class="fill-brown py-5 pr-4 slider-btn" aria-label="slider button">
           {% render 'svg__arrow-left', classes: 'fill-brown' %}
         </button>
         <div class="md:hidden flex gap-1.5">
@@ -63,7 +63,7 @@
             <div class="dot bg-white"></div>
           {% endfor %}
         </div>
-        <button class="fill-brownpy py-5 pl-4 slider-btn">
+        <button class="fill-brownpy py-5 pl-4 slider-btn" aria-label="slider button">
           {% render 'svg__arrow-right', classes: 'fill-brown' %}
         </button>
       </div>
