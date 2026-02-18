@@ -43,14 +43,14 @@
                   @mouseenter="handleMouseEnter({{ forloop.index }})"
                 >
                   {% if block.settings.alt_title != blank %}
-                    <h3
+                    <h2
                       class="heading-xl transition-colors duration-200"
                       :class="activeIndex == {{ forloop.index }} ? 'text-brown italic' : '' "
                     >
                       {{ block.settings.alt_title }}
-                    </h3>
+                    </h2>
                   {% else %}
-                    <h3 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h3>
+                    <h2 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h2>
                   {% endif %}
                 </a>
               {% else %}
@@ -59,14 +59,14 @@
                   @mouseenter="handleMouseEnter({{ forloop.index }})"
                 >
                   {% if block.settings.alt_title != blank %}
-                    <h3
+                    <h2
                       class="heading-xl transition-colors duration-200"
                       :class="activeIndex == {{ forloop.index }} ? 'text-brown italic' : '' "
                     >
                       {{ block.settings.alt_title }}
-                    </h3>
+                    </h2>
                   {% else %}
-                    <h3 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h3>
+                    <h2 class="heading-xl hover:text-brown hover:italic">{{ block.settings.collection.title }}</h2>
                   {% endif %}
                 </button>
               {% endif %}

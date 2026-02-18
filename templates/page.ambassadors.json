@@ -83,7 +83,7 @@
         "variant": "italic",
         "header": "TASTEMAKER BENEFITS",
         "background_color": "#283645",
-        "text_color": "#a88667",
+        "text_color": "#ba9777",
         "accent_color": "light",
         "padding_bottom": "medium"
       }
@@ -131,6 +131,15 @@
         "category": "FAQs"
       }
     },
+    "component_spacer_86XtHg": {
+      "type": "component__spacer",
+      "name": "Spacer",
+      "settings": {
+        "color": "#ffffff",
+        "height_desktop": 160,
+        "height_mobile": 160
+      }
+    },
     "a4bfbd92-26de-4df6-81fa-0da9358297df": {
       "type": "component__large-newsletter-signup",
       "settings": {
@@ -145,15 +154,6 @@
         "link": "https:\/\/www.instagram.com\/rishitea\/",
         "heading": "Follow Along On Our Journey",
         "padding_bottom": "small"
-      }
-    },
-    "component_spacer_86XtHg": {
-      "type": "component__spacer",
-      "name": "Spacer",
-      "settings": {
-        "color": "#ffffff",
-        "height_desktop": 160,
-        "height_mobile": 160
       }
     }
   },

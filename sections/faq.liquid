@@ -49,7 +49,7 @@
               class="para-xs flex items-center gap-3"
               @click="changeCategory('{{ category | handleize }}')"
               type="button"
-              :class="{ 'text-brown': activeCategory == '{{ category | handleize }}' }"
+              :class="{ 'text-brown-dark': activeCategory == '{{ category | handleize }}' }"
             >
               <div class="max-h-[20px] w-[20px] flex items-center justify-center" x-show="activeCategory != '{{ category | handleize }}'">
                 <img class="max-h-[20px] max-w-[20px] object-cover mx-auto" :src="icons['{{ category | handleize }}']" alt="{{ category | handleize }}-icon">

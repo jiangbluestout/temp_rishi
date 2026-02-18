@@ -203,7 +203,7 @@
                   :src="collection.featured_image?.url"
                   :width="collection.featured_image?.width"
                   :height="collection.featured_image?.height"
-                  :alt="collection.featured_image?.alt"
+                  {% comment %} :alt="collection.featured_image?.alt" {% endcomment %}
                   loading="lazy"
                   class="aspect-square w-full mb-2.5"
                   alt="img"

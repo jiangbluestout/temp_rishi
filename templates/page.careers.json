@@ -33,8 +33,11 @@
     },
     "a8b5a0cb-abc5-4860-939f-dad6b5d6ef6f": {
       "type": "component__rte-block",
+      "custom_css": [
+        ".rte.page h3 {font-size: 18px;}"
+      ],
       "settings": {
-        "rich_text": "<h6><\/h6><h6><\/h6><h6><\/h6><h6>Open Positions<\/h6>",
+        "rich_text": "<h3>Open Positions<\/h3>",
         "rte_variant": "page",
         "text_color": "#283645",
         "component_width": "w-full",

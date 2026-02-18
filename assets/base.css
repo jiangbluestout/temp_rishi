@@ -3724,6 +3724,9 @@ video {
   /* color: rgba(168, 134, 103, var(--tw-text-opacity)); */
   color: #C19A77; 
 }
+.text-brown-dark{ 
+  color: #866B53;
+}
 .text-brown-light{
   --tw-text-opacity: 1;
   color: rgba(175, 145, 117, 1);
@@ -6395,8 +6398,10 @@ span.actual__price {
 
 span.sale__price {
   font-size: 17px;
-  color: #A48672;
+  /* color: #A48672; */
+  color: #000;
 }
+
 
 .compare-price-strikethrough {
   position: relative;

@@ -163,7 +163,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
             v-if="!isHiddenItem(item)"
             :key="item.key"
             v-bind:class="[ 'product-' + item.handle, itemProductTagsClasses(item), itemPropertyClasses(item) ]"
-            role="group"
+            
             aria-label="product"
           >
             <div class="rebuy-cart__flyout-item-media">
@@ -176,8 +176,8 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
             </div>
             <div class="rebuy-cart__flyout-item-info">
               <a
-                role="heading"
-                aria-level="5"
+               
+                aria-level="3" 
                 class="rebuy-cart__flyout-item-product-title"
                 v-bind:href="itemURL(item)"
                 v-html="item.product_title"
@@ -235,7 +235,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
                   v-bind:class="[(item.status == 'removing') ? 'fa-sync-alt fa-fast-spin' : 'fa-trash']"
                   aria-hidden="true"
                 ></i>
-                <span class="sr-only">Remove {{ item.product_title }} from Cart</span>
+                <span class="sr-only" style="    color: #000 !important;    background-color: #fff !important;">Remove {{ item.product_title }} from Cart</span>
               </button>
 
               <div class="rebuy-cart__flyout-item-quantity">
@@ -445,6 +445,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
               x-bind:checked="!Alpine.store('main')?.showGiftBag"
               x-bind:disabled="!!Alpine.store('main')?.pendingAddVariantId"
               v-on:click="Alpine.store('main').addGiftBag()"
+              style="width: 24px;    height: 24px;"
             />
             <span class="rebuy-cart__flyout-note-toggle-label">
               Add Gift Wrap for $5.00
@@ -456,6 +457,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
               type="checkbox"
               v-model="notes.visible"
               v-on:click="notesToggle()"
+              style="width: 24px;    height: 24px;"
             />
             <span
               class="rebuy-cart__flyout-note-toggle-label"
@@ -614,6 +616,7 @@ document.addEventListener('rebuy:reorderLandingPage.ready', function(){
             type="checkbox"
             v-model="termsAccepted"
             v-on:click="updateTermsCheck()"
+            style="width: 24px;    height: 24px;"
           />
           <label
             class="rebuy-cart__flyout-terms-label"
