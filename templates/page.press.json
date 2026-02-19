@@ -409,7 +409,7 @@
         "button_text": "shop All",
         "button_link": "shopify:\/\/collections\/shop-all-tea-types",
         "button_color": "button__primary white",
-        "background_color": "#a88667",
+        "background_color": "#866b53",
         "full_width": true,
         "flip_orientation": false,
         "padding_bottom": "medium"

@@ -25,6 +25,9 @@
     },
     "main": {
       "type": "contact",
+      "custom_css": [
+        "h2{font-size: 32px;}"
+      ],
       "settings": {
         "form_heading": "",
         "html": "<div data-gorgias-contact-form-uid=\"wg0m7inp\"><\/div>\n<script defer src=\"https:\/\/contact.gorgias.help\/api\/contact-forms\/loader.js?v=2\" data-gorgias-loader-contact-form=\"\"><\/script>"

@@ -13,13 +13,42 @@
       "type": "component__hero-dual-image-split",
       "disabled": true,
       "settings": {
+        "champion": "unset",
         "variant": "icon",
         "image_one": "shopify:\/\/shop_images\/Holiday_-_PLP_Hover_-_All_Gift_Sets_7cd98125-cf2a-4510-a8d0-21b858f93d07.jpg",
         "icon": "shopify:\/\/shop_images\/Plucking_Hand_Seal.png",
+        "head_icon_layout_desktop": "center",
+        "head_icon_layout_mobile": "center",
+        "banner_superscript": "",
+        "text_one_size": 12,
+        "text_one_font": "neue-haas-grotesk-text",
+        "text_one_layout_desktop": "center",
+        "text_one_layout_mobile": "center",
+        "banner_heading_1": "",
+        "banner_heading_font_1": "neue-haas-grotesk-text",
+        "heading_text_size_1": 52,
+        "banner_heading_1_layout_desktop": "center",
+        "banner_heading_1_layout_mobile": "center",
+        "banner_heading_2": "",
+        "banner_heading_font_2": "neue-haas-grotesk-text",
+        "heading_text_size_2": 52,
+        "banner_heading_2_layout_desktop": "center",
+        "banner_heading_2_layout_mobile": "center",
+        "banner_superscript_two": "",
+        "text_two_size": 14,
+        "text_two_font": "neue-haas-grotesk-text",
         "text_color": "#f7f5f0",
+        "text_two_layout_desktop": "center",
+        "text_two_layout_mobile": "center",
         "button_text": "",
+        "button_text_size": 12,
         "button_link": "",
+        "button_colors": "#000000",
+        "button_hover_text_color": "#000000",
+        "button_border_color": "#ffffff",
         "button_color": "button__primary white",
+        "button_layout_desktop": "center",
+        "button_layout_mobile": "center",
         "background_color": "#283645",
         "flip_orientation": false,
         "full_width": true,
@@ -64,6 +93,7 @@
       "settings": {
         "layout": "no_tabs",
         "heading": "Mother's Day Gifts",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "small",
@@ -125,6 +155,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Gifts By Type",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "none",
@@ -195,7 +226,7 @@
           "disabled": true,
           "settings": {
             "collection": "mothers-day-gifts",
-            "overlay_color": "#f7bebe",
+            "overlay_color": "#8b544a",
             "alt_title": "Mother's Day",
             "superscript": "",
             "count_label": "Gifts"
@@ -205,7 +236,7 @@
           "type": "collection",
           "settings": {
             "collection": "gift-sets",
-            "overlay_color": "#b06c60",
+            "overlay_color": "#8b544a",
             "alt_title": "",
             "superscript": "",
             "count_label": "Gifts"
@@ -215,7 +246,7 @@
           "type": "collection",
           "settings": {
             "collection": "tea-flights",
-            "overlay_color": "#ac9268",
+            "overlay_color": "#866b53",
             "alt_title": "",
             "superscript": "",
             "count_label": "Gifts"
@@ -225,7 +256,7 @@
           "type": "collection",
           "settings": {
             "collection": "tea-teaware-bundles",
-            "overlay_color": "#5d7261",
+            "overlay_color": "#5a6c5d",
             "alt_title": "Teaware Bundles",
             "superscript": "",
             "count_label": "Gifts"
@@ -240,6 +271,7 @@
       ],
       "settings": {
         "heading": "<p>Tea Gifts for All<\/p>",
+        "description": "",
         "button_link": "shopify:\/\/collections\/all-gifts",
         "button_text": "Shop All Gifts",
         "padding_bottom": "none"
@@ -273,6 +305,7 @@
       "settings": {
         "layout": "no_tabs",
         "heading": "Limited Edition Seasonal Blends",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "none",
@@ -311,6 +344,7 @@
       "settings": {
         "layout": "no_tabs",
         "heading": "Gifts for the Tea Connoisseur",
+        "description": "",
         "full_width": true,
         "button_text": "Shop Garden Direct",
         "padding_bottom": "small",
@@ -341,6 +375,7 @@
       "settings": {
         "layout": "panel",
         "heading": "Artisanal & Collectible",
+        "description": "",
         "full_width": true,
         "button_text": "Shop Now",
         "padding_bottom": "small",
@@ -444,6 +479,7 @@
       "settings": {
         "superscript": "Reviews",
         "header": "What Rishi Tea Drinkers\nAre Saying",
+        "description": "",
         "background_color": "#8c615e",
         "padding_bottom": "none",
         "button_text": "Shop All",
@@ -530,6 +566,7 @@
       "settings": {
         "layout": "tabs",
         "heading": "Craft Your Own Gift",
+        "description": "",
         "full_width": true,
         "button_text": "Shop All",
         "padding_bottom": "small",

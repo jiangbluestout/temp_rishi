@@ -50,7 +50,7 @@
         "button_text": "Shop All",
         "button_link": "shopify:\/\/collections\/all-tea",
         "button_color": "button__primary white",
-        "background_color": "#419271",
+        "background_color": "#32795c",
         "full_width": true,
         "flip_orientation": false,
         "padding_bottom": "small"

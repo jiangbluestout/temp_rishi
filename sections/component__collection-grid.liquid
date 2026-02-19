@@ -10,7 +10,7 @@
     </div>
     <a href="{{ section.settings.button_link }}" class="button__primary hidden md:block">{{ section.settings.button_text }}</a>
   </div>
-  <div class="grid md:grid-cols-3 gap-3 rounded-4">
+  <div class="grid md:grid-cols-3 gap-3 rounded-4">  
     {% for block in section.blocks %}
       {% assign title = block.settings.collection.title %}
       {% if block.settings.alt_title != blank %}
