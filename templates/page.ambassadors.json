@@ -79,6 +79,9 @@
         "8e69471a-80dc-48a6-a328-ee6cb0f3ca9f",
         "14f3bed2-28cc-4585-8298-9883fdad2ced"
       ],
+      "custom_css": [
+        ".text-brown-dark{color: #c19a77;}"
+      ],
       "settings": {
         "variant": "italic",
         "header": "TASTEMAKER BENEFITS",

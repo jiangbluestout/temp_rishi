@@ -4843,10 +4843,16 @@ input[type=search]::-webkit-search-results-decoration {
 .rebuy-cart__flyout-item-quantity {
   padding-left: 0px !important;
 }
-
+#main-content #__next .zI7.iyn.Hsu input{
+  border-color: #283645!important;
+}
+#__next input::placeholder{
+  color: #283645 !important; 
+}
 #__next .zI7.iyn.Hsu input {
   font-family: neue-haas-grotesk-text !important;
-  border-color: rgba(40, 54, 69, 0.5) !important;
+  /* border-color: rgba(40, 54, 69, 0.5) !important; */
+  border-color: #4b4f56 !important;
   transition: all 200ms ease-in-out !important;
   font-size: 14px !important;
   font-style: normal !important;
